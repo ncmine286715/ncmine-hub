@@ -110,17 +110,17 @@
     repeating-linear-gradient(
       135deg,
       transparent 0 22px,
-      oklch(0.12 0 0 / 0.06) 22px 23px
+      rgba(0, 0, 0, 0.06) 22px 23px
     ),
     repeating-linear-gradient(
       45deg,
       transparent 0 22px,
-      oklch(0.12 0 0 / 0.04) 22px 23px
+      rgba(0, 0, 0, 0.04) 22px 23px
     );
 
-  --shadow-block: 6px 6px 0 0 oklch(0.12 0 0);
-  --shadow-block-sm: 3px 3px 0 0 oklch(0.12 0 0);
-  --shadow-orange: 6px 6px 0 0 oklch(0.72 0.21 47);
+  --shadow-block: 6px 6px 0 0 #000;
+  --shadow-block-sm: 3px 3px 0 0 #000;
+  --shadow-orange: 6px 6px 0 0 #ff7a00;
 }
 
 .dark {
