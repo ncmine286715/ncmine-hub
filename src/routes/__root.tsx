@@ -81,6 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "@ncmine" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "@ncmine — Addons de Minecraft" },
+      { name: "twitter:title", content: "@ncmine — Addons de Minecraft" },
+      { property: "og:description", content: "Hub oficial do @ncmine: addons de Minecraft Bedrock, Discord, YouTube e Instagram." },
+      { name: "twitter:description", content: "Hub oficial do @ncmine: addons de Minecraft Bedrock, Discord, YouTube e Instagram." },
     ],
     links: [
       {
