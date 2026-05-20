@@ -50,22 +50,22 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
   }, [addons, q, cat, sort]);
 
   return (
-    <section id="addons" className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:py-24">
-      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <section id="addons" className="relative mx-auto w-full max-w-7xl px-4 py-10 pb-28 sm:py-24">
+      <header className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[10px] text-background">
             ADDONS
           </span>
-          <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-6xl">
+          <h2 className="mt-3 text-3xl font-black uppercase leading-none sm:text-6xl">
             Toda a coleção
           </h2>
-          <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+          <p className="mt-2 max-w-xl text-xs text-muted-foreground sm:text-sm">
             {addons.length} addons selecionados a dedo. Use a busca, filtre por categoria e baixe.
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <label className="relative block w-full sm:w-72">
+        <div className="flex w-full items-center gap-2 sm:w-auto">
+          <label className="relative block flex-1 sm:w-72 sm:flex-initial">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
             <input
               value={q}
@@ -87,14 +87,14 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
         </div>
       </header>
 
-      <div className="mb-6 flex flex-wrap gap-2">
+      <div className="mb-6 -mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
         {categories.map((c) => {
           const active = c === cat;
           return (
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`border-2 border-foreground px-3 py-1.5 text-xs font-bold uppercase transition-all ${
+              className={`shrink-0 border-2 border-foreground px-3 py-1.5 text-xs font-bold uppercase transition-all ${
                 active ? "bg-primary text-primary-foreground shadow-[3px_3px_0_0_var(--ink)]" : "bg-background hover:bg-foreground hover:text-background"
               }`}
             >
@@ -110,7 +110,7 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
           <p className="mt-2 text-sm text-muted-foreground">Tenta outro termo ou categoria.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
           {filtered.map((a) => (
             <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} />
           ))}
