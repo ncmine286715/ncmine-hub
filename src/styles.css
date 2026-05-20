@@ -1,7 +1,6 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -171,7 +170,9 @@
     background-image: var(--hatch);
     background-attachment: fixed;
   }
+}
 
+@layer utilities {
   .font-pixel {
     font-family: var(--font-pixel);
     letter-spacing: 0.02em;
@@ -179,12 +180,26 @@
 
   /* Brutalist block button: thick border + hard shadow that "presses" */
   .btn-block {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-foreground bg-background px-5 py-3 font-semibold uppercase tracking-wide transition-all;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid var(--ink);
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
     box-shadow: var(--shadow-block);
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.2;
   }
   .btn-block:hover {
     transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0 0 var(--ink);
+    box-shadow: var(--shadow-block-sm);
   }
   .btn-block:active {
     transform: translate(6px, 6px);
@@ -192,13 +207,14 @@
   }
 
   .card-block {
-    @apply border-2 border-foreground bg-card;
+    border: 2px solid var(--ink);
+    background-color: var(--paper);
     box-shadow: var(--shadow-block-sm);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
   .card-block:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 0 var(--ink);
+    box-shadow: var(--shadow-block);
   }
 
   /* Minecraft-y pixelated image */
@@ -206,9 +222,7 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
   }
-}
 
-@layer utilities {
   @keyframes mc-float {
     0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
     50% { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 4deg)); }
