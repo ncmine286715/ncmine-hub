@@ -57,7 +57,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         </span>
       </button>
 
-      <div className="flex flex-1 flex-col p-3 sm:p-4">
+      <div className="flex flex-1 flex-col p-2.5 sm:p-4">
         <h3 className="mb-1 line-clamp-2 text-sm font-extrabold uppercase leading-tight sm:text-base">
           {addon.title}
         </h3>

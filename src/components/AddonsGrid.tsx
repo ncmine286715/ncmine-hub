@@ -50,17 +50,17 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
   }, [addons, q, cat, sort]);
 
   return (
-    <section id="addons" className="relative mx-auto w-full max-w-7xl px-4 py-10 pb-28 sm:py-24">
-      <header className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+    <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-6 pb-28 sm:px-4 sm:py-20">
+      <header className="mb-4 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[10px] text-background">
+          <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[9px] text-background sm:text-[10px]">
             ADDONS
           </span>
-          <h2 className="mt-3 text-3xl font-black uppercase leading-none sm:text-6xl">
+          <h2 className="mt-2 text-2xl font-black uppercase leading-none sm:mt-3 sm:text-5xl">
             Toda a coleção
           </h2>
-          <p className="mt-2 max-w-xl text-xs text-muted-foreground sm:text-sm">
-            {addons.length} addons selecionados a dedo. Use a busca, filtre por categoria e baixe.
+          <p className="mt-1 max-w-xl text-[11px] text-muted-foreground sm:mt-2 sm:text-sm">
+            {addons.length} addons curados. Busque, filtre e baixe.
           </p>
         </div>
 
