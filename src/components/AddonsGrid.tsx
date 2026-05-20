@@ -50,7 +50,10 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
   }, [addons, q, cat, sort]);
 
   return (
-    <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-6 pb-28 sm:px-4 sm:py-20">
+    <section
+      id="addons"
+      className="relative mx-auto w-full max-w-7xl px-3 py-6 pb-28 sm:px-4 sm:py-20"
+    >
       <header className="mb-4 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[9px] text-background sm:text-[10px]">
@@ -94,8 +97,10 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`shrink-0 border-2 border-foreground px-3 py-1.5 text-xs font-bold uppercase transition-all ${
-                active ? "bg-primary text-primary-foreground shadow-[3px_3px_0_0_var(--ink)]" : "bg-background hover:bg-foreground hover:text-background"
+              className={`shrink-0 border-2 border-foreground px-4 py-2.5 text-sm font-bold uppercase transition-all min-h-[44px] ${
+                active
+                  ? "bg-primary text-primary-foreground shadow-[3px_3px_0_0_var(--ink)]"
+                  : "bg-background hover:bg-foreground hover:text-background"
               }`}
             >
               {c}

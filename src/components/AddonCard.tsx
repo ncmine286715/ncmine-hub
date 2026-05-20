@@ -16,6 +16,7 @@ export type Addon = {
   downloadUrl: string;
   author: string;
   youtubeId?: string;
+  featured?: boolean;
 };
 
 type Props = {
@@ -55,17 +56,30 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <span className="absolute right-2 top-2 border-2 border-foreground bg-background px-2 py-0.5 font-pixel text-[9px]">
           v{addon.version}
         </span>
+        {addon.featured && (
+          <span className="absolute bottom-2 right-2 border-2 border-foreground bg-yellow-400 px-2 py-0.5 font-pixel text-[9px] text-black animate-mc-pulse-orange">
+            DESTAQUE
+          </span>
+        )}
       </button>
 
       <div className="flex flex-1 flex-col p-2.5 sm:p-4">
-        <h3 className="mb-1 line-clamp-2 text-sm font-extrabold uppercase leading-tight sm:text-base">
+        <h3 className="mb-1 line-clamp-2 text-base font-black uppercase leading-[1.1] sm:text-lg">
           {addon.title}
         </h3>
         <div className="mb-2 flex items-center gap-2 text-[10px] text-muted-foreground sm:gap-3 sm:text-[11px]">
-          <span className="inline-flex items-center gap-1 truncate"><User className="h-3 w-3 shrink-0" />{addon.author}</span>
-          <span className="hidden items-center gap-1 sm:inline-flex"><Calendar className="h-3 w-3" />{addon.date}</span>
+          <span className="inline-flex items-center gap-1 truncate">
+            <User className="h-3 w-3 shrink-0" />
+            {addon.author}
+          </span>
+          <span className="hidden items-center gap-1 sm:inline-flex">
+            <Calendar className="h-3 w-3" />
+            {addon.date}
+          </span>
         </div>
-        <p className="mb-3 line-clamp-2 text-xs text-muted-foreground sm:line-clamp-3">{addon.short}</p>
+        <p className="mb-3 line-clamp-2 text-xs text-muted-foreground sm:line-clamp-3">
+          {addon.short}
+        </p>
 
         <div className="mb-3 flex items-center justify-between text-xs">
           <span className="inline-flex items-center gap-1">

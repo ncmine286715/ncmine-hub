@@ -1,6 +1,7 @@
 [
   {
     "id": "actions-and-stuff",
+    "featured": true,
     "title": "Actions and Stuff",
     "category": "Animação",
     "version": "1.10",
@@ -17,6 +18,7 @@
   },
   {
     "id": "thirst-on",
+    "featured": true,
     "title": "Addon thirst on",
     "category": "dificuldade+",
     "version": "1.0.0",
@@ -87,12 +89,7 @@
     "downloads": 1212,
     "date": "2026-05-12",
     "image": "https://i.imgur.com/M6vJ6a8.png",
-    "tags": [
-      "cinecam",
-      "camera",
-      "f5",
-      "perpesctiva"
-    ],
+    "tags": ["cinecam", "camera", "f5", "perpesctiva"],
     "short": "Create cinematic masterpieces with professional camera.",
     "description": "Create cinematic masterpieces with professional camera tools and smooth path animations.\n- Path Camera with visual particle paths and smooth cinematic shots\n- Multiple modes: Shoulder Surf, Drone, 360 Drone, Static placement\n- Admin tools for managing cameras and global settings\n- Licensed by SE7ENDAYS Studio and published by BLOCKLAB Studios.",
     "downloadUrl": "https://1024terabox.com/s/1wXmpjk-wU3IkQEstz0ZY1Q",
@@ -101,6 +98,7 @@
   },
   {
     "id": "rise-and-survive-progressive-zombie-apocalypse",
+    "featured": true,
     "title": "Rise and Survive – Progressive Zombie Apocalypse.",
     "category": "apocalipse",
     "version": "1.0.0",
@@ -115,7 +113,7 @@
     "author": "Ranzie",
     "youtubeId": "97u5yVJpYjY"
   },
- {
+  {
     "id": "naturalist-add-on-261-by-starfish-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Naturalist Add-On 26.1 by Starfish Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -142,7 +140,7 @@
     "author": "Starfish Studios",
     "youtubeId": "FS06MS8D65E"
   },
-{
+  {
     "id": "realismcraft-24-by-spark-universe--minecraft-marketplace",
     "title": "RealismCraft 2.4 by Spark Universe - Minecraft Marketplace",
     "category": "Outros",
@@ -222,7 +220,7 @@
     "author": "CompyCraft",
     "youtubeId": "xSVZMFeAx0M"
   },
-{
+  {
     "id": "furniture-life-add-on-v20-by-pixelheads--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Furniture Life Add-On v2.0 by PixelHeads - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -248,7 +246,7 @@
     "author": "PixelHeads",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "biomes-o-plenty-by-4ks-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Biomes O' Plenty by 4KS Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -300,7 +298,7 @@
     "author": "Logdotzip",
     "youtubeId": "T_e4zUls6Tg"
   },
- {
+  {
     "id": "waystones-by-pathway-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Waystones by Pathway Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -328,7 +326,7 @@
     "author": "Pathway Studios",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "avatar-rites-of-passage-by-gamemode-one-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Avatar: Rites of Passage by Gamemode One (Minecraft Marketplace Map) - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -353,7 +351,7 @@
     "author": "Gamemode One",
     "youtubeId": "g4vwbTONdrM"
   },
-{
+  {
     "id": "dragon-ball-z",
     "title": "Dragon Ball Z",
     "category": "Outros",
@@ -362,22 +360,14 @@
     "downloads": 14118,
     "date": "2026-05-16",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/cyclone-dragon-ball-z-thumbnail-975b2e5cd3bf4866-800.jpg",
-    "tags": [
-      "bedrock",
-      "japan",
-      "martial arts",
-      "pe",
-      "vibrantvisuals",
-      "🈂️ anime",
-      "🏛️ classic"
-    ],
+    "tags": ["bedrock", "japan", "martial arts", "pe", "vibrantvisuals", "🈂️ anime", "🏛️ classic"],
     "short": "Cyclone presents: Dragon Ball Z! Battle as your favorite Dragon Ball Z character in this explosive DLC! Master iconic...",
     "description": "Unlock the ultimate decorating experience with Modern Furniture! Dive into a world where style meets creativity across 300 pieces. + Modern, Gaming, Cute & much more furniture to... Read More",
     "downloadUrl": "https://1024terabox.com/s/130Hx-E4iU7TJTOea3THK7Q",
     "author": "Cyclone",
     "youtubeId": "E7kcUv_-n5c"
   },
-{
+  {
     "id": "essentials-by-unlinked--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Essentials by Unlinked - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -410,20 +400,14 @@
     "downloads": 7555,
     "date": "2026-05-16",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/pixelheads-better-backpacks-add-on-thumbnail-8fd1f142acbfca3a-800.jpg?20260516135100",
-    "tags": [
-      "bedrock",
-      "craftable tools",
-      "inventory management",
-      "pe",
-      "🎒 backpack"
-    ],
+    "tags": ["bedrock", "craftable tools", "inventory management", "pe", "🎒 backpack"],
     "short": "PixelHeads presents: Better Backpacks Add-On! The Better Backpacks Add-On adds craftable backpacks to any world. Wear...",
     "description": "Welcome to Furniture Life! With 1500+ real furniture blocks, you can design everything from cozy homes to sprawling cities. From modern styles to timeless classics, there's a... Read More",
     "downloadUrl": "https://1024terabox.com/s/1xIBsGdp3oP2wnXOOfi-HsA",
     "author": "PixelHeads",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "rlcraft-bedrock-edition-12-by-honeyfrost-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
     "title": "RLCraft Bedrock Edition 1.2 by Honeyfrost (Minecraft Marketplace Map) - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -477,7 +461,7 @@
     "author": "Tsunami Studios",
     "youtubeId": "PEMM26t3dNc"
   },
- {
+  {
     "id": "realistic-biomes-122-add-on-by-oreville-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Realistic Biomes 1.2.2 Add-On by Oreville Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -504,7 +488,7 @@
     "author": "Oreville Studios",
     "youtubeId": "CJV_zGRM-hQ"
   },
-{
+  {
     "id": "vampire-biomes-add-on-100-by-waypoint-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Vampire Biomes Add-On 1.0.0 by Waypoint Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -560,7 +544,7 @@
     "author": "Some Game Studio",
     "youtubeId": "JGAMXtflGH4"
   },
-  { 
+  {
     "id": "item-physics--more-add-on-by-blocklab-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Item Physics & More Add-On by BLOCKLAB Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -588,7 +572,7 @@
     "author": "BLOCKLAB Studios",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "parasite-outbreak-add-on-103-by-mythicus--minecraft-marketplace-via-bedrockexplorercom",
     "title": "PARASITE OUTBREAK Add-On 1.0.3 by Mythicus - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -641,7 +625,7 @@
     "author": "Honeyfrost",
     "youtubeId": "Q1VMzRYIgmM"
   },
- {
+  {
     "id": "furniture-add-on-by-xp-games--minecraft-marketplace-via-bedrockexplorercom",
     "title": "FURNITURE Add-On by XP GAMES - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -668,7 +652,7 @@
     "author": "XP GAMES",
     "youtubeId": "iPbkvmthCRQ"
   },
-{
+  {
     "id": "easy-redstone-add-on-11-by-overtales-studio--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Easy Redstone Add-On 1.1 by Overtales Studio - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -693,7 +677,7 @@
     "author": "Overtales Studio",
     "youtubeId": "snh0JcY1-7U"
   },
-{
+  {
     "id": "furniture-add-on-by-eescal-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Furniture Add-On by Eescal Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -702,21 +686,14 @@
     "downloads": 11511,
     "date": "2026-05-16",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/eescal-studios-furniture-add-on-thumbnail-4a5e4ba954fff65c-800.jpg?20260516145557",
-    "tags": [
-      "bedrock",
-      "craftable furniture",
-      "decorate",
-      "pe",
-      "🔨 addon",
-      "🛋️ furniture"
-    ],
+    "tags": ["bedrock", "craftable furniture", "decorate", "pe", "🔨 addon", "🛋️ furniture"],
     "short": "Eescal Studios presents: Furniture AddOn! Furniture AddOn adds on functional furniture to YOUR world! One of the best...",
     "description": "Welcome to your new beautifully crafted Beachfront Villa! Enjoy the splendors of this luxury compound with all the amenities that you love: mansions, yachts, tennis courts, swimming pools, and more!",
     "downloadUrl": "https://1024terabox.com/s/1jSkZzbvfLMtmKOIxvpkV5A",
     "author": "Eescal Studios",
     "youtubeId": "PRrvYfUHK4A"
   },
-{
+  {
     "id": "amulets-by-jfcrafters--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Amulets by JFCrafters - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -742,7 +719,7 @@
     "author": "JFCrafters",
     "youtubeId": "9hMBnr3Mb3o"
   },
-  { 
+  {
     "id": "bosses-add-on-15-by-shapescape--minecraft-marketplace-via-bedrockexplorercom",
     "title": "BOSSES+ Add-On 1.5 by Shapescape - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -778,15 +755,7 @@
     "downloads": 44539,
     "date": "2026-05-18",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/starfish-studios-prizma-visuals-2.1-thumbnail-6321c3440fb6ce98-800.jpg?20260518055635",
-    "tags": [
-      "bedrock",
-      "craft",
-      "dream",
-      "pe",
-      "vibrantvisuals",
-      "🎞️ animation",
-      "🖼️ realistic"
-    ],
+    "tags": ["bedrock", "craft", "dream", "pe", "vibrantvisuals", "🎞️ animation", "🖼️ realistic"],
     "short": "Starfish Studios presents: Prizma Visuals 2.1! Prizma Visuals 2.1 is the Vibrant Visuals Pack You’ve Been Dreaming of...",
     "description": "Your world has been overrun by FEARSOME MONSTERS! Enhance any world and try to survive against TERRIFYING creatures! Can you survive? + New horror survival experience + Over... Read More",
     "downloadUrl": "https://1024terabox.com/s/1wd2sXEHwve0mamdg6dytbg",
@@ -821,7 +790,7 @@
     "author": "Cloud Corp",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "sonic-add-on-by-gamemode-one--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Sonic Add-On by Gamemode One - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -830,21 +799,14 @@
     "downloads": 22045,
     "date": "2026-05-18",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/gamemode-one-sonic-add-on-thumbnail-afeee16c312c7f5f-800.jpg?20260518074228",
-    "tags": [
-      "bedrock",
-      "pe",
-      "retro",
-      "⚡ fast paced",
-      "🎬 movie",
-      "🏛️ classic"
-    ],
+    "tags": ["bedrock", "pe", "retro", "⚡ fast paced", "🎬 movie", "🏛️ classic"],
     "short": "Gamemode One presents: Sonic AddOn! Sonicboom into ANY world with this thrilling AddOn! Transform into Sonic, Knuckle...",
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1jyULpGRph_KFCFVFTptznQ",
     "author": "Gamemode One",
     "youtubeId": "epwwrYprobo"
   },
- {
+  {
     "id": "furniture-hd-add-on-11-by-square-dreams--minecraft-marketplace-via-bedrockexplorercom",
     "title": "FURNITURE HD Add-On 1.1 by Square Dreams - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -986,20 +948,14 @@
     "downloads": 48634,
     "date": "2026-05-19",
     "image": "https://images.bedrockexplorer.com/minecraft-marketplace-content/melonbp-bucketsplus-add-on-thumbnail-4a88d55f94ecaf96-800.jpg?20260518140422",
-    "tags": [
-      "bedrock",
-      "craft",
-      "pe",
-      "👾 mobs",
-      "🔨 addon"
-    ],
+    "tags": ["bedrock", "craft", "pe", "👾 mobs", "🔨 addon"],
     "short": "MelonBP presents: Buckets+ AddOn! Buckets+ AddOn adds T.O.N.S of buckets to YOUR world! Use these buckets to pick up ...",
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1OR993lzI2XWlSOIH1MDxbQ",
     "author": "MelonBP",
     "youtubeId": "6QIPkdUiVx4"
   },
-{
+  {
     "id": "dynamic-tree-generation-add-on-by-ka-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Dynamic Tree Generation Add-On by KA Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1024,7 +980,7 @@
     "author": "KA Studios",
     "youtubeId": "9hMBnr3Mb3o"
   },
-{
+  {
     "id": "realism-vfx-13-add-on-by-spark-universe--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Realism VFX 1.3 Add-On by Spark Universe - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1076,7 +1032,7 @@
     "author": "XP GAMES",
     "youtubeId": "1AG00ybEDZI"
   },
-{
+  {
     "id": "structure-generation-add-on-by-pixelusion--minecraft-marketplace-via-bedrockexplorercom",
     "title": "STRUCTURE GENERATION Add-On by Pixelusion - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1184,7 +1140,7 @@
     "author": "FoxyStar Studios",
     "youtubeId": "k8FFEKdFT5o"
   },
-{
+  {
     "id": "enchantments-plus",
     "title": "Enchantments Plus",
     "category": "Outros",
@@ -1210,7 +1166,7 @@
     "author": "StarkTMA",
     "youtubeId": "nbJTqoarJVQ"
   },
-{
+  {
     "id": "more-ores-tools-armor-add-on-by-wonder--minecraft-marketplace-via-bedrockexplorercom",
     "title": "More Ores Tools Armor Add-On by Wonder - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",

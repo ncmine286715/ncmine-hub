@@ -49,19 +49,31 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
               {addon.title}
             </h3>
             <div className="mb-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1"><User className="h-3 w-3" />{addon.author}</span>
-              <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" />{addon.date}</span>
+              <span className="inline-flex items-center gap-1">
+                <User className="h-3 w-3" />
+                {addon.author}
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Calendar className="h-3 w-3" />
+                {addon.date}
+              </span>
               <span className="font-pixel text-[9px]">v{addon.version}</span>
               <span className="inline-flex items-center gap-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`h-3 w-3 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`} />
+                  <Star
+                    key={i}
+                    className={`h-3 w-3 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
+                  />
                 ))}
               </span>
             </div>
 
             <div className="mb-4 flex flex-wrap gap-1">
               {addon.tags?.map((t) => (
-                <span key={t} className="border-2 border-foreground bg-background px-1.5 py-0.5 text-[10px] uppercase">
+                <span
+                  key={t}
+                  className="border-2 border-foreground bg-background px-1.5 py-0.5 text-[10px] uppercase"
+                >
                   {t}
                 </span>
               ))}
