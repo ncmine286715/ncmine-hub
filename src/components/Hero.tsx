@@ -20,18 +20,18 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
       </div>
 
       {/* Hero */}
-      <section className="relative grid items-center gap-8 py-12 sm:py-20 md:grid-cols-2">
+      <section className="relative grid items-center gap-6 py-6 sm:py-16 md:grid-cols-2 md:gap-8">
         {/* Decorative orange block */}
         <div aria-hidden className="absolute -left-6 top-1/3 hidden h-24 w-24 rotate-12 border-2 border-foreground bg-primary shadow-[6px_6px_0_0_var(--ink)] md:block" />
         <div aria-hidden className="absolute right-10 bottom-10 hidden h-16 w-16 -rotate-6 border-2 border-foreground bg-foreground md:block" />
 
-        <div className="relative z-10">
-          <span className="mb-4 inline-flex items-center gap-2 border-2 border-foreground bg-background px-3 py-1 font-pixel text-[10px] uppercase shadow-[3px_3px_0_0_var(--ink)]">
+        <div className="relative z-10 order-2 md:order-1">
+          <span className="mb-3 inline-flex items-center gap-2 border-2 border-foreground bg-background px-3 py-1 font-pixel text-[10px] uppercase shadow-[3px_3px_0_0_var(--ink)]">
             <Sparkles className="h-3 w-3 text-primary" />
             Criador de Conteúdo Minecraft
           </span>
 
-          <h1 className="text-5xl font-black uppercase leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl">
+          <h1 className="text-[2.5rem] font-black uppercase leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl">
             <span className="block">{CREATOR_NAME}</span>
             <span className="mt-2 block bg-primary px-2 text-primary-foreground sm:inline-block">
               ADDONS
@@ -39,13 +39,13 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
             <span className="block">Selecionados.</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-base text-muted-foreground">
+          <p className="mt-4 max-w-md text-sm text-muted-foreground sm:text-base">
             O hub oficial dos melhores add-ons de Minecraft Bedrock. Curados, testados
             e prontos pra baixar. {addonsCount}+ disponíveis agora.
           </p>
 
           {/* Primary CTAs — highlighted */}
-          <div id="links" className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div id="links" className="mt-5 grid grid-cols-1 gap-3 sm:mt-7 sm:grid-cols-2">
             <a
               href={DISCORD_URL}
               target="_blank"
@@ -72,7 +72,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-block bg-foreground text-background"
+              className="btn-block bg-foreground text-background !px-3 !py-2 text-xs"
             >
               <InstagramIcon className="h-4 w-4" /> Instagram
             </a>
@@ -80,7 +80,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-block bg-[#FF0000] text-white"
+              className="btn-block bg-[#FF0000] text-white !px-3 !py-2 text-xs"
             >
               <YouTubeIcon className="h-4 w-4" /> YouTube
             </a>
@@ -88,7 +88,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               href={TIKTOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-block bg-background"
+              className="btn-block bg-background !px-3 !py-2 text-xs"
             >
               <TikTokIcon className="h-4 w-4" /> TikTok
             </a>
@@ -96,7 +96,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
         </div>
 
         {/* Null skin */}
-        <div className="relative mx-auto flex w-full max-w-md items-center justify-center">
+        <div className="relative order-1 mx-auto flex w-full max-w-[200px] items-center justify-center md:order-2 md:max-w-md">
           <div aria-hidden className="absolute inset-x-6 bottom-4 h-6 rounded-full bg-foreground/30 blur-md" />
           <div className="relative animate-mc-bob">
             <div aria-hidden className="absolute inset-0 -z-10 translate-x-3 translate-y-3 bg-primary" />
@@ -132,7 +132,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
       </div>
 
       {/* Scroll indicator */}
-      <a href="#addons" className="mx-auto mt-8 flex w-fit items-center gap-2 text-xs font-bold uppercase text-muted-foreground hover:text-foreground">
+      <a href="#addons" className="mx-auto mt-6 flex w-fit items-center gap-2 text-xs font-bold uppercase text-muted-foreground hover:text-foreground">
         Role pra ver os addons <ArrowDown className="h-3 w-3 animate-mc-bob" />
       </a>
     </header>
