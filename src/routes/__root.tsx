@@ -8,7 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
+import appCssUrl from "../styles.css?url";
+// Ensure the link href carries the ?url query so Vite serves it as CSS, not as a JS module.
+const appCss = appCssUrl.includes("?") ? appCssUrl : `${appCssUrl}?url`;
 
 function NotFoundComponent() {
   return (
@@ -84,6 +86,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap",
       },
     ],
   }),

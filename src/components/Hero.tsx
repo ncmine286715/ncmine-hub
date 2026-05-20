@@ -1,7 +1,7 @@
 import { ArrowDown, Sparkles } from "lucide-react";
 import nullSkin from "@/assets/null-skin.png";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
+import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, ADDONS_HUB_URL, CREATOR_NAME } from "@/lib/links";
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
   return (
@@ -56,7 +56,9 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               Entrar no Discord
             </a>
             <a
-              href="#addons"
+              href={ADDONS_HUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-block bg-primary text-primary-foreground"
             >
               <MinecraftBlockIcon className="h-5 w-5" />
