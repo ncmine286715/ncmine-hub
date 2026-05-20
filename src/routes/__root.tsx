@@ -8,7 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
+import appCssUrl from "../styles.css?url";
+// Ensure the link href carries the ?url query so Vite serves it as CSS, not as a JS module.
+const appCss = appCssUrl.includes("?") ? appCssUrl : `${appCssUrl}?url`;
 
 function NotFoundComponent() {
   return (
