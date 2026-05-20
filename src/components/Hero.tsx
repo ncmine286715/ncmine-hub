@@ -5,7 +5,7 @@ import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, ADDONS_HUB_URL, CR
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
   return (
-    <header className="relative mx-auto w-full max-w-7xl px-4 pt-10 sm:pt-16">
+    <header className="relative mx-auto w-full max-w-7xl px-4 pt-4 sm:pt-12">
       {/* Top bar */}
       <div className="flex items-center justify-between border-b-2 border-foreground pb-4">
         <div className="flex items-center gap-2">

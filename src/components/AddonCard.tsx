@@ -57,26 +57,26 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         </span>
       </button>
 
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="mb-1 line-clamp-2 text-base font-extrabold uppercase leading-tight">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
+        <h3 className="mb-1 line-clamp-2 text-sm font-extrabold uppercase leading-tight sm:text-base">
           {addon.title}
         </h3>
-        <div className="mb-2 flex items-center gap-3 text-[11px] text-muted-foreground">
-          <span className="inline-flex items-center gap-1"><User className="h-3 w-3" />{addon.author}</span>
-          <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" />{addon.date}</span>
+        <div className="mb-2 flex items-center gap-2 text-[10px] text-muted-foreground sm:gap-3 sm:text-[11px]">
+          <span className="inline-flex items-center gap-1 truncate"><User className="h-3 w-3 shrink-0" />{addon.author}</span>
+          <span className="hidden items-center gap-1 sm:inline-flex"><Calendar className="h-3 w-3" />{addon.date}</span>
         </div>
-        <p className="mb-3 line-clamp-3 text-xs text-muted-foreground">{addon.short}</p>
+        <p className="mb-3 line-clamp-2 text-xs text-muted-foreground sm:line-clamp-3">{addon.short}</p>
 
         <div className="mb-3 flex items-center justify-between text-xs">
           <span className="inline-flex items-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                className={`h-3.5 w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
+                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
               />
             ))}
           </span>
-          <span className="inline-flex items-center gap-1 font-pixel text-[9px]">
+          <span className="inline-flex items-center gap-1 font-pixel text-[8px] sm:text-[9px]">
             <Download className="h-3 w-3" />
             {addon.downloads.toLocaleString("pt-BR")}
           </span>
@@ -84,7 +84,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
 
         <button
           onClick={() => onDownload(addon)}
-          className="btn-block mt-auto bg-foreground text-background"
+          className="btn-block mt-auto bg-foreground text-background !px-3 !py-2 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
         >
           <Download className="h-4 w-4" /> Baixar
         </button>
