@@ -107,16 +107,8 @@
 
   /* hatched paper background */
   --hatch:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 22px,
-      rgba(0, 0, 0, 0.06) 22px 23px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent 0 22px,
-      rgba(0, 0, 0, 0.04) 22px 23px
-    );
+    repeating-linear-gradient(135deg, transparent 0 22px, rgba(0, 0, 0, 0.06) 22px 23px),
+    repeating-linear-gradient(45deg, transparent 0 22px, rgba(0, 0, 0, 0.04) 22px 23px);
 
   --shadow-block: 6px 6px 0 0 #000;
   --shadow-block-sm: 3px 3px 0 0 #000;
@@ -191,7 +183,9 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
     box-shadow: var(--shadow-block);
     cursor: pointer;
     text-decoration: none;
@@ -210,7 +204,9 @@
     border: 2px solid var(--ink);
     background-color: var(--paper);
     box-shadow: var(--shadow-block-sm);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
   }
   .card-block:hover {
     transform: translate(-2px, -2px);
@@ -222,44 +218,102 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
   }
-  .animate-mc-float { animation: mc-float 6s ease-in-out infinite; }
-  .animate-mc-drift { animation: mc-drift 12s ease-in-out infinite; }
-  .animate-mc-bob { animation: mc-bob 2.4s ease-in-out infinite; }
-  .animate-mc-shake { animation: mc-shake 0.4s ease-in-out infinite; }
-  .animate-mc-pulse-orange { animation: mc-pulse-orange 2.2s ease-out infinite; }
-  .animate-mc-scroll-x { animation: mc-scroll-x 40s linear infinite; }
-  .animate-mc-rise { animation: mc-rise 0.5s ease-out both; }
+  .animate-mc-float {
+    animation: mc-float 6s ease-in-out infinite;
+  }
+  .animate-mc-drift {
+    animation: mc-drift 12s ease-in-out infinite;
+  }
+  .animate-mc-bob {
+    animation: mc-bob 2.4s ease-in-out infinite;
+  }
+  .animate-mc-shake {
+    animation: mc-shake 0.4s ease-in-out infinite;
+  }
+  .animate-mc-pulse-orange {
+    animation: mc-pulse-orange 2.2s ease-out infinite;
+  }
+  .animate-mc-scroll-x {
+    animation: mc-scroll-x 40s linear infinite;
+  }
+  .animate-mc-rise {
+    animation: mc-rise 0.5s ease-out both;
+  }
 }
 
 /* Keyframes at top level (Lightning CSS rejects @keyframes inside @layer in some versions). */
 @keyframes mc-float {
-  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-  50% { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 4deg)); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 4deg));
+  }
 }
 @keyframes mc-drift {
-  0% { transform: translate(0,0) rotate(0); }
-  50% { transform: translate(30px,-20px) rotate(8deg); }
-  100% { transform: translate(0,0) rotate(0); }
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  50% {
+    transform: translate(30px, -20px) rotate(8deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
 }
 @keyframes mc-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 @keyframes mc-shake {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  25% { transform: translate(-2px,1px) rotate(-1deg); }
-  50% { transform: translate(2px,-1px) rotate(1deg); }
-  75% { transform: translate(-1px,2px) rotate(-1deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  25% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(2px, -1px) rotate(1deg);
+  }
+  75% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
 }
 @keyframes mc-pulse-orange {
-  0%,100% { box-shadow: 6px 6px 0 0 #000, 0 0 0 0 rgba(255, 122, 0, 0.6); }
-  50% { box-shadow: 6px 6px 0 0 #000, 0 0 0 16px rgba(255, 122, 0, 0); }
+  0%,
+  100% {
+    box-shadow:
+      6px 6px 0 0 #000,
+      0 0 0 0 rgba(255, 122, 0, 0.6);
+  }
+  50% {
+    box-shadow:
+      6px 6px 0 0 #000,
+      0 0 0 16px rgba(255, 122, 0, 0);
+  }
 }
 @keyframes mc-scroll-x {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 @keyframes mc-rise {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

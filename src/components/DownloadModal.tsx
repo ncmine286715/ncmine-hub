@@ -28,8 +28,18 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
 
   const isDiscord = variant === "discord";
   const cta = isDiscord
-    ? { href: DISCORD_URL, label: "Entrar no Discord", Icon: DiscordIcon, color: "bg-[#5865F2] text-white" }
-    : { href: INSTAGRAM_URL, label: "Me seguir no Insta", Icon: InstagramIcon, color: "bg-foreground text-background" };
+    ? {
+        href: DISCORD_URL,
+        label: "Entrar no Discord",
+        Icon: DiscordIcon,
+        color: "bg-[#5865F2] text-white",
+      }
+    : {
+        href: INSTAGRAM_URL,
+        label: "Me seguir no Insta",
+        Icon: InstagramIcon,
+        color: "bg-foreground text-background",
+      };
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-foreground/70 p-4 animate-mc-rise">
