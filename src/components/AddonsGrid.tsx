@@ -107,6 +107,47 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
         })}
       </div>
 
+      {/* Featured addon (always first) */}
+      {featuredAddon && (
+        <div className="mb-5">
+          <div className="relative overflow-hidden border-2 border-foreground bg-background">
+            <button
+              type="button"
+              onClick={() => onOpen(featuredAddon)}
+              className="group relative block aspect-[21/9] w-full overflow-hidden bg-muted sm:aspect-[24/9]"
+            >
+              <img
+                src={featuredAddon.image}
+                alt={featuredAddon.title}
+                loading="eager"
+                referrerPolicy="no-referrer"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span className="absolute left-2 top-2 inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[9px] uppercase text-primary-foreground">
+                <Star className="h-3 w-3" />
+                Destaque
+              </span>
+            </button>
+            <div className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+              <div className="flex-1">
+                <h3 className="text-base font-black uppercase leading-tight sm:text-lg">
+                  {featuredAddon.title}
+                </h3>
+                <p className="mt-0.5 max-w-md text-xs text-muted-foreground sm:text-sm">
+                  {featuredAddon.short}
+                </p>
+              </div>
+              <button
+                onClick={() => onDownload(featuredAddon)}
+                className="btn-block shrink-0 bg-foreground text-background !px-4 !py-2.5 text-xs sm:!px-6 sm:!py-3 sm:text-sm"
+              >
+                <Download className="h-4 w-4" /> Baixar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {filtered.length === 0 ? (
         <div className="card-block p-10 text-center">
           <p className="font-pixel text-xs">NADA ENCONTRADO</p>
