@@ -47,7 +47,11 @@ function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
 function Index() {
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [detailFor, setDetailFor] = useState<Addon | null>(null);
-  const ALL_ADDONS = useMemo(() => shuffleSeeded(RAW_ADDONS), []);
+
+  const { featured, rest } = useMemo(() => {
+    const [first, ...others] = RAW_ADDONS;
+    return { featured: first, rest: shuffleSeeded(others) };
+  }, []);
 
   const handleDownload = (a: Addon) => {
     setDetailFor(null);
@@ -57,8 +61,8 @@ function Index() {
   return (
     <div className="relative min-h-screen text-foreground">
       <FloatingBackground />
-      <Hero addonsCount={ALL_ADDONS.length} />
-      <AddonsGrid addons={ALL_ADDONS} onDownload={handleDownload} onOpen={setDetailFor} />
+      <Hero addonsCount={RAW_ADDONS.length} />
+      <AddonsGrid addons={rest} featuredAddon={featured} onDownload={handleDownload} onOpen={setDetailFor} />
 
       {/* Footer */}
       <footer className="border-t-2 border-foreground bg-foreground text-background">

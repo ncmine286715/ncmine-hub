@@ -1,5 +1,21 @@
 [
   {
+    "id": "minecraft-otimizado-ncmine",
+    "title": "Minecraft Totalmente Otimizado",
+    "category": "Otimização",
+    "version": "1.0",
+    "rating": 5,
+    "downloads": 4989,
+    "date": "2026-05-23",
+    "image": "https://i.imgur.com/o2N6byV.png",
+    "tags": ["otimização", "textura", "fps", "desempenho"],
+    "short": "Addon + textura feito pelo NCMINE que otimiza o Minecraft Bedrock para rodar mais leve e com mais FPS.",
+    "description": "Este pacote exclusivo do NCMINE combina um addon e textura otimizada para Minecraft Bedrock, reduzindo o peso gráfico e melhorando o desempenho em todos os dispositivos. Perfeito para quem quer mais FPS sem perder a qualidade visual.",
+    "downloadUrl": "https://1024terabox.com/s/1IbG7oCH3cmo_SJ90kaMzJw",
+    "author": "NCMINE",
+    "youtubeId": ""
+  },
+  {
     "id": "actions-and-stuff",
     "title": "Actions and Stuff",
     "category": "Animação",
