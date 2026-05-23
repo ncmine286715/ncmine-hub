@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, Star, Download } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 
 type Props = {
