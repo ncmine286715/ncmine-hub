@@ -4,6 +4,7 @@ import { AddonCard, type Addon } from "@/components/AddonCard";
 
 type Props = {
   addons: Addon[];
+  featuredAddon?: Addon;
   onDownload: (a: Addon) => void;
   onOpen: (a: Addon) => void;
 };
