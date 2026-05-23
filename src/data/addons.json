@@ -1263,5 +1263,21 @@
     "downloadUrl": "https://1024terabox.com/s/1js2CQxsHlO87UveUJXHs3g",
     "author": "BLOCKLAB Studios",
     "youtubeId": "Z17-qbOEwBQ"
+  },
+  {
+    "id": "nc-optimize",
+    "title": "NC Optimize",
+    "category": "Otimização",
+    "version": "1.0",
+    "rating": 5,
+    "downloads": 34214,
+    "date": "2026-05-22",
+    "image": "https://ugc.production.linktr.ee/605f0b64-af79-4fe0-be7f-e40c2f6047c6_Gemini-Generated-Image-bvh9zsbvh9zsbvh9.png?io=true&size=thumbnail-stack_v1_0",
+    "tags": ["otimização", "fps", "textura", "mcpe", "bedrock"],
+    "short": "NC Optimize 1.0 é um pacote de recursos focado em otimização extrema de FPS para o Minecraft Bedrock, reduzindo lags e engasgos até em celulares fracos.",
+    "description": "A Solução Definitiva para o Lag no seu Minecraft: NC Optimize remove o peso morto e limpa os códigos mal otimizados do jogo para que seus frames alcancem estabilidade máxima sem sacrificar o ganho de conquistas!\n\n- Otimização extrema de performance de renderização no Minecraft Bedrock / PE\n- Menu de Subpacks configurável dentro do jogo\n- Modo Texturas Retas (flat blocks) sem variação pesada de cor\n- Otimização do mapa de cores dos Biomas (color map otimizado)\n- Desativação de animações desnecessárias que superaquecem o dispositivo móvel\n- Totalmente compatível e seguro para uso em servidores PvP (Sem risco de Ban)\n- Suporta mundos Survival e Hardcore mantendo conquistas 100% ativas\n- Compatível com as versões 1.21+",
+    "downloadUrl": "https://terabox.com/s/1CudZ7VGs61bwQEV2BRHaAg",
+    "author": "ncmine",
+    "youtubeId": ""
   }
 ]
