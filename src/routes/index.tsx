@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import addonsData from "@/data/addons.json";
 import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
@@ -29,11 +29,25 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const ALL_ADDONS = addonsData as Addon[];
+const RAW_ADDONS = addonsData as Addon[];
+
+// Deterministic shuffle (seeded) so SSR/hydration stay consistent
+// but the order doesn't follow the JSON sequence.
+function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
+  const out = [...arr];
+  let s = seed;
+  for (let i = out.length - 1; i > 0; i--) {
+    s = (s * 9301 + 49297) % 233280;
+    const j = Math.floor((s / 233280) * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
 
 function Index() {
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [detailFor, setDetailFor] = useState<Addon | null>(null);
+  const ALL_ADDONS = useMemo(() => shuffleSeeded(RAW_ADDONS), []);
 
   const handleDownload = (a: Addon) => {
     setDetailFor(null);
