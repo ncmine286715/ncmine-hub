@@ -8,12 +8,12 @@ type Props = {
   onOpen: (a: Addon) => void;
 };
 
-type Sort = "recent" | "popular" | "rating" | "az";
+type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
 export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<string>("Todos");
-  const [sort, setSort] = useState<Sort>("recent");
+  const [sort, setSort] = useState<Sort>("mix");
 
   const categories = useMemo(() => {
     const set = new Set(addons.map((a) => a.category));
@@ -33,6 +33,7 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
         a.short?.toLowerCase().includes(ql)
       );
     });
+    if (sort === "mix") return list;
     list = [...list].sort((a, b) => {
       switch (sort) {
         case "popular":
@@ -79,6 +80,7 @@ export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
             onChange={(e) => setSort(e.target.value as Sort)}
             className="border-2 border-foreground bg-background px-2 py-2.5 text-sm font-bold uppercase"
           >
+            <option value="mix">Misturado</option>
             <option value="recent">Recente</option>
             <option value="popular">Popular</option>
             <option value="rating">Rating</option>
