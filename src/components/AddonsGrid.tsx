@@ -11,7 +11,7 @@ type Props = {
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
-export function AddonsGrid({ addons, onDownload, onOpen }: Props) {
+export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props) {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<string>("Todos");
   const [sort, setSort] = useState<Sort>("mix");
