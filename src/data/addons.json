@@ -1,4 +1,20 @@
 [
+{
+  "id": "easy-farm-addon-ncmine",
+  "title": "Easy Farm Addon",
+  "category": "Addon",
+  "version": "1.0",
+  "rating": 5,
+  "downloads": 40000,
+  "date": "2026-05-24",
+  "image": "https://i.imgur.com/CiLVvOa.png",
+  "tags": ["addon", "farm", "holograma", "construção", "bedrock", "fácil"],
+  "short": "Addon criado pelo NCMINE que adiciona hologramas de farms prontas no Minecraft Bedrock — é só colocar os blocos por cima e a farm sai perfeita.",
+  "description": "O Easy Farm Addon do NCMINE revoluciona a forma de construir farms no Minecraft Bedrock Mobile. O addon projeta hologramas 3D diretamente no jogo mostrando exatamente onde cada bloco deve ser colocado. Não importa se você é noob ou experiente — farm de Enderman, Mob Trap, Shulker, Iron Farm e muito mais ficam prontas sem precisar de tutorial. Funciona 100% no Bedrock Mobile.",
+  "downloadUrl": "https://terabox.app/s/10pXwMrrtHKzRbN05R4WBGA",
+  "author": "NCMINE",
+  "youtubeId": ""
+},
   {
     "id": "minecraft-otimizado-ncmine",
     "title": "Minecraft Totalmente Otimizado",
