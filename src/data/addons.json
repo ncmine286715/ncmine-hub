@@ -1,4 +1,20 @@
 [
+  {
+  "id": "view-model-bracos-longos",
+  "title": "Braços Longos (View Model)",
+  "category": "Addon",
+  "version": "1.0.0",
+  "rating": 4.8,
+  "downloads": 12500,
+  "date": "2026-05-24",
+  "image": "https://i.imgur.com/UU4OIiq.png",
+  "tags": ["addon", "view model", "braços longos", "fpp", "estética", "bedrock"],
+  "short": "Modifique a visualização dos seus itens na mão com o Addon de Braços Longos (View Model) para o Minecraft Bedrock.",
+  "description": "O Addon de Braços Longos (View Model) altera a perspectiva da câmera em primeira pessoa no Minecraft Bedrock, afastando os itens e ferramentas da tela para dar aquela estética clássica e profissional de mods de PC. Melhora significativamente a sua visibilidade durante o PvP ou na construção, permitindo enxergar muito mais o ambiente ao redor sem que a sua mão bloqueie a visão. Totalmente compatível com a versão mobile!",
+  "downloadUrl": "https://1024terabox.com/s/16Cn85dHN0fro6-mfEAYnwA",
+  "author": "",
+  "youtubeId": ""
+},
 {
   "id": "easy-farm-addon-ncmine",
   "title": "Easy Farm Addon",
