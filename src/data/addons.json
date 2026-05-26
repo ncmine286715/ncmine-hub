@@ -1,5 +1,21 @@
 [
   {
+  "id": "afk-chunk-loader-bot",
+  "title": "AFK Chunk Loader Bot",
+  "category": "Addon",
+  "version": "1.0.0",
+  "rating": 4.7,
+  "downloads": 10690,
+  "date": "2026-04-02",
+  "image": "https://media.forgecdn.net/attachments/1602/318/picsart_26-03-28_10-34-26-574-jpg.jpg",
+  "tags": ["addon", "chunk loader", "afk bot", "survival", "automação", "bedrock", "achievement friendly"],
+  "short": "Mantenha suas farms funcionando e chunks carregados mesmo estando longe com o AFK Chunk Loader Bot para Minecraft Bedrock.",
+  "description": "O AFK Chunk Loader Bot, criado por Sycure_gaming, é a solução definitiva e leve para sobrevivência que mantém seus chunks ativos e farms rodando sem que você precise estar por perto. O grande diferencial? Ele é totalmente compatível com as conquistas (Achievements) do Minecraft! Basta craftar o controle remoto (2 Tochas de Redstone e 1 Bússola), usá-lo no local desejado e um bot será spawnado para carregar a área permanentemente, mesmo se você mudar de dimensão. Ideal para farms de ferro, plantações automáticas e máquinas de redstone. Nota: não funciona para farms de mobs hostis, que ainda exigem a presença física do jogador para o spawn.",
+  "downloadUrl": "https://1024terabox.com/s/1aXHkihbiCwbMk0ulfZYBRg",
+  "author": "Sycure_gaming",
+  "youtubeId": ""
+},
+  {
   "id": "view-model-bracos-longos",
   "title": "Braços Longos (View Model)",
   "category": "Addon",
