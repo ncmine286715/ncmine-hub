@@ -38,7 +38,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
   };
 
   return (
-    <article className="card-block flex flex-col overflow-hidden">
+    <article className="card-block relative flex flex-col overflow-hidden">
       <button
         type="button"
         onClick={() => onOpen(addon)}
@@ -65,14 +65,6 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <span className="absolute right-2 top-2 border-2 border-foreground bg-background px-2 py-0.5 font-pixel text-[9px]">
           v{addon.version}
         </span>
-        <button
-          type="button"
-          onClick={handleShare}
-          aria-label="Compartilhar addon"
-          className="absolute bottom-2 right-2 border-2 border-foreground bg-background p-1.5 shadow-[3px_3px_0_0_var(--ink)] transition hover:bg-primary hover:text-primary-foreground"
-        >
-          <Share2 className="h-3.5 w-3.5" />
-        </button>
       </button>
 
       <div className="flex flex-1 flex-col p-2.5 sm:p-4">
