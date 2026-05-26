@@ -1,6 +1,7 @@
 import { Sparkles } from "lucide-react";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, ADDONS_HUB_URL, CREATOR_NAME } from "@/lib/links";
+import { ShareNotifyBar } from "@/components/ShareNotifyBar";
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
   return (
@@ -79,6 +80,9 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               <TikTokIcon className="h-3.5 w-3.5" /> TikTok
             </a>
           </div>
+
+          {/* Share + Notify */}
+          <ShareNotifyBar />
         </div>
       </section>
 
