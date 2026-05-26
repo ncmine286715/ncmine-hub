@@ -1,5 +1,6 @@
-import { Star, Download, User, Calendar, Tag } from "lucide-react";
+import { Star, Download, User, Calendar, Tag, Share2 } from "lucide-react";
 import { useState } from "react";
+import { shareAddon } from "@/lib/share";
 
 export type Addon = {
   id: string;
@@ -26,9 +27,18 @@ type Props = {
 
 export function AddonCard({ addon, onDownload, onOpen }: Props) {
   const [broken, setBroken] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    await shareAddon(addon, (msg) => {
+      setToast(msg);
+      window.setTimeout(() => setToast(null), 2200);
+    });
+  };
 
   return (
-    <article className="card-block flex flex-col overflow-hidden">
+    <article className="card-block relative flex flex-col overflow-hidden">
       <button
         type="button"
         onClick={() => onOpen(addon)}
@@ -82,13 +92,32 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
           </span>
         </div>
 
-        <button
-          onClick={() => onDownload(addon)}
-          className="btn-block mt-auto bg-foreground text-background !px-3 !py-2 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
-        >
-          <Download className="h-4 w-4" /> Baixar
-        </button>
+        <div className="mt-auto flex gap-2">
+          <button
+            onClick={() => onDownload(addon)}
+            className="btn-block flex-1 bg-foreground text-background !px-3 !py-2 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
+          >
+            <Download className="h-4 w-4" /> Baixar
+          </button>
+          <button
+            type="button"
+            onClick={handleShare}
+            aria-label="Compartilhar"
+            className="btn-block bg-background !px-2.5 !py-2 text-xs sm:!px-3 sm:!py-3"
+          >
+            <Share2 className="h-4 w-4" />
+          </button>
+        </div>
       </div>
+      {toast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="pointer-events-none absolute inset-x-2 bottom-2 z-10 border-2 border-foreground bg-background px-2 py-1 text-center text-[10px] font-bold shadow-[3px_3px_0_0_var(--ink)]"
+        >
+          {toast}
+        </div>
+      )}
     </article>
   );
 }

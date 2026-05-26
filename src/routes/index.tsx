@@ -8,6 +8,7 @@ import { DownloadModal } from "@/components/DownloadModal";
 import { AddonDetailModal } from "@/components/AddonDetailModal";
 import { InAppBrowserGuard } from "@/components/InAppBrowserGuard";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { NotifyPopup } from "@/components/NotifyPopup";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
@@ -101,6 +102,7 @@ function Index() {
       />
       <InAppBrowserGuard />
       <MobileStickyCTA />
+      <NotifyPopup />
     </div>
   );
 }

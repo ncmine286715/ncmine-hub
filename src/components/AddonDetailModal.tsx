@@ -1,5 +1,7 @@
-import { X, Download, Star, User, Calendar, ExternalLink } from "lucide-react";
+import { X, Download, Star, User, Calendar, ExternalLink, Share2 } from "lucide-react";
+import { useState } from "react";
 import type { Addon } from "@/components/AddonCard";
+import { shareAddon } from "@/lib/share";
 
 type Props = {
   addon: Addon | null;
@@ -71,12 +73,7 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
               {addon.description}
             </div>
 
-            <button
-              onClick={() => onDownload(addon)}
-              className="btn-block w-full bg-primary text-primary-foreground"
-            >
-              <Download className="h-4 w-4" /> Baixar agora
-            </button>
+            <DetailActions addon={addon} onDownload={onDownload} />
             {addon.youtubeId && (
               <a
                 href={`https://youtu.be/${addon.youtubeId}`}
@@ -90,6 +87,49 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function DetailActions({
+  addon,
+  onDownload,
+}: {
+  addon: Addon;
+  onDownload: (a: Addon) => void;
+}) {
+  const [toast, setToast] = useState<string | null>(null);
+  const handleShare = async () => {
+    await shareAddon(addon, (msg) => {
+      setToast(msg);
+      window.setTimeout(() => setToast(null), 2200);
+    });
+  };
+  return (
+    <div className="relative flex gap-2">
+      <button
+        onClick={() => onDownload(addon)}
+        className="btn-block flex-1 bg-primary text-primary-foreground"
+      >
+        <Download className="h-4 w-4" /> Baixar agora
+      </button>
+      <button
+        type="button"
+        onClick={handleShare}
+        aria-label="Compartilhar addon"
+        className="btn-block bg-background"
+      >
+        <Share2 className="h-4 w-4" />
+      </button>
+      {toast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 border-2 border-foreground bg-background px-2 py-1 text-[10px] font-bold shadow-[3px_3px_0_0_var(--ink)]"
+        >
+          {toast}
+        </div>
+      )}
     </div>
   );
 }
