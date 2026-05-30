@@ -1,5 +1,30 @@
 [
   {
+  "id": "sodium-gl-reimagined",
+  "title": "Sodium GL Reimagined FPS Texture Pack",
+  "category": "Texture Pack",
+  "version": "1.0.0",
+  "rating": 4.8,
+  "downloads": 0,
+  "date": "2026-05-30",
+  "image": "https://i.imgur.com/EFSE5Tf.png",
+  "tags": [
+    "texture pack",
+    "fps boost",
+    "optimization",
+    "performance",
+    "bedrock",
+    "lag reduction",
+    "particles",
+    "minecraft"
+  ],
+  "short": "Aumente seu FPS no Minecraft Bedrock desativando partículas e efeitos visuais desnecessários.",
+  "description": "O Sodium GL Reimagined é uma textura de otimização para Minecraft Bedrock desenvolvida para aumentar o desempenho em celulares, PCs e dispositivos mais modestos. O pack permite reduzir ou desativar dezenas de partículas do jogo, incluindo fogo, quebra de blocos, portais, fumaça, redstone, explosões, folhas, bolhas e muitos outros efeitos visuais. Além do ganho de FPS, também reduz distrações durante PvP e gameplay survival. Possui menu de configuração integrado para que cada jogador escolha quais partículas deseja manter ou remover, equilibrando desempenho e qualidade visual conforme sua preferência.",
+  "downloadUrl": "https://1024terabox.com/s/1Y0n98Wxexo9kofS29aQbiQ",
+  "author": "Team Nicverse & BRSpike26",
+  "youtubeId": ""
+},
+  {
   "id": "xnova-viewmodel-pack",
   "title": "Xnova ViewModel Texture Pack",
   "category": "Texture Pack",
