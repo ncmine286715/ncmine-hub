@@ -14,19 +14,34 @@ const appCss = appCssUrl.includes("?") ? appCssUrl : `${appCssUrl}?url`;
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 text-foreground">
+      {/* floating pixel blocks */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[10%] top-[15%] h-10 w-10 rotate-12 border-2 border-foreground bg-primary shadow-[4px_4px_0_0_var(--ink)] animate-mc-rise" />
+        <div className="absolute right-[12%] top-[22%] h-8 w-8 -rotate-6 border-2 border-foreground bg-foreground" />
+        <div className="absolute bottom-[18%] left-[18%] h-6 w-6 border-2 border-foreground bg-foreground" />
+        <div className="absolute bottom-[14%] right-[20%] h-12 w-12 rotate-3 border-2 border-foreground bg-primary shadow-[4px_4px_0_0_var(--ink)]" />
+      </div>
+      <div className="relative z-10 max-w-md text-center">
+        <pre className="mx-auto select-none font-pixel text-[10px] leading-[1.1] text-foreground sm:text-xs" aria-hidden>
+{`  ███   ███   █  █
+  █ █   █ █   █  █
+  █ █   █ █   ████
+  █ █   █ █      █
+  ███   ███      █`}
+        </pre>
+        <h1 className="mt-4 text-3xl font-black uppercase sm:text-4xl">
+          Bloco não encontrado
+        </h1>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Essa página caiu na lava 🔥 — mas a gente tem mais de <span className="font-bold text-primary">100 addons</span> esperando por você.
         </p>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-block bg-primary text-primary-foreground animate-mc-pulse-orange !px-4 !py-2.5 text-sm"
           >
-            Go home
+            🧱 Voltar ao Hub
           </Link>
         </div>
       </div>
@@ -39,13 +54,16 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 text-foreground">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+        <div className="mx-auto mb-3 inline-block border-2 border-foreground bg-primary px-3 py-1 font-pixel text-xs text-primary-foreground animate-mc-shake">
+          CRASHOU
+        </div>
+        <h1 className="text-2xl font-black uppercase tracking-tight">
+          Um Creeper explodiu essa página
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-3 text-sm text-muted-foreground">
+          Tenta de novo ou volta pro hub que tá tudo certo lá.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -53,15 +71,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-block bg-primary text-primary-foreground !px-4 !py-2.5 text-sm"
           >
-            Try again
+            🔄 Tentar de novo
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="btn-block bg-background text-foreground !px-4 !py-2.5 text-sm"
           >
-            Go home
+            🧱 Hub
           </a>
         </div>
       </div>
