@@ -27,71 +27,43 @@ export function InAppBrowserGuard() {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* noop */
-    }
+    } catch {}
   };
 
-  const benefits = [
-    "Downloads mais estáveis",
-    "Maior velocidade",
-    "Menos travamentos",
-    "Melhor compatibilidade",
-    "Navegação mais rápida",
-    "Links funcionando corretamente",
-    "Melhor suporte a arquivos",
-    "Menor chance de erros",
-    "Mais segurança",
-    "Experiência completa do site",
-  ];
-
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-foreground/60 p-4 sm:items-center">
-      <div className="w-full max-w-md card-block animate-mc-rise bg-background p-6 sm:p-8">
-        <div className="mb-4 inline-block bg-primary px-3 py-1 font-pixel text-[10px] text-primary-foreground">
-          RECOMENDADO
-        </div>
-
-        <h2 className="mb-2 text-2xl font-black uppercase tracking-tight">
-          Abra em seu navegador
-        </h2>
-
-        <p className="mb-4 text-sm text-muted-foreground">
-          Você está usando o navegador interno do <span className="font-semibold text-foreground">{LABEL[kind]}</span>. Para aproveitar todos os recursos do site, abra a página no Chrome, Edge, Firefox ou Safari.
-        </p>
-
-        <div className="mb-5 grid grid-cols-2 gap-2 text-xs">
-          {benefits.map((item) => (
-            <div key={item} className="border border-foreground/20 bg-muted px-2 py-1">
-              ✓ {item}
-            </div>
-          ))}
-        </div>
-
-        <ol className="mb-6 space-y-2 text-sm">
-          <li className="flex gap-2"><span className="font-pixel text-primary">1.</span> Toque nos <strong>três pontinhos</strong> (•••).</li>
-          <li className="flex gap-2"><span className="font-pixel text-primary">2.</span> Selecione <strong>"Abrir no navegador"</strong>.</li>
-          <li className="flex gap-2"><span className="font-pixel text-primary">3.</span> Ou copie o link abaixo.</li>
-        </ol>
-
-        <div className="mb-4 flex items-center gap-2 border-2 border-foreground bg-muted p-2">
-          <code className="flex-1 truncate text-xs">{url}</code>
-          <button onClick={copy} className="shrink-0 border-2 border-foreground bg-background px-2 py-1 text-xs font-bold hover:bg-primary hover:text-primary-foreground">
-            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/20 p-3 pointer-events-none">
+      <div className="pointer-events-auto w-full max-w-sm card-block animate-mc-rise bg-background p-3 shadow-xl">
+        <div className="flex items-center justify-between gap-2">
+          <div>
+            <h2 className="text-sm font-black uppercase">Abrir no navegador</h2>
+            <p className="text-xs text-muted-foreground">
+              Melhor experiência fora do {LABEL[kind]}.
+            </p>
+          </div>
+          <button onClick={() => setDismissed(true)} className="text-xs opacity-70 hover:opacity-100">
+            ✕
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="mt-2 flex flex-wrap gap-1 text-[10px]">
+          <span className="border px-2 py-1">Downloads</span>
+          <span className="border px-2 py-1">Mais rápido</span>
+          <span className="border px-2 py-1">Sem travamentos</span>
+          <span className="border px-2 py-1">Compatibilidade</span>
+        </div>
+
+        <div className="mt-3 flex gap-2">
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-block flex-1 bg-primary text-primary-foreground"
           >
-            <ExternalLink className="h-4 w-4" /> Abrir agora
+            <ExternalLink className="h-4 w-4" /> Abrir
           </a>
-          <button onClick={() => setDismissed(true)} className="btn-block flex-1">
-            Continuar aqui
+
+          <button onClick={copy} className="btn-block px-3">
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
           </button>
         </div>
       </div>
