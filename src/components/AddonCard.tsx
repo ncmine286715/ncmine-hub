@@ -54,58 +54,63 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-foreground text-background font-pixel text-xs">
+          <div className="flex h-full w-full items-center justify-center bg-foreground text-background font-pixel text-[8px] sm:text-xs">
             NO PREVIEW
           </div>
         )}
-        <span className="absolute left-2 top-2 inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[9px] uppercase text-primary-foreground">
-          <Tag className="h-3 w-3" />
-          {addon.category}
+        <span className="absolute left-1 top-1 inline-flex items-center gap-0.5 border-2 border-foreground bg-primary px-1.5 py-0.5 font-pixel text-[7px] uppercase text-primary-foreground sm:left-2 sm:top-2 sm:gap-1 sm:px-2 sm:text-[9px]">
+          <Tag className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+          <span className="max-w-[60px] truncate sm:max-w-none">{addon.category}</span>
         </span>
-        <span className="absolute right-2 top-2 border-2 border-foreground bg-background px-2 py-0.5 font-pixel text-[9px]">
+        <span className="absolute right-1 top-1 border-2 border-foreground bg-background px-1.5 py-0.5 font-pixel text-[7px] sm:right-2 sm:top-2 sm:px-2 sm:text-[9px]">
           v{addon.version}
         </span>
       </button>
 
-      <div className="flex flex-1 flex-col p-2.5 sm:p-4">
-        <h3 className="mb-1 line-clamp-2 text-sm font-extrabold uppercase leading-tight sm:text-base">
+      <div className="flex flex-1 flex-col p-2 sm:p-4">
+        <h3 className="mb-0.5 line-clamp-2 text-[11px] font-extrabold uppercase leading-tight sm:mb-1 sm:text-base">
           {addon.title}
         </h3>
-        <div className="mb-2 flex items-center gap-2 text-[10px] text-muted-foreground sm:gap-3 sm:text-[11px]">
-          <span className="inline-flex items-center gap-1 truncate"><User className="h-3 w-3 shrink-0" />{addon.author}</span>
-          <span className="hidden items-center gap-1 sm:inline-flex"><Calendar className="h-3 w-3" />{addon.date}</span>
+        <div className="mb-1.5 flex items-center gap-1.5 text-[9px] text-muted-foreground sm:mb-2 sm:gap-3 sm:text-[11px]">
+          <span className="inline-flex items-center gap-0.5 truncate sm:gap-1">
+            <User className="h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" />
+            <span className="max-w-[70px] truncate sm:max-w-none">{addon.author || "Desconhecido"}</span>
+          </span>
+          <span className="hidden items-center gap-1 sm:inline-flex">
+            <Calendar className="h-3 w-3" />{addon.date}
+          </span>
         </div>
-        <p className="mb-3 line-clamp-2 text-xs text-muted-foreground sm:line-clamp-3">{addon.short}</p>
+        <p className="mb-2 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
 
-        <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="inline-flex items-center gap-1">
+        <div className="mb-2 flex items-center justify-between text-[10px] sm:mb-3 sm:text-xs">
+          <span className="inline-flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
+                className={`h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
               />
             ))}
           </span>
-          <span className="inline-flex items-center gap-1 font-pixel text-[8px] sm:text-[9px]">
-            <Download className="h-3 w-3" />
+          <span className="inline-flex items-center gap-0.5 font-pixel text-[7px] sm:gap-1 sm:text-[9px]">
+            <Download className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
             {addon.downloads.toLocaleString("pt-BR")}
           </span>
         </div>
 
-        <div className="mt-auto flex gap-2">
+        <div className="mt-auto flex gap-1.5 sm:gap-2">
           <button
             onClick={() => onDownload(addon)}
-            className="btn-block flex-1 bg-foreground text-background !px-3 !py-2 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
+            className="btn-block flex-1 bg-foreground text-background !px-2 !py-1.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm"
           >
-            <Download className="h-4 w-4" /> Baixar
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Baixar
           </button>
           <button
             type="button"
             onClick={handleShare}
             aria-label="Compartilhar"
-            className="btn-block bg-background !px-2.5 !py-2 text-xs sm:!px-3 sm:!py-3"
+            className="btn-block bg-background !px-2 !py-1.5 text-[10px] sm:!px-3 sm:!py-3"
           >
-            <Share2 className="h-4 w-4" />
+            <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>
         </div>
       </div>
@@ -113,7 +118,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <div
           role="status"
           aria-live="polite"
-          className="pointer-events-none absolute inset-x-2 bottom-2 z-10 border-2 border-foreground bg-background px-2 py-1 text-center text-[10px] font-bold shadow-[3px_3px_0_0_var(--ink)]"
+          className="pointer-events-none absolute inset-x-1 bottom-1 z-10 border-2 border-foreground bg-background px-1.5 py-0.5 text-center text-[8px] font-bold shadow-[2px_2px_0_0_var(--ink)] sm:inset-x-2 sm:bottom-2 sm:px-2 sm:py-1 sm:text-[10px] sm:shadow-[3px_3px_0_0_var(--ink)]"
         >
           {toast}
         </div>

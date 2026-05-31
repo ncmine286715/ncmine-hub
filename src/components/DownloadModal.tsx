@@ -32,34 +32,42 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
     : { href: INSTAGRAM_URL, label: "Me seguir no Insta", Icon: InstagramIcon, color: "bg-foreground text-background" };
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-foreground/70 p-4 animate-mc-rise">
-      <div className="relative w-full max-w-md card-block bg-background p-6 sm:p-8">
+    <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
+      {/* Backdrop */}
+      <div className="absolute inset-0" onClick={onClose} />
+      
+      <div className="relative w-full max-w-md card-block bg-background p-4 animate-mc-rise sm:p-8">
+        {/* Mobile drag indicator */}
+        <div className="mb-2 flex justify-center sm:hidden">
+          <div className="h-1 w-12 rounded-full bg-muted-foreground/30" />
+        </div>
+        
         <button
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute right-3 top-3 border-2 border-foreground bg-background p-1 hover:bg-primary hover:text-primary-foreground"
+          className="absolute right-2 top-2 border-2 border-foreground bg-background p-1 hover:bg-primary hover:text-primary-foreground sm:right-3 sm:top-3"
         >
           <X className="h-4 w-4" />
         </button>
 
-        <div className="mb-4 inline-block bg-primary px-3 py-1 font-pixel text-[10px] text-primary-foreground animate-mc-shake">
-          ESPERA AÍ!
+        <div className="mb-3 inline-block bg-primary px-2 py-0.5 font-pixel text-[9px] text-primary-foreground animate-mc-shake sm:mb-4 sm:px-3 sm:py-1 sm:text-[10px]">
+          ESPERA AI!
         </div>
 
-        <h2 className="mb-2 text-2xl font-black uppercase leading-tight">
-          {isDiscord ? "Antes do download…" : "Curtiu o conteúdo?"}
+        <h2 className="mb-1.5 text-xl font-black uppercase leading-tight sm:mb-2 sm:text-2xl">
+          {isDiscord ? "Antes do download..." : "Curtiu o conteudo?"}
         </h2>
-        <p className="mb-5 text-sm text-muted-foreground">
+        <p className="mb-4 text-xs text-muted-foreground sm:mb-5 sm:text-sm">
           {isDiscord
-            ? "Entra no Discord pra falar com a galera, pedir suporte e receber addons em primeira mão. Leva 5 segundos."
-            : "Me segue no Instagram pra ver bastidores, novos addons e bizarrices do Minecraft em vídeo curto."}
+            ? "Entra no Discord pra falar com a galera, pedir suporte e receber addons em primeira mao."
+            : "Me segue no Instagram pra ver bastidores, novos addons e bizarrices do Minecraft em video curto."}
         </p>
 
         <a
           href={cta.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`btn-block mb-3 w-full ${cta.color} animate-mc-pulse-orange`}
+          className={`btn-block mb-2 w-full ${cta.color} animate-mc-pulse-orange !py-2.5 text-sm sm:mb-3 sm:!py-3`}
         >
           <cta.Icon className="h-5 w-5" />
           {cta.label}
@@ -70,7 +78,7 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={onClose}
-          className="btn-block w-full bg-background text-foreground"
+          className="btn-block w-full bg-background text-foreground !py-2.5 text-sm sm:!py-3"
         >
           {count > 0 ? (
             <span className="font-pixel text-[10px]">Aguarde {count}s</span>
@@ -81,38 +89,40 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
           )}
         </a>
 
-        <p className="mt-4 text-center text-[10px] text-muted-foreground">
+        <p className="mt-3 text-center text-[10px] text-muted-foreground sm:mt-4">
           Baixando: <span className="font-semibold text-foreground">{title}</span>
         </p>
 
-        <div className="mt-5 border-t-2 border-dashed border-foreground/30 pt-4">
-          <p className="mb-3 text-center font-pixel text-[9px] text-muted-foreground">
-            BÔNUS — SE QUISER APOIAR
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        {/* Support section - collapsible on mobile */}
+        <details className="group mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-5 sm:pt-4">
+          <summary className="flex cursor-pointer items-center justify-center gap-1 font-pixel text-[8px] text-muted-foreground sm:text-[9px]">
+            BONUS — APOIAR O PROJETO
+            <span className="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <div className="mt-3 grid grid-cols-2 gap-2">
             <a
               href={LIVEPIX_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-block w-full bg-[#00C16E] text-white text-xs"
+              className="btn-block w-full bg-[#00C16E] text-white !py-2 text-[10px] sm:!py-2.5 sm:text-xs"
             >
-              <Heart className="h-4 w-4" />
-              Doar um Pix
+              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Doar Pix
             </a>
             <a
               href={TERABOX_REFERRAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-block w-full bg-[#1A5CFF] text-white text-xs"
+              className="btn-block w-full bg-[#1A5CFF] text-white !py-2 text-[10px] sm:!py-2.5 sm:text-xs"
             >
-              <DollarSign className="h-4 w-4" />
-              Ganhar com Terabox
+              <DollarSign className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Ganhar $
             </a>
           </div>
-          <p className="mt-2 text-center text-[10px] text-muted-foreground">
+          <p className="mt-2 text-center text-[9px] text-muted-foreground sm:text-[10px]">
             Vira webmaster do Terabox e ganhe divulgando addons.
           </p>
-        </div>
+        </details>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import addonsData from "@/data/addons.json";
 import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
@@ -7,8 +7,7 @@ import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { AddonDetailModal } from "@/components/AddonDetailModal";
 import { InAppBrowserGuard } from "@/components/InAppBrowserGuard";
-import { MobileStickyCTA } from "@/components/MobileStickyCTA";
-import { NotifyPopup } from "@/components/NotifyPopup";
+import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
@@ -19,7 +18,7 @@ export const Route = createFileRoute("/")({
       { title: `${CREATOR_NAME} — Addons de Minecraft Bedrock` },
       {
         name: "description",
-        content: `Hub oficial do ${CREATOR_NAME}: addons curados de Minecraft Bedrock, Discord, YouTube e Instagram em um só lugar.`,
+        content: `Hub oficial do ${CREATOR_NAME}: addons curados de Minecraft Bedrock, Discord, YouTube e Instagram em um so lugar.`,
       },
       { property: "og:title", content: `${CREATOR_NAME} — Addons de Minecraft` },
       { property: "og:description", content: "Addons selecionados, Discord, YouTube e mais." },
@@ -31,9 +30,9 @@ export const Route = createFileRoute("/")({
 });
 
 const RAW_ADDONS = addonsData as Addon[];
+const NOTIFY_KEY = "ncmine:notify-optin";
 
 // Deterministic shuffle (seeded) so SSR/hydration stay consistent
-// but the order doesn't follow the JSON sequence.
 function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
   const out = [...arr];
   let s = seed;
@@ -45,9 +44,26 @@ function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
   return out;
 }
 
+type Tab = "home" | "categorias" | "notificacoes" | "sobre";
+
 function Index() {
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [detailFor, setDetailFor] = useState<Addon | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>("home");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
+  // Check notification status on mount
+  useEffect(() => {
+    try {
+      if (typeof Notification !== "undefined" && Notification.permission === "granted") {
+        setNotificationsEnabled(true);
+      }
+      if (localStorage.getItem(NOTIFY_KEY) === "1") {
+        setNotificationsEnabled(true);
+      }
+    } catch {}
+  }, []);
 
   const { featured, rest } = useMemo(() => {
     const [first, ...others] = RAW_ADDONS;
@@ -59,22 +75,60 @@ function Index() {
     setDownloadFor(a);
   };
 
+  const handleTabChange = (tab: Tab) => {
+    setActiveTab(tab);
+    // Scroll to top when going home
+    if (tab === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleEnableNotifications = useCallback(async () => {
+    if (typeof Notification === "undefined") {
+      window.open(DISCORD_URL, "_blank", "noopener,noreferrer");
+      return;
+    }
+    try {
+      const perm = Notification.permission === "default"
+        ? await Notification.requestPermission()
+        : Notification.permission;
+      
+      if (perm === "granted") {
+        try {
+          localStorage.setItem(NOTIFY_KEY, "1");
+        } catch {}
+        setNotificationsEnabled(true);
+        new Notification("Notificacoes ativadas!", {
+          body: "Voce sera avisado quando novos addons chegarem!",
+          icon: "/apple-touch-icon.png",
+        });
+      }
+    } catch {}
+  }, []);
+
   return (
-    <div className="relative min-h-screen text-foreground">
+    <div className="relative min-h-screen pb-16 text-foreground sm:pb-0">
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
-      <AddonsGrid addons={rest} featuredAddon={featured} onDownload={handleDownload} onOpen={setDetailFor} />
+      <AddonsGrid 
+        addons={rest} 
+        featuredAddon={featured} 
+        onDownload={handleDownload} 
+        onOpen={setDetailFor}
+        externalCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+      />
 
       {/* Footer */}
       <footer className="border-t-2 border-foreground bg-foreground text-background">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10">
           <div>
             <div className="flex items-center gap-2 font-pixel text-xs">
               <MinecraftBlockIcon className="h-5 w-5 text-primary" />
               NCMINE
             </div>
             <p className="mt-2 max-w-sm text-xs text-background/70">
-              Hub não-oficial de addons. Todos os créditos vão para os criadores originais listados em cada addon.
+              Hub nao-oficial de addons. Todos os creditos vao para os criadores originais listados em cada addon.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -85,9 +139,37 @@ function Index() {
           </div>
         </div>
         <div className="border-t-2 border-background/20 py-3 text-center font-pixel text-[9px] text-background/60">
-          © {new Date().getFullYear()} {CREATOR_NAME}
+          &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; Politica de Privacidade
         </div>
       </footer>
+
+      {/* Mobile Bottom Navigation */}
+      <BottomNavigation 
+        activeTab={activeTab} 
+        onTabChange={handleTabChange}
+        hasNewNotification={!notificationsEnabled}
+      />
+
+      {/* Panels */}
+      {activeTab === "categorias" && (
+        <CategoriesPanel
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+          onClose={() => setActiveTab("home")}
+        />
+      )}
+
+      {activeTab === "sobre" && (
+        <AboutPanel onClose={() => setActiveTab("home")} />
+      )}
+
+      {activeTab === "notificacoes" && (
+        <NotificationsPanel
+          onClose={() => setActiveTab("home")}
+          onEnableNotifications={handleEnableNotifications}
+          notificationsEnabled={notificationsEnabled}
+        />
+      )}
 
       <AddonDetailModal
         addon={detailFor}
@@ -101,8 +183,6 @@ function Index() {
         onClose={() => setDownloadFor(null)}
       />
       <InAppBrowserGuard />
-      <MobileStickyCTA />
-      <NotifyPopup />
     </div>
   );
 }
