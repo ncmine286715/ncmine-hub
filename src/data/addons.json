@@ -19,7 +19,7 @@
   ],
   "short": "Traga o sistema de spawn e mecânicas do Minecraft Java Edition diretamente para o seu Minecraft Bedrock.",
   "description": "O Java Spawn in Bedrock é um addon desenvolvido para aproximar a experiência do Minecraft Bedrock à versão Java, modificando o sistema de spawn de criaturas e mecânicas internas do jogo. Utilizando a API de scripts do Minecraft (@minecraft/server na versão 1.13.0), o projeto gerencia de forma inteligente a geração de entidades no mundo. Ideal para quem busca um comportamento mais fiel ao Java Edition em servidores, mapas de aventura ou no gameplay survival tradicional. Criado por @ncmine, o pack exige a versão mínima 1.19.70 do jogo com os recursos de experimentos ativos.",
-  "downloadUrl": "https://1024terabox.com/s/16fVrDJrRHJjzgqZ5rr6DEA",
+  "downloadUrl": "https://1024terabox.com/s/1_U7IpPgMscZBbLtJzvJh9w",
   "author": "@ncmine",
   "youtubeId": ""
 },
