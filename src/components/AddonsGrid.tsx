@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search, Star, Download } from "lucide-react";
+import { Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles, ChevronRight } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 
 type Props = {
@@ -7,24 +7,60 @@ type Props = {
   featuredAddon?: Addon;
   onDownload: (a: Addon) => void;
   onOpen: (a: Addon) => void;
+  externalCategory?: string;
+  onCategoryChange?: (cat: string) => void;
 };
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
-export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props) {
+type CategoryConfig = {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  color: string;
+  bgColor: string;
+};
+
+const CATEGORY_CONFIG: CategoryConfig[] = [
+  { id: "Todos", label: "Todos", icon: <Grid3X3 className="h-4 w-4" />, color: "text-foreground", bgColor: "bg-foreground text-background" },
+  { id: "Addon", label: "Addons", icon: <Package className="h-4 w-4" />, color: "text-primary", bgColor: "bg-primary text-primary-foreground" },
+  { id: "Texture Pack", label: "Texturas", icon: <Image className="h-4 w-4" />, color: "text-[#4CAF50]", bgColor: "bg-[#4CAF50] text-white" },
+  { id: "Holoprint", label: "Holoprint", icon: <Layers className="h-4 w-4" />, color: "text-[#2196F3]", bgColor: "bg-[#2196F3] text-white" },
+  { id: "Addon Pack", label: "Packs", icon: <Sparkles className="h-4 w-4" />, color: "text-[#9C27B0]", bgColor: "bg-[#9C27B0] text-white" },
+];
+
+export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange }: Props) {
   const [q, setQ] = useState("");
-  const [cat, setCat] = useState<string>("Todos");
+  const [internalCat, setInternalCat] = useState<string>("Todos");
   const [sort, setSort] = useState<Sort>("mix");
+
+  const cat = externalCategory ?? internalCat;
+  const setCat = onCategoryChange ?? setInternalCat;
 
   const categories = useMemo(() => {
     const set = new Set(addons.map((a) => a.category));
     return ["Todos", ...Array.from(set)];
   }, [addons]);
 
+  // Map categories to our config, with fallback for dynamic categories
+  const categoryButtons = useMemo(() => {
+    return categories.map(catName => {
+      const config = CATEGORY_CONFIG.find(c => c.id.toLowerCase() === catName.toLowerCase());
+      if (config) return { ...config, id: catName };
+      return {
+        id: catName,
+        label: catName,
+        icon: <Grid3X3 className="h-4 w-4" />,
+        color: "text-foreground",
+        bgColor: "bg-foreground text-background"
+      };
+    });
+  }, [categories]);
+
   const filtered = useMemo(() => {
     const ql = q.trim().toLowerCase();
     let list = addons.filter((a) => {
-      const matchesCat = cat === "Todos" || a.category === cat;
+      const matchesCat = cat === "Todos" || a.category.toLowerCase() === cat.toLowerCase();
       if (!matchesCat) return false;
       if (!ql) return true;
       return (
@@ -52,17 +88,40 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
   }, [addons, q, cat, sort]);
 
   return (
-    <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-6 pb-28 sm:px-4 sm:py-20">
+    <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-4 pb-24 sm:px-4 sm:py-20 sm:pb-20">
+      {/* Mobile Quick Categories */}
+      <div className="mb-4 sm:hidden">
+        <div className="-mx-3 flex gap-2 overflow-x-auto px-3 pb-2 scrollbar-hide">
+          {categoryButtons.slice(0, 5).map((c) => {
+            const active = c.id.toLowerCase() === cat.toLowerCase();
+            return (
+              <button
+                key={c.id}
+                onClick={() => setCat(c.id)}
+                className={`flex shrink-0 items-center gap-1.5 border-2 border-foreground px-3 py-2 text-xs font-bold transition-all ${
+                  active 
+                    ? `${c.bgColor} shadow-[3px_3px_0_0_var(--ink)]` 
+                    : "bg-background hover:bg-muted"
+                }`}
+              >
+                {c.icon}
+                {c.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       <header className="mb-4 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[9px] text-background sm:text-[10px]">
             ADDONS
           </span>
-          <h2 className="mt-2 text-2xl font-black uppercase leading-none sm:mt-3 sm:text-5xl">
-            Toda a coleção
+          <h2 className="mt-2 text-xl font-black uppercase leading-none sm:mt-3 sm:text-5xl">
+            {cat === "Todos" ? "Toda a colecao" : cat}
           </h2>
           <p className="mt-1 max-w-xl text-[11px] text-muted-foreground sm:mt-2 sm:text-sm">
-            {addons.length} addons curados. Busque, filtre e baixe.
+            {filtered.length} {filtered.length === 1 ? "addon" : "addons"} {cat !== "Todos" ? `em ${cat}` : "curados"}. Busque, filtre e baixe.
           </p>
         </div>
 
@@ -72,7 +131,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Buscar addon, tag, autor…"
+              placeholder="Buscar addon..."
               className="w-full border-2 border-foreground bg-background py-2.5 pl-9 pr-3 text-sm font-medium outline-none placeholder:text-muted-foreground focus:bg-primary/10"
             />
           </label>
@@ -81,8 +140,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
             onChange={(e) => setSort(e.target.value as Sort)}
             className="border-2 border-foreground bg-background px-2 py-2.5 text-sm font-bold uppercase"
           >
-            <option value="mix">Misturado</option>
-            <option value="recent">Recente</option>
+            <option value="mix">Mix</option>
+            <option value="recent">Novo</option>
             <option value="popular">Popular</option>
             <option value="rating">Rating</option>
             <option value="az">A-Z</option>
@@ -90,31 +149,33 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
         </div>
       </header>
 
-      <div className="mb-6 -mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
-        {categories.map((c) => {
-          const active = c === cat;
+      {/* Desktop Categories */}
+      <div className="mb-6 hidden gap-2 sm:flex sm:flex-wrap">
+        {categoryButtons.map((c) => {
+          const active = c.id.toLowerCase() === cat.toLowerCase();
           return (
             <button
-              key={c}
-              onClick={() => setCat(c)}
-              className={`shrink-0 border-2 border-foreground px-3 py-1.5 text-xs font-bold uppercase transition-all ${
-                active ? "bg-primary text-primary-foreground shadow-[3px_3px_0_0_var(--ink)]" : "bg-background hover:bg-foreground hover:text-background"
+              key={c.id}
+              onClick={() => setCat(c.id)}
+              className={`flex shrink-0 items-center gap-2 border-2 border-foreground px-3 py-1.5 text-xs font-bold uppercase transition-all ${
+                active ? `${c.bgColor} shadow-[3px_3px_0_0_var(--ink)]` : "bg-background hover:bg-foreground hover:text-background"
               }`}
             >
-              {c}
+              {c.icon}
+              {c.label}
             </button>
           );
         })}
       </div>
 
       {/* Featured addon (always first) */}
-      {featuredAddon && (
-        <div className="mb-5">
+      {featuredAddon && cat === "Todos" && (
+        <div className="mb-4 sm:mb-5">
           <div className="relative overflow-hidden border-2 border-foreground bg-background">
             <button
               type="button"
               onClick={() => onOpen(featuredAddon)}
-              className="group relative block aspect-[21/9] w-full overflow-hidden bg-muted sm:aspect-[24/9]"
+              className="group relative block aspect-[16/9] w-full overflow-hidden bg-muted sm:aspect-[24/9]"
             >
               <img
                 src={featuredAddon.image}
@@ -123,12 +184,21 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute left-2 top-2 inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[9px] uppercase text-primary-foreground">
                 <Star className="h-3 w-3" />
                 Destaque
               </span>
+              <div className="absolute bottom-0 left-0 right-0 p-3 text-white sm:hidden">
+                <h3 className="text-base font-black uppercase leading-tight">
+                  {featuredAddon.title}
+                </h3>
+                <p className="mt-0.5 line-clamp-2 text-xs text-white/80">
+                  {featuredAddon.short}
+                </p>
+              </div>
             </button>
-            <div className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+            <div className="hidden flex-col gap-2 p-3 sm:flex sm:flex-row sm:items-center sm:justify-between sm:p-4">
               <div className="flex-1">
                 <h3 className="text-base font-black uppercase leading-tight sm:text-lg">
                   {featuredAddon.title}
@@ -144,6 +214,21 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
                 <Download className="h-4 w-4" /> Baixar
               </button>
             </div>
+            {/* Mobile download button */}
+            <div className="flex items-center justify-between border-t-2 border-foreground p-2 sm:hidden">
+              <button
+                onClick={() => onOpen(featuredAddon)}
+                className="text-xs font-bold text-primary"
+              >
+                Ver detalhes <ChevronRight className="inline h-3 w-3" />
+              </button>
+              <button
+                onClick={() => onDownload(featuredAddon)}
+                className="btn-block bg-foreground text-background !px-4 !py-2 text-xs"
+              >
+                <Download className="h-4 w-4" /> Baixar
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -154,7 +239,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen }: Props)
           <p className="mt-2 text-sm text-muted-foreground">Tenta outro termo ou categoria.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
           {filtered.map((a) => (
             <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} />
           ))}
