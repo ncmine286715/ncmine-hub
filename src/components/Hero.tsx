@@ -1,6 +1,6 @@
-import { Sparkles } from "lucide-react";
-import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, ADDONS_HUB_URL, CREATOR_NAME } from "@/lib/links";
+import { Sparkles, ArrowDown } from "lucide-react";
+import { DiscordIcon, YouTubeIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import { DISCORD_URL, YOUTUBE_URL, CREATOR_NAME } from "@/lib/links";
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
   return (
@@ -52,38 +52,14 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
             Os melhores add-ons curados, testados e prontos pra baixar.
           </p>
 
-          {/* Primary CTAs - stack on mobile */}
-          <div id="links" className="mt-3 flex flex-col gap-2 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3">
+          {/* Single primary CTA: drives clicks to addons (download) */}
+          <div id="links" className="mt-3 flex justify-center sm:mt-6">
             <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-block bg-[#5865F2] text-white animate-mc-pulse-orange !px-3 !py-2.5 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
+              href="#addons"
+              className="btn-block bg-primary text-primary-foreground animate-mc-pulse-orange !px-4 !py-2.5 text-xs sm:!px-6 sm:!py-3 sm:text-sm"
             >
-              <DiscordIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-              Entrar no Discord
-            </a>
-            <a
-              href={ADDONS_HUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-block bg-primary text-primary-foreground !px-3 !py-2.5 text-xs sm:!px-5 sm:!py-3 sm:text-sm"
-            >
-              <MinecraftBlockIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-              Addons Apeloes
-            </a>
-          </div>
-
-          {/* Social buttons - horizontal scroll on mobile */}
-          <div className="mt-2 flex justify-center gap-2 sm:mt-3 sm:flex-wrap">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="btn-block bg-foreground text-background !px-2 !py-1.5 text-[10px] sm:!px-3 sm:!py-2 sm:text-xs">
-              <InstagramIcon className="h-3.5 w-3.5" /> Insta
-            </a>
-            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="btn-block bg-[#FF0000] text-white !px-2 !py-1.5 text-[10px] sm:!px-3 sm:!py-2 sm:text-xs">
-              <YouTubeIcon className="h-3.5 w-3.5" /> YT
-            </a>
-            <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="btn-block bg-background !px-2 !py-1.5 text-[10px] sm:!px-3 sm:!py-2 sm:text-xs">
-              <TikTokIcon className="h-3.5 w-3.5" /> TikTok
+              <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5" />
+              Ver Addons
             </a>
           </div>
         </div>

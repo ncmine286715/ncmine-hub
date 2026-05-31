@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { X, ArrowRight, Heart, DollarSign } from "lucide-react";
 import { DiscordIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL } from "@/lib/links";
+import { TeraboxTutorial } from "@/components/TeraboxTutorial";
 
 type Variant = "discord" | "instagram";
 
@@ -92,6 +93,11 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
         <p className="mt-3 text-center text-[10px] text-muted-foreground sm:mt-4">
           Baixando: <span className="font-semibold text-foreground">{title}</span>
         </p>
+
+        {/* Tutorial Terabox - universal em todo download */}
+        <div className="mt-3 sm:mt-4">
+          <TeraboxTutorial compact />
+        </div>
 
         {/* Support section - collapsible on mobile */}
         <details className="group mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-5 sm:pt-4">
