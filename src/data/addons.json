@@ -1,5 +1,29 @@
 [
   {
+  "id": "java-spawn-in-bedrock",
+  "title": "Java Spawn in Bedrock",
+  "category": "Addon",
+  "version": "1.0.0",
+  "rating": 4.5,
+  "downloads": 0,
+  "date": "2026-05-31",
+  "image": "https://i.imgur.com/hgaEgyh.png",
+  "tags": [
+    "addon",
+    "behavior pack",
+    "java spawn",
+    "bedrock",
+    "minecraft",
+    "scripts",
+    "spawn system"
+  ],
+  "short": "Traga o sistema de spawn e mecânicas do Minecraft Java Edition diretamente para o seu Minecraft Bedrock.",
+  "description": "O Java Spawn in Bedrock é um addon desenvolvido para aproximar a experiência do Minecraft Bedrock à versão Java, modificando o sistema de spawn de criaturas e mecânicas internas do jogo. Utilizando a API de scripts do Minecraft (@minecraft/server na versão 1.13.0), o projeto gerencia de forma inteligente a geração de entidades no mundo. Ideal para quem busca um comportamento mais fiel ao Java Edition em servidores, mapas de aventura ou no gameplay survival tradicional. Criado por @ncmine, o pack exige a versão mínima 1.19.70 do jogo com os recursos de experimentos ativos.",
+  "downloadUrl": "https://1024terabox.com/s/16fVrDJrRHJjzgqZ5rr6DEA",
+  "author": "@ncmine",
+  "youtubeId": ""
+},
+  {
   "id": "sodium-gl-reimagined",
   "title": "Sodium GL Reimagined FPS Texture Pack",
   "category": "Texture Pack",
