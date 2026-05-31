@@ -159,7 +159,7 @@ function AddonPage() {
         {/* Tags */}
         {addon.tags?.length ? (
           <div className="mt-4 flex flex-wrap gap-1.5">
-            {addon.tags.map((t) => (
+            {addon.tags.map((t: string) => (
               <span key={t} className="border-2 border-foreground bg-background px-1.5 py-0.5 text-[10px] uppercase">
                 {t}
               </span>
