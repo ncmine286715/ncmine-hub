@@ -7,8 +7,8 @@ export async function shareAddon(
 ): Promise<void> {
   const url =
     typeof window !== "undefined"
-      ? `${window.location.origin}/?addon=${encodeURIComponent(addon.id)}`
-      : "https://ncmine-hub.lovable.app";
+      ? `${window.location.origin}/addon/${encodeURIComponent(addon.id)}`
+      : `https://ncmine-hub.lovable.app/addon/${encodeURIComponent(addon.id)}`;
   const title = `${addon.title} — Addon Minecraft Bedrock`;
   const text = `🔥 ${addon.title}\n${addon.short}\n\nBaixa no hub do ${CREATOR_NAME} 👇\n${url}`;
 

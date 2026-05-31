@@ -1,7 +1,8 @@
-import { X, Download, Star, User, Calendar, ExternalLink, Share2, ChevronDown } from "lucide-react";
+import { X, Download, Star, User, Calendar, ExternalLink, Share2 } from "lucide-react";
 import { useState } from "react";
 import type { Addon } from "@/components/AddonCard";
 import { shareAddon } from "@/lib/share";
+import { Link } from "@tanstack/react-router";
 
 type Props = {
   addon: Addon | null;
@@ -101,7 +102,16 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
 
             {/* Actions */}
             <DetailActions addon={addon} onDownload={onDownload} />
-            
+
+            <Link
+              to="/addon/$id"
+              params={{ id: addon.id }}
+              onClick={onClose}
+              className="mt-2 inline-flex items-center justify-center gap-1 text-[11px] font-bold uppercase text-primary hover:underline sm:text-xs"
+            >
+              Abrir página completa <ExternalLink className="h-3 w-3" />
+            </Link>
+
             {addon.youtubeId && (
               <a
                 href={`https://youtu.be/${addon.youtubeId}`}
