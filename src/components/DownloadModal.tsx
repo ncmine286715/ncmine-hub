@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { X, ArrowRight, Heart, DollarSign } from "lucide-react";
+import { X, ArrowRight, Heart, DollarSign, Play, HelpCircle } from "lucide-react";
 import { DiscordIcon, InstagramIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL } from "@/lib/links";
+import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL, TERABOX_TUTORIAL_URL } from "@/lib/links";
 
 type Variant = "discord" | "instagram";
 
@@ -15,11 +15,13 @@ type Props = {
 export function DownloadModal({ open, url, title, onClose }: Props) {
   const [variant, setVariant] = useState<Variant>("discord");
   const [count, setCount] = useState(3);
+  const [showTutorial, setShowTutorial] = useState(false);
 
   useEffect(() => {
     if (!open) return;
     setVariant(Math.random() < 0.5 ? "discord" : "instagram");
     setCount(3);
+    setShowTutorial(false);
     const t = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
     return () => clearInterval(t);
   }, [open]);
@@ -30,6 +32,45 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
   const cta = isDiscord
     ? { href: DISCORD_URL, label: "Entrar no Discord", Icon: DiscordIcon, color: "bg-[#5865F2] text-white" }
     : { href: INSTAGRAM_URL, label: "Me seguir no Insta", Icon: InstagramIcon, color: "bg-foreground text-background" };
+
+  // Tutorial overlay
+  if (showTutorial) {
+    return (
+      <div className="fixed inset-0 z-[95] flex items-center justify-center bg-foreground/80 p-4">
+        <div className="absolute inset-0" onClick={() => setShowTutorial(false)} />
+        <div className="relative w-full max-w-3xl card-block animate-mc-rise overflow-hidden bg-background">
+          <button
+            onClick={() => setShowTutorial(false)}
+            className="absolute right-2 top-2 z-10 border-2 border-foreground bg-background p-1.5 hover:bg-primary hover:text-primary-foreground"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <div className="aspect-video w-full bg-black">
+            <iframe
+              className="h-full w-full"
+              src="https://www.youtube.com/embed/fN4BennXjTY?si=Tz6C8QLpNW2d9xtz&autoplay=1"
+              title="Tutorial Terabox"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="p-4">
+            <h3 className="font-pixel text-sm">COMO BAIXAR DO TERABOX</h3>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Siga o passo a passo para baixar qualquer addon do Terabox no celular ou computador.
+            </p>
+            <button
+              onClick={() => setShowTutorial(false)}
+              className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-2.5 text-sm"
+            >
+              Entendi, voltar ao download
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
@@ -93,8 +134,29 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
           Baixando: <span className="font-semibold text-foreground">{title}</span>
         </p>
 
-        {/* Support section - collapsible on mobile */}
-        <details className="group mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-5 sm:pt-4">
+        {/* Tutorial Terabox - always visible */}
+        <div className="mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:pt-4">
+          <button
+            onClick={() => setShowTutorial(true)}
+            className="flex w-full items-center gap-3 rounded-none border-2 border-[#FF0000]/30 bg-[#FF0000]/5 p-2.5 text-left transition-colors hover:bg-[#FF0000]/10 sm:p-3"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-foreground bg-[#FF0000] text-white sm:h-10 sm:w-10">
+              <Play className="h-4 w-4 sm:h-5 sm:w-5" />
+            </div>
+            <div className="flex-1">
+              <span className="flex items-center gap-1.5 font-pixel text-[8px] text-[#FF0000] sm:text-[9px]">
+                <HelpCircle className="h-3 w-3" />
+                NAO SABE BAIXAR?
+              </span>
+              <p className="mt-0.5 text-[10px] text-muted-foreground sm:text-xs">
+                Assista o tutorial de como baixar do Terabox
+              </p>
+            </div>
+          </button>
+        </div>
+
+        {/* Support section - collapsible */}
+        <details className="group mt-3 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-4 sm:pt-4">
           <summary className="flex cursor-pointer items-center justify-center gap-1 font-pixel text-[8px] text-muted-foreground sm:text-[9px]">
             BONUS — APOIAR O PROJETO
             <span className="transition-transform group-open:rotate-180">▼</span>

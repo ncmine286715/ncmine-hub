@@ -5,12 +5,13 @@ export async function shareAddon(
   addon: Addon,
   onToast: (msg: string) => void,
 ): Promise<void> {
+  // Use the dedicated addon page URL for better SEO and sharing
   const url =
     typeof window !== "undefined"
-      ? `${window.location.origin}/?addon=${encodeURIComponent(addon.id)}`
-      : "https://ncmine-hub.lovable.app";
+      ? `${window.location.origin}/addon/${encodeURIComponent(addon.id)}`
+      : `https://ncmine-hub.lovable.app/addon/${encodeURIComponent(addon.id)}`;
   const title = `${addon.title} — Addon Minecraft Bedrock`;
-  const text = `🔥 ${addon.title}\n${addon.short}\n\nBaixa no hub do ${CREATOR_NAME} 👇\n${url}`;
+  const text = `${addon.title}\n${addon.short}\n\nBaixa gratis no hub do ${CREATOR_NAME}:\n${url}`;
 
   if (typeof navigator !== "undefined" && (navigator as any).share) {
     try {
@@ -22,8 +23,8 @@ export async function shareAddon(
   }
   try {
     await navigator.clipboard.writeText(text);
-    onToast("Link do addon copiado! 🎉");
+    onToast("Link copiado!");
   } catch {
-    onToast("Copia aí: " + url);
+    onToast("Copia ai: " + url);
   }
 }
