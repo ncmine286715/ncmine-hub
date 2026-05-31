@@ -32,24 +32,46 @@ export function InAppBrowserGuard() {
     }
   };
 
+  const benefits = [
+    "Downloads mais estáveis",
+    "Maior velocidade",
+    "Menos travamentos",
+    "Melhor compatibilidade",
+    "Navegação mais rápida",
+    "Links funcionando corretamente",
+    "Melhor suporte a arquivos",
+    "Menor chance de erros",
+    "Mais segurança",
+    "Experiência completa do site",
+  ];
+
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center bg-foreground/60 p-4 sm:items-center">
       <div className="w-full max-w-md card-block animate-mc-rise bg-background p-6 sm:p-8">
         <div className="mb-4 inline-block bg-primary px-3 py-1 font-pixel text-[10px] text-primary-foreground">
-          AVISO
+          RECOMENDADO
         </div>
+
         <h2 className="mb-2 text-2xl font-black uppercase tracking-tight">
-          Abra no navegador de verdade
+          Abra em seu navegador
         </h2>
-        <p className="mb-5 text-sm text-muted-foreground">
-          Você está no navegador interno do <span className="font-semibold text-foreground">{LABEL[kind]}</span>.
-          Para baixar os addons sem travar, abra esta página no Chrome ou Safari.
+
+        <p className="mb-4 text-sm text-muted-foreground">
+          Você está usando o navegador interno do <span className="font-semibold text-foreground">{LABEL[kind]}</span>. Para aproveitar todos os recursos do site, abra a página no Chrome, Edge, Firefox ou Safari.
         </p>
 
+        <div className="mb-5 grid grid-cols-2 gap-2 text-xs">
+          {benefits.map((item) => (
+            <div key={item} className="border border-foreground/20 bg-muted px-2 py-1">
+              ✓ {item}
+            </div>
+          ))}
+        </div>
+
         <ol className="mb-6 space-y-2 text-sm">
-          <li className="flex gap-2"><span className="font-pixel text-primary">1.</span> Toque nos <strong>três pontinhos</strong> (•••) no topo.</li>
-          <li className="flex gap-2"><span className="font-pixel text-primary">2.</span> Escolha <strong>"Abrir no navegador"</strong>.</li>
-          <li className="flex gap-2"><span className="font-pixel text-primary">3.</span> Ou copie o link e cole no Chrome:</li>
+          <li className="flex gap-2"><span className="font-pixel text-primary">1.</span> Toque nos <strong>três pontinhos</strong> (•••).</li>
+          <li className="flex gap-2"><span className="font-pixel text-primary">2.</span> Selecione <strong>"Abrir no navegador"</strong>.</li>
+          <li className="flex gap-2"><span className="font-pixel text-primary">3.</span> Ou copie o link abaixo.</li>
         </ol>
 
         <div className="mb-4 flex items-center gap-2 border-2 border-foreground bg-muted p-2">
@@ -66,10 +88,10 @@ export function InAppBrowserGuard() {
             rel="noopener noreferrer"
             className="btn-block flex-1 bg-primary text-primary-foreground"
           >
-            <ExternalLink className="h-4 w-4" /> Tentar abrir
+            <ExternalLink className="h-4 w-4" /> Abrir agora
           </a>
           <button onClick={() => setDismissed(true)} className="btn-block flex-1">
-            Continuar mesmo assim
+            Continuar aqui
           </button>
         </div>
       </div>
