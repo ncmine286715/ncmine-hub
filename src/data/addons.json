@@ -1,5 +1,29 @@
 [
   {
+  "id": "fps-boost-texture-pack",
+  "title": "FPS Boost Ultra Pack",
+  "category": "Texture",
+  "version": "1.0.0",
+  "rating": 4.8,
+  "downloads": 0,
+  "date": "2026-06-01",
+  "image": "https://i.imgur.com/U5ZdW9m.png",
+  "tags": [
+    "texture",
+    "resource pack",
+    "fps boost",
+    "otimização",
+    "minecraft",
+    "lag fix",
+    "performance"
+  ],
+  "short": "Um combo de 3 texturas ultra otimizadas para aumentar drasticamente o FPS e remover o lag do seu Minecraft.",
+  "description": "O FPS Boost Ultra Pack é um combo definitivo que reúne 3 texturas focadas exclusivamente em performance e ganho de desempenho. Ele reduz a resolução de partículas desnecessárias, simplifica blocos pesados e otimiza a renderização do jogo sem perder a identidade visual do Minecraft. Ideal para rodar em celulares fracos, PCs de entrada ou para quem busca a máxima fluidez em servidores de PvP. Compatível com diversas versões do Bedrock, basta ativar o resource pack e sentir a diferença imediata na taxa de quadros por segundo.",
+  "downloadUrl": "https://1024terabox.com/s/1MXZBeEZ7jf-SIOc74qjEaw",
+  "author": "@ncmine",
+  "youtubeId": ""
+},
+  {
   "id": "java-spawn-in-bedrock",
   "title": "Java Spawn in Bedrock",
   "category": "Addon",
