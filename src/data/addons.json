@@ -1,5 +1,29 @@
 [
   {
+  "id": "holoprint-3-simple-houses",
+  "title": "Holoprint 3 Casas Simples e Lindas",
+  "category": "textura",
+  "version": "1.0.0",
+  "rating": 4.7,
+  "downloads": 0,
+  "date": "2026-06-02",
+  "image": "https://i.imgur.com/OKTeqMU.png",
+  "tags": [
+    "addon",
+    "holoprint",
+    "structure",
+    "casas",
+    "blueprint",
+    "minecraft",
+    "survival"
+  ],
+  "short": "Projete e construa instantaneamente 3 modelos de casas simples, modernas e lindas no seu mundo.",
+  "description": "O Holoprint 3 Casas Simples e Lindas é um addon focado em construção e praticidade para o seu Minecraft Bedrock. Com ele, você recebe hologramas guias (holoprints) para projetar três modelos diferentes de casas com um visual incrível e estrutura otimizada para o modo survival. Ideal para quem quer decorar o mapa rapidamente, aprender novas técnicas de construção ou iniciar um novo mundo com uma base estilosa. Criado com foco na facilidade de uso, basta ativar o pack nos seus experimentos para começar a projetar.",
+  "downloadUrl": "https://1024terabox.com/s/1wSWpp2JNkByGzb77x1LM-w",
+  "author": "@",
+  "youtubeId": ""
+}
+  {
   "id": "fps-boost-texture-pack",
   "title": "FPS Boost Ultra Pack",
   "category": "Texture",
