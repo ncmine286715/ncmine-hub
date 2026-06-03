@@ -1,5 +1,29 @@
 [
   {
+  "id": "holoprint-7-houses-pack",
+  "title": "Holoprint Mega Pack 7 Casas",
+  "category": "textura",
+  "version": "1.0.0",
+  "rating": 4.9,
+  "downloads": 0,
+  "date": "2026-06-03",
+  "image": "https://i.imgur.com/giB4uxA.jpeg",
+  "tags": [
+    "addon",
+    "holoprint",
+    "structure",
+    "casas",
+    "blueprint",
+    "minecraft",
+    "mega pack"
+  ],
+  "short": "Expanda suas opções de construção com 7 modelos inéditos de casas projetadas via holograma no seu mapa.",
+  "description": "O Holoprint Mega Pack 7 Casas traz uma coleção completa de estruturas planejadas para o seu Minecraft Bedrock. Com este addon, você tem acesso a sete projeções holográficas diferentes, variando estilos, tamanhos e designs para transformar a vila ou a base do seu mundo survival. Perfeito para quem busca variedade e rapidez na hora de erguer construções detalhadas e bonitas. Certifique-se de ativar os recursos experimentais no mundo para o correto funcionamento dos scripts de projeção.",
+  "downloadUrl": "https://1024terabox.com/s/1l9uru4ZD7BAmEvOHk8kRhA",
+  "author": "@",
+  "youtubeId": ""
+},
+  {
   "id": "holoprint-3-simple-houses",
   "title": "Holoprint 3 Casas Simples e Lindas",
   "category": "textura",
