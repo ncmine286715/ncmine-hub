@@ -144,9 +144,46 @@ function RootShell({ children }: { children: React.ReactNode }) {
 import { AuthProvider } from "../hooks/use-auth";
 import { useEffect } from "react";
 import { soundManager } from "../lib/sounds";
+import { getLatestGlobalNotif } from "../lib/firebase-services";
+import { toast } from "sonner";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Listen for global notifications
+  useEffect(() => {
+    let lastNotifId = localStorage.getItem('last_global_notif');
+
+    const checkGlobalNotif = async () => {
+      const latest = await getLatestGlobalNotif();
+      if (latest && latest.id !== lastNotifId) {
+        // Play sound
+        soundManager.play('xp');
+        
+        // Browser notification if permitted
+        if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+          new Notification(latest.title, { body: latest.message, icon: '/apple-touch-icon.png' });
+        }
+
+        // In-app toast
+        toast(latest.title, {
+          description: latest.message,
+          action: latest.addonId ? {
+            label: 'BAIXAR AGORA',
+            onClick: () => window.location.href = `/addon/${latest.addonId}`
+          } : undefined,
+          duration: 10000,
+        });
+
+        localStorage.setItem('last_global_notif', latest.id);
+      }
+    };
+
+    // Check on mount and then every 2 minutes
+    checkGlobalNotif();
+    const interval = setInterval(checkGlobalNotif, 120000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {

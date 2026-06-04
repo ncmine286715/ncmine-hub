@@ -228,6 +228,32 @@ export const getNewUsers = async (limitNum = 5) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
+// Global Notifications (Broadcast)
+export interface GlobalNotification {
+  id: string;
+  title: string;
+  message: string;
+  addonId?: string;
+  createdAt: Timestamp;
+}
+
+export const broadcastNotification = async (title: string, message: string, addonId?: string) => {
+  const globalNotifRef = collection(db, 'global_notifications');
+  await addDoc(globalNotifRef, {
+    title,
+    message,
+    addonId,
+    createdAt: serverTimestamp()
+  });
+};
+
+export const getLatestGlobalNotif = async () => {
+  const q = query(collection(db, 'global_notifications'), orderBy('createdAt', 'desc'), limit(1));
+  const snapshot = await getDocs(q);
+  if (snapshot.empty) return null;
+  return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as GlobalNotification;
+};
+
 // Notifications
 export interface Notification {
   id: string;

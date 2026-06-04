@@ -91,26 +91,27 @@ export const RegisterForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }
     e.preventDefault();
     
     if (parseInt(captcha) !== captchaQuestion.a) {
-      toast.error('CAPTCHA incorreto!');
+      toast.error('Creeper detectado! CAPTCHA incorreto.');
       return;
     }
 
     setLoading(true);
     try {
-      // Simulate IP-based rate limiting via local fingerprint or just simple check
-      const canCreate = await checkCreationLimit('global_limit'); // Use a generic key or actual IP hash if available
+      // 2. IP-based Rate Limiting (Simple check)
+      const canCreate = await checkCreationLimit('global_limit'); // Use a generic key
       if (!canCreate) {
-        toast.error('Limite de criação de contas atingido. Tente amanhã.');
+        toast.error('Muitas contas criadas recentemente. Tente novamente mais tarde.');
         setLoading(false);
         return;
       }
 
+      // 3. User Creation
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       await updateProfile(user, { displayName: username });
 
-      // Create detailed user profile
+      // 4. Firestore Profile Creation
       await setDoc(doc(db, 'users', user.uid), {
         id: user.uid,
         username,
@@ -124,10 +125,19 @@ export const RegisterForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }
         downloadedAddons: [],
       });
 
+      // 5. Track attempt in system_limits (rate limiting)
+      await setDoc(doc(db, 'system_limits', 'global_limit'), { 
+        lastCreation: serverTimestamp() 
+      }, { merge: true });
+
       toast.success('Conta criada! Você ganhou 10 pontos.');
       onSuccess?.();
     } catch (error: any) {
-      toast.error('Erro ao criar conta: ' + error.message);
+      console.error('Registration error:', error);
+      let errorMessage = 'Erro ao criar conta.';
+      if (error.code === 'auth/email-already-in-use') errorMessage = 'Este e-mail já está em uso.';
+      if (error.code === 'auth/weak-password') errorMessage = 'A senha deve ter pelo menos 6 caracteres.';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

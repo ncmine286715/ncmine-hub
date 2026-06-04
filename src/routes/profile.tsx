@@ -17,6 +17,7 @@ import {
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ProfileEditor } from '../components/ProfileEditor';
+import { AdminBroadcastPanel } from '../components/AdminBroadcastPanel';
 import { useState } from 'react';
 import { InstagramIcon, YouTubeIcon, DiscordIcon } from '../components/icons/BrandIcons';
 
@@ -28,6 +29,9 @@ function ProfilePage() {
   const { user, profile, loading, signOut } = useAuth();
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
+
+  // Strict admin check
+  const isAdmin = user?.email === 'rosidomingos032@gmail.com';
 
   if (loading) {
     return (
@@ -74,13 +78,19 @@ function ProfilePage() {
             <ArrowLeft className="h-3 w-3" /> Início
           </button>
           <h1 className="font-pixel text-sm uppercase">MEU PERFIL</h1>
-          <button onClick={() => setIsEditing(true)} className="text-primary hover:scale-110 transition-transform">
-            <Edit2 className="h-5 w-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            {isAdmin && <span className="bg-red-600 text-white text-[8px] font-pixel px-1.5 py-0.5 shadow-[2px_2px_0_0_#000]">ADMIN</span>}
+            <button onClick={() => setIsEditing(true)} className="text-primary hover:scale-110 transition-transform">
+              <Edit2 className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-2xl px-3 py-6">
+        {/* Admin Section */}
+        {isAdmin && <AdminBroadcastPanel />}
+        
         {/* Profile Card with Banner */}
         <div className="card-block p-0 overflow-hidden relative">
           <div className="h-24 sm:h-32 bg-primary/10 relative overflow-hidden">
