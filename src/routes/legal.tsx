@@ -25,10 +25,9 @@ function LegalPage() {
 
       <main className="mx-auto max-w-4xl px-4 py-8 space-y-12">
         <div className="bg-red-50 border-4 border-red-200 p-6 text-red-800 text-sm">
-          <h2 className="font-bold mb-2">⚠️ AVISO LEGAL IMPORTANTE</h2>
+          <h2 className="font-bold mb-2">⚠️</h2>
           <p>
-            Este documento é um modelo informativo. Eu sou uma Inteligência Artificial, não um advogado. 
-            Estas cláusulas servem como base, mas **você deve consultar um profissional jurídico** para garantir conformidade total com as leis do seu país e da plataforma onde o site está hospedado.
+          leia.
           </p>
         </div>
 
