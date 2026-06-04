@@ -10,9 +10,15 @@ export const Route = createFileRoute('/profile')({
   component: ProfilePage,
 });
 
+import { ProfileEditor } from '../components/ProfileEditor';
+import { useState } from 'react';
+import { InstagramIcon, YouTubeIcon, DiscordIcon } from '../components/icons/BrandIcons';
+import { Edit2, ExternalLink } from 'lucide-react';
+
 function ProfilePage() {
   const { user, profile, loading, signOut } = useAuth();
   const navigate = useNavigate();
+  const [isEditing, setIsEditing] = useState(false);
 
   if (loading) {
     return (
@@ -45,44 +51,91 @@ function ProfilePage() {
   }
 
   const joinDate = profile.createdAt?.toDate ? format(profile.createdAt.toDate(), "MMMM 'de' yyyy", { locale: ptBR }) : 'Recentemente';
+  const rankColor = profile.rank === 'Lenda' ? 'bg-orange-500' : profile.rank === 'Veterano' ? 'bg-purple-500' : 'bg-primary';
 
   return (
     <div className="relative min-h-screen pb-20 sm:pb-0">
       <FloatingBackground />
       
+      {isEditing && <ProfileEditor onClose={() => setIsEditing(false)} />}
+
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-3 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-4">
+          <button onClick={() => navigate({ to: '/' })} className="font-pixel text-[10px] text-muted-foreground uppercase flex items-center gap-1">
+            <ArrowLeft className="h-3 w-3" /> Início
+          </button>
           <h1 className="font-pixel text-sm uppercase">MEU PERFIL</h1>
+          <button onClick={() => setIsEditing(true)} className="text-primary hover:scale-110 transition-transform">
+            <Edit2 className="h-5 w-5" />
+          </button>
         </div>
       </header>
 
-      <main className="mx-auto max-w-2xl px-3 py-8">
-        {/* Profile Card */}
-        <div className="card-block p-6 text-center">
-          <div className="mx-auto h-24 w-24 border-4 border-foreground bg-primary/20 flex items-center justify-center font-pixel text-4xl mb-4">
-            {profile.username[0].toUpperCase()}
+      <main className="mx-auto max-w-2xl px-3 py-6">
+        {/* Profile Card with Banner */}
+        <div className="card-block p-0 overflow-hidden relative">
+          <div className="h-24 sm:h-32 bg-primary/10 relative overflow-hidden">
+            {profile.banner ? (
+              <img src={profile.banner} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-r from-primary/20 via-background to-primary/20" />
+            )}
+            <div className="absolute top-2 right-2">
+              <span className={`px-2 py-1 font-pixel text-[8px] border-2 border-foreground text-white shadow-[2px_2px_0_0_var(--ink)] ${rankColor}`}>
+                {profile.rank || 'Iniciante'}
+              </span>
+            </div>
           </div>
-          <h2 className="text-xl font-black uppercase mb-1">{profile.username}</h2>
-          <p className="text-xs text-muted-foreground flex items-center justify-center gap-1 mb-6">
-            <ShieldCheck className="h-3 w-3 text-primary" />
-            Membro NCMINE
-          </p>
+          
+          <div className="px-6 pb-6 text-center">
+            <div className="mx-auto -mt-10 h-20 w-20 border-4 border-foreground bg-background overflow-hidden flex items-center justify-center font-pixel text-3xl mb-3 relative z-10 shadow-[4px_4px_0_0_var(--ink)]">
+              {profile.avatar ? (
+                <img src={profile.avatar} className="w-full h-full object-cover" />
+              ) : (
+                profile.username[0].toUpperCase()
+              )}
+            </div>
+            
+            <h2 className="text-xl font-black uppercase mb-1">{profile.username}</h2>
+            
+            <div className="flex items-center justify-center gap-4 mb-3">
+              <span className="text-[10px] font-bold text-muted-foreground flex items-center gap-1">
+                <Trophy className="h-3 w-3 text-orange-500" /> {profile.points || 0} PTS
+              </span>
+              <span className="text-[10px] font-bold text-muted-foreground flex items-center gap-1 uppercase">
+                <Calendar className="h-3 w-3 text-primary" /> {joinDate}
+              </span>
+            </div>
 
-          <div className="grid grid-cols-3 gap-2">
-            <div className="flex flex-col items-center p-2 bg-muted/30 border-2 border-foreground/10 rounded">
-              <Heart className="h-4 w-4 mb-1 text-red-500" />
-              <span className="text-sm font-black">{profile.favorites?.length || 0}</span>
-              <span className="text-[9px] uppercase font-bold text-muted-foreground">Favoritos</span>
+            {profile.bio && (
+              <p className="text-xs text-foreground/70 italic mb-4 max-w-md mx-auto line-clamp-2">
+                "{profile.bio}"
+              </p>
+            )}
+
+            <div className="flex justify-center gap-3 mb-6">
+              {profile.socialLinks?.discord && (
+                <button title={profile.socialLinks.discord} className="hover:scale-110 transition-transform"><DiscordIcon className="h-4 w-4" /></button>
+              )}
+              {profile.socialLinks?.youtube && (
+                <a href={profile.socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform"><YouTubeIcon className="h-4 w-4" /></a>
+              )}
+              {profile.socialLinks?.instagram && (
+                <a href={profile.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform"><InstagramIcon className="h-4 w-4" /></a>
+              )}
             </div>
-            <div className="flex flex-col items-center p-2 bg-muted/30 border-2 border-foreground/10 rounded">
-              <Download className="h-4 w-4 mb-1 text-primary" />
-              <span className="text-sm font-black">{profile.downloadsCount || 0}</span>
-              <span className="text-[9px] uppercase font-bold text-muted-foreground">Downloads</span>
-            </div>
-            <div className="flex flex-col items-center p-2 bg-muted/30 border-2 border-foreground/10 rounded">
-              <Calendar className="h-4 w-4 mb-1 text-blue-500" />
-              <span className="text-[9px] uppercase font-bold text-muted-foreground mt-1">Desde</span>
-              <span className="text-[10px] font-black truncate w-full">{joinDate}</span>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col items-center p-3 bg-primary/5 border-2 border-foreground rounded shadow-[3px_3px_0_0_var(--ink)]">
+                <Heart className="h-5 w-5 mb-1 text-red-500" />
+                <span className="text-sm font-black">{profile.favorites?.length || 0}</span>
+                <span className="text-[9px] uppercase font-bold text-muted-foreground">Favoritos</span>
+              </div>
+              <div className="flex flex-col items-center p-3 bg-primary/5 border-2 border-foreground rounded shadow-[3px_3px_0_0_var(--ink)]">
+                <Download className="h-5 w-5 mb-1 text-primary" />
+                <span className="text-sm font-black">{profile.downloadsCount || 0}</span>
+                <span className="text-[9px] uppercase font-bold text-muted-foreground">Downloads</span>
+              </div>
             </div>
           </div>
         </div>

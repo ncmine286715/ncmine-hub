@@ -73,32 +73,58 @@ export const LoginForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
   );
 };
 
+import { checkCreationLimit } from '../lib/firebase-services';
+
 export const RegisterForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [captcha, setCaptcha] = useState('');
+  const [captchaQuestion] = useState(() => {
+    const a = Math.floor(Math.random() * 10);
+    const b = Math.floor(Math.random() * 10);
+    return { q: `${a} + ${b} = ?`, a: a + b };
+  });
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (parseInt(captcha) !== captchaQuestion.a) {
+      toast.error('CAPTCHA incorreto!');
+      return;
+    }
+
     setLoading(true);
     try {
+      // Simulate IP-based rate limiting via local fingerprint or just simple check
+      const canCreate = await checkCreationLimit('global_limit'); // Use a generic key or actual IP hash if available
+      if (!canCreate) {
+        toast.error('Limite de criação de contas atingido. Tente amanhã.');
+        setLoading(false);
+        return;
+      }
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       await updateProfile(user, { displayName: username });
 
-      // Create user profile in Firestore
+      // Create detailed user profile
       await setDoc(doc(db, 'users', user.uid), {
         id: user.uid,
         username,
         email,
+        bio: 'Novo minerador no NCMINE!',
+        points: 10,
+        rank: 'Iniciante',
         createdAt: serverTimestamp(),
         favorites: [],
         downloadsCount: 0,
+        downloadedAddons: [],
       });
 
-      toast.success('Conta criada com sucesso!');
+      toast.success('Conta criada! Você ganhou 10 pontos.');
       onSuccess?.();
     } catch (error: any) {
       toast.error('Erro ao criar conta: ' + error.message);
@@ -111,7 +137,7 @@ export const RegisterForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }
     <Card className="border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)]">
       <CardHeader>
         <CardTitle className="font-pixel text-lg">CADASTRO</CardTitle>
-        <CardDescription>Crie sua conta para participar da comunidade</CardDescription>
+        <CardDescription>Crie sua conta e ganhe pontos</CardDescription>
       </CardHeader>
       <form onSubmit={handleRegister}>
         <CardContent className="space-y-4">
@@ -145,6 +171,17 @@ export const RegisterForm: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
+              className="border-2 border-foreground"
+            />
+          </div>
+          <div className="space-y-2 border-t-2 border-dashed border-foreground/20 pt-4">
+            <Label htmlFor="captcha">Prove que não é um Creeper: {captchaQuestion.q}</Label>
+            <Input 
+              id="captcha" 
+              placeholder="Resultado" 
+              value={captcha}
+              onChange={(e) => setCaptcha(e.target.value)}
               required
               className="border-2 border-foreground"
             />

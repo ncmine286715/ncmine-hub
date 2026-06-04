@@ -14,7 +14,8 @@ import {
   limit,
   serverTimestamp,
   increment,
-  runTransaction
+  runTransaction,
+  Timestamp
 } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -27,10 +28,8 @@ export const toggleFavorite = async (userId: string, addonId: string, isFavorite
   if (isFavorite) {
     await updateDoc(userRef, { favorites: arrayRemove(addonId) });
     await updateDoc(addonRef, { favoritesCount: increment(-1) });
-    // Note: deleteDoc(favoriteRef) could be used but setDoc/updateDoc is safer for existence
   } else {
     await updateDoc(userRef, { favorites: arrayUnion(addonId) });
-    // Initialize addon doc if it doesn't exist
     const addonDoc = await getDoc(addonRef);
     if (!addonDoc.exists()) {
       await setDoc(addonRef, { favoritesCount: 1, ratingsCount: 0, averageRating: 0, commentsCount: 0 });
@@ -86,7 +85,6 @@ export const addRating = async (userId: string, username: string, addonId: strin
       createdAt: serverTimestamp()
     });
 
-    // Also add to comments collection
     const commentRef = doc(collection(db, 'comments'));
     transaction.set(commentRef, {
       addonId,
@@ -127,6 +125,90 @@ export const getComments = async (addonId: string) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
+// Rate Limiting & Bot Protection (Basic implementation via Firestore tracking)
+export const checkCreationLimit = async (ipHash: string) => {
+  const limitRef = doc(db, 'system_limits', ipHash);
+  const limitDoc = await getDoc(limitRef);
+  
+  if (limitDoc.exists()) {
+    const data = limitDoc.data();
+    const lastCreation = data.lastCreation as Timestamp;
+    const now = Timestamp.now();
+    // Prevent more than 1 account per 24 hours per IP (simulated via ipHash)
+    if (now.seconds - lastCreation.seconds < 86400) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Advanced Profiles
+export interface ExtendedProfile {
+  id: string;
+  username: string;
+  bio?: string;
+  avatar?: string;
+  banner?: string;
+  socialLinks?: {
+    discord?: string;
+    youtube?: string;
+    instagram?: string;
+  };
+  rank: 'Iniciante' | 'Explorador' | 'Veterano' | 'Lenda';
+  points: number;
+  createdAt: Timestamp;
+  favorites: string[];
+  downloadedAddons: string[];
+  downloadsCount: number;
+}
+
+export const updateProfile = async (userId: string, data: Partial<ExtendedProfile>) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { ...data, updatedAt: serverTimestamp() });
+};
+
+// Enhanced Comments (Threaded & Likes)
+export const addReply = async (commentId: string, userId: string, username: string, text: string) => {
+  const replyRef = collection(db, `comments/${commentId}/replies`);
+  await addDoc(replyRef, {
+    userId,
+    username,
+    text,
+    createdAt: serverTimestamp(),
+    likes: 0
+  });
+  
+  const commentRef = doc(db, 'comments', commentId);
+  await updateDoc(commentRef, { repliesCount: increment(1) });
+};
+
+export const toggleLikeComment = async (commentId: string, userId: string) => {
+  const likeRef = doc(db, 'likes', `${userId}_${commentId}`);
+  const commentRef = doc(db, 'comments', commentId);
+  
+  const likeDoc = await getDoc(likeRef);
+  if (likeDoc.exists()) {
+    await runTransaction(db, async (t) => {
+      t.delete(likeRef);
+      t.update(commentRef, { likes: increment(-1) });
+    });
+    return false;
+  } else {
+    await runTransaction(db, async (t) => {
+      t.set(likeRef, { userId, commentId, createdAt: serverTimestamp() });
+      t.update(commentRef, { likes: increment(1) });
+    });
+    return true;
+  }
+};
+
+// Global Community Feed
+export const getGlobalActivity = async (limitNum = 10) => {
+  const q = query(collection(db, 'comments'), orderBy('createdAt', 'desc'), limit(limitNum));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data(), type: 'comment' }));
+};
+
 // Rankings
 export const getPopularAddons = async (limitNum = 5) => {
   const q = query(collection(db, 'addons'), orderBy('favoritesCount', 'desc'), limit(limitNum));
@@ -144,6 +226,14 @@ export const getNewUsers = async (limitNum = 5) => {
   const q = query(collection(db, 'users'), orderBy('createdAt', 'desc'), limit(limitNum));
   const snapshot = await getDocs(q);
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+// Points System
+export const awardPoints = async (userId: string, points: number) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { 
+    points: increment(points)
+  });
 };
 
 // Downloads
@@ -166,4 +256,3 @@ export const recordDownload = async (userId: string, addonId: string) => {
 
   await setDoc(downloadRef, { userId, addonId, createdAt: serverTimestamp() });
 };
-

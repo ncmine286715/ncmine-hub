@@ -5,7 +5,6 @@ import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
-import { AddonDetailModal } from "@/components/AddonDetailModal";
 import { InAppBrowserGuard } from "@/components/InAppBrowserGuard";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
@@ -49,7 +48,6 @@ type Tab = "home" | "categorias" | "notificacoes" | "sobre";
 function Index() {
   const navigate = useNavigate();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
-  const [detailFor, setDetailFor] = useState<Addon | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
@@ -72,8 +70,11 @@ function Index() {
   }, []);
 
   const handleDownload = (a: Addon) => {
-    setDetailFor(null);
     setDownloadFor(a);
+  };
+
+  const handleOpen = (a: Addon) => {
+    navigate({ to: "/addon/$id", params: { id: a.id } });
   };
 
   const handleTabChange = (tab: string) => {
@@ -116,7 +117,7 @@ function Index() {
         addons={rest} 
         featuredAddon={featured} 
         onDownload={handleDownload} 
-        onOpen={setDetailFor}
+        onOpen={handleOpen}
         externalCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />
@@ -173,11 +174,6 @@ function Index() {
         />
       )}
 
-      <AddonDetailModal
-        addon={detailFor}
-        onClose={() => setDetailFor(null)}
-        onDownload={handleDownload}
-      />
       <DownloadModal
         open={!!downloadFor}
         url={downloadFor?.downloadUrl ?? "#"}
