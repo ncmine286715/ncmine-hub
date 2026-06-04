@@ -99,10 +99,10 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
 
         <div className="mt-auto flex gap-1.5 sm:gap-2">
           <button
-            onClick={() => onDownload(addon)}
+            onClick={() => onOpen(addon)}
             className="btn-block flex-1 bg-foreground text-background !px-2 !py-1.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm"
           >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Baixar
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Ver Detalhes
           </button>
           <button
             type="button"

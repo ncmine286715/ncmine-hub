@@ -208,10 +208,10 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                 </p>
               </div>
               <button
-                onClick={() => onDownload(featuredAddon)}
+                onClick={() => onOpen(featuredAddon)}
                 className="btn-block shrink-0 bg-foreground text-background !px-4 !py-2.5 text-xs sm:!px-6 sm:!py-3 sm:text-sm"
               >
-                <Download className="h-4 w-4" /> Baixar
+                <Download className="h-4 w-4" /> Ver Detalhes
               </button>
             </div>
             {/* Mobile download button */}
@@ -223,10 +223,10 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                 Ver detalhes <ChevronRight className="inline h-3 w-3" />
               </button>
               <button
-                onClick={() => onDownload(featuredAddon)}
+                onClick={() => onOpen(featuredAddon)}
                 className="btn-block bg-foreground text-background !px-4 !py-2 text-xs"
               >
-                <Download className="h-4 w-4" /> Baixar
+                <Download className="h-4 w-4" /> Detalhes
               </button>
             </div>
           </div>

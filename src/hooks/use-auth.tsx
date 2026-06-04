@@ -11,8 +11,18 @@ interface UserProfile {
   id: string;
   username: string;
   avatar?: string;
+  banner?: string;
+  bio?: string;
+  socialLinks?: {
+    discord?: string;
+    youtube?: string;
+    instagram?: string;
+  };
+  rank: 'Iniciante' | 'Explorador' | 'Veterano' | 'Lenda';
+  points: number;
   createdAt: any;
   favorites: string[];
+  downloadedAddons: string[];
   downloadsCount: number;
 }
 
@@ -51,8 +61,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const newProfile = {
             id: user.uid,
             username: user.displayName || user.email?.split('@')[0] || 'User',
+            bio: 'Novo minerador no NCMINE!',
+            rank: 'Iniciante',
+            points: 10,
             createdAt: serverTimestamp(),
             favorites: [],
+            downloadedAddons: [],
             downloadsCount: 0,
           };
           await setDoc(doc(db, 'users', user.uid), newProfile);

@@ -1,19 +1,28 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate, Link } from '@tanstack/react-router';
 import { useAuth } from '../hooks/use-auth';
 import { FloatingBackground } from '@/components/FloatingBackground';
 import { BottomNavigation } from '@/components/BottomNavigation';
-import { User, LogOut, Calendar, Download, Heart, ShieldCheck } from 'lucide-react';
+import { 
+  User, 
+  LogOut, 
+  Calendar, 
+  Download, 
+  Heart, 
+  ShieldCheck, 
+  ArrowLeft, 
+  Trophy, 
+  Edit2, 
+  ExternalLink 
+} from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { ProfileEditor } from '../components/ProfileEditor';
+import { useState } from 'react';
+import { InstagramIcon, YouTubeIcon, DiscordIcon } from '../components/icons/BrandIcons';
 
 export const Route = createFileRoute('/profile')({
   component: ProfilePage,
 });
-
-import { ProfileEditor } from '../components/ProfileEditor';
-import { useState } from 'react';
-import { InstagramIcon, YouTubeIcon, DiscordIcon } from '../components/icons/BrandIcons';
-import { Edit2, ExternalLink } from 'lucide-react';
 
 function ProfilePage() {
   const { user, profile, loading, signOut } = useAuth();
@@ -76,7 +85,7 @@ function ProfilePage() {
         <div className="card-block p-0 overflow-hidden relative">
           <div className="h-24 sm:h-32 bg-primary/10 relative overflow-hidden">
             {profile.banner ? (
-              <img src={profile.banner} className="w-full h-full object-cover" />
+              <img src={profile.banner} className="w-full h-full object-cover" alt="Banner" />
             ) : (
               <div className="w-full h-full bg-gradient-to-r from-primary/20 via-background to-primary/20" />
             )}
@@ -90,9 +99,9 @@ function ProfilePage() {
           <div className="px-6 pb-6 text-center">
             <div className="mx-auto -mt-10 h-20 w-20 border-4 border-foreground bg-background overflow-hidden flex items-center justify-center font-pixel text-3xl mb-3 relative z-10 shadow-[4px_4px_0_0_var(--ink)]">
               {profile.avatar ? (
-                <img src={profile.avatar} className="w-full h-full object-cover" />
+                <img src={profile.avatar} className="w-full h-full object-cover" alt="Avatar" />
               ) : (
-                profile.username[0].toUpperCase()
+                profile.username?.[0]?.toUpperCase() || '?'
               )}
             </div>
             
