@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, Heart, Users, User } from "lucide-react";
 import { MinecraftBlockIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL } from "@/lib/links";
+import { NotificationHub } from "./NotificationHub";
 
 type Tab = "home" | "favorites" | "community" | "profile" | "categorias" | "notificacoes" | "sobre";
 
@@ -11,55 +12,73 @@ type Props = {
   hasNewNotification?: boolean;
 };
 
-export function BottomNavigation({ activeTab, onTabChange }: Props) {
+export function BottomNavigation({ activeTab, onTabChange, hasNewNotification }: Props) {
+  const [showNotifs, setShowNotifs] = useState(false);
+
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-foreground bg-background/98 backdrop-blur-sm sm:hidden">
-      <div className="grid h-16 grid-cols-4">
-        <button
-          type="button"
-          onClick={() => onTabChange("home")}
-          className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "home" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <Home className={`h-5 w-5 ${activeTab === "home" ? "fill-primary" : ""}`} />
-          <span className="font-pixel text-[8px]">INICIO</span>
-        </button>
-        
-        <button
-          type="button"
-          onClick={() => onTabChange("favorites")}
-          className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "favorites" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <Heart className={`h-5 w-5 ${activeTab === "favorites" ? "fill-primary" : ""}`} />
-          <span className="font-pixel text-[8px]">FAVORITOS</span>
-        </button>
-        
-        <button
-          type="button"
-          onClick={() => onTabChange("community")}
-          className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "community" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <Users className={`h-5 w-5 ${activeTab === "community" ? "fill-primary/20" : ""}`} />
-          <span className="font-pixel text-[8px]">COMUNIDADE</span>
-        </button>
-        
-        <button
-          type="button"
-          onClick={() => onTabChange("profile")}
-          className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "profile" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <User className={`h-5 w-5 ${activeTab === "profile" ? "fill-primary/20" : ""}`} />
-          <span className="font-pixel text-[8px]">PERFIL</span>
-        </button>
-      </div>
-    </nav>
+    <>
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-foreground bg-background/98 backdrop-blur-sm sm:hidden">
+        <div className="grid h-16 grid-cols-5">
+          <button
+            type="button"
+            onClick={() => onTabChange("home")}
+            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
+              activeTab === "home" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Home className={`h-5 w-5 ${activeTab === "home" ? "fill-primary" : ""}`} />
+            <span className="font-pixel text-[8px]">INICIO</span>
+          </button>
+          
+          <button
+            type="button"
+            onClick={() => onTabChange("favorites")}
+            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
+              activeTab === "favorites" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Heart className={`h-5 w-5 ${activeTab === "favorites" ? "fill-primary" : ""}`} />
+            <span className="font-pixel text-[8px]">AMADOS</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setShowNotifs(true)}
+            className={`relative flex flex-col items-center justify-center gap-0.5 transition-colors text-muted-foreground hover:text-foreground`}
+          >
+            <Bell className="h-5 w-5" />
+            {hasNewNotification && (
+              <span className="absolute top-3 right-4 h-2 w-2 bg-red-500 rounded-full border border-background animate-pulse" />
+            )}
+            <span className="font-pixel text-[8px]">ALERTAS</span>
+          </button>
+          
+          <button
+            type="button"
+            onClick={() => onTabChange("community")}
+            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
+              activeTab === "community" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Users className={`h-5 w-5 ${activeTab === "community" ? "fill-primary/20" : ""}`} />
+            <span className="font-pixel text-[8px]">VILA</span>
+          </button>
+          
+          <button
+            type="button"
+            onClick={() => onTabChange("profile")}
+            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
+              activeTab === "profile" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <User className={`h-5 w-5 ${activeTab === "profile" ? "fill-primary/20" : ""}`} />
+            <span className="font-pixel text-[8px]">EU</span>
+          </button>
+        </div>
+      </nav>
+
+      {showNotifs && <NotificationHub onClose={() => setShowNotifs(false)} />}
+    </>
   );
 }
 

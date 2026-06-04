@@ -25,7 +25,11 @@ type Props = {
   onOpen: (a: Addon) => void;
 };
 
+import { useAuth } from "@/hooks/use-auth";
+
 export function AddonCard({ addon, onDownload, onOpen }: Props) {
+  const { profile } = useAuth();
+  const isDownloaded = profile?.downloadedAddons?.includes(addon.id);
   const [broken, setBroken] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -38,7 +42,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
   };
 
   return (
-    <article className="card-block relative flex flex-col overflow-hidden">
+    <article className={`card-block relative flex flex-col overflow-hidden transition-all ${isDownloaded ? 'border-primary/40' : ''}`}>
       <button
         type="button"
         onClick={() => onOpen(addon)}
@@ -51,13 +55,22 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setBroken(true)}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${isDownloaded ? 'grayscale-[0.3] opacity-80' : ''}`}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-foreground text-background font-pixel text-[8px] sm:text-xs">
             NO PREVIEW
           </div>
         )}
+        
+        {isDownloaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/20 pointer-events-none">
+            <span className="bg-primary text-white border-2 border-foreground px-2 py-1 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
+              Você já viu isso!
+            </span>
+          </div>
+        )}
+
         <span className="absolute left-1 top-1 inline-flex items-center gap-0.5 border-2 border-foreground bg-primary px-1.5 py-0.5 font-pixel text-[7px] uppercase text-primary-foreground sm:left-2 sm:top-2 sm:gap-1 sm:px-2 sm:text-[9px]">
           <Tag className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
           <span className="max-w-[60px] truncate sm:max-w-none">{addon.category}</span>
@@ -100,9 +113,11 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <div className="mt-auto flex gap-1.5 sm:gap-2">
           <button
             onClick={() => onOpen(addon)}
-            className="btn-block flex-1 bg-primary text-primary-foreground !px-2 !py-2 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all"
+            className={`btn-block flex-1 !px-2 !py-2 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all ${
+              isDownloaded ? 'bg-background text-foreground' : 'bg-primary text-primary-foreground'
+            }`}
           >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Download
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Baixar de Novo' : 'Download'}
           </button>
           <button
             type="button"

@@ -15,6 +15,8 @@ import { shareAddon } from "@/lib/share";
 import { CREATOR_NAME, DISCORD_URL } from "@/lib/links";
 import { DiscordIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 
+import { RelatedAddons } from "@/components/RelatedAddons";
+
 const RAW_ADDONS = addonsData as Addon[];
 const TERABOX_TUTORIAL_URL = "https://youtu.be/fN4BennXjTY?si=Tz6C8QLpNW2d9xtz";
 
@@ -269,6 +271,24 @@ function AddonPage() {
 
         {/* Social Features */}
         <RatingAndComments addonId={addon.id} />
+
+        {/* Continue Exploring */}
+        <div className="mt-12 mb-8">
+          <h2 className="mb-6 flex items-center gap-2 font-pixel text-xs sm:text-sm text-primary">
+            <Sparkles className="h-5 w-5" />
+            CONTINUAR EXPLORANDO
+          </h2>
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-4">
+            {relatedAddons.map((ra) => (
+              <AddonCard 
+                key={ra.id} 
+                addon={ra} 
+                onDownload={() => {}} 
+                onOpen={(a) => navigate({ to: '/addon/$id', params: { id: a.id } })} 
+              />
+            ))}
+          </div>
+        </div>
 
         {/* Tutorial Section */}
         <div className="mt-4 card-block border-primary/50 bg-primary/5 p-4 sm:mt-6 sm:p-6">

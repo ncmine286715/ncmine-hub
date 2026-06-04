@@ -228,6 +228,32 @@ export const getNewUsers = async (limitNum = 5) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
+// Notifications
+export interface Notification {
+  id: string;
+  type: 'new_addon' | 'update' | 'system';
+  title: string;
+  message: string;
+  addonId?: string;
+  createdAt: Timestamp;
+  read: boolean;
+}
+
+export const getNotifications = async (userId: string) => {
+  const q = query(
+    collection(db, `users/${userId}/notifications`),
+    orderBy('createdAt', 'desc'),
+    limit(20)
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+export const markNotificationAsRead = async (userId: string, notificationId: string) => {
+  const notifRef = doc(db, `users/${userId}/notifications`, notificationId);
+  await updateDoc(notifRef, { read: true });
+};
+
 // Points System
 export const awardPoints = async (userId: string, points: number) => {
   const userRef = doc(db, 'users', userId);
@@ -255,4 +281,7 @@ export const recordDownload = async (userId: string, addonId: string) => {
   }
 
   await setDoc(downloadRef, { userId, addonId, createdAt: serverTimestamp() });
+  
+  // Logic for "You've seen this before" marker is handled by the downloadedAddons array in profile
 };
+
