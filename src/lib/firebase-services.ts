@@ -19,7 +19,7 @@ import {
 } from 'firebase/firestore';
 import { db } from './firebase';
 
-// Favorites
+// ==================== FAVORITOS ====================
 export const toggleFavorite = async (userId: string, addonId: string, isFavorite: boolean) => {
   const userRef = doc(db, 'users', userId);
   const addonRef = doc(db, 'addons', addonId);
@@ -40,7 +40,7 @@ export const toggleFavorite = async (userId: string, addonId: string, isFavorite
   }
 };
 
-// Ratings
+// ==================== AVALIAÇÕES (RATING + COMENTÁRIO) ====================
 export const addRating = async (userId: string, username: string, addonId: string, rating: number, commentText: string) => {
   const ratingRef = doc(db, 'ratings', `${userId}_${addonId}`);
   const addonRef = doc(db, 'addons', addonId);
@@ -98,7 +98,7 @@ export const addRating = async (userId: string, username: string, addonId: strin
   });
 };
 
-// Comments
+// ==================== COMENTÁRIOS SIMPLES ====================
 export const addComment = async (userId: string, username: string, addonId: string, text: string) => {
   const commentRef = collection(db, 'comments');
   const addonRef = doc(db, 'addons', addonId);
@@ -125,24 +125,34 @@ export const getComments = async (addonId: string) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-// Rate Limiting & Bot Protection (Basic implementation via Firestore tracking)
-export const checkCreationLimit = async (ipHash: string) => {
-  const limitRef = doc(db, 'system_limits', ipHash);
-  const limitDoc = await getDoc(limitRef);
+// ==================== LIMITE DE CRIAÇÃO (ANTI-SPAM) - CORRIGIDO ====================
+// Agora funciona com uma chave fixa 'global_limit' e permite 1 cadastro a cada 60 segundos
+export const checkCreationLimit = async (limitId: string = 'global_limit') => {
+  const limitRef = doc(db, 'system_limits', limitId);
+  const limitSnap = await getDoc(limitRef);
   
-  if (limitDoc.exists()) {
-    const data = limitDoc.data();
-    const lastCreation = data.lastCreation as Timestamp;
-    const now = Timestamp.now();
-    // Prevent more than 1 account per 24 hours per IP (simulated via ipHash)
-    if (now.seconds - lastCreation.seconds < 86400) {
-      return false;
-    }
+  if (!limitSnap.exists()) {
+    // Primeira criação, permite e registra o timestamp
+    await setDoc(limitRef, { lastCreation: serverTimestamp() });
+    return true;
   }
+  
+  const data = limitSnap.data();
+  const lastCreation = data.lastCreation as Timestamp;
+  const now = Timestamp.now();
+  const diffSeconds = now.seconds - lastCreation.seconds;
+  
+  // Bloqueia se o último cadastro foi há menos de 60 segundos
+  if (diffSeconds < 60) {
+    return false;
+  }
+  
+  // Atualiza o timestamp e permite
+  await updateDoc(limitRef, { lastCreation: serverTimestamp() });
   return true;
 };
 
-// Advanced Profiles
+// ==================== PERFIL AVANÇADO ====================
 export interface ExtendedProfile {
   id: string;
   username: string;
@@ -167,7 +177,7 @@ export const updateProfile = async (userId: string, data: Partial<ExtendedProfil
   await updateDoc(userRef, { ...data, updatedAt: serverTimestamp() });
 };
 
-// Enhanced Comments (Threaded & Likes)
+// ==================== COMENTÁRIOS COM RESPOSTAS E LIKES ====================
 export const addReply = async (commentId: string, userId: string, username: string, text: string) => {
   const replyRef = collection(db, `comments/${commentId}/replies`);
   await addDoc(replyRef, {
@@ -202,14 +212,14 @@ export const toggleLikeComment = async (commentId: string, userId: string) => {
   }
 };
 
-// Global Community Feed
+// ==================== ATIVIDADE GLOBAL ====================
 export const getGlobalActivity = async (limitNum = 10) => {
   const q = query(collection(db, 'comments'), orderBy('createdAt', 'desc'), limit(limitNum));
   const snapshot = await getDocs(q);
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data(), type: 'comment' }));
 };
 
-// Rankings
+// ==================== RANKINGS ====================
 export const getPopularAddons = async (limitNum = 5) => {
   const q = query(collection(db, 'addons'), orderBy('favoritesCount', 'desc'), limit(limitNum));
   const snapshot = await getDocs(q);
@@ -228,12 +238,15 @@ export const getNewUsers = async (limitNum = 5) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-// Username Uniqueness
-export const isUsernameAvailable = async (username: string) => {
-  const q = query(collection(db, 'users'), where('username', '==', username), limit(1));
+// ==================== VERIFICAR NOME DE USUÁRIO ====================
+export const isUsernameAvailable = async (username: string): Promise<boolean> => {
+  const usersRef = collection(db, 'users');
+  const q = query(usersRef, where('username', '==', username), limit(1));
   const snapshot = await getDocs(q);
   return snapshot.empty;
 };
+
+// ==================== NOTIFICAÇÕES GLOBAIS (BROADCAST) ====================
 export interface GlobalNotification {
   id: string;
   title: string;
@@ -259,7 +272,7 @@ export const getLatestGlobalNotif = async () => {
   return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as GlobalNotification;
 };
 
-// Notifications
+// ==================== NOTIFICAÇÕES POR USUÁRIO ====================
 export interface Notification {
   id: string;
   type: 'new_addon' | 'update' | 'system';
@@ -285,7 +298,7 @@ export const markNotificationAsRead = async (userId: string, notificationId: str
   await updateDoc(notifRef, { read: true });
 };
 
-// Points System
+// ==================== SISTEMA DE PONTOS (XP) ====================
 export const awardPoints = async (userId: string, points: number) => {
   const userRef = doc(db, 'users', userId);
   await updateDoc(userRef, { 
@@ -293,7 +306,7 @@ export const awardPoints = async (userId: string, points: number) => {
   });
 };
 
-// Downloads
+// ==================== REGISTRAR DOWNLOAD ====================
 export const recordDownload = async (userId: string, addonId: string) => {
   const userRef = doc(db, 'users', userId);
   const addonRef = doc(db, 'addons', addonId);
@@ -312,7 +325,4 @@ export const recordDownload = async (userId: string, addonId: string) => {
   }
 
   await setDoc(downloadRef, { userId, addonId, createdAt: serverTimestamp() });
-  
-  // Logic for "You've seen this before" marker is handled by the downloadedAddons array in profile
 };
-
