@@ -228,8 +228,12 @@ export const getNewUsers = async (limitNum = 5) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-// Global Notifications (Broadcast)
-export interface GlobalNotification {
+// Username Uniqueness
+export const isUsernameAvailable = async (username: string) => {
+  const q = query(collection(db, 'users'), where('username', '==', username), limit(1));
+  const snapshot = await getDocs(q);
+  return snapshot.empty;
+};
   id: string;
   title: string;
   message: string;
