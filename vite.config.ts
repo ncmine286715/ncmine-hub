@@ -22,6 +22,13 @@ export default defineConfig({
       crawlLinks: true,
       autoSubfolderIndex: true,
     },
-    pages: [{ path: "/" }, ...addonPages],
+    pages: [
+      { path: "/" }, 
+      { path: "/auth" }, 
+      { path: "/favorites" }, 
+      { path: "/community" }, 
+      { path: "/profile" }, 
+      ...addonPages
+    ],
   },
 });

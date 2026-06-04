@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users profile
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Addons stats (favoritesCount, ratingsCount, etc)
+    match /addons/{addonId} {
+      allow read: if true;
+      allow write: if request.auth != null; // Simple protection, services use transactions
+    }
+    
+    // Comments
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Favorites
+    match /favorites/{favId} {
+      allow read: if true;
+      allow write: if request.auth != null && favId.startsWith(request.auth.uid);
+    }
+    
+    // Ratings
+    match /ratings/{ratingId} {
+      allow read: if true;
+      allow create: if request.auth != null && ratingId.startsWith(request.auth.uid);
+      allow update: if false; // Ratings are permanent in this implementation
+    }
+  }
+}

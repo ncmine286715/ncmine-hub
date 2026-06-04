@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, useCallback } from "react";
 import addonsData from "@/data/addons.json";
 import { Hero } from "@/components/Hero";
@@ -47,6 +47,7 @@ function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
 type Tab = "home" | "categorias" | "notificacoes" | "sobre";
 
 function Index() {
+  const navigate = useNavigate();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [detailFor, setDetailFor] = useState<Addon | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("home");
@@ -75,11 +76,12 @@ function Index() {
     setDownloadFor(a);
   };
 
-  const handleTabChange = (tab: Tab) => {
-    setActiveTab(tab);
-    // Scroll to top when going home
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab as Tab);
     if (tab === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate({ to: `/${tab}` as any });
     }
   };
 

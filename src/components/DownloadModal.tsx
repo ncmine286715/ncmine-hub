@@ -13,9 +13,24 @@ type Props = {
   onClose: () => void;
 };
 
-export function DownloadModal({ open, url, title, onClose }: Props) {
+import { useAuth } from "@/hooks/use-auth";
+import { recordDownload } from "@/lib/firebase-services";
+
+export function DownloadModal({ open, url, title, onClose, addonId }: Props & { addonId?: string }) {
   const [variant, setVariant] = useState<Variant>("discord");
   const [count, setCount] = useState(3);
+  const { user } = useAuth();
+
+  const handleDownloadClick = async () => {
+    if (user && addonId) {
+      try {
+        await recordDownload(user.uid, addonId);
+      } catch (error) {
+        console.error("Error recording download:", error);
+      }
+    }
+    onClose();
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -78,7 +93,7 @@ export function DownloadModal({ open, url, title, onClose }: Props) {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={onClose}
+          onClick={handleDownloadClick}
           className="btn-block w-full bg-background text-foreground !py-2.5 text-sm sm:!py-3"
         >
           {count > 0 ? (

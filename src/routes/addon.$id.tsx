@@ -49,6 +49,9 @@ export const Route = createFileRoute("/addon/$id")({
   component: AddonPage,
 });
 
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { RatingAndComments } from "@/components/RatingAndComments";
+
 function AddonPage() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
@@ -120,6 +123,7 @@ function AddonPage() {
             <span className="hidden sm:inline">Voltar</span>
           </Link>
           <div className="flex items-center gap-2">
+            <FavoriteButton addonId={addon.id} />
             <button
               onClick={handleShare}
               className="btn-block bg-background !px-2 !py-1.5 text-xs sm:!px-3 sm:!py-2"
@@ -263,6 +267,9 @@ function AddonPage() {
           </div>
         </div>
 
+        {/* Social Features */}
+        <RatingAndComments addonId={addon.id} />
+
         {/* Tutorial Section */}
         <div className="mt-4 card-block border-primary/50 bg-primary/5 p-4 sm:mt-6 sm:p-6">
           <div className="flex items-start gap-3">
@@ -354,6 +361,7 @@ function AddonPage() {
         url={downloadFor?.downloadUrl ?? "#"}
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
+        addonId={downloadFor?.id}
       />
 
       {/* Tutorial Modal */}

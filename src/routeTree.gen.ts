@@ -9,9 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddonIdRouteImport } from './routes/addon.$id'
 
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +49,89 @@ const AddonIdRoute = AddonIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/favorites': typeof FavoritesRoute
+  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/favorites': typeof FavoritesRoute
+  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/favorites': typeof FavoritesRoute
+  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/addon/$id'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/favorites'
+    | '/profile'
+    | '/addon/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/addon/$id'
-  id: '__root__' | '/' | '/addon/$id'
+  to: '/' | '/auth' | '/community' | '/favorites' | '/profile' | '/addon/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/favorites'
+    | '/profile'
+    | '/addon/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CommunityRoute: typeof CommunityRoute
+  FavoritesRoute: typeof FavoritesRoute
+  ProfileRoute: typeof ProfileRoute
   AddonIdRoute: typeof AddonIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,8 +151,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CommunityRoute: CommunityRoute,
+  FavoritesRoute: FavoritesRoute,
+  ProfileRoute: ProfileRoute,
   AddonIdRoute: AddonIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

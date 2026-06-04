@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles } from "lucide-react";
+import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, Heart, Users, User } from "lucide-react";
 import { MinecraftBlockIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL } from "@/lib/links";
 
-type Tab = "home" | "categorias" | "notificacoes" | "sobre";
+type Tab = "home" | "favorites" | "community" | "profile" | "categorias" | "notificacoes" | "sobre";
 
 type Props = {
-  activeTab: Tab;
-  onTabChange: (tab: Tab) => void;
+  activeTab: string;
+  onTabChange: (tab: any) => void;
   hasNewNotification?: boolean;
 };
 
-export function BottomNavigation({ activeTab, onTabChange, hasNewNotification }: Props) {
+export function BottomNavigation({ activeTab, onTabChange }: Props) {
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-foreground bg-background/98 backdrop-blur-sm sm:hidden">
       <div className="grid h-16 grid-cols-4">
@@ -28,40 +28,35 @@ export function BottomNavigation({ activeTab, onTabChange, hasNewNotification }:
         
         <button
           type="button"
-          onClick={() => onTabChange("categorias")}
+          onClick={() => onTabChange("favorites")}
           className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "categorias" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            activeTab === "favorites" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Grid3X3 className={`h-5 w-5 ${activeTab === "categorias" ? "fill-primary/20" : ""}`} />
-          <span className="font-pixel text-[8px]">CATEGORIAS</span>
+          <Heart className={`h-5 w-5 ${activeTab === "favorites" ? "fill-primary" : ""}`} />
+          <span className="font-pixel text-[8px]">FAVORITOS</span>
         </button>
         
         <button
           type="button"
-          onClick={() => onTabChange("notificacoes")}
-          className={`relative flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "notificacoes" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+          onClick={() => onTabChange("community")}
+          className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
+            activeTab === "community" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <div className="relative">
-            <Bell className={`h-5 w-5 ${activeTab === "notificacoes" ? "fill-primary/20" : ""}`} />
-            {hasNewNotification && (
-              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-primary animate-pulse" />
-            )}
-          </div>
-          <span className="font-pixel text-[8px]">ALERTAS</span>
+          <Users className={`h-5 w-5 ${activeTab === "community" ? "fill-primary/20" : ""}`} />
+          <span className="font-pixel text-[8px]">COMUNIDADE</span>
         </button>
         
         <button
           type="button"
-          onClick={() => onTabChange("sobre")}
+          onClick={() => onTabChange("profile")}
           className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-            activeTab === "sobre" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+            activeTab === "profile" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Info className={`h-5 w-5 ${activeTab === "sobre" ? "fill-primary/20" : ""}`} />
-          <span className="font-pixel text-[8px]">SOBRE</span>
+          <User className={`h-5 w-5 ${activeTab === "profile" ? "fill-primary/20" : ""}`} />
+          <span className="font-pixel text-[8px]">PERFIL</span>
         </button>
       </div>
     </nav>
