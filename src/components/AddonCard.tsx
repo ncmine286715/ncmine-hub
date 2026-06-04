@@ -41,8 +41,11 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
     });
   };
 
+  const isHot = addon.downloads > 5000;
+  const isViral = addon.downloads > 10000;
+
   return (
-    <article className={`card-block relative flex flex-col overflow-hidden transition-all ${isDownloaded ? 'border-primary/40' : ''}`}>
+    <article className={`card-block relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}>
       <button
         type="button"
         onClick={() => onOpen(addon)}
@@ -55,7 +58,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setBroken(true)}
-            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${isDownloaded ? 'grayscale-[0.3] opacity-80' : ''}`}
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${isDownloaded ? 'grayscale-[0.3] opacity-80' : ''}`}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-foreground text-background font-pixel text-[8px] sm:text-xs">
@@ -63,7 +66,17 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
           </div>
         )}
         
-        {isDownloaded && (
+        {isViral ? (
+          <div className="absolute top-0 right-0 left-0 bg-red-600 text-white text-[7px] font-pixel py-1 text-center uppercase animate-pulse border-b-2 border-foreground z-20">
+            🔥 VIRAL NO TIKTOK 🔥
+          </div>
+        ) : isHot ? (
+          <div className="absolute top-0 right-0 left-0 bg-orange-500 text-white text-[7px] font-pixel py-1 text-center uppercase border-b-2 border-foreground z-20">
+            ⚡ MAIS BAIXADO HOJE ⚡
+          </div>
+        ) : null}
+
+        {isDownloaded && !isViral && !isHot && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/20 pointer-events-none">
             <span className="bg-primary text-white border-2 border-foreground px-2 py-1 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
               Você já viu isso!

@@ -8,6 +8,8 @@ import { toast } from 'sonner';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
+import { soundManager } from '../lib/sounds';
+
 interface ReplyData {
   id: string;
   userId: string;
@@ -69,11 +71,13 @@ export const RatingAndComments: React.FC<{ addonId: string }> = ({ addonId }) =>
       if (rating > 0) {
         await addRating(user.uid, profile.username, addonId, rating, comment);
         await awardPoints(user.uid, 5); // 5 points for rating
+        soundManager.play('xp');
         toast.success('Avaliação enviada! +5 XP');
         setRating(0);
       } else {
         await addComment(user.uid, profile.username, addonId, comment);
         await awardPoints(user.uid, 2); // 2 points for comment
+        soundManager.play('xp');
         toast.success('Comentário enviado! +2 XP');
       }
       setComment('');
@@ -105,6 +109,7 @@ export const RatingAndComments: React.FC<{ addonId: string }> = ({ addonId }) =>
     try {
       await addReply(commentId, user.uid, profile.username, replyText);
       await awardPoints(user.uid, 1);
+      soundManager.play('xp');
       toast.success('Resposta enviada!');
       setReplyTo(null);
       setReplyText('');

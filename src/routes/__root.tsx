@@ -142,9 +142,29 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 import { AuthProvider } from "../hooks/use-auth";
+import { useEffect } from "react";
+import { soundManager } from "../lib/sounds";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Play sound if clicking a button, link, or anything clickable
+      if (
+        target.tagName === 'BUTTON' || 
+        target.tagName === 'A' || 
+        target.closest('button') || 
+        target.closest('a')
+      ) {
+        soundManager.play('click');
+      }
+    };
+
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
