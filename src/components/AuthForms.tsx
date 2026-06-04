@@ -49,7 +49,7 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
         toast.success(`Bem-vindo de volta, ${profile.username}`);
       }
       onSuccess?.();
-    } catch (err) any {
+    } catch (err: any) {
       toast.error('Erro ao finalizar login: ' + err.message);
     } finally {
       setLoading(false);
