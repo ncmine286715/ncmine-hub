@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -19,6 +20,11 @@ import { Route as AddonIdRouteImport } from './routes/addon.$id'
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FavoritesRoute = FavoritesRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/favorites': typeof FavoritesRoute
+  '/legal': typeof LegalRoute
   '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/favorites': typeof FavoritesRoute
+  '/legal': typeof LegalRoute
   '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/favorites': typeof FavoritesRoute
+  '/legal': typeof LegalRoute
   '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -79,16 +88,25 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/favorites'
+    | '/legal'
     | '/profile'
     | '/addon/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/community' | '/favorites' | '/profile' | '/addon/$id'
+  to:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/favorites'
+    | '/legal'
+    | '/profile'
+    | '/addon/$id'
   id:
     | '__root__'
     | '/'
     | '/auth'
     | '/community'
     | '/favorites'
+    | '/legal'
     | '/profile'
     | '/addon/$id'
   fileRoutesById: FileRoutesById
@@ -98,6 +116,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CommunityRoute: typeof CommunityRoute
   FavoritesRoute: typeof FavoritesRoute
+  LegalRoute: typeof LegalRoute
   ProfileRoute: typeof ProfileRoute
   AddonIdRoute: typeof AddonIdRoute
 }
@@ -109,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/favorites': {
@@ -154,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CommunityRoute: CommunityRoute,
   FavoritesRoute: FavoritesRoute,
+  LegalRoute: LegalRoute,
   ProfileRoute: ProfileRoute,
   AddonIdRoute: AddonIdRoute,
 }
