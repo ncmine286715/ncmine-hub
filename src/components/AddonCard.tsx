@@ -100,15 +100,15 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <div className="mt-auto flex gap-1.5 sm:gap-2">
           <button
             onClick={() => onOpen(addon)}
-            className="btn-block flex-1 bg-foreground text-background !px-2 !py-1.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm"
+            className="btn-block flex-1 bg-primary text-primary-foreground !px-2 !py-2 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all"
           >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Ver Detalhes
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Download
           </button>
           <button
             type="button"
             onClick={handleShare}
             aria-label="Compartilhar"
-            className="btn-block bg-background !px-2 !py-1.5 text-[10px] sm:!px-3 sm:!py-3"
+            className="btn-block bg-background !px-2 !py-2 text-[10px] sm:!px-3 sm:!py-3 border-2 border-foreground hover:bg-muted active:scale-95 transition-all"
           >
             <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>

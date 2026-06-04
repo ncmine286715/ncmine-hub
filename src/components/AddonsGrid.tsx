@@ -209,24 +209,24 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
               </div>
               <button
                 onClick={() => onOpen(featuredAddon)}
-                className="btn-block shrink-0 bg-foreground text-background !px-4 !py-2.5 text-xs sm:!px-6 sm:!py-3 sm:text-sm"
+                className="btn-block shrink-0 bg-primary text-primary-foreground !px-4 !py-2.5 text-xs sm:!px-8 sm:!py-4 sm:text-sm shadow-[4px_4px_0_0_var(--ink)] hover:-translate-y-0.5 active:translate-y-0 transition-all font-black uppercase tracking-widest"
               >
-                <Download className="h-4 w-4" /> Ver Detalhes
+                <Download className="h-5 w-5" /> Download Agora
               </button>
             </div>
             {/* Mobile download button */}
-            <div className="flex items-center justify-between border-t-2 border-foreground p-2 sm:hidden">
+            <div className="flex items-center justify-between border-t-2 border-foreground p-3 sm:hidden bg-primary/5">
               <button
                 onClick={() => onOpen(featuredAddon)}
-                className="text-xs font-bold text-primary"
+                className="text-xs font-black uppercase tracking-tighter text-primary flex items-center gap-1"
               >
-                Ver detalhes <ChevronRight className="inline h-3 w-3" />
+                Saber mais <ChevronRight className="h-3 w-3" />
               </button>
               <button
                 onClick={() => onOpen(featuredAddon)}
-                className="btn-block bg-foreground text-background !px-4 !py-2 text-xs"
+                className="btn-block bg-primary text-primary-foreground !px-6 !py-2.5 text-xs font-black shadow-[3px_3px_0_0_var(--ink)]"
               >
-                <Download className="h-4 w-4" /> Detalhes
+                <Download className="h-4 w-4" /> Download
               </button>
             </div>
           </div>
