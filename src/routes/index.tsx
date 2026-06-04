@@ -142,7 +142,7 @@ function Index() {
           </div>
         </div>
         <div className="border-t-2 border-background/20 py-3 text-center font-pixel text-[9px] text-background/60">
-          &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; Politica de Privacidade
+          &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; <Link to="/legal" className="hover:text-background">Política de Privacidade e Termos</Link>
         </div>
       </footer>
 
