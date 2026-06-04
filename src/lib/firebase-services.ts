@@ -234,6 +234,7 @@ export const isUsernameAvailable = async (username: string) => {
   const snapshot = await getDocs(q);
   return snapshot.empty;
 };
+export interface GlobalNotification {
   id: string;
   title: string;
   message: string;
