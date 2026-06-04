@@ -181,6 +181,21 @@ export const toggleLikeComment = async (commentId: string, userId: string) => {
   }
 };
 
+// ==================== RESPOSTAS ====================
+export const addReply = async (commentId: string, userId: string, username: string, text: string) => {
+  const replyRef = collection(db, `comments/${commentId}/replies`);
+  await addDoc(replyRef, {
+    userId,
+    username,
+    text,
+    createdAt: serverTimestamp(),
+    likes: 0
+  });
+  
+  const commentRef = doc(db, 'comments', commentId);
+  await updateDoc(commentRef, { repliesCount: increment(1) });
+};
+
 // ==================== ATIVIDADE GLOBAL ====================
 export const getGlobalActivity = async (limitNum = 10) => {
   const q = query(collection(db, 'comments'), orderBy('createdAt', 'desc'), limit(limitNum));
@@ -207,6 +222,64 @@ export const getNewUsers = async (limitNum = 5) => {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
+// ==================== NOTIFICAÇÕES (Broadcast) ====================
+export interface GlobalNotification {
+  id: string;
+  title: string;
+  message: string;
+  addonId?: string;
+  createdAt: Timestamp;
+}
+
+export const broadcastNotification = async (title: string, message: string, addonId?: string) => {
+  const globalNotifRef = collection(db, 'global_notifications');
+  await addDoc(globalNotifRef, {
+    title,
+    message,
+    addonId,
+    createdAt: serverTimestamp()
+  });
+};
+
+export const getLatestGlobalNotif = async () => {
+  const q = query(collection(db, 'global_notifications'), orderBy('createdAt', 'desc'), limit(1));
+  const snapshot = await getDocs(q);
+  if (snapshot.empty) return null;
+  return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as GlobalNotification;
+};
+
+// ==================== NOTIFICAÇÕES (Usuário) ====================
+export interface Notification {
+  id: string;
+  type: 'new_addon' | 'update' | 'system';
+  title: string;
+  message: string;
+  addonId?: string;
+  createdAt: Timestamp;
+  read: boolean;
+}
+
+export const getNotifications = async (userId: string) => {
+  const q = query(
+    collection(db, `users/${userId}/notifications`),
+    orderBy('createdAt', 'desc'),
+    limit(20)
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+export const markNotificationAsRead = async (userId: string, notificationId: string) => {
+  const notifRef = doc(db, `users/${userId}/notifications`, notificationId);
+  await updateDoc(notifRef, { read: true });
+};
+
+// ==================== PONTOS (XP) ====================
+export const awardPoints = async (userId: string, points: number) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { points: increment(points) });
+};
+
 // ==================== DOWNLOADS ====================
 export const recordDownload = async (userId: string, addonId: string) => {
   const userRef = doc(db, 'users', userId);
@@ -220,10 +293,4 @@ export const recordDownload = async (userId: string, addonId: string) => {
     await updateDoc(addonRef, { downloadsCount: increment(1) });
   }
   await setDoc(downloadRef, { userId, addonId, createdAt: serverTimestamp() });
-};
-
-// ==================== PONTOS (XP) ====================
-export const awardPoints = async (userId: string, points: number) => {
-  const userRef = doc(db, 'users', userId);
-  await updateDoc(userRef, { points: increment(points) });
 };
