@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, Send, ThumbsUp, MessageSquare, Reply, Trophy, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../hooks/use-auth';
 import { addRating, addComment, getComments, toggleLikeComment, addReply, awardPoints } from '../lib/firebase-services';
+import { trackEvent } from '../lib/analytics';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { Input } from './ui/input';
