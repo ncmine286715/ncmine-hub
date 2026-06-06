@@ -188,6 +188,7 @@ function Index() {
         url={downloadFor?.downloadUrl ?? "#"}
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
+        addonId={downloadFor?.id}
       />
       <InAppBrowserGuard />
     </div>
