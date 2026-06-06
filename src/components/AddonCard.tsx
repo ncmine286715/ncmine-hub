@@ -1,6 +1,7 @@
 import { Star, Download, User, Calendar, Tag, Share2 } from "lucide-react";
 import { useState } from "react";
 import { shareAddon } from "@/lib/share";
+import { trackEvent } from "@/lib/analytics";
 
 export type Addon = {
   id: string;
@@ -35,6 +36,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
 
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
+    trackEvent("share", { addonId: addon.id, title: addon.title });
     await shareAddon(addon, (msg) => {
       setToast(msg);
       window.setTimeout(() => setToast(null), 2200);
