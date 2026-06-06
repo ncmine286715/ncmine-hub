@@ -15,6 +15,9 @@ const addonPages = (addons as Array<{ id: string }>).map((a) => ({
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 // Prerender enabled: home is pure static HTML, killing Cloudflare CPU usage (error 1102).
 export default defineConfig({
+  vite: {
+    plugins: [],
+  },
   tanstackStart: {
     server: { entry: "server" },
     prerender: {
