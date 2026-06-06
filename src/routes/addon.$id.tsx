@@ -16,6 +16,8 @@ import { CREATOR_NAME, DISCORD_URL } from "@/lib/links";
 import { DiscordIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 
 import { RelatedAddons } from "@/components/RelatedAddons";
+import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
+import { useEffect } from "react";
 
 const RAW_ADDONS = addonsData as Addon[];
 const TERABOX_TUTORIAL_URL = "https://youtu.be/fN4BennXjTY?si=Tz6C8QLpNW2d9xtz";
@@ -62,6 +64,14 @@ function AddonPage() {
   const [showTutorial, setShowTutorial] = useState(false);
 
   const addon = useMemo(() => RAW_ADDONS.find((a) => a.id === id), [id]);
+
+  // Analytics
+  useEffect(() => {
+    initSession();
+    if (addon) trackEvent("addon_view", { addonId: addon.id, title: addon.title });
+    const cleanup = initScrollTracker();
+    return () => { cleanup && cleanup(); };
+  }, [addon?.id]);
   
   // Get related addons (same category or random if none)
   const relatedAddons = useMemo(() => {

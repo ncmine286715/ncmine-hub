@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import { useAuth } from '../hooks/use-auth';
-import { toggleFavorite } from '../lib/firebase-services';
+import { toggleFavorite, awardPoints } from '../lib/firebase-services';
+import { trackEvent } from '../lib/analytics';
 import { toast } from 'sonner';
 
 export const FavoriteButton: React.FC<{ addonId: string }> = ({ addonId }) => {
@@ -24,6 +25,8 @@ export const FavoriteButton: React.FC<{ addonId: string }> = ({ addonId }) => {
     setLoading(true);
     try {
       await toggleFavorite(user.uid, addonId, isFavorite);
+      trackEvent(isFavorite ? 'unfavorite' : 'favorite', { addonId });
+      if (!isFavorite) await awardPoints(user.uid, 1); // +1 XP por favoritar
       setIsFavorite(!isFavorite);
       toast.success(isFavorite ? 'Removido dos favoritos' : 'Salvo nos favoritos!');
     } catch (error) {

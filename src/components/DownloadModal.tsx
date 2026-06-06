@@ -3,6 +3,8 @@ import { X, ArrowRight, Heart, DollarSign } from "lucide-react";
 import { DiscordIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL } from "@/lib/links";
 import { TeraboxTutorial } from "@/components/TeraboxTutorial";
+import { trackEvent } from "@/lib/analytics";
+import { awardPoints } from "@/lib/firebase-services";
 
 type Variant = "discord" | "instagram";
 
@@ -22,9 +24,12 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props & { 
   const { user } = useAuth();
 
   const handleDownloadClick = async () => {
+    // Sempre rastreia (logado ou anônimo)
+    trackEvent("download_start", { addonId, title });
     if (user && addonId) {
       try {
         await recordDownload(user.uid, addonId);
+        await awardPoints(user.uid, 5); // +5 XP por download
       } catch (error) {
         console.error("Error recording download:", error);
       }

@@ -89,7 +89,16 @@ function ProfilePage() {
 
       <main className="mx-auto max-w-2xl px-3 py-6">
         {/* Admin Section */}
-        {isAdmin && <AdminBroadcastPanel />}
+        {isAdmin && (
+          <div className="mb-6">
+            <Link
+              to="/admin"
+              className="btn-block w-full bg-red-600 text-white border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] flex items-center justify-center gap-2 !py-3"
+            >
+              <ShieldCheck className="h-5 w-5" /> Abrir Painel Admin (Estatísticas)
+            </Link>
+          </div>
+        )}
         
         {/* Profile Card with Banner */}
         <div className="card-block p-0 overflow-hidden relative">

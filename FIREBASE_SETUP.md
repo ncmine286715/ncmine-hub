@@ -1,109 +1,87 @@
-# Guia de Configuração e Regras do Firebase para NCMINE HUB
+# 🔥 Firebase — Configuração NCMINE HUB
 
-Este documento contém todas as configurações necessárias no Console do Firebase para garantir que o sistema de login, comunidade, segurança e notificações funcione corretamente.
-
----
-
-### 1. Firestore Database (Regras de Segurança)
-
-Você deve copiar este JSON e colar na aba **Rules** do seu Firestore Database. Estas regras protegem seu banco de dados contra spam, garantem a privacidade dos perfis e permitem o funcionamento do sistema de XP e curtidas.
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    // Proteção contra spam de criação de contas
-    match /system_limits/{hash} {
-      allow read: if false;
-      allow create: if request.auth != null;
-    }
-
-    // Perfis de Usuário (XP, Ranks e Personalização)
-    match /users/{userId} {
-      allow read: if true;
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && (
-        request.auth.uid == userId || 
-        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['points', 'updatedAt'])
-      );
-    }
-
-    // Estatísticas globais dos Addons
-    match /addons/{addonId} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-
-    // Comentários, Curtidas e Respostas Aninhadas
-    match /comments/{commentId} {
-      allow read: if true;
-      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
-      allow update: if request.auth != null && (
-        resource.data.userId == request.auth.uid || 
-        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'repliesCount'])
-      );
-      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
-      
-      match /replies/{replyId} {
-        allow read: if true;
-        allow create: if request.auth != null;
-      }
-    }
-
-    // Rastreamento de Curtidas
-    match /likes/{likeId} {
-      allow read: if true;
-      allow write: if request.auth != null && likeId.startsWith(request.auth.uid);
-    }
-
-    // Favoritos
-    match /favorites/{favId} {
-      allow read: if true;
-      allow write: if request.auth != null && favId.startsWith(request.auth.uid);
-    }
-
-    // Avaliações (Estrelas)
-    match /ratings/{ratingId} {
-      allow read: if true;
-      allow create: if request.auth != null && ratingId.startsWith(request.auth.uid);
-      allow update: if false; 
-    }
-
-    // Histórico de Downloads
-    match /downloads/{dwId} {
-      allow read: if true;
-      allow write: if request.auth != null && dwId.startsWith(request.auth.uid);
-    }
-
-    // Notificações Globais (Apenas Admin pode criar)
-    match /global_notifications/{notifId} {
-      allow read: if true;
-      allow create: if request.auth != null && request.auth.token.email == 'rosidomingos032@gmail.com';
-    }
-  }
-}
-```
+Este documento descreve **exatamente** o que precisa estar configurado no Console do Firebase para o site funcionar 100% (login, XP, comentários, analytics e painel admin).
 
 ---
 
-### 2. Configuração do Authentication (Console do Firebase)
+## 1. Authentication
 
-Para que o login com Google funcione, você **precisa** seguir estes passos no Console do Firebase:
+No Console do Firebase → **Authentication → Sign-in method**:
 
-1.  **Habilitar o Provedor Google**:
-    *   No menu lateral, vá em **Authentication** > **Sign-in method**.
-    *   Clique em **Add new provider**.
-    *   Selecione **Google** e ative o botão **Enable**.
-    *   Preencha o nome de exibição do projeto e selecione o e-mail de suporte. Clique em **Save**.
-
-2.  **Autorizar Domínio do Cloudflare**:
-    *   No **Authentication**, vá na aba **Settings** > **Authorized domains**.
-    *   Clique em **Add domain**.
-    *   Adicione o endereço do seu site no Cloudflare: `ncmine-hub.pages.dev` (ou seu domínio customizado). Isso é obrigatório para o login funcionar.
+1. **Google** → habilitar (Enable). Defina e-mail de suporte.
+2. **Email/Password** → habilitar (opcional, mas o site oferece como fallback).
+3. Em **Authentication → Settings → Authorized domains**, adicione:
+   - `ncmine-hub.lovable.app`
+   - `ncmine-hub.pages.dev` (se usar Cloudflare Pages)
+   - Domínios customizados que você usar.
 
 ---
 
-### 3. Checklist Final de Deploy
-1.  **Deploy no Cloudflare Pages**: O seu código já está otimizado para build automático. Apenas certifique-se de que, se você usar variáveis de ambiente no Cloudflare, elas correspondam ao `firebaseConfig` definido em `src/lib/firebase.ts`.
-2.  **Verificação de Produção**: Após o deploy, teste o login e o cadastro (escolhendo um novo nickname) para garantir que tudo está conectado corretamente.
+## 2. Firestore — Regras de Segurança
+
+Cole o conteúdo do arquivo [`firestore.rules`](./firestore.rules) na aba **Rules** do Firestore.
+
+As regras cobrem:
+- 👤 **Usuários** — só você edita o próprio perfil; XP de terceiros pode ser incrementado por qualquer logado.
+- 💬 **Comentários** — qualquer um lê; só logado cria; só dono edita/apaga; likes/replies counts atualizáveis por qualquer logado.
+- ❤️ **Favoritos / ⭐ Ratings / ⬇️ Downloads** — só logado, e o ID precisa começar com `uid_…` (anti-abuso).
+- 📈 **Analytics (`public_events`)** — qualquer um (mesmo deslogado) pode **criar** eventos; apenas o admin lê.
+- 📊 **`daily_stats`** — contadores diários globais, leitura pública (para painel) e incremento aberto.
+- 📦 **`addons`** — contadores agregados de downloads/views/etc.; leitura pública, escrita por logados.
+- 🛡️ **`global_notifications`** — só o admin (`rosidomingos032@gmail.com`) cria notificações.
+
+---
+
+## 3. Coleções criadas pelo site (automático)
+
+| Coleção            | Função                                                  |
+|--------------------|---------------------------------------------------------|
+| `users`            | Perfil, XP, rank, favoritos                              |
+| `addons`           | Contadores por addon: downloads, views, clicks, shares  |
+| `comments`         | Comentários com replies aninhadas                        |
+| `favorites`        | Relação usuário ↔ addon favoritado                       |
+| `ratings`          | Avaliações com nota e texto                              |
+| `downloads`        | Registro de quem baixou o quê                            |
+| `likes`            | Curtidas em comentários                                  |
+| `public_events`    | Log bruto de cada evento (page view, click, share, ...) |
+| `daily_stats`      | Agregado por dia (`YYYY-MM-DD`)                          |
+| `global_notifications` | Notificações enviadas para todos os usuários         |
+
+---
+
+## 4. Painel Admin
+
+Acesse em `/admin` logado com `rosidomingos032@gmail.com`. Mostra:
+
+- 📊 KPIs do dia: downloads, views, clicks, sessões, CTR, profundidade de rolagem média.
+- 📅 Tabela dos últimos 7 dias.
+- 🏆 Top 20 addons por downloads, com Views, CTR, Rating, Favoritos.
+- 👥 Novos usuários e XP.
+- 💬 Comentários recentes.
+- ⚡ Stream de eventos em tempo real.
+- 📢 Broadcast de notificações globais.
+
+---
+
+## 5. Sistema de XP
+
+| Ação               | XP   |
+|--------------------|------|
+| Conta criada       | 10   |
+| Avaliar (5⭐ + texto) | +5  |
+| Comentar           | +2   |
+| Favoritar          | +1   |
+| Baixar addon       | +5   |
+
+Ranks: `Iniciante` → `Explorador` (50 XP) → `Veterano` (200 XP) → `Lenda` (500 XP).
+
+---
+
+## 6. Checklist final
+
+- [ ] Provider Google ativado.
+- [ ] Domínios autorizados.
+- [ ] Regras do Firestore publicadas.
+- [ ] Login funciona com 1 clique no Google.
+- [ ] Após login, abrir `/profile` e clicar **Abrir Painel Admin** (se for o e-mail admin).
+- [ ] Verificar que ações geram eventos no `public_events`.

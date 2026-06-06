@@ -10,6 +10,7 @@ import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } fro
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
+import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,6 +63,14 @@ function Index() {
         setNotificationsEnabled(true);
       }
     } catch {}
+  }, []);
+
+  // Analytics: sessão + page_view + scroll
+  useEffect(() => {
+    initSession();
+    trackEvent("page_view", { page: "home" });
+    const cleanup = initScrollTracker();
+    return () => { cleanup && cleanup(); };
   }, []);
 
   const { featured, rest } = useMemo(() => {
@@ -179,6 +188,7 @@ function Index() {
         url={downloadFor?.downloadUrl ?? "#"}
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
+        addonId={downloadFor?.id}
       />
       <InAppBrowserGuard />
     </div>

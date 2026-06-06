@@ -1,6 +1,7 @@
 import { Star, Download, User, Calendar, Tag, Share2 } from "lucide-react";
 import { useState } from "react";
 import { shareAddon } from "@/lib/share";
+import { trackEvent } from "@/lib/analytics";
 
 export type Addon = {
   id: string;
@@ -35,6 +36,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
 
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
+    trackEvent("share", { addonId: addon.id, title: addon.title });
     await shareAddon(addon, (msg) => {
       setToast(msg);
       window.setTimeout(() => setToast(null), 2200);
@@ -48,7 +50,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
     <article className={`card-block relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}>
       <button
         type="button"
-        onClick={() => onOpen(addon)}
+        onClick={() => { trackEvent("addon_click", { addonId: addon.id, title: addon.title }); onOpen(addon); }}
         className="group relative block aspect-[16/10] w-full overflow-hidden border-b-2 border-foreground bg-muted"
       >
         {!broken ? (

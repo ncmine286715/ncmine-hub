@@ -102,6 +102,7 @@ function FavoritesPage() {
         url={downloadFor?.downloadUrl ?? "#"}
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
+        addonId={downloadFor?.id}
       />
     </div>
   );
