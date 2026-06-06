@@ -64,6 +64,14 @@ function AddonPage() {
   const [showTutorial, setShowTutorial] = useState(false);
 
   const addon = useMemo(() => RAW_ADDONS.find((a) => a.id === id), [id]);
+
+  // Analytics
+  useEffect(() => {
+    initSession();
+    if (addon) trackEvent("addon_view", { addonId: addon.id, title: addon.title });
+    const cleanup = initScrollTracker();
+    return () => { cleanup && cleanup(); };
+  }, [addon?.id]);
   
   // Get related addons (same category or random if none)
   const relatedAddons = useMemo(() => {
