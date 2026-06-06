@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/use-auth';
 import { addRating, addComment, getComments, toggleLikeComment, addReply, awardPoints } from '../lib/firebase-services';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
+import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
