@@ -50,7 +50,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
     <article className={`card-block relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}>
       <button
         type="button"
-        onClick={() => onOpen(addon)}
+        onClick={() => { trackEvent("addon_click", { addonId: addon.id, title: addon.title }); onOpen(addon); }}
         className="group relative block aspect-[16/10] w-full overflow-hidden border-b-2 border-foreground bg-muted"
       >
         {!broken ? (
