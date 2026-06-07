@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, Heart, Users, User } from "lucide-react";
+import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, Heart, Users, User, Settings } from "lucide-react";
 import { MinecraftBlockIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL } from "@/lib/links";
 import { NotificationHub } from "./NotificationHub";
+import { NotificationPreferences } from "./NotificationPreferences";
 import { useAuth } from "@/hooks/use-auth";
 
 type Tab = "home" | "favorites" | "community" | "profile" | "categorias" | "notificacoes" | "sobre";
@@ -274,62 +275,84 @@ type NotificationsPanelProps = {
 };
 
 export function NotificationsPanel({ onClose, onEnableNotifications, notificationsEnabled }: NotificationsPanelProps) {
+  const [showPrefs, setShowPrefs] = useState(false);
+
   return (
     <div className="fixed inset-0 z-[60] flex items-end sm:hidden">
       <div className="absolute inset-0 bg-foreground/40" onClick={onClose} />
-      <div className="relative w-full animate-mc-rise rounded-t-2xl border-t-2 border-foreground bg-background pb-20">
+      <div className="relative w-full max-h-[85vh] overflow-y-auto animate-mc-rise rounded-t-2xl border-t-2 border-foreground bg-background pb-20">
         <div className="mx-auto my-3 h-1 w-12 rounded-full bg-muted-foreground/30" />
         <div className="px-4 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="border-2 border-foreground bg-primary p-2">
-              <Bell className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h3 className="font-pixel text-xs">ALERTAS DE ADDONS</h3>
-              <p className="text-xs text-muted-foreground">Receba avisos de novos mods</p>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-3">
-            {notificationsEnabled ? (
-              <div className="border-2 border-foreground bg-primary/10 p-4">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-primary animate-pulse" />
-                  <span className="text-sm font-bold text-primary">Notificacoes Ativadas</span>
+          {showPrefs ? (
+            <NotificationPreferences onClose={() => setShowPrefs(false)} />
+          ) : (
+            <>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="border-2 border-foreground bg-primary p-2">
+                    <Bell className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-pixel text-xs">ALERTAS DE ADDONS</h3>
+                    <p className="text-xs text-muted-foreground">Receba avisos de novos mods</p>
+                  </div>
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">
-                  Voce sera avisado quando novos addons forem adicionados ao hub.
-                </p>
-              </div>
-            ) : (
-              <>
-                <p className="text-sm text-muted-foreground">
-                  Ative as notificacoes para ser o primeiro a saber quando novos addons chegarem no hub.
-                </p>
                 <button
-                  type="button"
-                  onClick={onEnableNotifications}
-                  className="btn-block w-full bg-primary text-primary-foreground !py-3 min-h-[48px]"
+                  onClick={() => setShowPrefs(true)}
+                  className="p-2 border-2 border-foreground hover:bg-muted min-h-[40px] min-w-[40px] flex items-center justify-center"
                 >
-                  <Bell className="h-5 w-5" />
-                  Ativar Notificacoes
+                  <Settings className="h-4 w-4" />
                 </button>
-              </>
-            )}
+              </div>
 
-            <div className="border-t-2 border-foreground pt-4">
-              <p className="mb-2 text-xs font-bold uppercase">Nao perca nada</p>
-              <a
-                href={DISCORD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-block w-full bg-[#5865F2] text-white !py-3 min-h-[48px]"
-              >
-                <DiscordIcon className="h-5 w-5" />
-                Discord (avisos mais rapidos)
-              </a>
-            </div>
-          </div>
+              <div className="mt-4 space-y-3">
+                {notificationsEnabled ? (
+                  <div className="border-2 border-foreground bg-primary/10 p-4">
+                    <div className="flex items-center gap-2">
+                      <div className="h-3 w-3 rounded-full bg-primary animate-pulse" />
+                      <span className="text-sm font-bold text-primary">Notificacoes Ativadas</span>
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Voce sera avisado quando novos addons forem adicionados ao hub.
+                    </p>
+                    <button
+                      onClick={() => setShowPrefs(true)}
+                      className="mt-2 text-[10px] font-bold text-primary uppercase hover:underline"
+                    >
+                      Personalizar horarios e tipos →
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-sm text-muted-foreground">
+                      Ative as notificacoes para ser o primeiro a saber quando novos addons chegarem no hub.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={onEnableNotifications}
+                      className="btn-block w-full bg-primary text-primary-foreground !py-3 min-h-[48px]"
+                    >
+                      <Bell className="h-5 w-5" />
+                      Ativar Notificacoes
+                    </button>
+                  </>
+                )}
+
+                <div className="border-t-2 border-foreground pt-4">
+                  <p className="mb-2 text-xs font-bold uppercase">Nao perca nada</p>
+                  <a
+                    href={DISCORD_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-block w-full bg-[#5865F2] text-white !py-3 min-h-[48px]"
+                  >
+                    <DiscordIcon className="h-5 w-5" />
+                    Discord (avisos mais rapidos)
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
