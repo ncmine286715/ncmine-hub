@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { X, ArrowRight, Heart, DollarSign } from "lucide-react";
+import { X, ArrowRight, Heart, DollarSign, HelpCircle } from "lucide-react";
 import { DiscordIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL } from "@/lib/links";
 import { TeraboxTutorial } from "@/components/TeraboxTutorial";
+import { InstallGuide } from "@/components/InstallGuide";
 import { trackEvent } from "@/lib/analytics";
 import { awardPoints } from "@/lib/firebase-services";
 
@@ -21,6 +22,7 @@ import { recordDownload } from "@/lib/firebase-services";
 export function DownloadModal({ open, url, title, onClose, addonId }: Props & { addonId?: string }) {
   const [variant, setVariant] = useState<Variant>("discord");
   const [count, setCount] = useState(3);
+  const [showInstallGuide, setShowInstallGuide] = useState(false);
   const { user } = useAuth();
 
   const handleDownloadClick = async () => {
@@ -114,10 +116,27 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props & { 
           Baixando: <span className="font-semibold text-foreground">{title}</span>
         </p>
 
+        {/* Install Guide Button */}
+        <button
+          onClick={() => setShowInstallGuide(!showInstallGuide)}
+          className="mt-3 w-full btn-block bg-muted/50 text-foreground !py-2 text-[10px] flex items-center justify-center gap-1"
+        >
+          <HelpCircle className="h-3.5 w-3.5" />
+          {showInstallGuide ? 'Fechar guia de instalacao' : 'Como instalar este addon?'}
+        </button>
+
+        {showInstallGuide && (
+          <div className="mt-2">
+            <InstallGuide addonTitle={title} onClose={() => setShowInstallGuide(false)} />
+          </div>
+        )}
+
         {/* Tutorial Terabox - universal em todo download */}
-        <div className="mt-3 sm:mt-4">
-          <TeraboxTutorial compact />
-        </div>
+        {!showInstallGuide && (
+          <div className="mt-3 sm:mt-4">
+            <TeraboxTutorial compact />
+          </div>
+        )}
 
         {/* Support section - collapsible on mobile */}
         <details className="group mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-5 sm:pt-4">
