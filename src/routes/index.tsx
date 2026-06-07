@@ -11,6 +11,7 @@ import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
+import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,6 +49,7 @@ type Tab = "home" | "categorias" | "notificacoes" | "sobre";
 
 function Index() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
@@ -131,6 +133,24 @@ function Index() {
         onCategoryChange={setSelectedCategory}
       />
 
+      {/* Pre-footer CTA */}
+      {!user && (
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 py-8 sm:py-12">
+          <div className="border-2 border-foreground bg-primary/5 p-6 sm:p-10 text-center shadow-[6px_6px_0_0_var(--ink)]">
+            <h3 className="text-xl sm:text-3xl font-black uppercase mb-2">Nao perca nenhum addon</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-5 max-w-md mx-auto">
+              Crie sua conta gratis e receba alertas quando novos addons chegarem. Salve favoritos e ganhe XP.
+            </p>
+            <Link
+              to="/auth"
+              className="btn-block bg-primary text-primary-foreground !px-10 !py-4 text-sm sm:text-base font-black uppercase shadow-[6px_6px_0_0_var(--ink)] animate-mc-pulse-orange"
+            >
+              CRIAR CONTA GRATIS
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="border-t-2 border-foreground bg-foreground text-background">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10">
@@ -144,14 +164,14 @@ function Index() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#5865F2] text-white"><DiscordIcon className="h-4 w-4" /> Discord</a>
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground"><InstagramIcon className="h-4 w-4" /> Instagram</a>
-            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#FF0000] text-white"><YouTubeIcon className="h-4 w-4" /> YouTube</a>
-            <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground"><TikTokIcon className="h-4 w-4" /> TikTok</a>
+            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#5865F2] text-white !py-2.5 min-h-[44px]"><DiscordIcon className="h-4 w-4" /> Discord</a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><InstagramIcon className="h-4 w-4" /> Instagram</a>
+            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#FF0000] text-white !py-2.5 min-h-[44px]"><YouTubeIcon className="h-4 w-4" /> YouTube</a>
+            <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><TikTokIcon className="h-4 w-4" /> TikTok</a>
           </div>
         </div>
         <div className="border-t-2 border-background/20 py-3 text-center font-pixel text-[9px] text-background/60">
-          &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; <Link to="/legal" className="hover:text-background">Política de Privacidade e Termos</Link>
+          &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; <Link to="/legal" className="hover:text-background">Politica de Privacidade e Termos</Link>
         </div>
       </footer>
 

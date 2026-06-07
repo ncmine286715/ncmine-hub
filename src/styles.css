@@ -280,11 +280,26 @@
   .btn-block {
     min-height: 44px;
   }
+
+  /* Better tap feedback */
+  button, a {
+    -webkit-tap-highlight-color: rgba(255, 122, 0, 0.1);
+  }
+
+  /* Smoother scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Safe area for bottom navigation */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .pb-safe {
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
   }
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  overflow-y: scroll;
 }

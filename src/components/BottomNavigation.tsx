@@ -3,6 +3,7 @@ import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, He
 import { MinecraftBlockIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL } from "@/lib/links";
 import { NotificationHub } from "./NotificationHub";
+import { useAuth } from "@/hooks/use-auth";
 
 type Tab = "home" | "favorites" | "community" | "profile" | "categorias" | "notificacoes" | "sobre";
 
@@ -14,71 +15,86 @@ type Props = {
 
 export function BottomNavigation({ activeTab, onTabChange, hasNewNotification }: Props) {
   const [showNotifs, setShowNotifs] = useState(false);
+  const { user } = useAuth();
 
   return (
     <>
-      <nav className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-foreground bg-background/98 backdrop-blur-sm sm:hidden">
-        <div className="grid h-16 grid-cols-5">
-          <button
-            type="button"
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-foreground bg-background/98 backdrop-blur-sm sm:hidden pb-safe">
+        <div className="grid h-[60px] grid-cols-5">
+          <NavButton
+            active={activeTab === "home"}
             onClick={() => onTabChange("home")}
-            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-              activeTab === "home" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <Home className={`h-5 w-5 ${activeTab === "home" ? "fill-primary" : ""}`} />
-            <span className="font-pixel text-[8px]">INICIO</span>
-          </button>
-          
-          <button
-            type="button"
+            icon={<Home className="h-5 w-5" />}
+            activeIcon={<Home className="h-5 w-5 fill-primary" />}
+            label="INICIO"
+          />
+          <NavButton
+            active={activeTab === "favorites"}
             onClick={() => onTabChange("favorites")}
-            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-              activeTab === "favorites" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <Heart className={`h-5 w-5 ${activeTab === "favorites" ? "fill-primary" : ""}`} />
-            <span className="font-pixel text-[8px]">AMADOS</span>
-          </button>
-
-          <button
-            type="button"
+            icon={<Heart className="h-5 w-5" />}
+            activeIcon={<Heart className="h-5 w-5 fill-primary text-primary" />}
+            label="AMADOS"
+          />
+          <NavButton
+            active={false}
             onClick={() => setShowNotifs(true)}
-            className={`relative flex flex-col items-center justify-center gap-0.5 transition-colors text-muted-foreground hover:text-foreground`}
-          >
-            <Bell className="h-5 w-5" />
-            {hasNewNotification && (
-              <span className="absolute top-3 right-4 h-2 w-2 bg-red-500 rounded-full border border-background animate-pulse" />
-            )}
-            <span className="font-pixel text-[8px]">ALERTAS</span>
-          </button>
-          
-          <button
-            type="button"
+            icon={<Bell className="h-5 w-5" />}
+            activeIcon={<Bell className="h-5 w-5" />}
+            label="ALERTAS"
+            badge={hasNewNotification}
+          />
+          <NavButton
+            active={activeTab === "community"}
             onClick={() => onTabChange("community")}
-            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-              activeTab === "community" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <Users className={`h-5 w-5 ${activeTab === "community" ? "fill-primary/20" : ""}`} />
-            <span className="font-pixel text-[8px]">VILA</span>
-          </button>
-          
-          <button
-            type="button"
+            icon={<Users className="h-5 w-5" />}
+            activeIcon={<Users className="h-5 w-5 text-primary" />}
+            label="VILA"
+          />
+          <NavButton
+            active={activeTab === "profile"}
             onClick={() => onTabChange("profile")}
-            className={`flex flex-col items-center justify-center gap-0.5 transition-colors ${
-              activeTab === "profile" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <User className={`h-5 w-5 ${activeTab === "profile" ? "fill-primary/20" : ""}`} />
-            <span className="font-pixel text-[8px]">EU</span>
-          </button>
+            icon={<User className="h-5 w-5" />}
+            activeIcon={<User className="h-5 w-5 text-primary" />}
+            label={user ? "EU" : "ENTRAR"}
+            highlight={!user}
+          />
         </div>
       </nav>
 
       {showNotifs && <NotificationHub onClose={() => setShowNotifs(false)} />}
     </>
+  );
+}
+
+function NavButton({
+  active, onClick, icon, activeIcon, label, badge, highlight
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: React.ReactNode;
+  activeIcon: React.ReactNode;
+  label: string;
+  badge?: boolean;
+  highlight?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative flex flex-col items-center justify-center gap-0.5 transition-colors min-h-[44px] ${
+        active
+          ? "bg-primary/10 text-primary"
+          : highlight
+            ? "text-primary"
+            : "text-muted-foreground active:text-foreground"
+      }`}
+    >
+      {active ? activeIcon : icon}
+      {badge && (
+        <span className="absolute top-2 right-1/4 h-2.5 w-2.5 bg-red-500 rounded-full border-2 border-background animate-pulse" />
+      )}
+      <span className={`font-pixel text-[7px] ${highlight ? 'text-primary' : ''}`}>{label}</span>
+    </button>
   );
 }
 
@@ -120,10 +136,10 @@ export function CategoriesPanel({ selectedCategory, onSelectCategory, onClose }:
                   onSelectCategory(cat.id);
                   onClose();
                 }}
-                className={`flex items-center gap-3 border-2 border-foreground p-3 text-left transition-all ${
-                  selectedCategory === cat.id 
-                    ? `${cat.color} shadow-[4px_4px_0_0_var(--ink)]` 
-                    : "bg-background hover:bg-muted"
+                className={`flex items-center gap-3 border-2 border-foreground p-3 text-left transition-all min-h-[52px] ${
+                  selectedCategory === cat.id
+                    ? `${cat.color} shadow-[4px_4px_0_0_var(--ink)]`
+                    : "bg-background hover:bg-muted active:bg-muted"
                 }`}
               >
                 {cat.icon}
@@ -149,12 +165,12 @@ export function AboutPanel({ onClose }: AboutPanelProps) {
       <div className="absolute inset-0 bg-foreground/40" onClick={onClose} />
       <div className="relative flex max-h-[85vh] w-full flex-col animate-mc-rise rounded-t-2xl border-t-2 border-foreground bg-background pb-20">
         <div className="mx-auto my-3 h-1 w-12 rounded-full bg-muted-foreground/30" />
-        
+
         <div className="flex gap-2 px-4">
           <button
             type="button"
             onClick={() => setTab("sobre")}
-            className={`flex-1 border-2 border-foreground px-3 py-2 font-pixel text-[10px] ${
+            className={`flex-1 border-2 border-foreground px-3 py-2.5 font-pixel text-[10px] min-h-[44px] ${
               tab === "sobre" ? "bg-primary text-primary-foreground" : "bg-background"
             }`}
           >
@@ -163,7 +179,7 @@ export function AboutPanel({ onClose }: AboutPanelProps) {
           <button
             type="button"
             onClick={() => setTab("privacidade")}
-            className={`flex-1 border-2 border-foreground px-3 py-2 font-pixel text-[10px] ${
+            className={`flex-1 border-2 border-foreground px-3 py-2.5 font-pixel text-[10px] min-h-[44px] ${
               tab === "privacidade" ? "bg-primary text-primary-foreground" : "bg-background"
             }`}
           >
@@ -183,11 +199,11 @@ export function AboutPanel({ onClose }: AboutPanelProps) {
                   <p className="text-xs text-muted-foreground">Addons de Minecraft Bedrock</p>
                 </div>
               </div>
-              
+
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Hub nao-oficial de addons de Minecraft Bedrock. Todos os creditos vao para os criadores originais listados em cada addon.
               </p>
-              
+
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Este site foi criado para facilitar o acesso aos melhores addons da comunidade, reunindo em um so lugar mods curados, testados e prontos para download.
               </p>
@@ -198,7 +214,7 @@ export function AboutPanel({ onClose }: AboutPanelProps) {
                   href={DISCORD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-block w-full bg-[#5865F2] text-white !py-3"
+                  className="btn-block w-full bg-[#5865F2] text-white !py-3 min-h-[48px]"
                 >
                   <DiscordIcon className="h-5 w-5" />
                   Entrar no Discord
@@ -212,28 +228,28 @@ export function AboutPanel({ onClose }: AboutPanelProps) {
           ) : (
             <div className="space-y-4">
               <h3 className="font-pixel text-sm">POLITICA DE PRIVACIDADE</h3>
-              
+
               <div className="space-y-3 text-sm leading-relaxed text-muted-foreground">
                 <p>
                   <strong className="text-foreground">1. Coleta de Dados</strong><br />
                   Este site nao coleta dados pessoais dos usuarios. Nao utilizamos cookies de rastreamento ou ferramentas de analytics que identifiquem usuarios individuais.
                 </p>
-                
+
                 <p>
                   <strong className="text-foreground">2. Notificacoes</strong><br />
                   Se voce optar por receber notificacoes de novos addons, essa preferencia e armazenada apenas localmente no seu dispositivo.
                 </p>
-                
+
                 <p>
                   <strong className="text-foreground">3. Downloads</strong><br />
                   Os downloads sao redirecionados para servicos de terceiros (como TeraBox). Cada servico possui sua propria politica de privacidade.
                 </p>
-                
+
                 <p>
                   <strong className="text-foreground">4. Links Externos</strong><br />
                   Este site contem links para redes sociais e outros servicos externos. Nao somos responsaveis pelas praticas de privacidade desses sites.
                 </p>
-                
+
                 <p>
                   <strong className="text-foreground">5. Contato</strong><br />
                   Para questoes sobre privacidade, entre em contato pelo Discord.
@@ -288,12 +304,12 @@ export function NotificationsPanel({ onClose, onEnableNotifications, notificatio
             ) : (
               <>
                 <p className="text-sm text-muted-foreground">
-                  Ative as notificacoes para ser o primeiro a saber quando novos addons apeloes chegarem no hub.
+                  Ative as notificacoes para ser o primeiro a saber quando novos addons chegarem no hub.
                 </p>
                 <button
                   type="button"
                   onClick={onEnableNotifications}
-                  className="btn-block w-full bg-primary text-primary-foreground !py-3"
+                  className="btn-block w-full bg-primary text-primary-foreground !py-3 min-h-[48px]"
                 >
                   <Bell className="h-5 w-5" />
                   Ativar Notificacoes
@@ -307,7 +323,7 @@ export function NotificationsPanel({ onClose, onEnableNotifications, notificatio
                 href={DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-block w-full bg-[#5865F2] text-white !py-3"
+                className="btn-block w-full bg-[#5865F2] text-white !py-3 min-h-[48px]"
               >
                 <DiscordIcon className="h-5 w-5" />
                 Discord (avisos mais rapidos)

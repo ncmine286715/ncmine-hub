@@ -146,40 +146,39 @@ import { useEffect } from "react";
 import { soundManager } from "../lib/sounds";
 import { getLatestGlobalNotif } from "../lib/firebase-services";
 import { toast } from "sonner";
+import { EngagementToast } from "../components/EngagementToast";
+import { Toaster } from "sonner";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
-  // Listen for global notifications
   useEffect(() => {
     let lastNotifId = localStorage.getItem('last_global_notif');
 
     const checkGlobalNotif = async () => {
-      const latest = await getLatestGlobalNotif();
-      if (latest && latest.id !== lastNotifId) {
-        // Play sound
-        soundManager.play('xp');
-        
-        // Browser notification if permitted
-        if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-          new Notification(latest.title, { body: latest.message, icon: '/apple-touch-icon.png' });
+      try {
+        const latest = await getLatestGlobalNotif();
+        if (latest && latest.id !== lastNotifId) {
+          soundManager.play('xp');
+
+          if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+            new Notification(latest.title, { body: latest.message, icon: '/apple-touch-icon.png' });
+          }
+
+          toast(latest.title, {
+            description: latest.message,
+            action: latest.addonId ? {
+              label: 'BAIXAR AGORA',
+              onClick: () => window.location.href = `/addon/${latest.addonId}`
+            } : undefined,
+            duration: 10000,
+          });
+
+          localStorage.setItem('last_global_notif', latest.id);
         }
-
-        // In-app toast
-        toast(latest.title, {
-          description: latest.message,
-          action: latest.addonId ? {
-            label: 'BAIXAR AGORA',
-            onClick: () => window.location.href = `/addon/${latest.addonId}`
-          } : undefined,
-          duration: 10000,
-        });
-
-        localStorage.setItem('last_global_notif', latest.id);
-      }
+      } catch {}
     };
 
-    // Check on mount and then every 2 minutes
     checkGlobalNotif();
     const interval = setInterval(checkGlobalNotif, 120000);
     return () => clearInterval(interval);
@@ -188,11 +187,10 @@ function RootComponent() {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Play sound if clicking a button, link, or anything clickable
       if (
-        target.tagName === 'BUTTON' || 
-        target.tagName === 'A' || 
-        target.closest('button') || 
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.closest('button') ||
         target.closest('a')
       ) {
         soundManager.play('click');
@@ -207,6 +205,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Outlet />
+        <EngagementToast />
+        <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>
   );

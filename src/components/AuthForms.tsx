@@ -10,14 +10,14 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from 'sonner';
-import { Mail, Sparkles } from 'lucide-react';
+import { Mail, Sparkles, ArrowRight, Eye, EyeOff, Loader2 } from 'lucide-react';
 
 export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<'menu' | 'login' | 'register' | 'reset'>('menu');
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   React.useEffect(() => {
     getRedirectResult(auth).then(async (result) => {
@@ -34,7 +34,7 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
           user.email?.split('@')[0] ||
           `user_${user.uid.slice(0, 6)}`;
         await createUserProfile(user, tempUsername);
-        toast.success(`Bem-vindo, ${tempUsername}! 🎉`);
+        toast.success(`Bem-vindo ao NCMINE, ${tempUsername}! +10 XP`);
       } else {
         toast.success(`Bem-vindo de volta, ${profile.username ?? 'minerador'}!`);
       }
@@ -74,7 +74,10 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
       const cred = await signInWithEmailAndPassword(auth, email, password);
       await finalize(cred.user);
     } catch (err: any) {
-      toast.error('Erro login: ' + (err.code || err.message));
+      const msg = err.code === 'auth/invalid-credential' ? 'Email ou senha incorretos'
+        : err.code === 'auth/too-many-requests' ? 'Muitas tentativas. Tente mais tarde'
+        : 'Erro no login';
+      toast.error(msg);
       setLoading(false);
     }
   };
@@ -82,13 +85,16 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
   const handleEmailRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) return toast.error('Preencha email e senha');
-    if (password.length < 6) return toast.error('Senha mín. 6 caracteres');
+    if (password.length < 6) return toast.error('Senha precisa ter no minimo 6 caracteres');
     setLoading(true);
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       await finalize(cred.user);
     } catch (err: any) {
-      toast.error('Erro cadastro: ' + (err.code || err.message));
+      const msg = err.code === 'auth/email-already-in-use' ? 'Este email ja tem conta. Faca login!'
+        : err.code === 'auth/weak-password' ? 'Senha muito fraca. Use pelo menos 6 caracteres'
+        : 'Erro no cadastro';
+      toast.error(msg);
       setLoading(false);
     }
   };
@@ -102,7 +108,7 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
       toast.success('Link enviado! Veja seu email.');
       setMode('menu');
     } catch (err: any) {
-      toast.error('Erro: ' + (err.code || err.message));
+      toast.error('Erro ao enviar link de recuperacao');
     } finally {
       setLoading(false);
     }
@@ -110,88 +116,145 @@ export const AuthForms: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
 
   return (
     <div className="card-block bg-background p-5 sm:p-6">
-      <div className="mb-4 text-center">
+      <div className="mb-5 text-center">
         <div className="inline-block bg-primary px-3 py-1 font-pixel text-[9px] text-primary-foreground border-2 border-foreground shadow-[3px_3px_0_0_var(--ink)] mb-3">
           ENTRAR EM 1 CLIQUE
         </div>
         <h2 className="text-xl font-black uppercase">Junte-se aos mineradores</h2>
-        <p className="text-xs text-muted-foreground mt-1 flex items-center justify-center gap-1">
-          <Sparkles className="h-3 w-3 text-primary" /> Ganhe XP, favoritos e comentários
+        <p className="text-xs text-muted-foreground mt-1.5 flex items-center justify-center gap-1">
+          <Sparkles className="h-3 w-3 text-primary" /> Ganhe XP, salve favoritos e comente
         </p>
       </div>
 
-      {/* GOOGLE — botão principal sempre visível */}
+      {/* Google - primary */}
       <button
         onClick={handleGoogle}
         disabled={loading}
-        className="btn-block w-full bg-white text-foreground border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] hover:bg-muted active:translate-y-0.5 active:shadow-none transition-all !py-3 mb-3 flex items-center justify-center gap-3 text-sm font-bold"
+        className="btn-block w-full bg-white text-foreground border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] hover:bg-muted active:translate-y-0.5 active:shadow-none transition-all !py-3.5 mb-3 flex items-center justify-center gap-3 text-sm font-bold disabled:opacity-50"
       >
-        <svg className="h-5 w-5" viewBox="0 0 24 24">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
+        {loading ? (
+          <Loader2 className="h-5 w-5 animate-spin" />
+        ) : (
+          <svg className="h-5 w-5" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        )}
         {loading ? 'Conectando...' : 'Continuar com Google'}
       </button>
+
+      {/* Divider */}
+      <div className="flex items-center gap-3 my-3">
+        <div className="flex-1 h-[2px] bg-foreground/10" />
+        <span className="text-[9px] font-bold uppercase text-muted-foreground">ou</span>
+        <div className="flex-1 h-[2px] bg-foreground/10" />
+      </div>
 
       {mode === 'menu' && (
         <button
           onClick={() => setMode('login')}
-          className="w-full text-center text-xs text-muted-foreground hover:text-foreground underline-offset-2 hover:underline py-2"
+          className="btn-block w-full bg-background text-foreground !py-3 text-sm font-bold"
         >
-          <Mail className="inline h-3 w-3 mr-1" /> Usar email e senha
+          <Mail className="h-4 w-4" /> Usar email e senha
         </button>
       )}
 
       {mode !== 'menu' && (
-        <div className="border-t-2 border-dashed border-foreground/30 pt-4 mt-2 space-y-3">
+        <div className="space-y-3 mt-1">
+          {/* Tab selector for login/register */}
+          {mode !== 'reset' && (
+            <div className="flex border-2 border-foreground">
+              <button
+                type="button"
+                onClick={() => setMode('login')}
+                className={`flex-1 py-2 text-xs font-bold uppercase transition-colors ${mode === 'login' ? 'bg-foreground text-background' : 'bg-background hover:bg-muted'}`}
+              >
+                Entrar
+              </button>
+              <button
+                type="button"
+                onClick={() => setMode('register')}
+                className={`flex-1 py-2 text-xs font-bold uppercase transition-colors border-l-2 border-foreground ${mode === 'register' ? 'bg-foreground text-background' : 'bg-background hover:bg-muted'}`}
+              >
+                Criar Conta
+              </button>
+            </div>
+          )}
+
           {mode === 'login' && (
             <form onSubmit={handleEmailLogin} className="space-y-3">
               <div>
                 <Label className="text-[10px] uppercase font-bold">Email</Label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="seu@email.com" className="mt-1" />
               </div>
               <div>
                 <Label className="text-[10px] uppercase font-bold">Senha</Label>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <div className="relative mt-1">
+                  <Input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Sua senha" />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
-              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground">Entrar</Button>
-              <div className="flex justify-between text-[10px]">
-                <button type="button" onClick={() => setMode('register')} className="text-primary hover:underline">Criar conta</button>
-                <button type="button" onClick={() => setMode('reset')} className="text-muted-foreground hover:underline">Esqueci a senha</button>
-              </div>
+              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground !py-3 text-sm">
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><ArrowRight className="h-4 w-4" /> Entrar</>}
+              </Button>
+              <button type="button" onClick={() => setMode('reset')} className="text-[10px] text-muted-foreground hover:text-primary hover:underline w-full text-center block">
+                Esqueci minha senha
+              </button>
             </form>
           )}
           {mode === 'register' && (
             <form onSubmit={handleEmailRegister} className="space-y-3">
               <div>
                 <Label className="text-[10px] uppercase font-bold">Email</Label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="seu@email.com" className="mt-1" />
               </div>
               <div>
-                <Label className="text-[10px] uppercase font-bold">Senha (mín. 6)</Label>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <Label className="text-[10px] uppercase font-bold">Crie uma senha (min. 6)</Label>
+                <div className="relative mt-1">
+                  <Input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Minimo 6 caracteres" />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
-              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground">Criar conta</Button>
-              <button type="button" onClick={() => setMode('login')} className="text-[10px] text-primary hover:underline w-full text-center">Já tenho conta</button>
+              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground !py-3 text-sm">
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Sparkles className="h-4 w-4" /> Criar conta gratis</>}
+              </Button>
+              <p className="text-[9px] text-center text-muted-foreground">Voce ganha +10 XP ao criar sua conta</p>
             </form>
           )}
           {mode === 'reset' && (
             <form onSubmit={handleReset} className="space-y-3">
+              <p className="text-xs text-muted-foreground">Digite seu email e enviaremos um link para redefinir sua senha.</p>
               <div>
                 <Label className="text-[10px] uppercase font-bold">Seu email</Label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="seu@email.com" className="mt-1" />
               </div>
-              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground">Enviar link</Button>
-              <button type="button" onClick={() => setMode('login')} className="text-[10px] text-primary hover:underline w-full text-center">Voltar</button>
+              <Button type="submit" disabled={loading} className="w-full btn-block bg-primary text-primary-foreground !py-3">
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Enviar link'}
+              </Button>
+              <button type="button" onClick={() => setMode('login')} className="text-[10px] text-primary hover:underline w-full text-center block">
+                Voltar ao login
+              </button>
             </form>
           )}
         </div>
       )}
 
       <p className="mt-4 text-center text-[9px] text-muted-foreground">
-        Ao continuar, você concorda com nossos termos.
+        Ao continuar, voce concorda com nossos termos.
       </p>
     </div>
   );

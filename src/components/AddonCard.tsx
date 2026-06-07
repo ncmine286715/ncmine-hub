@@ -1,7 +1,8 @@
-import { Star, Download, User, Calendar, Tag, Share2 } from "lucide-react";
+import { Star, Download, User, Calendar, Tag, Share2, Zap } from "lucide-react";
 import { useState } from "react";
 import { shareAddon } from "@/lib/share";
 import { trackEvent } from "@/lib/analytics";
+import { useAuth } from "@/hooks/use-auth";
 
 export type Addon = {
   id: string;
@@ -25,8 +26,6 @@ type Props = {
   onDownload: (a: Addon) => void;
   onOpen: (a: Addon) => void;
 };
-
-import { useAuth } from "@/hooks/use-auth";
 
 export function AddonCard({ addon, onDownload, onOpen }: Props) {
   const { profile } = useAuth();
@@ -67,21 +66,21 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
             NO PREVIEW
           </div>
         )}
-        
+
         {isViral ? (
-          <div className="absolute top-0 right-0 left-0 bg-red-600 text-white text-[7px] font-pixel py-1 text-center uppercase animate-pulse border-b-2 border-foreground z-20">
-            🔥 VIRAL NO TIKTOK 🔥
+          <div className="absolute top-0 right-0 left-0 bg-red-600 text-white text-[7px] font-pixel py-1 text-center uppercase animate-pulse border-b-2 border-foreground z-20 flex items-center justify-center gap-1">
+            <Zap className="h-2.5 w-2.5" /> VIRAL <Zap className="h-2.5 w-2.5" />
           </div>
         ) : isHot ? (
-          <div className="absolute top-0 right-0 left-0 bg-orange-500 text-white text-[7px] font-pixel py-1 text-center uppercase border-b-2 border-foreground z-20">
-            ⚡ MAIS BAIXADO HOJE ⚡
+          <div className="absolute top-0 right-0 left-0 bg-orange-500 text-white text-[7px] font-pixel py-1 text-center uppercase border-b-2 border-foreground z-20 flex items-center justify-center gap-1">
+            <Download className="h-2.5 w-2.5" /> MAIS BAIXADO
           </div>
         ) : null}
 
         {isDownloaded && !isViral && !isHot && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/20 pointer-events-none">
             <span className="bg-primary text-white border-2 border-foreground px-2 py-1 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
-              Você já viu isso!
+              Ja baixou
             </span>
           </div>
         )}
@@ -95,7 +94,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         </span>
       </button>
 
-      <div className="flex flex-1 flex-col p-2 sm:p-4">
+      <div className="flex flex-1 flex-col p-2.5 sm:p-4">
         <h3 className="mb-0.5 line-clamp-2 text-[11px] font-extrabold uppercase leading-tight sm:mb-1 sm:text-base">
           {addon.title}
         </h3>
@@ -115,7 +114,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                className={`h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
+                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/30"}`}
               />
             ))}
           </span>
@@ -128,17 +127,17 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <div className="mt-auto flex gap-1.5 sm:gap-2">
           <button
             onClick={() => onOpen(addon)}
-            className={`btn-block flex-1 !px-2 !py-2 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all ${
+            className={`btn-block flex-1 !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all min-h-[44px] ${
               isDownloaded ? 'bg-background text-foreground' : 'bg-primary text-primary-foreground'
             }`}
           >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Baixar de Novo' : 'Download'}
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver' : 'Baixar'}
           </button>
           <button
             type="button"
             onClick={handleShare}
             aria-label="Compartilhar"
-            className="btn-block bg-background !px-2 !py-2 text-[10px] sm:!px-3 sm:!py-3 border-2 border-foreground hover:bg-muted active:scale-95 transition-all"
+            className="btn-block bg-background !px-2.5 !py-2.5 text-[10px] sm:!px-3 sm:!py-3 border-2 border-foreground hover:bg-muted active:scale-95 transition-all min-h-[44px]"
           >
             <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>
