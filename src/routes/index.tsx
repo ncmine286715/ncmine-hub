@@ -6,6 +6,7 @@ import { AddonsGrid } from "@/components/AddonsGrid";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { InAppBrowserGuard } from "@/components/InAppBrowserGuard";
+import { PersonalizedFeed } from "@/components/PersonalizedFeed";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
@@ -124,6 +125,12 @@ function Index() {
     <div className="relative min-h-screen pb-16 text-foreground sm:pb-0">
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
+
+      {/* Feed Personalizado */}
+      <section className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
+        <PersonalizedFeed addons={RAW_ADDONS} onOpen={handleOpen} onDownload={handleDownload} />
+      </section>
+
       <AddonsGrid 
         addons={rest} 
         featuredAddon={featured} 
