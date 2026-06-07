@@ -147,6 +147,7 @@ import { soundManager } from "../lib/sounds";
 import { getLatestGlobalNotif } from "../lib/firebase-services";
 import { toast } from "sonner";
 import { EngagementToast } from "../components/EngagementToast";
+import { DailyRetention } from "../components/DailyRetention";
 import { Toaster } from "sonner";
 
 function RootComponent() {
@@ -206,6 +207,7 @@ function RootComponent() {
       <AuthProvider>
         <Outlet />
         <EngagementToast />
+        <DailyRetention />
         <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>
