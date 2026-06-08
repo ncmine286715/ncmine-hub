@@ -1,4 +1,29 @@
 [
+{
+  "id": "utilities-vein-miner",
+  "title": "Utilities Vein Miner Bedrock Addon",
+  "category": "Addon",
+  "version": "5.5",
+  "rating": 4.7,
+  "downloads": 458052,
+  "date": "2026-05-23",
+  "image": "https://i.imgur.com/FaZ6ivd.png",
+  "tags": [
+    "addon",
+    "vein miner",
+    "mining",
+    "bedrock",
+    "minecraft",
+    "tree capitator",
+    "tunnel",
+    "ore"
+  ],
+  "short": "Minere pilhas gigantes de minérios, cascalho ou árvores inteiras de uma só vez no Minecraft Bedrock.",
+  "description": "O Utilities Vein Miner é um addon completo que adiciona diversas funções de mineração facilitada ao Minecraft Vanilla e é totalmente compatível com outros mods. Com ele, você pode quebrar veios inteiros de minérios instantaneamente, escavar túneis automáticos em formatos configuráveis (1x2, 3x3, etc.) e usar a função Tree Capitator para derrubar árvores completas. O mod traz um menu de configurações avançadas in-game ativado ao agachar com uma picareta, permitindo ajustar o limite de blocos, bordas visuais e até deletar blocos indesejados para evitar lag. O melhor de tudo: ele não desativa as conquistas do mundo e não usa o arquivo player.json.",
+  "downloadUrl": "https://1024terabox.com/s/1R66AZbF7F6RqilTt9JGinA",
+  "author": "Endermen76428",
+  "youtubeId": ""
+},
   {
   "id": "holoprint-7-houses-pack",
   "title": "Holoprint Mega Pack 7 Casas",
