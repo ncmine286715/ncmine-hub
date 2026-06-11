@@ -146,22 +146,6 @@
   "youtubeId": ""
 },
   {
-  "id": "xnova-viewmodel-pack",
-  "title": "Xnova ViewModel Texture Pack",
-  "category": "Texture Pack",
-  "version": "1.0.0",
-  "rating": 4.9,
-  "downloads": 8420,
-  "date": "2026-04-18",
-  "image": "https://www.9minecraft.net/wp-content/uploads/2026/04/Xnova-Model-Texture-Pack-Screenshots-1.jpg",
-  "tags": ["texture pack", "viewmodel", "action stuff", "bedrock", "pvp", "animations", "visual", "first person"],
-  "short": "Melhore sua visão em primeira pessoa no Minecraft Bedrock com um ViewModel estiloso compatível com Action Stuff.",
-  "description": "O Xnova ViewModel Texture Pack traz uma experiência totalmente renovada para o Minecraft Bedrock, deixando a visão em primeira pessoa muito mais bonita, moderna e dinâmica. Compatível com o addon Action Stuff, essa textura altera o posicionamento dos braços e itens na tela, criando animações e poses extremamente estilosas para PvP, survival e vídeos. Ideal para jogadores que querem uma gameplay mais imersiva e visualmente profissional sem perder desempenho. O pack funciona perfeitamente em celulares e PCs, sendo leve e fácil de instalar.",
-  "downloadUrl": "https://1024terabox.com/s/13oCMpnbbhIw8jlmv95Z3FA",
-  "author": "Xnova",
-  "youtubeId": ""
-},
-  {
   "id": "afk-chunk-loader-bot",
   "title": "AFK Chunk Loader Bot",
   "category": "Addon",
