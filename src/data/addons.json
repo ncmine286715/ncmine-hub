@@ -1,4 +1,28 @@
 [
+  {
+  "id": "view-model-invisible-background",
+  "title": "View Model Invisible Background Texture Pack",
+  "category": "Texture Pack",
+  "version": "1.0.0",
+  "rating": 4.6,
+  "downloads": 0,
+  "date": "2026-06-11",
+  "image": "https://i.imgur.com/1YvdMDj.jpeg",
+  "tags": [
+    "texture pack",
+    "view model",
+    "invisible background",
+    "customization",
+    "bedrock",
+    "minecraft",
+    "pvp texture"
+  ],
+  "short": "Personalize a posição dos seus itens e braço no Minecraft Bedrock com uma interface de fundo invisível.",
+  "description": "Esta textura de View Model para Minecraft Bedrock traz uma modificação essencial para quem gosta de personalizar a posição das mãos, braços e itens na tela. Ao deixar o fundo do menu de configuração totalmente invisível, ela permite que o jogador ajuste os eixos de visualização em tempo real, vendo exatamente como as alterações impactam o gameplay sem nenhuma interface bloqueando a visão. Perfeito para jogadores de PvP que buscam otimizar o campo de visão (FOV) e deixar a tela mais limpa.",
+  "downloadUrl": "https://1024terabox.com/s/1RzRXtehT4WgxCPVcVHTxmA",
+  "author": "Desconhecido",
+  "youtubeId": ""
+},
 {
   "id": "utilities-vein-miner",
   "title": "Utilities Vein Miner Bedrock Addon",
