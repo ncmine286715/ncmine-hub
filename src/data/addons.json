@@ -1,5 +1,30 @@
 [
   {
+  "id": "blurrys-java-pvp",
+  "title": "Blurry's Java PvP Addon",
+  "category": "Addon",
+  "version": "2.1 (Beta 4)",
+  "rating": 4.8,
+  "downloads": 699839,
+  "date": "2026-04-10",
+  "image": "https://i.imgur.com/EBXyjqa.gif",
+  "tags": [
+    "addon",
+    "pvp",
+    "java combat",
+    "bedrock",
+    "minecraft",
+    "sweeping edge",
+    "cooldown",
+    "knockback"
+  ],
+  "short": "Recrie perfeitamente o sistema de combate do Minecraft Java Edition no seu Minecraft Bedrock.",
+  "description": "O Blurry's Java PvP é uma recriação fiel do sistema de combate da versão Java para o Minecraft Bedrock, desenvolvido pela Catalyst Interactive e BlurryFACE. O addon introduz mecânicas essenciais como o indicador de ataque (cooldown para dano máximo), knockback de corrida ajustado, o famoso ataque em área Sweeping Edge (Aspecto Varredor) para espadas e o sistema de saturação de fome acelerado do Java. Além disso, traz teias, portas e projéteis idênticos ao Java, remoção de knockback ao usar o escudo e limite de corações da Maçã Dourada. Tudo isso configurável por menus in-game (/admin_config) e o melhor: sem precisar de player.json ou recursos experimentais ativos!",
+  "downloadUrl": "https://1024terabox.com/s/1rhEMqJ5vYSW9KNdVnyjMNQ",
+  "author": "BlurryFACE & Catalyst Interactive",
+  "youtubeId": ""
+},
+  {
   "id": "view-model-invisible-background",
   "title": "View Model Invisible Background Texture Pack",
   "category": "Texture Pack",
