@@ -1,5 +1,29 @@
 [
   {
+  "id": "effortless-building-addon",
+  "title": "Effortless Building Bedrock Addon",
+  "category": "Addon",
+  "version": "3.1",
+  "rating": 4.9,
+  "downloads": 582609,
+  "date": "2026-06-12",
+  "image": "https://i.imgur.com/gUMLWpw.gif",
+  "tags": [
+    "addon",
+    "building",
+    "utility",
+    "survival friendly",
+    "technology",
+    "structures",
+    "minecraft bedrock"
+  ],
+  "short": "Construa estruturas complexas como esferas, paredes e túneis em segundos no Minecraft Bedrock.",
+  "description": "O Effortless Building traz para o Bedrock um dos mods de construção multibloco mais famosos do Java Edition. Totalmente funcional tanto no modo Criativo quanto no Sobrevivência (consumindo os blocos do seu inventário), este addon permite erguer linhas, curvas de Bezier, paredes, esferas, cones e cilindros com apenas alguns cliques. A versão v3.1 adiciona recursos avançados como o Modo Recortar (Cut), um Gerenciador de Área de Transferência com 20 slots que salva suas construções entre sessões, visualização fantasma (Ghost Preview) em tempo real e um sistema de Paleta de Blocos com 18 padrões de distribuição (como gradientes e xadrez). Ele também inclui um modo de destruição inteligente compatível com encantamentos e não desativa as conquistas do seu mundo.",
+  "downloadUrl": "https://1024terabox.com/s/1u_8wE2jBscSyhvWNyzqykg",
+  "author": "ExterLeo",
+  "youtubeId": ""
+},
+  {
   "id": "blurrys-java-pvp",
   "title": "Blurry's Java PvP Addon",
   "category": "Addon",
