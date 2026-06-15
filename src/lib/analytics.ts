@@ -23,7 +23,8 @@ export type EventType =
   | "external_click"
   | "inapp_detected"
   | "inapp_escape"
-  | "terabox_open";
+  | "terabox_open"
+  | "tutorial_video_open";
 
 const ANON_KEY = "ncmine:anon_id";
 const SESSION_KEY = "ncmine:session_start";
