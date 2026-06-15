@@ -14,10 +14,10 @@ import {
 import {
   detectInAppBrowser,
   detectPlatform,
-  buildExternalHref,
   currentUrl,
   inAppLabel,
   realBrowserName,
+  getEscapeInstructions,
   type InAppKind,
   type Platform,
 } from "@/lib/inAppBrowser";
@@ -117,27 +117,33 @@ export function TeraboxSteps({ compact = false, showVideo = true }: Props) {
       {/* Aviso navegador interno (só aparece se detectado) */}
       {inApp && (
         <div className="border-b-2 border-yellow-500 bg-yellow-500/10 p-2.5">
-          <p className="text-[11px] font-bold leading-snug text-yellow-800">
-            ⚠️ Você está no navegador do {inAppLabel(inApp)}. Abra no {browser} antes de baixar:
+          <p className="text-[11px] font-extrabold uppercase leading-snug text-yellow-800">
+            ⚠️ Abra no {browser} pra baixar
           </p>
-          <div className="mt-2 flex gap-2">
-            <a
-              href={buildExternalHref(currentUrl(), platform)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("inapp_escape", { from: inApp, platform, source: "steps" })}
-              className="btn-block flex-1 bg-yellow-600 text-white !py-1.5 text-[10px]"
-            >
-              <ExternalLink className="h-3.5 w-3.5" /> Abrir no {browser}
-            </a>
-            <button onClick={copy} className="btn-block !px-3 !py-1.5 text-[10px]">
-              {copied ? (
-                <Check className="h-3.5 w-3.5 text-green-600" />
-              ) : (
-                <Copy className="h-3.5 w-3.5" />
-              )}
-            </button>
-          </div>
+          <p className="mt-0.5 text-[10px] leading-snug text-yellow-800/90">
+            Aqui no {inAppLabel(inApp)} o download trava. É rápido:
+          </p>
+          <ol className="mt-2 space-y-1">
+            {getEscapeInstructions(inApp, platform).slice(0, 2).map((step, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center border-2 border-yellow-600 bg-yellow-600 font-pixel text-[8px] text-white">
+                  {i + 1}
+                </span>
+                <span className="text-[11px] font-bold leading-snug text-yellow-900">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <button onClick={copy} className="btn-block mt-2 w-full bg-yellow-600 text-white !py-1.5 text-[10px]">
+            {copied ? (
+              <>
+                <Check className="h-3.5 w-3.5" /> Link copiado — cole no {browser}
+              </>
+            ) : (
+              <>
+                <Copy className="h-3.5 w-3.5" /> Copiar link (cola no {browser})
+              </>
+            )}
+          </button>
         </div>
       )}
 

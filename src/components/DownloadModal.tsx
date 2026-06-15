@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X, Heart, ExternalLink, Download, ShieldCheck, Zap, Play, Users } from "lucide-react";
+import { X, Heart, Download, ShieldCheck, Zap, Play, Users, Copy, Check } from "lucide-react";
 import { DiscordIcon, InstagramIcon, YouTubeIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, LIVEPIX_URL } from "@/lib/links";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
@@ -9,10 +9,10 @@ import { useAuth } from "@/hooks/use-auth";
 import {
   detectInAppBrowser,
   detectPlatform,
-  buildExternalHref,
   currentUrl,
   inAppLabel,
   realBrowserName,
+  getEscapeInstructions,
   type InAppKind,
   type Platform,
 } from "@/lib/inAppBrowser";
@@ -35,6 +35,7 @@ export function DownloadModal({
   const [inApp, setInApp] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
   const [videoOpen, setVideoOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -68,13 +69,13 @@ export function DownloadModal({
     onClose();
   };
 
-  const handleEscape = () => {
-    trackEvent("inapp_escape", {
-      kind: inApp,
-      platform,
-      method: "intent",
-      source: "download_modal",
-    });
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(currentUrl());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+      trackEvent("inapp_escape", { kind: inApp, platform, method: "copy", source: "download_modal" });
+    } catch {}
   };
 
   const openVideo = () => {
@@ -110,24 +111,39 @@ export function DownloadModal({
         </p>
 
         {inApp ? (
-          /* ===== NAVEGADOR INTERNO: aviso pequeno + escape ===== */
-          <>
-            <div className="mb-3 flex items-start gap-2 border-2 border-yellow-500 bg-yellow-500/10 p-2.5">
-              <span className="text-base leading-none">⚠️</span>
-              <p className="text-[11px] font-bold leading-snug text-yellow-800">
-                Abra no {browser} pra baixar — aqui no {inAppLabel(inApp)} não funciona.
-              </p>
-            </div>
-            <a
-              href={buildExternalHref(currentUrl(), platform)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleEscape}
-              className="btn-block w-full animate-mc-pulse-orange bg-primary !py-4 text-base font-black text-primary-foreground"
+          /* ===== NAVEGADOR INTERNO: instruir a abrir no navegador ===== */
+          <div className="border-2 border-yellow-500 bg-yellow-500/10 p-3">
+            <p className="text-[12px] font-extrabold uppercase leading-tight text-yellow-800">
+              ⚠️ Abra no {browser} pra baixar
+            </p>
+            <p className="mt-0.5 text-[11px] leading-snug text-yellow-800/90">
+              Aqui dentro do {inAppLabel(inApp)} o download não funciona. É rápido:
+            </p>
+            <ol className="mt-2 space-y-1.5">
+              {getEscapeInstructions(inApp, platform).slice(0, 2).map((step, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center border-2 border-yellow-600 bg-yellow-600 font-pixel text-[9px] text-white">
+                    {i + 1}
+                  </span>
+                  <span className="text-[12px] font-bold leading-snug text-yellow-900">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <button
+              onClick={copyLink}
+              className="btn-block mt-3 w-full bg-yellow-600 text-white !py-2 text-[11px]"
             >
-              <ExternalLink className="h-5 w-5" /> Abrir no {browser}
-            </a>
-          </>
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4" /> Link copiado — cole no {browser}
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" /> Copiar link (cola no {browser})
+                </>
+              )}
+            </button>
+          </div>
         ) : (
           /* ===== NAVEGADOR REAL: download é o herói ===== */
           <a
