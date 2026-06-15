@@ -5,11 +5,11 @@ import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
-import { InAppBrowserGuard } from "@/components/InAppBrowserGuard";
 import { PersonalizedFeed } from "@/components/PersonalizedFeed";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import { MousePointerClick, Download as DownloadIcon, Gamepad2 } from "lucide-react";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
@@ -126,6 +126,36 @@ function Index() {
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
 
+      {/* Como funciona — deixa o fluxo explícito */}
+      <section className="mx-auto max-w-7xl px-3 pt-4 sm:px-4 sm:pt-6">
+        <div className="border-2 border-foreground bg-background p-3 shadow-[3px_3px_0_0_var(--ink)] sm:p-4">
+          <div className="mb-2.5 flex items-center justify-center gap-2 sm:mb-3">
+            <span className="font-pixel text-[10px] uppercase text-primary sm:text-xs">Como funciona</span>
+            <span className="text-[9px] font-bold uppercase text-muted-foreground sm:text-[10px]">— grátis em 3 passos</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            {[
+              { n: 1, Icon: MousePointerClick, t: "Escolha o addon", d: "Toque em qualquer addon da lista" },
+              { n: 2, Icon: DownloadIcon, t: "Baixe no Terabox", d: "Conta grátis libera o download em 10s" },
+              { n: 3, Icon: Gamepad2, t: "Joga no Minecraft", d: "O arquivo instala sozinho no jogo" },
+            ].map(({ n, Icon, t, d }) => (
+              <div key={n} className="flex flex-col items-center gap-1 text-center">
+                <div className="flex h-9 w-9 items-center justify-center border-2 border-foreground bg-primary text-primary-foreground shadow-[2px_2px_0_0_var(--ink)] sm:h-11 sm:w-11">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                </div>
+                <p className="text-[10px] font-extrabold uppercase leading-tight sm:text-xs">
+                  <span className="text-primary">{n}.</span> {t}
+                </p>
+                <p className="hidden text-[10px] leading-snug text-muted-foreground sm:block">{d}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-2.5 text-center text-[10px] text-muted-foreground sm:mt-3 sm:text-[11px]">
+            Primeira vez? O passo a passo completo aparece em cada download. <span className="font-bold text-foreground">Sem pegadinha.</span>
+          </p>
+        </div>
+      </section>
+
       {/* Feed Personalizado */}
       <section className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
         <PersonalizedFeed addons={RAW_ADDONS} onOpen={handleOpen} onDownload={handleDownload} />
@@ -217,7 +247,6 @@ function Index() {
         onClose={() => setDownloadFor(null)}
         addonId={downloadFor?.id}
       />
-      <InAppBrowserGuard />
     </div>
   );
 }

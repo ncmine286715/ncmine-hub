@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Download, Smartphone, Monitor, ChevronRight, ChevronDown, CheckCircle, AlertTriangle, ExternalLink, Copy, Check, X } from 'lucide-react';
-import { detectInAppBrowser, type InAppKind } from '@/lib/inAppBrowser';
+import { detectInAppBrowser, inAppLabel, type InAppKind } from '@/lib/inAppBrowser';
 
 type Props = {
   addonTitle: string;
@@ -21,13 +21,6 @@ function detectPlatform(): Platform {
 function detectMinecraftVersion(): string {
   return '1.21+';
 }
-
-const IN_APP_LABELS: Record<NonNullable<InAppKind>, string> = {
-  tiktok: 'TikTok',
-  instagram: 'Instagram',
-  facebook: 'Facebook',
-  snapchat: 'Snapchat',
-};
 
 export function InstallGuide({ addonTitle, onClose }: Props) {
   const [platform, setPlatform] = useState<Platform>(null);
@@ -72,7 +65,7 @@ export function InstallGuide({ addonTitle, onClose }: Props) {
             <AlertTriangle className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
             <div>
               <p className="text-[11px] font-bold text-yellow-800">
-                Voce esta no navegador do {IN_APP_LABELS[inApp]}
+                Voce esta no navegador do {inAppLabel(inApp)}
               </p>
               <p className="text-[10px] text-yellow-700 mt-0.5">
                 Para instalar addons, voce precisa abrir no navegador real do celular. Funcionalidades como download e compartilhamento nao funcionam dentro de apps.
@@ -221,8 +214,8 @@ function getSteps(platform: Platform, inApp: InAppKind): Step[] {
     const browserName = platform === 'ios' ? 'Safari' : 'Chrome';
     return [
       {
-        title: `Sair do ${IN_APP_LABELS[inApp!]}`,
-        description: `Primeiro, abra este link no ${browserName}. Dentro do ${IN_APP_LABELS[inApp!]} os downloads nao funcionam corretamente.`,
+        title: `Sair do ${inAppLabel(inApp)}`,
+        description: `Primeiro, abra este link no ${browserName}. Dentro do ${inAppLabel(inApp)} os downloads nao funcionam corretamente.`,
         tip: 'Use o botao "Abrir no navegador" acima ou copie o link.',
       },
       {

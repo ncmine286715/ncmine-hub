@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
-import { X, ArrowRight, Heart, DollarSign, HelpCircle } from "lucide-react";
-import { DiscordIcon, InstagramIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, LIVEPIX_URL, TERABOX_REFERRAL_URL } from "@/lib/links";
-import { TeraboxTutorial } from "@/components/TeraboxTutorial";
-import { InstallGuide } from "@/components/InstallGuide";
+import { X, Heart, ExternalLink, Download, ShieldCheck, Zap } from "lucide-react";
+import { DiscordIcon, InstagramIcon, YouTubeIcon } from "@/components/icons/BrandIcons";
+import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, LIVEPIX_URL } from "@/lib/links";
+import { TeraboxSteps } from "@/components/TeraboxSteps";
 import { trackEvent } from "@/lib/analytics";
-import { awardPoints } from "@/lib/firebase-services";
-
-type Variant = "discord" | "instagram";
+import { awardPoints, recordDownload } from "@/lib/firebase-services";
+import { useAuth } from "@/hooks/use-auth";
+import {
+  detectInAppBrowser,
+  detectPlatform,
+  buildExternalHref,
+  currentUrl,
+  inAppLabel,
+  realBrowserName,
+  type InAppKind,
+  type Platform,
+} from "@/lib/inAppBrowser";
 
 type Props = {
   open: boolean;
@@ -16,18 +24,37 @@ type Props = {
   onClose: () => void;
 };
 
-import { useAuth } from "@/hooks/use-auth";
-import { recordDownload } from "@/lib/firebase-services";
-
-export function DownloadModal({ open, url, title, onClose, addonId }: Props & { addonId?: string }) {
-  const [variant, setVariant] = useState<Variant>("discord");
-  const [count, setCount] = useState(3);
-  const [showInstallGuide, setShowInstallGuide] = useState(false);
+export function DownloadModal({
+  open,
+  url,
+  title,
+  onClose,
+  addonId,
+}: Props & { addonId?: string }) {
+  const [count, setCount] = useState(2);
+  const [inApp, setInApp] = useState<InAppKind>(null);
+  const [platform, setPlatform] = useState<Platform>("other");
   const { user } = useAuth();
 
+  useEffect(() => {
+    if (!open) return;
+    const k = detectInAppBrowser();
+    const p = detectPlatform();
+    setInApp(k);
+    setPlatform(p);
+    setCount(2);
+    const t = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
+    trackEvent("download_start", { addonId, title, inApp: k ?? "none", platform: p });
+    return () => clearInterval(t);
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!open) return null;
+
+  const browser = realBrowserName(platform);
+  const ready = count <= 0;
+
   const handleDownloadClick = async () => {
-    // Sempre rastreia (logado ou anônimo)
-    trackEvent("download_start", { addonId, title });
+    trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
     if (user && addonId) {
       try {
         await recordDownload(user.uid, addonId);
@@ -39,32 +66,26 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props & { 
     onClose();
   };
 
-  useEffect(() => {
-    if (!open) return;
-    setVariant(Math.random() < 0.5 ? "discord" : "instagram");
-    setCount(3);
-    const t = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
-    return () => clearInterval(t);
-  }, [open]);
-
-  if (!open) return null;
-
-  const isDiscord = variant === "discord";
-  const cta = isDiscord
-    ? { href: DISCORD_URL, label: "Entrar no Discord", Icon: DiscordIcon, color: "bg-[#5865F2] text-white" }
-    : { href: INSTAGRAM_URL, label: "Me seguir no Insta", Icon: InstagramIcon, color: "bg-foreground text-background" };
+  const handleEscape = () => {
+    trackEvent("inapp_escape", {
+      kind: inApp,
+      platform,
+      method: "intent",
+      source: "download_modal",
+    });
+  };
 
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
       {/* Backdrop */}
       <div className="absolute inset-0" onClick={onClose} />
-      
-      <div className="relative w-full max-w-md card-block bg-background p-4 animate-mc-rise sm:p-8">
+
+      <div className="relative max-h-[94vh] w-full max-w-md overflow-y-auto card-block bg-background p-4 animate-mc-rise sm:p-6">
         {/* Mobile drag indicator */}
         <div className="mb-2 flex justify-center sm:hidden">
           <div className="h-1 w-12 rounded-full bg-muted-foreground/30" />
         </div>
-        
+
         <button
           onClick={onClose}
           aria-label="Fechar"
@@ -73,99 +94,137 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props & { 
           <X className="h-4 w-4" />
         </button>
 
-        <div className="mb-3 inline-block bg-primary px-2 py-0.5 font-pixel text-[9px] text-primary-foreground animate-mc-shake sm:mb-4 sm:px-3 sm:py-1 sm:text-[10px]">
-          ESPERA AI!
+        {/* Título */}
+        <div className="mb-1 inline-flex items-center gap-1.5 bg-primary px-2 py-0.5 font-pixel text-[9px] text-primary-foreground sm:text-[10px]">
+          <Download className="h-3 w-3" /> QUASE LÁ
+        </div>
+        <h2 className="mb-1 text-lg font-black uppercase leading-tight sm:text-2xl">
+          Baixar addon
+        </h2>
+        <p className="mb-3 line-clamp-1 text-xs text-muted-foreground sm:mb-4">
+          <span className="font-semibold text-foreground">{title}</span>
+        </p>
+
+        {inApp ? (
+          /* ===== EM NAVEGADOR INTERNO: bloqueio + escape ===== */
+          <div className="mb-3 border-2 border-yellow-500 bg-yellow-500/10 p-3">
+            <p className="text-[13px] font-extrabold uppercase leading-tight text-yellow-800">
+              O download não funciona no {inAppLabel(inApp)}
+            </p>
+            <p className="mt-1 text-[11px] leading-snug text-yellow-800/90">
+              Você está no navegador interno do app. Toque abaixo para abrir no {browser} — aí o
+              download e a conta do Terabox funcionam normalmente.
+            </p>
+            <a
+              href={buildExternalHref(currentUrl(), platform)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleEscape}
+              className="btn-block mt-3 w-full animate-mc-pulse-orange bg-primary !py-3.5 text-sm font-black text-primary-foreground"
+            >
+              <ExternalLink className="h-5 w-5" /> Abrir no {browser} e baixar
+            </a>
+          </div>
+        ) : (
+          /* ===== NAVEGADOR REAL: download é o herói ===== */
+          <>
+            <a
+              href={ready ? url : undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
+              aria-disabled={!ready}
+              className={`btn-block w-full !py-4 text-base font-black ${
+                ready
+                  ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
+                  : "cursor-wait bg-muted text-muted-foreground"
+              }`}
+            >
+              {ready ? (
+                <>
+                  <Download className="h-6 w-6" /> Baixar no Terabox
+                </>
+              ) : (
+                <span className="font-pixel text-[11px]">Preparando download… {count}s</span>
+              )}
+            </a>
+            <div className="mt-2 flex items-center justify-center gap-3 text-[10px] font-bold uppercase text-muted-foreground">
+              <span className="inline-flex items-center gap-1">
+                <ShieldCheck className="h-3 w-3 text-green-500" /> 100% grátis
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Zap className="h-3 w-3 text-yellow-500" /> Abre no Terabox
+              </span>
+            </div>
+          </>
+        )}
+
+        {/* Tutorial sempre visível */}
+        <div className="mt-4">
+          <TeraboxSteps compact showVideo />
         </div>
 
-        <h2 className="mb-1.5 text-xl font-black uppercase leading-tight sm:mb-2 sm:text-2xl">
-          {isDiscord ? "Antes do download..." : "Curtiu o conteudo?"}
-        </h2>
-        <p className="mb-4 text-xs text-muted-foreground sm:mb-5 sm:text-sm">
-          {isDiscord
-            ? "Entra no Discord pra falar com a galera, pedir suporte e receber addons em primeira mao."
-            : "Me segue no Instagram pra ver bastidores, novos addons e bizarrices do Minecraft em video curto."}
-        </p>
-
-        <a
-          href={cta.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`btn-block mb-2 w-full ${cta.color} animate-mc-pulse-orange !py-2.5 text-sm sm:mb-3 sm:!py-3`}
-        >
-          <cta.Icon className="h-5 w-5" />
-          {cta.label}
-        </a>
-
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleDownloadClick}
-          className="btn-block w-full bg-background text-foreground !py-2.5 text-sm sm:!py-3"
-        >
-          {count > 0 ? (
-            <span className="font-pixel text-[10px]">Aguarde {count}s</span>
-          ) : (
-            <>
-              Ir para o download <ArrowRight className="h-4 w-4" />
-            </>
-          )}
-        </a>
-
-        <p className="mt-3 text-center text-[10px] text-muted-foreground sm:mt-4">
-          Baixando: <span className="font-semibold text-foreground">{title}</span>
-        </p>
-
-        {/* Install Guide Button */}
-        <button
-          onClick={() => setShowInstallGuide(!showInstallGuide)}
-          className="mt-3 w-full btn-block bg-muted/50 text-foreground !py-2 text-[10px] flex items-center justify-center gap-1"
-        >
-          <HelpCircle className="h-3.5 w-3.5" />
-          {showInstallGuide ? 'Fechar guia de instalacao' : 'Como instalar este addon?'}
-        </button>
-
-        {showInstallGuide && (
-          <div className="mt-2">
-            <InstallGuide addonTitle={title} onClose={() => setShowInstallGuide(false)} />
+        {/* Social — secundário, não bloqueia */}
+        <div className="mt-4 border-t-2 border-dashed border-foreground/20 pt-3">
+          <p className="mb-2 text-center text-[10px] font-bold uppercase text-muted-foreground">
+            Segue pra não perder os próximos addons
+          </p>
+          <div className="grid grid-cols-3 gap-2">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("external_click", { to: "discord", source: "download_modal" })
+              }
+              className="btn-block bg-[#5865F2] text-white !px-1 !py-2 text-[10px]"
+            >
+              <DiscordIcon className="h-4 w-4" /> Discord
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("external_click", { to: "instagram", source: "download_modal" })
+              }
+              className="btn-block bg-foreground text-background !px-1 !py-2 text-[10px]"
+            >
+              <InstagramIcon className="h-4 w-4" /> Insta
+            </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("external_click", { to: "youtube", source: "download_modal" })
+              }
+              className="btn-block bg-[#FF0000] text-white !px-1 !py-2 text-[10px]"
+            >
+              <YouTubeIcon className="h-4 w-4" /> YouTube
+            </a>
           </div>
-        )}
+        </div>
 
-        {/* Tutorial Terabox - universal em todo download */}
-        {!showInstallGuide && (
-          <div className="mt-3 sm:mt-4">
-            <TeraboxTutorial compact />
-          </div>
-        )}
-
-        {/* Support section - collapsible on mobile */}
-        <details className="group mt-4 border-t-2 border-dashed border-foreground/30 pt-3 sm:mt-5 sm:pt-4">
+        {/* Apoiar — opcional, recolhido */}
+        <details className="group mt-3 border-t-2 border-dashed border-foreground/20 pt-3">
           <summary className="flex cursor-pointer items-center justify-center gap-1 font-pixel text-[8px] text-muted-foreground sm:text-[9px]">
-            BONUS — APOIAR O PROJETO
+            APOIAR O PROJETO (OPCIONAL)
             <span className="transition-transform group-open:rotate-180">▼</span>
           </summary>
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            <a
-              href={LIVEPIX_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-block w-full bg-[#00C16E] text-white !py-2 text-[10px] sm:!py-2.5 sm:text-xs"
-            >
-              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              Doar Pix
-            </a>
-            <a
-              href={TERABOX_REFERRAL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-block w-full bg-[#1A5CFF] text-white !py-2 text-[10px] sm:!py-2.5 sm:text-xs"
-            >
-              <DollarSign className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              Ganhar $
-            </a>
-          </div>
-          <p className="mt-2 text-center text-[9px] text-muted-foreground sm:text-[10px]">
-            Vira webmaster do Terabox e ganhe divulgando addons.
+          <a
+            href={LIVEPIX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              trackEvent("external_click", { to: "livepix", source: "download_modal" })
+            }
+            className="btn-block mt-3 w-full bg-[#00C16E] text-white !py-2.5 text-xs"
+          >
+            <Heart className="h-4 w-4" /> Doar um Pix pro projeto
+          </a>
+          <p className="mt-2 text-center text-[9px] text-muted-foreground">
+            Os addons são e sempre serão grátis. Doação é só carinho. ❤️
           </p>
         </details>
       </div>

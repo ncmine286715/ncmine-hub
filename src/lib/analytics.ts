@@ -20,7 +20,10 @@ export type EventType =
   | "rating"
   | "scroll_depth"
   | "session_start"
-  | "external_click";
+  | "external_click"
+  | "inapp_detected"
+  | "inapp_escape"
+  | "terabox_open";
 
 const ANON_KEY = "ncmine:anon_id";
 const SESSION_KEY = "ncmine:session_start";

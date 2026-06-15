@@ -148,6 +148,7 @@ import { getLatestGlobalNotif } from "../lib/firebase-services";
 import { toast } from "sonner";
 import { EngagementToast } from "../components/EngagementToast";
 import { DailyRetention } from "../components/DailyRetention";
+import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { Toaster } from "sonner";
 
 function RootComponent() {
@@ -208,6 +209,7 @@ function RootComponent() {
         <Outlet />
         <EngagementToast />
         <DailyRetention />
+        <InAppBrowserGuard />
         <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>

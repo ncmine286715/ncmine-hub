@@ -3,13 +3,13 @@ import { useMemo, useState } from "react";
 import addonsData from "@/data/addons.json";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
+import { TeraboxSteps } from "@/components/TeraboxSteps";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { AddonCard } from "@/components/AddonCard";
 import { 
   Download, Star, User, Calendar, Tag, Share2, ArrowLeft, 
   ExternalLink, Play, ChevronRight, Sparkles, Clock, Info,
-  Youtube
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
 import { CREATOR_NAME, DISCORD_URL } from "@/lib/links";
@@ -20,7 +20,6 @@ import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useEffect } from "react";
 
 const RAW_ADDONS = addonsData as Addon[];
-const TERABOX_TUTORIAL_URL = "https://youtu.be/fN4BennXjTY?si=Tz6C8QLpNW2d9xtz";
 
 export const Route = createFileRoute("/addon/$id")({
   head: ({ params }) => {
@@ -61,7 +60,10 @@ function AddonPage() {
   const navigate = useNavigate();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [toast, setToast] = useState<string | null>(null);
-  const [showTutorial, setShowTutorial] = useState(false);
+
+  const scrollToTutorial = () => {
+    document.getElementById("como-baixar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const addon = useMemo(() => RAW_ADDONS.find((a) => a.id === id), [id]);
 
@@ -246,8 +248,8 @@ function AddonPage() {
                   Baixar Gratis
                 </button>
                 <button
-                  onClick={() => setShowTutorial(true)}
-                  className="btn-block bg-[#FF0000] text-white !py-3 text-sm sm:!py-4"
+                  onClick={scrollToTutorial}
+                  className="btn-block bg-foreground text-background !py-3 text-sm sm:!py-4"
                 >
                   <Play className="h-5 w-5" />
                   Como Baixar
@@ -266,6 +268,22 @@ function AddonPage() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Tutorial — sempre visível */}
+        <div id="como-baixar" className="mt-4 scroll-mt-20 sm:mt-6">
+          <div className="mb-2 flex items-center gap-2">
+            <span className="font-pixel text-xs text-primary sm:text-sm">COMO BAIXAR ESTE ADDON</span>
+            <span className="h-px flex-1 bg-foreground/20" />
+          </div>
+          <TeraboxSteps />
+          <button
+            onClick={() => handleDownload(addon)}
+            className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-3.5 text-sm font-black animate-mc-pulse-orange sm:text-base"
+          >
+            <Download className="h-5 w-5" />
+            Baixar {addon.title}
+          </button>
         </div>
 
         {/* Full Description */}
@@ -297,30 +315,6 @@ function AddonPage() {
                 onOpen={(a) => navigate({ to: '/addon/$id', params: { id: a.id } })} 
               />
             ))}
-          </div>
-        </div>
-
-        {/* Tutorial Section */}
-        <div className="mt-4 card-block border-primary/50 bg-primary/5 p-4 sm:mt-6 sm:p-6">
-          <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-[#FF0000] text-white sm:h-12 sm:w-12">
-              <Youtube className="h-5 w-5 sm:h-6 sm:w-6" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-pixel text-xs sm:text-sm">PRIMEIRA VEZ BAIXANDO?</h3>
-              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-                Assista o tutorial completo de como baixar do Terabox no celular ou PC.
-              </p>
-              <a
-                href={TERABOX_TUTORIAL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-block mt-3 inline-flex bg-[#FF0000] text-white !px-4 !py-2 text-xs sm:text-sm"
-              >
-                <Play className="h-4 w-4" />
-                Ver Tutorial no YouTube
-              </a>
-            </div>
           </div>
         </div>
 
@@ -394,36 +388,6 @@ function AddonPage() {
         addonId={downloadFor?.id}
       />
 
-      {/* Tutorial Modal */}
-      {showTutorial && (
-        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-foreground/80 p-4">
-          <div className="absolute inset-0" onClick={() => setShowTutorial(false)} />
-          <div className="relative w-full max-w-3xl card-block animate-mc-rise overflow-hidden bg-background">
-            <button
-              onClick={() => setShowTutorial(false)}
-              className="absolute right-2 top-2 z-10 border-2 border-foreground bg-background p-1.5 hover:bg-primary hover:text-primary-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </button>
-            <div className="aspect-video w-full">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube.com/embed/fN4BennXjTY?si=Tz6C8QLpNW2d9xtz"
-                title="Tutorial Terabox"
-                loading="lazy"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="font-pixel text-sm">COMO BAIXAR DO TERABOX</h3>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Siga o passo a passo para baixar qualquer addon do Terabox no celular ou computador.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
