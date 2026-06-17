@@ -1,5 +1,29 @@
 [
   {
+  "id": "common-sense-addon",
+  "title": "Common Sense Addon",
+  "category": "Addon",
+  "version": "1.7.1",
+  "rating": 4.7,
+  "downloads": 200075,
+  "date": "2026-03-15",
+  "image": "https://i.imgur.com/iSnjHYe.png",
+  "tags": [
+    "addon",
+    "vanilla+",
+    "qol",
+    "survival",
+    "utility",
+    "achievements friendly",
+    "minecraft"
+  ],
+  "short": "Corrija pequenos detalhes e preencha lacunas do Minecraft com recursos de qualidade de vida (QoL) sem perder as conquistas.",
+  "description": "O Common Sense Addon foi desenvolvido para resolver aquelas pequenas inconsistências e mecânicas sem sentido do Minecraft Vanilla, adicionando vários recursos de qualidade de vida (QoL) e funções divertidas. O mod foca em manter a essência do jogo original, sendo totalmente compatível com texturas populares como Action & Stuff. Além disso, ele é 'Achievements Friendly', o que significa que você pode usá-lo em seu mundo survival sem perder a capacidade de desbloquear conquistas. A versão 1.7.1 inclui correções importantes de bugs e ajustes no sistema de saturação para melhorar o balanceamento da regeneração padrão.",
+  "downloadUrl": "https://1024terabox.com/s/18nqir7RzYNiocQoHH9dvXg",
+  "author": "JF_Addons",
+  "youtubeId": ""
+},
+  {
   "id": "effortless-building-addon",
   "title": "Effortless Building Bedrock Addon",
   "category": "Addon",
