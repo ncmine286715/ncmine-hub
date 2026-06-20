@@ -3,7 +3,11 @@
   "name": "ncmine-hub",
   "compatibility_date": "2026-06-20",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "main": "./dist/server/server.js",
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS"
+  },
   "observability": {
     "enabled": true
   }
