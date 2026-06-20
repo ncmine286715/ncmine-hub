@@ -1,5 +1,30 @@
 [
   {
+  "id": "apex-suite-addon",
+  "title": "Apex Suite [Achievement-Friendly]",
+  "category": "Addon",
+  "version": "1.0.0",
+  "rating": 3.5,
+  "downloads": 0,
+  "date": "2026-06-06",
+  "image": "https://i.imgur.com/3K8N9mh.png",
+  "tags": [
+    "addon",
+    "utility",
+    "technology",
+    "magic",
+    "achievements friendly",
+    "vein miner",
+    "xray",
+    "worldedit"
+  ],
+  "short": "Um kit de ferramentas modular com 12 funções incríveis para sobrevivência e construção sem desativar suas conquistas.",
+  "description": "O Apex Suite é o companheiro definitivo de utilitários para o Minecraft Bedrock, projetado para se integrar perfeitamente ao seu jogo sem exigir trapaças (cheats) ativas e mantendo as conquistas ligadas. Criado por Charles (ApexStudio), o addon traz 12 módulos que podem ser ativados individualmente usando o item de menu 'Apex Guide'. Entre as funções estão: Tree Capacitor, VeinMiner, Ímã de Itens, Aura de Execução contra mobs, Cura Automática, Efeitos Passivos, Voo de Elytra infinito, Modo Espectador temporário, Teletransporte (Void Walker), uma ferramenta de raio-X para minérios baseada em scripts (Echo Location) e recursos poderosos de construção como o 'Recall State' (para desfazer explosões e erros em até 30 segundos) e a 'Structure Wand' (um WorldEdit in-game para copiar e colar até 30.000 blocos).",
+  "downloadUrl": "https://1024terabox.com/s/17PipGWheujEO3M8mx5oDpw",
+  "author": "Charles (ApexStudio)",
+  "youtubeId": ""
+},
+  {
   "id": "common-sense-addon",
   "title": "Common Sense Addon",
   "category": "Addon",
