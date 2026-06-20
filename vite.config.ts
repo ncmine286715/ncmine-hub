@@ -20,8 +20,11 @@ export default defineConfig({
     server: { entry: "server" },
     prerender: {
       enabled: true,
-      crawlLinks: true,
-      autoSubfolderIndex: true,
+      // Sem crawl: a lista de 'pages' abaixo é a fonte da verdade.
+      // Sem autoSubfolderIndex: gera /addon/x.html plano em vez de /addon/x/index.html.
+      // Resultado: metade dos arquivos pra subir e nenhuma rota descoberta por acidente.
+      crawlLinks: false,
+      autoSubfolderIndex: false,
     },
     pages: [
       { path: "/" }, 
