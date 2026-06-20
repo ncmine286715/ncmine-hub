@@ -9,7 +9,6 @@ import { PersonalizedFeed } from "@/components/PersonalizedFeed";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { MousePointerClick, Download as DownloadIcon, Gamepad2 } from "lucide-react";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
@@ -126,32 +125,47 @@ function Index() {
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
 
-      {/* Como funciona — deixa o fluxo explícito */}
+      {/* Redes sociais — segue o criador */}
       <section className="mx-auto max-w-7xl px-3 pt-4 sm:px-4 sm:pt-6">
         <div className="border-2 border-foreground bg-background p-3 shadow-[3px_3px_0_0_var(--ink)] sm:p-4">
-          <div className="mb-2.5 flex items-center justify-center gap-2 sm:mb-3">
-            <span className="font-pixel text-[10px] uppercase text-primary sm:text-xs">Como funciona</span>
-            <span className="text-[9px] font-bold uppercase text-muted-foreground sm:text-[10px]">— grátis em 3 passos</span>
+          <div className="mb-3 flex items-center justify-center gap-2 sm:mb-4">
+            <span className="font-pixel text-[10px] uppercase text-primary sm:text-xs">Siga o criador</span>
+            <span className="text-[9px] font-bold uppercase text-muted-foreground sm:text-[10px]">— novidades em primeira mão</span>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-3">
-            {[
-              { n: 1, Icon: MousePointerClick, t: "Escolha o addon", d: "Toque em qualquer addon da lista" },
-              { n: 2, Icon: DownloadIcon, t: "Baixe no Terabox", d: "Conta grátis libera o download em 10s" },
-              { n: 3, Icon: Gamepad2, t: "Joga no Minecraft", d: "O arquivo instala sozinho no jogo" },
-            ].map(({ n, Icon, t, d }) => (
-              <div key={n} className="flex flex-col items-center gap-1 text-center">
-                <div className="flex h-9 w-9 items-center justify-center border-2 border-foreground bg-primary text-primary-foreground shadow-[2px_2px_0_0_var(--ink)] sm:h-11 sm:w-11">
-                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <p className="text-[10px] font-extrabold uppercase leading-tight sm:text-xs">
-                  <span className="text-primary">{n}.</span> {t}
-                </p>
-                <p className="hidden text-[10px] leading-snug text-muted-foreground sm:block">{d}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("external_click", { to: "discord", source: "home_social" })}
+              className="btn-block bg-[#5865F2] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
+            >
+              <DiscordIcon className="h-5 w-5" />
+              Discord
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("external_click", { to: "instagram", source: "home_social" })}
+              className="btn-block bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
+            >
+              <InstagramIcon className="h-5 w-5" />
+              Instagram
+            </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("external_click", { to: "youtube", source: "home_social" })}
+              className="btn-block bg-[#FF0000] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
+            >
+              <YouTubeIcon className="h-5 w-5" />
+              YouTube
+            </a>
           </div>
-          <p className="mt-2.5 text-center text-[10px] text-muted-foreground sm:mt-3 sm:text-[11px]">
-            Primeira vez? O passo a passo completo aparece em cada download. <span className="font-bold text-foreground">Sem pegadinha.</span>
+          <p className="mt-3 text-center text-[10px] text-muted-foreground sm:text-[11px]">
+            Toque em um addon abaixo pra baixar. <span className="font-bold text-foreground">Grátis, sem pegadinha.</span>
           </p>
         </div>
       </section>
