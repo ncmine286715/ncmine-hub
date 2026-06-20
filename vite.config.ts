@@ -7,6 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import addons from "./src/data/addons.json" with { type: "json" };
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const addonPages = (addons as Array<{ id: string }>).map((a) => ({
   path: `/addon/${a.id}`,
 }));
@@ -15,7 +17,11 @@ const addonPages = (addons as Array<{ id: string }>).map((a) => ({
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 // Prerender enabled: home is pure static HTML, killing Cloudflare CPU usage (error 1102).
 export default defineConfig({
-  plugins: [],
+  plugins: [cloudflare({
+    viteEnvironment: {
+      name: "ssr"
+    }
+  })],
   tanstackStart: {
     server: { entry: "server" },
     prerender: {
