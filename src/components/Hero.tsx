@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Sparkles, ArrowDown, ShieldCheck, Zap, TrendingUp, Star, Download, Users, Clock } from "lucide-react";
+import { Sparkles, ShieldCheck, Zap, TrendingUp, Star, Clock } from "lucide-react";
 import { DiscordIcon, YouTubeIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, YOUTUBE_URL, CREATOR_NAME } from "@/lib/links";
+import { DISCORD_URL, YOUTUBE_URL, SITE_NAME } from "@/lib/links";
 import { useAuth } from "@/hooks/use-auth";
 
 function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
@@ -23,14 +23,42 @@ function AnimatedCounter({ target, duration = 2000 }: { target: number; duration
   return <>{count.toLocaleString("pt-BR")}</>;
 }
 
-export function Hero({ addonsCount }: { addonsCount: number }) {
-  const { user } = useAuth();
-  const [pulse, setPulse] = useState(true);
+// "Pessoas baixando agora" — varia por hora do dia + jitter por visitante,
+// e faz random walk leve a cada poucos segundos pra parecer ao vivo.
+function timeOfDayBase() {
+  const h = new Date().getHours();
+  // Pico ~21h, vale ~5h. Faixa 110-260.
+  const curve = Math.cos(((h - 21) / 24) * Math.PI * 2);
+  return Math.round(110 + ((curve + 1) / 2) * 150);
+}
+
+function useLiveDownloaders() {
+  // Valor inicial determinístico pra evitar hydration mismatch no SSR.
+  const [count, setCount] = useState(168);
 
   useEffect(() => {
-    const t = setInterval(() => setPulse((p) => !p), 3000);
-    return () => clearInterval(t);
+    setCount(timeOfDayBase() + Math.floor(Math.random() * 30) - 10);
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      setCount((c) => {
+        const delta = Math.floor(Math.random() * 9) - 4;
+        const base = timeOfDayBase();
+        // Mantém perto da base do horário, com jitter +/- 25
+        const next = Math.max(base - 25, Math.min(base + 25, c + delta));
+        return next;
+      });
+      timeoutId = setTimeout(tick, 3500 + Math.random() * 3500);
+    };
+    timeoutId = setTimeout(tick, 3500 + Math.random() * 3500);
+    return () => clearTimeout(timeoutId);
   }, []);
+
+  return count;
+}
+
+export function Hero({ addonsCount }: { addonsCount: number }) {
+  const { user } = useAuth();
+  const liveDownloaders = useLiveDownloaders();
 
   return (
     <header className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-8">
@@ -38,7 +66,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
       <div className="flex items-center justify-between border-b-2 border-foreground pb-2 sm:pb-3">
         <div className="flex items-center gap-2">
           <MinecraftBlockIcon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
-          <span className="font-pixel text-[10px] sm:text-xs">NCMINE</span>
+          <span className="font-pixel text-[10px] uppercase sm:text-xs">{SITE_NAME}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-3 mr-4 text-[9px] font-black uppercase text-muted-foreground sm:flex">
@@ -71,10 +99,6 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               <Sparkles className="h-3 w-3 text-primary" />
               <AnimatedCounter target={addonsCount} />+ Addons Gratis
             </span>
-            <span className="inline-flex items-center gap-1.5 border-2 border-green-500 bg-green-50 px-3 py-1 font-pixel text-[8px] uppercase text-green-700 sm:text-[10px]">
-              <Users className="h-3 w-3" />
-              <AnimatedCounter target={2400} />+ Mineradores
-            </span>
           </div>
 
           {/* Live indicator */}
@@ -83,12 +107,12 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
-            <TrendingUp className="h-3 w-3" /> 47 pessoas baixando agora
+            <TrendingUp className="h-3 w-3" />
+            <span className="tabular-nums">{liveDownloaders}</span> pessoas baixando agora
           </div>
 
           {/* Title */}
           <h1 className="text-4xl font-black uppercase leading-[0.85] tracking-tighter sm:text-7xl lg:text-8xl">
-            <span className="block text-foreground drop-shadow-[4px_4px_0_rgba(0,0,0,0.1)]">{CREATOR_NAME}</span>
             <span className="mt-2 inline-block bg-primary px-3 py-1 text-primary-foreground shadow-[6px_6px_0_0_var(--ink)] rotate-[-1deg]">
               ADDONS GRATIS
             </span>
@@ -114,15 +138,8 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
             </span>
           </div>
 
-          {/* CTA */}
-          <div id="links" className="mt-6 flex flex-col items-center gap-3 sm:mt-10">
-            <a
-              href="#addons"
-              className={`btn-block bg-primary text-primary-foreground !px-14 !py-5 text-base sm:!px-20 sm:!py-7 sm:text-xl font-black uppercase tracking-[0.15em] shadow-[8px_8px_0_0_var(--ink)] hover:translate-y-[-4px] hover:shadow-[12px_12px_0_0_var(--ink)] active:translate-y-0 active:shadow-none transition-all ${pulse ? "animate-mc-pulse-orange" : ""}`}
-            >
-              <Download className="h-5 w-5 sm:h-7 sm:w-7" />
-              VER ADDONS E BAIXAR
-            </a>
+          {/* Selo de gratuidade */}
+          <div className="mt-6 flex justify-center sm:mt-8">
             <span className="text-[10px] font-bold uppercase text-muted-foreground flex items-center gap-1 sm:text-xs">
               <Clock className="h-3 w-3" /> 100% gratis - sem cadastro obrigatorio
             </span>
@@ -145,7 +162,7 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
         <div className="flex w-max animate-mc-scroll-x gap-4 whitespace-nowrap py-1.5 font-pixel text-[8px] sm:gap-8 sm:py-3 sm:text-xs">
           {Array.from({ length: 2 }).map((_, group) => (
             <div key={group} className="flex items-center gap-4 px-2 sm:gap-8 sm:px-4">
-              {["BEDROCK", "ADDONS", "TEXTURAS", "MOBS", "MAPAS", "NCMINE", "GRATIS", "CURADO"].map((w, i) => (
+              {["BEDROCK", "ADDONS", "TEXTURAS", "MOBS", "MAPAS", SITE_NAME.toUpperCase(), "GRATIS", "CURADO"].map((w, i) => (
                 <span key={`${group}-${i}`} className="inline-flex items-center gap-1.5 sm:gap-3">
                   <MinecraftBlockIcon className="h-2.5 w-2.5 text-primary sm:h-4 sm:w-4" />
                   {w}
