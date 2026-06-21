@@ -1,5 +1,29 @@
 [
   {
+  "id": "system-dynamic-light",
+  "title": "System Dynamic Light",
+  "category": "Addon",
+  "version": "3.2.3",
+  "rating": 4.8,
+  "downloads": 4855619,
+  "date": "2026-04-30",
+  "image": "https://i.imgur.com/7voiLMd.gif",
+  "tags": [
+    "addon",
+    "dynamic light",
+    "utility",
+    "survival",
+    "achievements friendly",
+    "vanilla+",
+    "data packs"
+  ],
+  "short": "Ilumine cavernas e áreas escuras segurando tochas, lanternas ou vestindo capacetes de mineração no Minecraft Bedrock.",
+  "description": "O System Dynamic Light traz o aclamado sistema de iluminação dinâmica para o Minecraft Bedrock. Com ele, você pode iluminar o ambiente ao seu redor segurando tochas (inclusive na segunda mão), sinalizadores, blocos de magma, pedra luminosa e vários outros itens, sem a necessidade de colocá-los no chão. O addon adiciona capacetes de mineração fabricáveis, iluminação subaquática com pepinos-do-mar e faz com que itens dropados, criaturas incandescentes (como Blazes e Lulas Brilhantes) e mobs em chamas também emitam luz. Ele é totalmente compatível com outros addons populares (como Action and Stuff), funciona em Realms, não utiliza o arquivo player.json e não desativa as conquistas do mundo.",
+  "downloadUrl": "https://1024terabox.com/s/1jPQBjl2-lo5z2QjFvIcstQ",
+  "author": "SystemTv",
+  "youtubeId": ""
+},
+  {
   "id": "apex-suite-addon",
   "title": "Apex Suite [Achievement-Friendly]",
   "category": "Addon",
