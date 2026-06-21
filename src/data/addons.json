@@ -1,5 +1,29 @@
 [
   {
+  "id": "autoswitch-mod",
+  "title": "AutoSwitch Mod",
+  "category": "Addon",
+  "version": "1.0.0",
+  "rating": 4.6,
+  "downloads": 68307,
+  "date": "2026-02-07",
+  "image": "https://i.imgur.com/cdixs1W.gif",
+  "tags": [
+    "addon",
+    "utility",
+    "autoswitch",
+    "tools",
+    "survival",
+    "vanilla+",
+    "minecraft"
+  ],
+  "short": "Troque automaticamente para a ferramenta correta e mais eficiente ao quebrar blocos ou atacar criaturas.",
+  "description": "O AutoSwitch Mod adiciona uma funcionalidade de extrema utilidade que prevê a próxima ação do jogador e altera o item ativo da sua barra de acesso rápido (Hotbar) para a melhor ferramenta disponível em seu inventário. Se você estiver segurando uma pá e for atacado por um zumbi, o mod muda instantaneamente para sua espada. O mesmo funciona para mineração, corte de árvores e escavação de terra, garantindo máxima eficiência e economia de tempo. O recurso pode ser ativado ou desativado rapidamente pressionando a tecla 'R' (ou comando equivalente no controle/tela) caso precise pausar a troca automática.",
+  "downloadUrl": "https://1024terabox.com/s/1663uG7q3scBU4Qb-eG4yKw",
+  "author": "Deximus_Maximus",
+  "youtubeId": ""
+},
+  {
   "id": "system-dynamic-light",
   "title": "System Dynamic Light",
   "category": "Addon",
