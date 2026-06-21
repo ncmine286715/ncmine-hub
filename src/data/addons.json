@@ -1,5 +1,29 @@
 [
   {
+  "id": "pick-up-and-carry-addon",
+  "title": "Pick up & Carry Addon",
+  "category": "Addon",
+  "version": "1.4.4",
+  "rating": 3.7,
+  "downloads": 0,
+  "date": "2025-04-28",
+  "image": "https://i.imgur.com/dnFkloV.gif",
+  "tags": [
+    "addon",
+    "utility",
+    "carry",
+    "mobs",
+    "mechanics",
+    "multiplayer",
+    "player.json"
+  ],
+  "short": "Pegue e carregue jogadores, criaturas ou baús cheios de itens com os braços vazios no Minecraft Bedrock.",
+  "description": "O Pick up & Carry é um addon inovador que adiciona uma nova mecânica ao Minecraft Bedrock, permitindo que você carregue qualquer criatura, outros jogadores ou blocos de armazenamento (como baús, fornalhas e liberadores) diretamente no colo. O mod conta com uma incrível renderização de corpo em primeira pessoa (onde você vê seus próprios braços segurando o alvo) e permite arremessar o que está carregando para longe. Blocos cheios com itens podem ser abertos ou roubados por outros jogadores em movimento, e se caírem de locais altos, quebram espalhando o loot. Possui menu de configuração in-game (/function pickupcarry_config) e exige o uso de mãos vazias e a ativação da opção 'Beta APIs'.",
+  "downloadUrl": "https://1024terabox.com/s/1dLm54LPJLs81FpSxB14EGA",
+  "author": "sirоb",
+  "youtubeId": ""
+},
+  {
   "id": "autoswitch-mod",
   "title": "AutoSwitch Mod",
   "category": "Addon",
