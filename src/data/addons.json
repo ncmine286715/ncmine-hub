@@ -1,5 +1,29 @@
 [
   {
+  "id": "deesse-ui-pack",
+  "title": "Déesse UI Pack",
+  "category": "Texture Pack",
+  "version": "1.3.8",
+  "rating": 4.2,
+  "downloads": 2400000,
+  "date": "2026-06-17",
+  "image": "https://i.imgur.com/zVAJYVW.jpeg",
+  "tags": [
+    "texture pack",
+    "ui",
+    "resource pack",
+    "tweaks",
+    "bedrock",
+    "minecraft",
+    "miscellaneous"
+  ],
+  "short": "Melhore sua interface e gameplay no Minecraft Bedrock com um pacote completo de modificações de UI.",
+  "description": "O Déesse UI Pack é um pacote de recursos de interface desenvolvido por Itzriyo157 que adiciona dezenas de novos recursos, ajustes visuais e designs organizados para melhorar a navegação do Minecraft Bedrock. O pack compila diversas funções populares de UI em um único lugar, incluindo contêiner rápido, modo espectador forçado, lista de jogadores na HUD, realce de raridade de itens, notas temporárias, contador de itens em pacotes (bundles) e utilitários de trocas. A versão v1.3.8 atualiza a interface para compatibilidade total com o Minecraft 1.26.30+, adicionando informações de combustível ao livro de receitas da fornalha, um botão de mostrar encantamentos na mesa e ajustes no menu de pausa.",
+  "downloadUrl": "https://1024terabox.com/s/1x9ok3GWL5ZT5XcBkEgpxag",
+  "author": "Itzriyo157",
+  "youtubeId": ""
+},
+  {
   "id": "pick-up-and-carry-addon",
   "title": "Pick up & Carry Addon",
   "category": "Addon",
