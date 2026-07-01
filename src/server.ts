@@ -76,12 +76,20 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
+      if (response.status >= 500) {
+        try {
+          const b = await response.clone().text();
+          console.error(`[SSR-DEBUG ${url.pathname} ${response.status}]`, b.slice(0, 400));
+          console.error(`[SSR-DEBUG captured]`, consumeLastCapturedError());
+        } catch {}
+      }
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
-      console.error(error);
+      console.error(`[SSR-DEBUG throw ${url.pathname}]`, error);
       return brandedErrorResponse();
     }
   },
