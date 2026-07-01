@@ -12,6 +12,8 @@ import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
+import { NullMascot } from "@/components/NullMascot";
+import { NudgePopup } from "@/components/NudgePopup";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,7 +78,10 @@ function Index() {
   }, []);
 
   const { featured, rest } = useMemo(() => {
-    const [first, ...others] = RAW_ADDONS;
+    // Featured = addon mais baixado (prova social real)
+    const sorted = [...RAW_ADDONS].sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+    const first = sorted[0];
+    const others = RAW_ADDONS.filter((a) => a.id !== first.id);
     return { featured: first, rest: shuffleSeeded(others) };
   }, []);
 
@@ -125,53 +130,8 @@ function Index() {
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
 
-      {/* Redes sociais — segue o criador */}
-      <section className="mx-auto max-w-7xl px-3 pt-4 sm:px-4 sm:pt-6">
-        <div className="border-2 border-foreground bg-background p-3 shadow-[3px_3px_0_0_var(--ink)] sm:p-4">
-          <div className="mb-3 flex items-center justify-center gap-2 sm:mb-4">
-            <span className="font-pixel text-[10px] uppercase text-primary sm:text-xs">Siga o criador</span>
-            <span className="text-[9px] font-bold uppercase text-muted-foreground sm:text-[10px]">— novidades em primeira mão</span>
-          </div>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
-            <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("external_click", { to: "discord", source: "home_social" })}
-              className="btn-block bg-[#5865F2] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
-            >
-              <DiscordIcon className="h-5 w-5" />
-              Discord
-            </a>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("external_click", { to: "instagram", source: "home_social" })}
-              className="btn-block bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
-            >
-              <InstagramIcon className="h-5 w-5" />
-              Instagram
-            </a>
-            <a
-              href={YOUTUBE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("external_click", { to: "youtube", source: "home_social" })}
-              className="btn-block bg-[#FF0000] text-white !py-3 min-h-[52px] text-sm font-black uppercase active:scale-[0.98] transition-transform"
-            >
-              <YouTubeIcon className="h-5 w-5" />
-              YouTube
-            </a>
-          </div>
-          <p className="mt-3 text-center text-[10px] text-muted-foreground sm:text-[11px]">
-            Toque em um addon abaixo pra baixar. <span className="font-bold text-foreground">Grátis, sem pegadinha.</span>
-          </p>
-        </div>
-      </section>
-
       {/* Feed Personalizado */}
-      <section className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
+      <section className="mx-auto max-w-7xl px-3 sm:px-4 py-3 sm:py-5">
         <PersonalizedFeed addons={RAW_ADDONS} onOpen={handleOpen} onDownload={handleDownload} />
       </section>
 
@@ -261,6 +221,10 @@ function Index() {
         onClose={() => setDownloadFor(null)}
         addonId={downloadFor?.id}
       />
+
+      {/* Mascote Null + Nudge de download */}
+      <NullMascot />
+      <NudgePopup addon={featured} onDownload={handleDownload} />
     </div>
   );
 }
