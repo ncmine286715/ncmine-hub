@@ -55,15 +55,7 @@ function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boole
 async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
   if (response.status < 500) return response;
   const contentType = response.headers.get("content-type") ?? "";
-  if (!contentType.includes("application/json")) {
-    // Debug: log body for non-JSON 500s too
-    try {
-      const b = await response.clone().text();
-      console.error("[SSR 500 non-json]", b.slice(0, 500));
-      console.error("[SSR captured]", consumeLastCapturedError());
-    } catch {}
-    return response;
-  }
+  if (!contentType.includes("application/json")) return response;
 
   const body = await response.clone().text();
   if (!isCatastrophicSsrErrorBody(body, response.status)) {
