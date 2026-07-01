@@ -42,7 +42,6 @@ const aliasServerBundle = () => ({
 export default defineConfig({
   plugins: [aliasServerBundle()],
   tanstackStart: {
-    server: { entry: "server" },
     prerender: {
       enabled: true,
       crawlLinks: false,
