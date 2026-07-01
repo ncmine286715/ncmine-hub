@@ -42,6 +42,7 @@ const aliasServerBundle = () => ({
 export default defineConfig({
   plugins: [aliasServerBundle()],
   tanstackStart: {
+    server: { entry: "server" },
     prerender: {
       enabled: true,
       // Sem crawl: a lista de 'pages' abaixo é a fonte da verdade.
