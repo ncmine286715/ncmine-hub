@@ -44,6 +44,8 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
 
   const isHot = addon.downloads > 5000;
   const isViral = addon.downloads > 10000;
+  const authorLower = (addon.author || "").toLowerCase();
+  const isNcmine = authorLower.includes("ncmine") || authorLower.includes("nicolas");
 
   return (
     <article className={`card-block relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}>
@@ -92,6 +94,11 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
         <span className="absolute right-1 top-1 border-2 border-foreground bg-background px-1.5 py-0.5 font-pixel text-[7px] sm:right-2 sm:top-2 sm:px-2 sm:text-[9px]">
           v{addon.version}
         </span>
+        {isNcmine && (
+          <span className="absolute right-1 bottom-1 border-2 border-foreground bg-primary px-1.5 py-0.5 font-pixel text-[7px] uppercase text-primary-foreground sm:right-2 sm:bottom-2 sm:px-2 sm:text-[9px]">
+            @ncmine
+          </span>
+        )}
       </button>
 
       <div className="flex flex-1 flex-col p-2.5 sm:p-4">

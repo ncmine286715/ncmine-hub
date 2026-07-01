@@ -5,34 +5,14 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { copyFileSync, existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import addons from "./src/data/addons.json" with { type: "json" };
 
-const addonPages = (addons as Array<{ id: string }>).map((a) => ({
-  path: `/addon/${a.id}`,
-}));
-
-// Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-// @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
-// Prerender enabled: home is pure static HTML, killing Cloudflare CPU usage (error 1102).
+// Prerender está desativado no momento — a combinação do plugin do
+// TanStack Start com o adapter Cloudflare estava quebrando o build
+// (augmentReq tentando mutar Request nativa; entry naming mismatch).
+// A performance é garantida via cache agressivo do CDN em public/_headers.
 export default defineConfig({
   plugins: [],
-  tanstackStart: {
-    server: { entry: "server" },
-    prerender: {
-      enabled: true,
-      // Sem crawl: a lista de 'pages' abaixo é a fonte da verdade.
-      // Sem autoSubfolderIndex: gera /addon/x.html plano em vez de /addon/x/index.html.
-      // Resultado: metade dos arquivos pra subir e nenhuma rota descoberta por acidente.
-      crawlLinks: false,
-      autoSubfolderIndex: false,
-    },
-    pages: [
-      { path: "/" }, 
-      { path: "/auth" }, 
-      { path: "/favorites" }, 
-      { path: "/community" }, 
-      { path: "/profile" }, 
-      ...addonPages
-    ],
-  },
 });

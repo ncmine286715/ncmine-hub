@@ -24,7 +24,10 @@ export type EventType =
   | "inapp_detected"
   | "inapp_escape"
   | "terabox_open"
-  | "tutorial_video_open";
+  | "tutorial_video_open"
+  | "nudge_show"
+  | "nudge_click"
+  | "nudge_dismiss";
 
 const ANON_KEY = "ncmine:anon_id";
 const SESSION_KEY = "ncmine:session_start";

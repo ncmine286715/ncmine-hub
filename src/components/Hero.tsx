@@ -1,177 +1,72 @@
-import { useState, useEffect } from "react";
-import { Sparkles, ShieldCheck, Zap, TrendingUp, Star, Clock } from "lucide-react";
-import { DiscordIcon, YouTubeIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, YOUTUBE_URL, SITE_NAME } from "@/lib/links";
-import { useAuth } from "@/hooks/use-auth";
+import { Search, Download, ArrowDown } from "lucide-react";
+import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import { SITE_NAME } from "@/lib/links";
 
-function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let start = 0;
-    const step = Math.max(1, Math.floor(target / (duration / 16)));
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(start);
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [target, duration]);
-  return <>{count.toLocaleString("pt-BR")}</>;
+function scrollToAddons() {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById("addons");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// "Pessoas baixando agora" — varia por hora do dia + jitter por visitante,
-// e faz random walk leve a cada poucos segundos pra parecer ao vivo.
-function timeOfDayBase() {
-  const h = new Date().getHours();
-  // Pico ~21h, vale ~5h. Faixa 110-260.
-  const curve = Math.cos(((h - 21) / 24) * Math.PI * 2);
-  return Math.round(110 + ((curve + 1) / 2) * 150);
-}
-
-function useLiveDownloaders() {
-  // Valor inicial determinístico pra evitar hydration mismatch no SSR.
-  const [count, setCount] = useState(168);
-
-  useEffect(() => {
-    setCount(timeOfDayBase() + Math.floor(Math.random() * 30) - 10);
-    let timeoutId: ReturnType<typeof setTimeout>;
-    const tick = () => {
-      setCount((c) => {
-        const delta = Math.floor(Math.random() * 9) - 4;
-        const base = timeOfDayBase();
-        // Mantém perto da base do horário, com jitter +/- 25
-        const next = Math.max(base - 25, Math.min(base + 25, c + delta));
-        return next;
-      });
-      timeoutId = setTimeout(tick, 3500 + Math.random() * 3500);
-    };
-    timeoutId = setTimeout(tick, 3500 + Math.random() * 3500);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  return count;
+function focusSearch() {
+  if (typeof document === "undefined") return;
+  scrollToAddons();
+  setTimeout(() => {
+    const input = document.querySelector<HTMLInputElement>('#addons input[placeholder^="Buscar"]');
+    input?.focus();
+  }, 400);
 }
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
-  const { user } = useAuth();
-  const liveDownloaders = useLiveDownloaders();
-
   return (
-    <header className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-8">
-      {/* Top bar */}
-      <div className="flex items-center justify-between border-b-2 border-foreground pb-2 sm:pb-3">
+    <header className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6">
+      {/* Sticky-ish top bar */}
+      <div className="flex items-center justify-between gap-2 border-b-2 border-foreground pb-2 sm:pb-3">
         <div className="flex items-center gap-2">
           <MinecraftBlockIcon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
           <span className="font-pixel text-[10px] uppercase sm:text-xs">{SITE_NAME}</span>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-3 mr-4 text-[9px] font-black uppercase text-muted-foreground sm:flex">
-            <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-green-500" /> Links Verificados</span>
-            <span className="flex items-center gap-1"><Zap className="h-3 w-3 text-yellow-500" /> Download Imediato</span>
-          </div>
-          <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" aria-label="Discord" className="inline-flex h-8 w-8 items-center justify-center border-2 border-foreground bg-[#5865F2] text-white sm:hidden">
-            <DiscordIcon className="h-4 w-4" />
-          </a>
-          <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="inline-flex h-8 w-8 items-center justify-center border-2 border-foreground bg-[#FF0000] text-white sm:hidden">
-            <YouTubeIcon className="h-4 w-4" />
-          </a>
-          <nav className="hidden gap-4 text-xs font-bold uppercase sm:flex">
-            <a href="#addons" className="hover:text-primary">Addons</a>
-            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">Discord</a>
-            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">YouTube</a>
-          </nav>
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <button
+            type="button"
+            onClick={focusSearch}
+            aria-label="Buscar"
+            className="inline-flex h-9 w-9 items-center justify-center border-2 border-foreground bg-background hover:bg-muted sm:h-10 sm:w-10"
+          >
+            <Search className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={scrollToAddons}
+            className="btn-block bg-primary text-primary-foreground !px-3 !py-2 text-[11px] font-black uppercase sm:!px-4 sm:!py-2.5 sm:text-xs"
+          >
+            <Download className="h-4 w-4" />
+            <span className="hidden sm:inline">Baixar agora</span>
+            <span className="sm:hidden">Baixar</span>
+          </button>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative py-4 sm:py-14 overflow-hidden">
-        <div aria-hidden className="absolute -left-4 top-2 hidden h-14 w-14 rotate-12 border-2 border-foreground bg-primary shadow-[6px_6px_0_0_var(--ink)] md:block" />
-        <div aria-hidden className="absolute -right-2 bottom-2 hidden h-10 w-10 -rotate-6 border-2 border-foreground bg-foreground md:block" />
-
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          {/* Social proof strip */}
-          <div className="mb-3 sm:mb-5 flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-            <span className="inline-flex items-center gap-1.5 border-2 border-foreground bg-background px-3 py-1 font-pixel text-[8px] uppercase shadow-[3px_3px_0_0_var(--ink)] sm:text-[10px]">
-              <Sparkles className="h-3 w-3 text-primary" />
-              <AnimatedCounter target={addonsCount} />+ Addons Gratis
-            </span>
-          </div>
-
-          {/* Live indicator */}
-          <div className="mb-4 flex items-center justify-center gap-2 text-[9px] font-black uppercase text-primary sm:text-[11px]">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            <TrendingUp className="h-3 w-3" />
-            <span className="tabular-nums">{liveDownloaders}</span> pessoas baixando agora
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl font-black uppercase leading-[0.85] tracking-tighter sm:text-7xl lg:text-8xl">
-            <span className="mt-2 inline-block bg-primary px-3 py-1 text-primary-foreground shadow-[6px_6px_0_0_var(--ink)] rotate-[-1deg]">
-              ADDONS GRATIS
-            </span>
-          </h1>
-
-          {/* Value proposition */}
-          <p className="mx-auto mt-5 max-w-xl text-[13px] font-bold leading-snug text-foreground/80 sm:mt-8 sm:text-lg">
-            A maior biblioteca de addons de Minecraft Bedrock do Brasil.
-            <br className="hidden sm:block" />
-            <span className="text-primary">Escolha seu addon e baixe em 10 segundos.</span>
-          </p>
-
-          {/* Trust badges mobile */}
-          <div className="mt-3 flex items-center justify-center gap-3 sm:hidden">
-            <span className="flex items-center gap-1 text-[8px] font-black uppercase text-muted-foreground">
-              <ShieldCheck className="h-3 w-3 text-green-500" /> Seguro
-            </span>
-            <span className="flex items-center gap-1 text-[8px] font-black uppercase text-muted-foreground">
-              <Zap className="h-3 w-3 text-yellow-500" /> Rapido
-            </span>
-            <span className="flex items-center gap-1 text-[8px] font-black uppercase text-muted-foreground">
-              <Star className="h-3 w-3 text-primary fill-primary" /> Curado
-            </span>
-          </div>
-
-          {/* Selo de gratuidade */}
-          <div className="mt-6 flex justify-center sm:mt-8">
-            <span className="text-[10px] font-bold uppercase text-muted-foreground flex items-center gap-1 sm:text-xs">
-              <Clock className="h-3 w-3" /> 100% gratis - sem cadastro obrigatorio
-            </span>
-          </div>
-
-          {/* Urgency - recent downloads */}
-          {!user && (
-            <div className="mt-6 border-2 border-dashed border-primary/30 bg-primary/5 px-4 py-3 sm:mt-8 sm:inline-flex sm:gap-2">
-              <p className="text-[10px] font-bold uppercase text-foreground/70 sm:text-xs">
-                <Star className="inline h-3 w-3 text-primary fill-primary mr-1" />
-                Crie uma conta gratis para salvar favoritos, ganhar XP e receber alertas de novos addons
-              </p>
-            </div>
-          )}
-        </div>
+      {/* Minimal hero */}
+      <section className="relative py-5 sm:py-10 text-center">
+        <h1 className="mx-auto max-w-3xl text-2xl font-black uppercase leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
+          {addonsCount}{" "}
+          <span className="inline-block bg-primary px-2 py-0.5 text-primary-foreground shadow-[4px_4px_0_0_var(--ink)] rotate-[-1deg]">
+            Addons Grátis
+          </span>{" "}
+          para Minecraft Bedrock
+        </h1>
+        <p className="mx-auto mt-3 max-w-lg text-[12px] font-medium text-muted-foreground sm:mt-4 sm:text-base">
+          Sem cadastro. Sem anúncio de instalação. Clique e baixe.
+        </p>
+        <button
+          type="button"
+          onClick={scrollToAddons}
+          className="btn-block mx-auto mt-4 bg-foreground text-background !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm"
+        >
+          Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
+        </button>
       </section>
-
-      {/* Marquee */}
-      <div className="relative -mx-3 overflow-hidden border-y-2 border-foreground bg-foreground text-background sm:-mx-4">
-        <div className="flex w-max animate-mc-scroll-x gap-4 whitespace-nowrap py-1.5 font-pixel text-[8px] sm:gap-8 sm:py-3 sm:text-xs">
-          {Array.from({ length: 2 }).map((_, group) => (
-            <div key={group} className="flex items-center gap-4 px-2 sm:gap-8 sm:px-4">
-              {["BEDROCK", "ADDONS", "TEXTURAS", "MOBS", "MAPAS", SITE_NAME.toUpperCase(), "GRATIS", "CURADO"].map((w, i) => (
-                <span key={`${group}-${i}`} className="inline-flex items-center gap-1.5 sm:gap-3">
-                  <MinecraftBlockIcon className="h-2.5 w-2.5 text-primary sm:h-4 sm:w-4" />
-                  {w}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
     </header>
   );
 }

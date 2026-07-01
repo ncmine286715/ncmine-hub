@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles, ChevronRight } from "lucide-react";
+import { Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 
 type Props = {
@@ -206,27 +206,27 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                 <p className="mt-0.5 max-w-md text-xs text-muted-foreground sm:text-sm">
                   {featuredAddon.short}
                 </p>
+                <p className="mt-1 inline-flex items-center gap-1 font-pixel text-[10px]">
+                  <Download className="h-3 w-3" /> {featuredAddon.downloads.toLocaleString("pt-BR")} downloads
+                </p>
               </div>
               <button
-                onClick={() => onOpen(featuredAddon)}
+                onClick={() => onDownload(featuredAddon)}
                 className="btn-block shrink-0 bg-primary text-primary-foreground !px-4 !py-2.5 text-xs sm:!px-8 sm:!py-4 sm:text-sm shadow-[4px_4px_0_0_var(--ink)] hover:-translate-y-0.5 active:translate-y-0 transition-all font-black uppercase tracking-widest"
               >
-                <Download className="h-5 w-5" /> Download Agora
+                <Download className="h-5 w-5" /> Baixar Agora
               </button>
             </div>
             {/* Mobile download button */}
-            <div className="flex items-center justify-between border-t-2 border-foreground p-3 sm:hidden bg-primary/5">
+            <div className="flex items-center justify-between gap-2 border-t-2 border-foreground p-3 sm:hidden bg-primary/5">
+              <span className="text-[10px] font-bold text-foreground/70 flex items-center gap-1">
+                <Download className="h-3 w-3" /> {featuredAddon.downloads.toLocaleString("pt-BR")}
+              </span>
               <button
-                onClick={() => onOpen(featuredAddon)}
-                className="text-xs font-black uppercase tracking-tighter text-primary flex items-center gap-1"
+                onClick={() => onDownload(featuredAddon)}
+                className="btn-block flex-1 bg-primary text-primary-foreground !px-4 !py-2.5 text-xs font-black shadow-[3px_3px_0_0_var(--ink)] justify-center"
               >
-                Saber mais <ChevronRight className="h-3 w-3" />
-              </button>
-              <button
-                onClick={() => onOpen(featuredAddon)}
-                className="btn-block bg-primary text-primary-foreground !px-6 !py-2.5 text-xs font-black shadow-[3px_3px_0_0_var(--ink)]"
-              >
-                <Download className="h-4 w-4" /> Download
+                <Download className="h-4 w-4" /> Baixar Agora
               </button>
             </div>
           </div>
