@@ -45,12 +45,13 @@ export default defineConfig({
     server: { entry: "server" },
     prerender: {
       enabled: true,
-      // Sem crawl: a lista de 'pages' abaixo é a fonte da verdade.
-      // Sem autoSubfolderIndex: gera /addon/x.html plano em vez de /addon/x/index.html.
-      // Resultado: metade dos arquivos pra subir e nenhuma rota descoberta por acidente.
       crawlLinks: false,
       autoSubfolderIndex: false,
+      // Não descobrir /admin, /auth, /favorites... (dependem de Firebase Auth e quebram SSR).
+      autoStaticPathsDiscovery: false,
+      // Se algum addon quebrar, não faz o build inteiro cair.
+      failOnError: false,
     },
-    pages: [{ path: "/" }],
+    pages: [{ path: "/" }, ...addonPages],
   },
 });
