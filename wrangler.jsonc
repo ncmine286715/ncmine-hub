@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ncmine-hub",
+  "name": "ncmine-hub2",
   "compatibility_date": "2026-06-20",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./dist/server/server.js",
