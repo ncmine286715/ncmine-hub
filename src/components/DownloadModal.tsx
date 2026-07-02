@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X, Download, Copy, Check, ArrowDown, Sparkles } from "lucide-react";
+import { X, Download, Copy, Check, ArrowDown, Sparkles, Users } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { gaEvent } from "@/lib/gtag";
 import { awardPoints, recordDownload } from "@/lib/firebase-services";
@@ -47,6 +47,7 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
 
   const browser = realBrowserName(platform);
   const ready = count <= 0;
+  const waitProgress = Math.min(100, Math.round(((2 - count) / 2) * 100));
 
   const handleDownloadClick = async () => {
     trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
@@ -115,50 +116,143 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
             </button>
           </div>
         ) : (
-          <div className="relative pt-6">
-            {ready && (
-              <>
-                {/* Setas piscando apontando pro botão */}
-                <ArrowDown className="pointer-events-none absolute -top-1 left-1/2 h-6 w-6 -translate-x-1/2 animate-bounce text-primary" />
-                <ArrowDown
-                  className="pointer-events-none absolute -top-1 left-[25%] h-4 w-4 animate-bounce text-primary/60"
-                  style={{ animationDelay: "150ms" }}
+          <div className="relative pt-2">
+            {/* Baú do Minecraft: fechado enquanto libera, abre quando pronto */}
+            <div className="mb-3 flex flex-col items-center gap-2">
+              <PixelChest open={ready} />
+              <div className="h-3 w-full max-w-[220px] overflow-hidden border-2 border-foreground bg-[#3a3a3a]">
+                <div
+                  className="h-full bg-gradient-to-r from-[#8aff3c] to-[#4fbf1c] transition-all duration-1000 ease-linear"
+                  style={{ width: `${waitProgress}%` }}
                 />
-                <ArrowDown
-                  className="pointer-events-none absolute -top-1 left-[75%] h-4 w-4 animate-bounce text-primary/60"
-                  style={{ animationDelay: "300ms" }}
-                />
-                {/* Null pointing */}
-                <div className="pointer-events-none absolute -left-1 -top-4 hidden sm:block">
-                  <NullPointer />
-                </div>
-              </>
-            )}
-            <a
-              href={ready ? url : undefined}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
-              aria-disabled={!ready}
-              className={`btn-block relative w-full !py-5 text-lg font-black ${
-                ready
-                  ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
-                  : "cursor-wait bg-muted text-muted-foreground"
-              }`}
-            >
-              {ready ? (
-                <><Download className="h-6 w-6" /> BAIXAR</>
-              ) : (
-                <span className="font-pixel text-[11px]">Liberando… {count}s</span>
+              </div>
+              <p className="font-pixel text-[9px] uppercase text-muted-foreground">
+                {ready ? "Baú aberto! 🎉" : `Abrindo o baú… ${count}s`}
+              </p>
+            </div>
+
+            <div className="relative pt-4">
+              {ready && (
+                <>
+                  {/* Setas piscando apontando pro botão */}
+                  <ArrowDown className="pointer-events-none absolute -top-1 left-1/2 h-6 w-6 -translate-x-1/2 animate-bounce text-primary" />
+                  <ArrowDown
+                    className="pointer-events-none absolute -top-1 left-[25%] h-4 w-4 animate-bounce text-primary/60"
+                    style={{ animationDelay: "150ms" }}
+                  />
+                  <ArrowDown
+                    className="pointer-events-none absolute -top-1 left-[75%] h-4 w-4 animate-bounce text-primary/60"
+                    style={{ animationDelay: "300ms" }}
+                  />
+                  {/* Null pointing */}
+                  <div className="pointer-events-none absolute -left-1 -top-4 hidden sm:block">
+                    <NullPointer />
+                  </div>
+                </>
               )}
-            </a>
+              <a
+                href={ready ? url : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
+                aria-disabled={!ready}
+                className={`btn-block relative w-full !py-5 text-lg font-black ${
+                  ready
+                    ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
+                    : "cursor-wait bg-muted text-muted-foreground"
+                }`}
+              >
+                {ready ? (
+                  <><Download className="h-6 w-6" /> BAIXAR</>
+                ) : (
+                  <span className="font-pixel text-[11px]">Quase lá… {count}s</span>
+                )}
+              </a>
+            </div>
           </div>
         )}
 
         <p className="mt-3 text-center text-[10px] font-bold uppercase text-muted-foreground">
           🔒 100% grátis · sem vírus
         </p>
+        <p className="mt-1.5 flex items-center justify-center gap-1.5 text-center text-[9px] font-bold text-muted-foreground/80">
+          <Users className="h-3 w-3 shrink-0" /> Criança jogando? Chame um adulto pra ajudar.
+        </p>
       </div>
+    </div>
+  );
+}
+
+function PixelChest({ open }: { open: boolean }) {
+  return (
+    <div className="relative h-14 w-14 sm:h-16 sm:w-16">
+      <svg
+        viewBox="0 0 8 8"
+        className={`h-14 w-14 drop-shadow-[3px_3px_0_var(--ink)] sm:h-16 sm:w-16 ${open ? "animate-mc-bob" : ""}`}
+        shapeRendering="crispEdges"
+      >
+        {/* corpo */}
+        <rect x="0" y="3" width="8" height="4" fill="#6b4020" />
+        <rect x="0" y="3" width="8" height="4" fill="none" stroke="#2b1608" strokeWidth="0.15" />
+        {/* faixa dourada */}
+        <rect x="0" y="4.5" width="8" height="1" fill="#e0b83c" />
+        {/* fechadura */}
+        <rect x="3.3" y="4.4" width="1.4" height="1.6" fill="#2b1608" />
+        {open ? (
+          <>
+            {/* tampa aberta */}
+            <rect x="0" y="0.2" width="8" height="2" fill="#8a5a2c" transform="rotate(-16 4 2.2)" />
+            <rect
+              x="0"
+              y="0.2"
+              width="8"
+              height="2"
+              fill="none"
+              stroke="#2b1608"
+              strokeWidth="0.15"
+              transform="rotate(-16 4 2.2)"
+            />
+            {/* brilho interno */}
+            <rect x="1" y="2.5" width="6" height="0.7" fill="#ffe27a" />
+          </>
+        ) : (
+          <>
+            {/* tampa fechada */}
+            <rect x="0" y="1.6" width="8" height="1.4" fill="#8a5a2c" />
+            <rect
+              x="0"
+              y="1.6"
+              width="8"
+              height="1.4"
+              fill="none"
+              stroke="#2b1608"
+              strokeWidth="0.15"
+            />
+          </>
+        )}
+      </svg>
+      {open && (
+        <>
+          <span
+            className="absolute -left-2 -top-2 animate-mc-float text-sm"
+            style={{ animationDelay: "0ms" }}
+          >
+            ✨
+          </span>
+          <span
+            className="absolute -right-2 -top-1 animate-mc-float text-xs"
+            style={{ animationDelay: "300ms" }}
+          >
+            ✨
+          </span>
+          <span
+            className="absolute -bottom-1 left-1/2 animate-mc-float text-xs"
+            style={{ animationDelay: "150ms" }}
+          >
+            ✨
+          </span>
+        </>
+      )}
     </div>
   );
 }
