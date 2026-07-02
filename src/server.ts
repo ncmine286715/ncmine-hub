@@ -66,12 +66,54 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   return brandedErrorResponse();
 }
 
+// Nenhuma rota lê cookies ou searchParams durante o SSR (Firebase/auth só
+// rodam client-side, ?q= é aplicado só depois do mount) — então o HTML de
+// uma URL é idêntico pra qualquer visitante. Sem isso, TODA pageview
+// reexecuta o SSR inteiro no Worker, o que estourava o limite de
+// requests/CPU-time do plano. Cacheia a resposta no edge (Cache API) por
+// rota (ignorando querystring) e reusa em requests seguintes na mesma PoP.
+const HTML_CACHE_TTL_SECONDS = 300;
+
+function cacheKeyFor(request: Request): Request {
+  const url = new URL(request.url);
+  url.search = "";
+  return new Request(url.toString(), request);
+}
+
+// caches.default is Cloudflare-specific (not in lib.dom's CacheStorage), so
+// it isn't typed without @cloudflare/workers-types — cast minimally instead
+// of pulling in the package.
+//
+// ctx is normally an ExecutionContext with .waitUntil() to background a
+// cache write, but TanStack Start's Cloudflare service wrapper
+// (.output/server/index.mjs's lazyService) invokes this fetch with only the
+// request — env/ctx come through as undefined. So the cache write is
+// awaited inline instead of backgrounded; it costs a little latency on a
+// cache miss but works regardless of what ctx turns out to be.
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const cache = (caches as unknown as { default: Cache }).default;
+    const cacheable = request.method === "GET";
+    const cacheKey = cacheable ? cacheKeyFor(request) : undefined;
+
+    if (cacheKey) {
+      const cached = await cache.match(cacheKey);
+      if (cached) return cached;
+    }
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+
+      if (cacheKey && normalized.status === 200) {
+        const toCache = new Response(normalized.body, normalized);
+        toCache.headers.set("Cache-Control", `public, max-age=${HTML_CACHE_TTL_SECONDS}`);
+        await cache.put(cacheKey, toCache.clone());
+        return toCache;
+      }
+      return normalized;
     } catch (error) {
       console.error(error);
       return brandedErrorResponse();
