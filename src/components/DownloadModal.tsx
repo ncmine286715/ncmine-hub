@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { X, Heart, Download, ShieldCheck, Zap, Play, Users, Copy, Check } from "lucide-react";
-import { DiscordIcon, InstagramIcon, YouTubeIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, LIVEPIX_URL } from "@/lib/links";
-import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
+import { X, Download, Copy, Check, ArrowDown, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { gaEvent } from "@/lib/gtag";
 import { awardPoints, recordDownload } from "@/lib/firebase-services";
 import { useAuth } from "@/hooks/use-auth";
 import {
@@ -12,7 +10,6 @@ import {
   currentUrl,
   inAppLabel,
   realBrowserName,
-  getEscapeInstructions,
   type InAppKind,
   type Platform,
 } from "@/lib/inAppBrowser";
@@ -22,19 +19,13 @@ type Props = {
   url: string;
   title: string;
   onClose: () => void;
+  addonId?: string;
 };
 
-export function DownloadModal({
-  open,
-  url,
-  title,
-  onClose,
-  addonId,
-}: Props & { addonId?: string }) {
+export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
   const [count, setCount] = useState(2);
   const [inApp, setInApp] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
-  const [videoOpen, setVideoOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const { user } = useAuth();
 
@@ -45,11 +36,12 @@ export function DownloadModal({
     setInApp(k);
     setPlatform(p);
     setCount(2);
-    setVideoOpen(false);
     const t = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
     trackEvent("download_start", { addonId, title, inApp: k ?? "none", platform: p });
+    gaEvent("download_start", { addon_id: addonId, title });
     return () => clearInterval(t);
-  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   if (!open) return null;
 
@@ -58,10 +50,11 @@ export function DownloadModal({
 
   const handleDownloadClick = async () => {
     trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
+    gaEvent("download_click", { addon_id: addonId, title });
     if (user && addonId) {
       try {
         await recordDownload(user.uid, addonId);
-        await awardPoints(user.uid, 5); // +5 XP por download
+        await awardPoints(user.uid, 5);
       } catch (error) {
         console.error("Error recording download:", error);
       }
@@ -78,18 +71,11 @@ export function DownloadModal({
     } catch {}
   };
 
-  const openVideo = () => {
-    setVideoOpen((v) => !v);
-    if (!videoOpen) trackEvent("tutorial_video_open", { addonId, source: "download_modal" });
-  };
-
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
-      {/* Backdrop */}
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="relative max-h-[94vh] w-full max-w-sm overflow-y-auto card-block bg-background p-4 animate-mc-rise sm:p-5">
-        {/* Mobile drag indicator */}
+      <div className="relative w-full max-w-sm card-block bg-background p-4 animate-mc-rise sm:p-5">
         <div className="mb-2 flex justify-center sm:hidden">
           <div className="h-1 w-12 rounded-full bg-muted-foreground/30" />
         </div>
@@ -102,153 +88,92 @@ export function DownloadModal({
           <X className="h-4 w-4" />
         </button>
 
-        {/* Título enxuto */}
-        <h2 className="mb-0.5 pr-8 text-lg font-black uppercase leading-tight sm:text-xl">
-          Baixar grátis
-        </h2>
-        <p className="mb-3 line-clamp-1 text-xs text-muted-foreground">
-          <span className="font-semibold text-foreground">{title}</span>
-        </p>
+        <div className="mb-4 pr-8">
+          <span className="inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[9px] uppercase text-primary-foreground">
+            <Sparkles className="h-3 w-3" /> Liberado
+          </span>
+          <p className="mt-1.5 line-clamp-2 text-sm font-black uppercase leading-tight">{title}</p>
+        </div>
 
         {inApp ? (
-          /* ===== NAVEGADOR INTERNO: instruir a abrir no navegador ===== */
-          <div className="border-2 border-yellow-500 bg-yellow-500/10 p-3">
+          <div className="border-2 border-yellow-500 bg-yellow-500/10 p-3 text-center">
             <p className="text-[12px] font-extrabold uppercase leading-tight text-yellow-800">
-              ⚠️ Abra no {browser} pra baixar
+              ⚠️ Abra no {browser}
             </p>
-            <p className="mt-0.5 text-[11px] leading-snug text-yellow-800/90">
-              Aqui dentro do {inAppLabel(inApp)} o download não funciona. É rápido:
+            <p className="mt-0.5 text-[10px] leading-snug text-yellow-800/90">
+              Aqui no {inAppLabel(inApp)} o download trava.
             </p>
-            <ol className="mt-2 space-y-1.5">
-              {getEscapeInstructions(inApp, platform).slice(0, 2).map((step, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center border-2 border-yellow-600 bg-yellow-600 font-pixel text-[9px] text-white">
-                    {i + 1}
-                  </span>
-                  <span className="text-[12px] font-bold leading-snug text-yellow-900">{step}</span>
-                </li>
-              ))}
-            </ol>
             <button
               onClick={copyLink}
               className="btn-block mt-3 w-full bg-yellow-600 text-white !py-2 text-[11px]"
             >
               {copied ? (
-                <>
-                  <Check className="h-4 w-4" /> Link copiado — cole no {browser}
-                </>
+                <><Check className="h-4 w-4" /> Link copiado</>
               ) : (
-                <>
-                  <Copy className="h-4 w-4" /> Copiar link (cola no {browser})
-                </>
+                <><Copy className="h-4 w-4" /> Copiar link</>
               )}
             </button>
           </div>
         ) : (
-          /* ===== NAVEGADOR REAL: download é o herói ===== */
-          <a
-            href={ready ? url : undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
-            aria-disabled={!ready}
-            className={`btn-block w-full !py-4 text-base font-black ${
-              ready
-                ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
-                : "cursor-wait bg-muted text-muted-foreground"
-            }`}
-          >
-            {ready ? (
+          <div className="relative pt-6">
+            {ready && (
               <>
-                <Download className="h-6 w-6" /> Baixar agora
+                {/* Setas piscando apontando pro botão */}
+                <ArrowDown className="pointer-events-none absolute -top-1 left-1/2 h-6 w-6 -translate-x-1/2 animate-bounce text-primary" />
+                <ArrowDown
+                  className="pointer-events-none absolute -top-1 left-[25%] h-4 w-4 animate-bounce text-primary/60"
+                  style={{ animationDelay: "150ms" }}
+                />
+                <ArrowDown
+                  className="pointer-events-none absolute -top-1 left-[75%] h-4 w-4 animate-bounce text-primary/60"
+                  style={{ animationDelay: "300ms" }}
+                />
+                {/* Null pointing */}
+                <div className="pointer-events-none absolute -left-1 -top-4 hidden sm:block">
+                  <NullPointer />
+                </div>
               </>
-            ) : (
-              <span className="font-pixel text-[11px]">Liberando… {count}s</span>
             )}
-          </a>
-        )}
-
-        {/* Badges de confiança — curtos, com prova social */}
-        <div className="mt-2 flex items-center justify-center gap-3 text-[10px] font-bold uppercase text-muted-foreground">
-          <span className="inline-flex items-center gap-1">
-            <ShieldCheck className="h-3 w-3 text-green-500" /> Grátis
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <Zap className="h-3 w-3 text-yellow-500" /> Sem vírus
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <Users className="h-3 w-3 text-primary" /> +10 mil baixaram
-          </span>
-        </div>
-
-        {/* Tutorial em VÍDEO (pop-up) — sem paredão de texto */}
-        <button
-          type="button"
-          onClick={openVideo}
-          aria-expanded={videoOpen}
-          className="btn-block mt-3 w-full bg-foreground text-background !py-2.5 text-xs"
-        >
-          <Play className="h-4 w-4 text-[#FF0000]" />
-          {videoOpen ? "Fechar vídeo" : "Não sabe instalar? Vídeo de 40s"}
-        </button>
-        {videoOpen && (
-          <div className="mt-2 aspect-video w-full border-2 border-foreground bg-muted">
-            <iframe
-              className="h-full w-full"
-              src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}?rel=0&autoplay=1`}
-              title="Como instalar"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            <a
+              href={ready ? url : undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
+              aria-disabled={!ready}
+              className={`btn-block relative w-full !py-5 text-lg font-black ${
+                ready
+                  ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
+                  : "cursor-wait bg-muted text-muted-foreground"
+              }`}
+            >
+              {ready ? (
+                <><Download className="h-6 w-6" /> BAIXAR</>
+              ) : (
+                <span className="font-pixel text-[11px]">Liberando… {count}s</span>
+              )}
+            </a>
           </div>
         )}
 
-        {/* Seguir + Apoiar — rodapé minúsculo, não rouba o foco */}
-        <div className="mt-3 flex items-center justify-center gap-3 border-t-2 border-dashed border-foreground/20 pt-2.5 text-muted-foreground">
-          <span className="text-[9px] font-bold uppercase">Seguir:</span>
-          <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Discord"
-            onClick={() => trackEvent("external_click", { to: "discord", source: "download_modal" })}
-            className="hover:text-[#5865F2]"
-          >
-            <DiscordIcon className="h-4 w-4" />
-          </a>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            onClick={() => trackEvent("external_click", { to: "instagram", source: "download_modal" })}
-            className="hover:text-foreground"
-          >
-            <InstagramIcon className="h-4 w-4" />
-          </a>
-          <a
-            href={YOUTUBE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            onClick={() => trackEvent("external_click", { to: "youtube", source: "download_modal" })}
-            className="hover:text-[#FF0000]"
-          >
-            <YouTubeIcon className="h-4 w-4" />
-          </a>
-          <span className="text-foreground/20">·</span>
-          <a
-            href={LIVEPIX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackEvent("external_click", { to: "livepix", source: "download_modal" })}
-            className="inline-flex items-center gap-1 text-[9px] font-bold uppercase hover:text-[#00C16E]"
-          >
-            <Heart className="h-3 w-3" /> Apoiar
-          </a>
-        </div>
+        <p className="mt-3 text-center text-[10px] font-bold uppercase text-muted-foreground">
+          🔒 100% grátis · sem vírus
+        </p>
       </div>
+    </div>
+  );
+}
+
+function NullPointer() {
+  return (
+    <div className="flex flex-col items-center">
+      <svg viewBox="0 0 8 8" className="h-8 w-8 drop-shadow-[2px_2px_0_var(--ink)]" shapeRendering="crispEdges">
+        <rect width="8" height="8" fill="#0a0a0a" />
+        <rect x="1" y="3" width="2" height="1" fill="#fff" />
+        <rect x="5" y="3" width="2" height="1" fill="#fff" />
+      </svg>
+      <span className="mt-1 border-2 border-foreground bg-background px-1.5 py-0.5 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
+        toca aí!
+      </span>
     </div>
   );
 }

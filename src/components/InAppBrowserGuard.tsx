@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ExternalLink, Copy, Check, AlertTriangle, Smartphone, ChevronDown } from "lucide-react";
+import { ExternalLink, Copy, Check, X, AlertTriangle } from "lucide-react";
 import {
   detectInAppBrowser,
   detectPlatform,
@@ -15,19 +15,12 @@ import { trackEvent } from "@/lib/analytics";
 
 const DISMISS_KEY = "ncmine:inapp-dismissed";
 
-const PROBLEMS: string[] = [
-  "Download não funciona",
-  "Conta do Terabox trava",
-  "Página fica lenta",
-  "Não importa no Minecraft",
-];
-
 export function InAppBrowserGuard() {
   const [kind, setKind] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
   const [dismissed, setDismissed] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [showSteps, setShowSteps] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const k = detectInAppBrowser();
@@ -51,7 +44,7 @@ export function InAppBrowserGuard() {
   const url = currentUrl();
   const browser = realBrowserName(platform);
   const externalHref = buildExternalHref(url, platform);
-  const instructions = getEscapeInstructions(kind, platform);
+  const instructions = getEscapeInstructions(kind, platform).slice(0, 2);
 
   const dismiss = () => {
     try {
@@ -70,107 +63,58 @@ export function InAppBrowserGuard() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/50 p-0 backdrop-blur-sm sm:items-center sm:p-3">
-      <div className="max-h-[92vh] w-full max-w-md overflow-y-auto border-t-2 border-foreground bg-background shadow-[0_-4px_20px_rgba(0,0,0,0.3)] animate-mc-rise sm:border-2 sm:shadow-[6px_6px_0_0_var(--ink)]">
-        {/* Header */}
-        <div className="flex items-center gap-2 bg-yellow-500 p-3 text-black">
-          <AlertTriangle className="h-5 w-5 shrink-0" />
-          <div className="flex-1">
-            <p className="text-xs font-black uppercase">
-              Você está no navegador do {inAppLabel(kind)}
-            </p>
-            <p className="text-[10px] opacity-80">Aqui o download dos addons não funciona</p>
-          </div>
-          <button
-            onClick={dismiss}
-            className="border border-black/30 px-2 py-1 text-[10px] font-bold opacity-70 hover:opacity-100"
-          >
-            Ignorar
-          </button>
-        </div>
-
-        {/* Solução em destaque */}
-        <div className="p-3">
-          <p className="mb-2 text-center text-[11px] font-bold uppercase text-foreground sm:text-xs">
-            Abra no {browser} em 1 toque para baixar de boa 👇
+    <div className="fixed left-1/2 top-2 z-[95] w-[calc(100%-16px)] max-w-md -translate-x-1/2 sm:top-3">
+      <div className="border-2 border-foreground bg-yellow-400 text-black shadow-[4px_4px_0_0_var(--ink)] animate-mc-rise">
+        <div className="flex items-center gap-2 px-2.5 py-2">
+          <AlertTriangle className="h-4 w-4 shrink-0" />
+          <p className="flex-1 text-[11px] font-black uppercase leading-tight">
+            Abra no {browser} pra baixar
           </p>
           <a
             href={externalHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("inapp_escape", { kind, platform, method: "intent" })}
-            className="btn-block w-full animate-mc-pulse-orange bg-primary !py-3.5 text-sm font-black text-primary-foreground"
+            className="inline-flex items-center gap-1 border-2 border-black bg-primary px-2 py-1 text-[10px] font-black uppercase text-primary-foreground shadow-[2px_2px_0_0_#000] animate-mc-pulse-orange"
           >
-            <ExternalLink className="h-4 w-4" /> Abrir no {browser}
+            <ExternalLink className="h-3 w-3" /> Abrir
           </a>
-
           <button
             onClick={copy}
-            className="btn-block mt-2 w-full bg-background text-foreground !py-2.5 text-xs"
+            aria-label="Copiar link"
+            className="border-2 border-black bg-white p-1 text-black hover:bg-black hover:text-white"
           >
-            {copied ? (
-              <>
-                <Check className="h-4 w-4 text-green-600" /> Link copiado — cole no {browser}
-              </>
-            ) : (
-              <>
-                <Copy className="h-4 w-4" /> Copiar link para colar no {browser}
-              </>
-            )}
+            {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+          </button>
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            aria-label="Ajuda"
+            className="hidden border-2 border-black bg-white px-1.5 py-1 text-[9px] font-black text-black sm:inline"
+          >
+            ?
+          </button>
+          <button
+            onClick={dismiss}
+            aria-label="Fechar"
+            className="border-2 border-black bg-white p-1 text-black hover:bg-black hover:text-white"
+          >
+            <X className="h-3 w-3" />
           </button>
         </div>
-
-        {/* Passo a passo manual (caso o botão não abra) */}
-        <div className="border-t border-foreground/10 p-3">
-          <button
-            onClick={() => setShowSteps(!showSteps)}
-            className="flex w-full items-center justify-between text-left"
-          >
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase">
-              <Smartphone className="h-3.5 w-3.5 text-primary" />
-              Não abriu? Faça manual
-            </span>
-            <ChevronDown
-              className={`h-4 w-4 transition-transform ${showSteps ? "rotate-180" : ""}`}
-            />
-          </button>
-
-          {showSteps && (
-            <div className="mt-2 space-y-2">
+        {expanded && (
+          <div className="border-t-2 border-black bg-white px-3 py-2">
+            <ol className="space-y-1">
               {instructions.map((step, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-foreground bg-primary text-[9px] font-bold text-primary-foreground">
+                <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-black">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center border border-black bg-primary text-[9px] font-black text-primary-foreground">
                     {i + 1}
                   </span>
-                  <p className="pt-0.5 text-[11px] leading-relaxed">{step}</p>
-                </div>
+                  {step}
+                </li>
               ))}
-            </div>
-          )}
-        </div>
-
-        {/* Comparação problema/benefício */}
-        <div className="grid grid-cols-2 gap-px border-t border-foreground/10 bg-foreground/10">
-          <div className="bg-background p-3">
-            <p className="mb-1.5 font-pixel text-[8px] uppercase text-red-600">Neste navegador</p>
-            <div className="space-y-1">
-              {PROBLEMS.map((p) => (
-                <p key={p} className="text-[9px] leading-tight text-red-700">
-                  ✕ {p}
-                </p>
-              ))}
-            </div>
+            </ol>
           </div>
-          <div className="bg-green-50/60 p-3">
-            <p className="mb-1.5 font-pixel text-[8px] uppercase text-green-700">No {browser}</p>
-            <div className="space-y-1">
-              <p className="text-[9px] leading-tight text-green-800">✓ Download funcionando</p>
-              <p className="text-[9px] leading-tight text-green-800">✓ Conta Terabox em 10s</p>
-              <p className="text-[9px] leading-tight text-green-800">✓ Velocidade total</p>
-              <p className="text-[9px] leading-tight text-green-800">✓ Instala no Minecraft</p>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
