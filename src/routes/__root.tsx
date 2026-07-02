@@ -161,6 +161,7 @@ import { DailyRetention } from "../components/DailyRetention";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { Toaster } from "sonner";
 import { SocialDock } from "../components/SocialDock";
+import { ClickBurstLayer } from "../components/ClickBurstLayer";
 import { pageview } from "../lib/gtag";
 import { useRouterState } from "@tanstack/react-router";
 
@@ -229,6 +230,7 @@ function RootComponent() {
         <DailyRetention />
         <InAppBrowserGuard />
         <SocialDock />
+        <ClickBurstLayer />
         <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>
