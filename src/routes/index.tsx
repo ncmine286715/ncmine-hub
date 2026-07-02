@@ -14,6 +14,7 @@ import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
 import { NullMascot } from "@/components/NullMascot";
 import { NudgePopup } from "@/components/NudgePopup";
+import { DailyChest } from "@/components/DailyChest";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { homeOnboardingSteps } from "@/components/onboarding/homeOnboardingSteps";
 
@@ -143,6 +144,11 @@ function Index() {
       />
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
+
+      {/* Baú diário — recompensa clicável pra usuários novos e antigos */}
+      <section className="mx-auto max-w-7xl px-3 pt-3 sm:px-4 sm:pt-5">
+        <DailyChest />
+      </section>
 
       {/* Feed Personalizado */}
       <section className="mx-auto max-w-7xl px-3 sm:px-4 py-3 sm:py-5">
