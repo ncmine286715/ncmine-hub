@@ -120,6 +120,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap",
       },
     ],
+    scripts: [
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-RYBSXRH3TF",
+        async: true,
+      },
+      {
+        children:
+          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js', new Date());gtag('config', 'G-RYBSXRH3TF', { send_page_view: false });",
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -150,9 +160,17 @@ import { EngagementToast } from "../components/EngagementToast";
 import { DailyRetention } from "../components/DailyRetention";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { Toaster } from "sonner";
+import { SocialDock } from "../components/SocialDock";
+import { pageview } from "../lib/gtag";
+import { useRouterState } from "@tanstack/react-router";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const routerLocation = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    pageview(routerLocation + (typeof window !== "undefined" ? window.location.search : ""));
+  }, [routerLocation]);
 
   useEffect(() => {
     let lastNotifId = localStorage.getItem('last_global_notif');
@@ -210,6 +228,7 @@ function RootComponent() {
         <EngagementToast />
         <DailyRetention />
         <InAppBrowserGuard />
+        <SocialDock />
         <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>
