@@ -13,6 +13,7 @@ import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME, SITE
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
 import { NullMascot } from "@/components/NullMascot";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { NudgePopup } from "@/components/NudgePopup";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { homeOnboardingSteps } from "@/components/onboarding/homeOnboardingSteps";
@@ -58,6 +59,13 @@ function Index() {
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  // Começa vazio em ambos server e client (evita mismatch de hidratação) e só
+  // aplica o ?q= da URL depois do mount.
+  const [initialQuery, setInitialQuery] = useState("");
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setInitialQuery(q);
+  }, []);
 
   // Check notification status on mount
   useEffect(() => {
@@ -156,6 +164,7 @@ function Index() {
         onOpen={handleOpen}
         externalCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
+        initialQuery={initialQuery}
       />
 
       {/* Pre-footer CTA */}
@@ -193,6 +202,7 @@ function Index() {
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><InstagramIcon className="h-4 w-4" /> Instagram</a>
             <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#FF0000] text-white !py-2.5 min-h-[44px]"><YouTubeIcon className="h-4 w-4" /> YouTube</a>
             <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><TikTokIcon className="h-4 w-4" /> TikTok</a>
+            <ThemeToggle className="min-h-[44px]" />
           </div>
         </div>
         <div className="border-t-2 border-background/20 py-3 text-center font-pixel text-[9px] text-background/60">

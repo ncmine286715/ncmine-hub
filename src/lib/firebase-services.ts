@@ -294,3 +294,34 @@ export const recordDownload = async (userId: string, addonId: string) => {
   }
   await setDoc(downloadRef, { userId, addonId, createdAt: serverTimestamp() });
 };
+
+// ==================== XP: COMPARTILHAR ====================
+export const recordShare = async (userId: string, addonId: string) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { sharesCount: increment(1), points: increment(2) });
+};
+
+// ==================== XP: REPORTAR LINK QUEBRADO ====================
+export const recordReport = async (userId: string, addonId: string) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { reportsCount: increment(1), points: increment(5) });
+};
+
+// ==================== XP: STREAK DIÁRIO ====================
+export const awardStreakBonus = async (userId: string) => {
+  await awardPoints(userId, 3);
+};
+
+// ==================== XP: PERFIL COMPLETO (uma vez) ====================
+export const awardProfileCompleteOnce = async (userId: string, alreadyAwarded: boolean) => {
+  if (alreadyAwarded) return false;
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { points: increment(5), profileCompleteAwarded: true });
+  return true;
+};
+
+// ==================== VERSÕES FAVORITADAS (detectar update sem FCM) ====================
+export const setFavoriteVersionSeen = async (userId: string, addonId: string, version: string) => {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { [`favoriteVersions.${addonId}`]: version });
+};

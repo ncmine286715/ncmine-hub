@@ -3,6 +3,7 @@ import { useState } from "react";
 import { shareAddon } from "@/lib/share";
 import { trackEvent } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
+import { recordShare } from "@/lib/firebase-services";
 
 export type Addon = {
   id: string;
@@ -19,16 +20,20 @@ export type Addon = {
   downloadUrl: string;
   author: string;
   youtubeId?: string;
+  achievementFriendly?: boolean;
+  platforms?: string[];
+  multiplayer?: boolean;
 };
 
 type Props = {
   addon: Addon;
   onDownload: (a: Addon) => void;
   onOpen: (a: Addon) => void;
+  index?: number;
 };
 
-export function AddonCard({ addon, onDownload, onOpen }: Props) {
-  const { profile } = useAuth();
+export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
+  const { user, profile } = useAuth();
   const isDownloaded = profile?.downloadedAddons?.includes(addon.id);
   const [broken, setBroken] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -36,6 +41,7 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
     trackEvent("share", { addonId: addon.id, title: addon.title });
+    if (user) recordShare(user.uid, addon.id).catch(() => {});
     await shareAddon(addon, (msg) => {
       setToast(msg);
       window.setTimeout(() => setToast(null), 2200);
@@ -48,7 +54,10 @@ export function AddonCard({ addon, onDownload, onOpen }: Props) {
   const isNcmine = authorLower.includes("ncmine") || authorLower.includes("nicolas");
 
   return (
-    <article className={`card-block relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}>
+    <article
+      className={`card-block animate-card-in relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}
+      style={{ animationDelay: `${Math.min(index, 14) * 40}ms` }}
+    >
       <button
         type="button"
         onClick={() => { trackEvent("addon_click", { addonId: addon.id, title: addon.title }); onOpen(addon); }}

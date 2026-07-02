@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/use-auth';
 import { Sparkles, X, ArrowRight, Star, Trophy } from 'lucide-react';
 import { useNavigate } from '@tanstack/react-router';
+import { awardStreakBonus } from '@/lib/firebase-services';
 
 const LAST_VISIT_KEY = 'ncmine:last_visit';
 const STREAK_KEY = 'ncmine:streak';
@@ -32,6 +33,7 @@ export function EngagementToast() {
         setStreak(newStreak);
         localStorage.setItem(STREAK_KEY, String(newStreak));
         setShow(true);
+        if (user) awardStreakBonus(user.uid).catch(() => {});
       } else if (diffDays > 1) {
         setStreak(1);
         localStorage.setItem(STREAK_KEY, '1');

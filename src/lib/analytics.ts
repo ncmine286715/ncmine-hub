@@ -33,7 +33,8 @@ export type EventType =
   | "onboarding_skip"
   | "onboarding_complete"
   | "quest_step_toggle"
-  | "quest_complete";
+  | "quest_complete"
+  | "report_broken_link";
 
 const ANON_KEY = "ncmine:anon_id";
 const SESSION_KEY = "ncmine:session_start";

@@ -1,400 +1,534 @@
 [
   {
-  "id": "deesse-ui-pack",
-  "title": "Déesse UI Pack",
-  "category": "Texture Pack",
-  "version": "1.3.8",
-  "rating": 4.2,
-  "downloads": 2400000,
-  "date": "2026-06-17",
-  "image": "https://i.imgur.com/zVAJYVW.jpeg",
-  "tags": [
-    "texture pack",
-    "ui",
-    "resource pack",
-    "tweaks",
-    "bedrock",
-    "minecraft",
-    "miscellaneous"
-  ],
-  "short": "Melhore sua interface e gameplay no Minecraft Bedrock com um pacote completo de modificações de UI.",
-  "description": "O Déesse UI Pack é um pacote de recursos de interface desenvolvido por Itzriyo157 que adiciona dezenas de novos recursos, ajustes visuais e designs organizados para melhorar a navegação do Minecraft Bedrock. O pack compila diversas funções populares de UI em um único lugar, incluindo contêiner rápido, modo espectador forçado, lista de jogadores na HUD, realce de raridade de itens, notas temporárias, contador de itens em pacotes (bundles) e utilitários de trocas. A versão v1.3.8 atualiza a interface para compatibilidade total com o Minecraft 1.26.30+, adicionando informações de combustível ao livro de receitas da fornalha, um botão de mostrar encantamentos na mesa e ajustes no menu de pausa.",
-  "downloadUrl": "https://1024terabox.com/s/1x9ok3GWL5ZT5XcBkEgpxag",
-  "author": "Itzriyo157",
-  "youtubeId": ""
-},
+    "id": "deesse-ui-pack",
+    "title": "Déesse UI Pack",
+    "category": "Texture Pack",
+    "version": "1.3.8",
+    "rating": 4.2,
+    "downloads": 2400000,
+    "date": "2026-06-17",
+    "image": "https://i.imgur.com/zVAJYVW.jpeg",
+    "tags": [
+      "texture pack",
+      "ui",
+      "resource pack",
+      "tweaks",
+      "bedrock",
+      "minecraft",
+      "miscellaneous"
+    ],
+    "short": "Melhore sua interface e gameplay no Minecraft Bedrock com um pacote completo de modificações de UI.",
+    "description": "O Déesse UI Pack é um pacote de recursos de interface desenvolvido por Itzriyo157 que adiciona dezenas de novos recursos, ajustes visuais e designs organizados para melhorar a navegação do Minecraft Bedrock. O pack compila diversas funções populares de UI em um único lugar, incluindo contêiner rápido, modo espectador forçado, lista de jogadores na HUD, realce de raridade de itens, notas temporárias, contador de itens em pacotes (bundles) e utilitários de trocas. A versão v1.3.8 atualiza a interface para compatibilidade total com o Minecraft 1.26.30+, adicionando informações de combustível ao livro de receitas da fornalha, um botão de mostrar encantamentos na mesa e ajustes no menu de pausa.",
+    "downloadUrl": "https://1024terabox.com/s/1x9ok3GWL5ZT5XcBkEgpxag",
+    "author": "Itzriyo157",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "pick-up-and-carry-addon",
-  "title": "Pick up & Carry Addon",
-  "category": "Addon",
-  "version": "1.4.4",
-  "rating": 3.7,
-  "downloads": 0,
-  "date": "2025-04-28",
-  "image": "https://i.imgur.com/dnFkloV.gif",
-  "tags": [
-    "addon",
-    "utility",
-    "carry",
-    "mobs",
-    "mechanics",
-    "multiplayer",
-    "player.json"
-  ],
-  "short": "Pegue e carregue jogadores, criaturas ou baús cheios de itens com os braços vazios no Minecraft Bedrock.",
-  "description": "O Pick up & Carry é um addon inovador que adiciona uma nova mecânica ao Minecraft Bedrock, permitindo que você carregue qualquer criatura, outros jogadores ou blocos de armazenamento (como baús, fornalhas e liberadores) diretamente no colo. O mod conta com uma incrível renderização de corpo em primeira pessoa (onde você vê seus próprios braços segurando o alvo) e permite arremessar o que está carregando para longe. Blocos cheios com itens podem ser abertos ou roubados por outros jogadores em movimento, e se caírem de locais altos, quebram espalhando o loot. Possui menu de configuração in-game (/function pickupcarry_config) e exige o uso de mãos vazias e a ativação da opção 'Beta APIs'.",
-  "downloadUrl": "https://1024terabox.com/s/1dLm54LPJLs81FpSxB14EGA",
-  "author": "sirоb",
-  "youtubeId": ""
-},
+    "id": "pick-up-and-carry-addon",
+    "title": "Pick up & Carry Addon",
+    "category": "Addon",
+    "version": "1.4.4",
+    "rating": 3.7,
+    "downloads": 0,
+    "date": "2025-04-28",
+    "image": "https://i.imgur.com/dnFkloV.gif",
+    "tags": [
+      "addon",
+      "utility",
+      "carry",
+      "mobs",
+      "mechanics",
+      "multiplayer",
+      "player.json"
+    ],
+    "short": "Pegue e carregue jogadores, criaturas ou baús cheios de itens com os braços vazios no Minecraft Bedrock.",
+    "description": "O Pick up & Carry é um addon inovador que adiciona uma nova mecânica ao Minecraft Bedrock, permitindo que você carregue qualquer criatura, outros jogadores ou blocos de armazenamento (como baús, fornalhas e liberadores) diretamente no colo. O mod conta com uma incrível renderização de corpo em primeira pessoa (onde você vê seus próprios braços segurando o alvo) e permite arremessar o que está carregando para longe. Blocos cheios com itens podem ser abertos ou roubados por outros jogadores em movimento, e se caírem de locais altos, quebram espalhando o loot. Possui menu de configuração in-game (/function pickupcarry_config) e exige o uso de mãos vazias e a ativação da opção 'Beta APIs'.",
+    "downloadUrl": "https://1024terabox.com/s/1dLm54LPJLs81FpSxB14EGA",
+    "author": "sirоb",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "autoswitch-mod",
-  "title": "AutoSwitch Mod",
-  "category": "Addon",
-  "version": "1.0.0",
-  "rating": 4.6,
-  "downloads": 68307,
-  "date": "2026-02-07",
-  "image": "https://i.imgur.com/cdixs1W.gif",
-  "tags": [
-    "addon",
-    "utility",
-    "autoswitch",
-    "tools",
-    "survival",
-    "vanilla+",
-    "minecraft"
-  ],
-  "short": "Troque automaticamente para a ferramenta correta e mais eficiente ao quebrar blocos ou atacar criaturas.",
-  "description": "O AutoSwitch Mod adiciona uma funcionalidade de extrema utilidade que prevê a próxima ação do jogador e altera o item ativo da sua barra de acesso rápido (Hotbar) para a melhor ferramenta disponível em seu inventário. Se você estiver segurando uma pá e for atacado por um zumbi, o mod muda instantaneamente para sua espada. O mesmo funciona para mineração, corte de árvores e escavação de terra, garantindo máxima eficiência e economia de tempo. O recurso pode ser ativado ou desativado rapidamente pressionando a tecla 'R' (ou comando equivalente no controle/tela) caso precise pausar a troca automática.",
-  "downloadUrl": "https://1024terabox.com/s/1663uG7q3scBU4Qb-eG4yKw",
-  "author": "Deximus_Maximus",
-  "youtubeId": ""
-},
+    "id": "autoswitch-mod",
+    "title": "AutoSwitch Mod",
+    "category": "Addon",
+    "version": "1.0.0",
+    "rating": 4.6,
+    "downloads": 68307,
+    "date": "2026-02-07",
+    "image": "https://i.imgur.com/cdixs1W.gif",
+    "tags": [
+      "addon",
+      "utility",
+      "autoswitch",
+      "tools",
+      "survival",
+      "vanilla+",
+      "minecraft"
+    ],
+    "short": "Troque automaticamente para a ferramenta correta e mais eficiente ao quebrar blocos ou atacar criaturas.",
+    "description": "O AutoSwitch Mod adiciona uma funcionalidade de extrema utilidade que prevê a próxima ação do jogador e altera o item ativo da sua barra de acesso rápido (Hotbar) para a melhor ferramenta disponível em seu inventário. Se você estiver segurando uma pá e for atacado por um zumbi, o mod muda instantaneamente para sua espada. O mesmo funciona para mineração, corte de árvores e escavação de terra, garantindo máxima eficiência e economia de tempo. O recurso pode ser ativado ou desativado rapidamente pressionando a tecla 'R' (ou comando equivalente no controle/tela) caso precise pausar a troca automática.",
+    "downloadUrl": "https://1024terabox.com/s/1663uG7q3scBU4Qb-eG4yKw",
+    "author": "Deximus_Maximus",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "system-dynamic-light",
-  "title": "System Dynamic Light",
-  "category": "Addon",
-  "version": "3.2.3",
-  "rating": 4.8,
-  "downloads": 4855619,
-  "date": "2026-04-30",
-  "image": "https://i.imgur.com/7voiLMd.gif",
-  "tags": [
-    "addon",
-    "dynamic light",
-    "utility",
-    "survival",
-    "achievements friendly",
-    "vanilla+",
-    "data packs"
-  ],
-  "short": "Ilumine cavernas e áreas escuras segurando tochas, lanternas ou vestindo capacetes de mineração no Minecraft Bedrock.",
-  "description": "O System Dynamic Light traz o aclamado sistema de iluminação dinâmica para o Minecraft Bedrock. Com ele, você pode iluminar o ambiente ao seu redor segurando tochas (inclusive na segunda mão), sinalizadores, blocos de magma, pedra luminosa e vários outros itens, sem a necessidade de colocá-los no chão. O addon adiciona capacetes de mineração fabricáveis, iluminação subaquática com pepinos-do-mar e faz com que itens dropados, criaturas incandescentes (como Blazes e Lulas Brilhantes) e mobs em chamas também emitam luz. Ele é totalmente compatível com outros addons populares (como Action and Stuff), funciona em Realms, não utiliza o arquivo player.json e não desativa as conquistas do mundo.",
-  "downloadUrl": "https://1024terabox.com/s/1jPQBjl2-lo5z2QjFvIcstQ",
-  "author": "SystemTv",
-  "youtubeId": ""
-},
+    "id": "system-dynamic-light",
+    "title": "System Dynamic Light",
+    "category": "Addon",
+    "version": "3.2.3",
+    "rating": 4.8,
+    "downloads": 4855619,
+    "date": "2026-04-30",
+    "image": "https://i.imgur.com/7voiLMd.gif",
+    "tags": [
+      "addon",
+      "dynamic light",
+      "utility",
+      "survival",
+      "achievements friendly",
+      "vanilla+",
+      "data packs"
+    ],
+    "short": "Ilumine cavernas e áreas escuras segurando tochas, lanternas ou vestindo capacetes de mineração no Minecraft Bedrock.",
+    "description": "O System Dynamic Light traz o aclamado sistema de iluminação dinâmica para o Minecraft Bedrock. Com ele, você pode iluminar o ambiente ao seu redor segurando tochas (inclusive na segunda mão), sinalizadores, blocos de magma, pedra luminosa e vários outros itens, sem a necessidade de colocá-los no chão. O addon adiciona capacetes de mineração fabricáveis, iluminação subaquática com pepinos-do-mar e faz com que itens dropados, criaturas incandescentes (como Blazes e Lulas Brilhantes) e mobs em chamas também emitam luz. Ele é totalmente compatível com outros addons populares (como Action and Stuff), funciona em Realms, não utiliza o arquivo player.json e não desativa as conquistas do mundo.",
+    "downloadUrl": "https://1024terabox.com/s/1jPQBjl2-lo5z2QjFvIcstQ",
+    "author": "SystemTv",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "apex-suite-addon",
-  "title": "Apex Suite [Achievement-Friendly]",
-  "category": "Addon",
-  "version": "1.0.0",
-  "rating": 3.5,
-  "downloads": 0,
-  "date": "2026-06-06",
-  "image": "https://i.imgur.com/3K8N9mh.png",
-  "tags": [
-    "addon",
-    "utility",
-    "technology",
-    "magic",
-    "achievements friendly",
-    "vein miner",
-    "xray",
-    "worldedit"
-  ],
-  "short": "Um kit de ferramentas modular com 12 funções incríveis para sobrevivência e construção sem desativar suas conquistas.",
-  "description": "O Apex Suite é o companheiro definitivo de utilitários para o Minecraft Bedrock, projetado para se integrar perfeitamente ao seu jogo sem exigir trapaças (cheats) ativas e mantendo as conquistas ligadas. Criado por Charles (ApexStudio), o addon traz 12 módulos que podem ser ativados individualmente usando o item de menu 'Apex Guide'. Entre as funções estão: Tree Capacitor, VeinMiner, Ímã de Itens, Aura de Execução contra mobs, Cura Automática, Efeitos Passivos, Voo de Elytra infinito, Modo Espectador temporário, Teletransporte (Void Walker), uma ferramenta de raio-X para minérios baseada em scripts (Echo Location) e recursos poderosos de construção como o 'Recall State' (para desfazer explosões e erros em até 30 segundos) e a 'Structure Wand' (um WorldEdit in-game para copiar e colar até 30.000 blocos).",
-  "downloadUrl": "https://1024terabox.com/s/17PipGWheujEO3M8mx5oDpw",
-  "author": "Charles (ApexStudio)",
-  "youtubeId": ""
-},
+    "id": "apex-suite-addon",
+    "title": "Apex Suite [Achievement-Friendly]",
+    "category": "Addon",
+    "version": "1.0.0",
+    "rating": 3.5,
+    "downloads": 0,
+    "date": "2026-06-06",
+    "image": "https://i.imgur.com/3K8N9mh.png",
+    "tags": [
+      "addon",
+      "utility",
+      "technology",
+      "magic",
+      "achievements friendly",
+      "vein miner",
+      "xray",
+      "worldedit"
+    ],
+    "short": "Um kit de ferramentas modular com 12 funções incríveis para sobrevivência e construção sem desativar suas conquistas.",
+    "description": "O Apex Suite é o companheiro definitivo de utilitários para o Minecraft Bedrock, projetado para se integrar perfeitamente ao seu jogo sem exigir trapaças (cheats) ativas e mantendo as conquistas ligadas. Criado por Charles (ApexStudio), o addon traz 12 módulos que podem ser ativados individualmente usando o item de menu 'Apex Guide'. Entre as funções estão: Tree Capacitor, VeinMiner, Ímã de Itens, Aura de Execução contra mobs, Cura Automática, Efeitos Passivos, Voo de Elytra infinito, Modo Espectador temporário, Teletransporte (Void Walker), uma ferramenta de raio-X para minérios baseada em scripts (Echo Location) e recursos poderosos de construção como o 'Recall State' (para desfazer explosões e erros em até 30 segundos) e a 'Structure Wand' (um WorldEdit in-game para copiar e colar até 30.000 blocos).",
+    "downloadUrl": "https://1024terabox.com/s/17PipGWheujEO3M8mx5oDpw",
+    "author": "Charles (ApexStudio)",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "common-sense-addon",
-  "title": "Common Sense Addon",
-  "category": "Addon",
-  "version": "1.7.1",
-  "rating": 4.7,
-  "downloads": 200075,
-  "date": "2026-03-15",
-  "image": "https://i.imgur.com/iSnjHYe.png",
-  "tags": [
-    "addon",
-    "vanilla+",
-    "qol",
-    "survival",
-    "utility",
-    "achievements friendly",
-    "minecraft"
-  ],
-  "short": "Corrija pequenos detalhes e preencha lacunas do Minecraft com recursos de qualidade de vida (QoL) sem perder as conquistas.",
-  "description": "O Common Sense Addon foi desenvolvido para resolver aquelas pequenas inconsistências e mecânicas sem sentido do Minecraft Vanilla, adicionando vários recursos de qualidade de vida (QoL) e funções divertidas. O mod foca em manter a essência do jogo original, sendo totalmente compatível com texturas populares como Action & Stuff. Além disso, ele é 'Achievements Friendly', o que significa que você pode usá-lo em seu mundo survival sem perder a capacidade de desbloquear conquistas. A versão 1.7.1 inclui correções importantes de bugs e ajustes no sistema de saturação para melhorar o balanceamento da regeneração padrão.",
-  "downloadUrl": "https://1024terabox.com/s/18nqir7RzYNiocQoHH9dvXg",
-  "author": "JF_Addons",
-  "youtubeId": ""
-},
+    "id": "common-sense-addon",
+    "title": "Common Sense Addon",
+    "category": "Addon",
+    "version": "1.7.1",
+    "rating": 4.7,
+    "downloads": 200075,
+    "date": "2026-03-15",
+    "image": "https://i.imgur.com/iSnjHYe.png",
+    "tags": [
+      "addon",
+      "vanilla+",
+      "qol",
+      "survival",
+      "utility",
+      "achievements friendly",
+      "minecraft"
+    ],
+    "short": "Corrija pequenos detalhes e preencha lacunas do Minecraft com recursos de qualidade de vida (QoL) sem perder as conquistas.",
+    "description": "O Common Sense Addon foi desenvolvido para resolver aquelas pequenas inconsistências e mecânicas sem sentido do Minecraft Vanilla, adicionando vários recursos de qualidade de vida (QoL) e funções divertidas. O mod foca em manter a essência do jogo original, sendo totalmente compatível com texturas populares como Action & Stuff. Além disso, ele é 'Achievements Friendly', o que significa que você pode usá-lo em seu mundo survival sem perder a capacidade de desbloquear conquistas. A versão 1.7.1 inclui correções importantes de bugs e ajustes no sistema de saturação para melhorar o balanceamento da regeneração padrão.",
+    "downloadUrl": "https://1024terabox.com/s/18nqir7RzYNiocQoHH9dvXg",
+    "author": "JF_Addons",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "effortless-building-addon",
-  "title": "Effortless Building Bedrock Addon",
-  "category": "Addon",
-  "version": "3.1",
-  "rating": 4.9,
-  "downloads": 582609,
-  "date": "2026-06-12",
-  "image": "https://i.imgur.com/gUMLWpw.gif",
-  "tags": [
-    "addon",
-    "building",
-    "utility",
-    "survival friendly",
-    "technology",
-    "structures",
-    "minecraft bedrock"
-  ],
-  "short": "Construa estruturas complexas como esferas, paredes e túneis em segundos no Minecraft Bedrock.",
-  "description": "O Effortless Building traz para o Bedrock um dos mods de construção multibloco mais famosos do Java Edition. Totalmente funcional tanto no modo Criativo quanto no Sobrevivência (consumindo os blocos do seu inventário), este addon permite erguer linhas, curvas de Bezier, paredes, esferas, cones e cilindros com apenas alguns cliques. A versão v3.1 adiciona recursos avançados como o Modo Recortar (Cut), um Gerenciador de Área de Transferência com 20 slots que salva suas construções entre sessões, visualização fantasma (Ghost Preview) em tempo real e um sistema de Paleta de Blocos com 18 padrões de distribuição (como gradientes e xadrez). Ele também inclui um modo de destruição inteligente compatível com encantamentos e não desativa as conquistas do seu mundo.",
-  "downloadUrl": "https://1024terabox.com/s/1u_8wE2jBscSyhvWNyzqykg",
-  "author": "ExterLeo",
-  "youtubeId": ""
-},
+    "id": "effortless-building-addon",
+    "title": "Effortless Building Bedrock Addon",
+    "category": "Addon",
+    "version": "3.1",
+    "rating": 4.9,
+    "downloads": 582609,
+    "date": "2026-06-12",
+    "image": "https://i.imgur.com/gUMLWpw.gif",
+    "tags": [
+      "addon",
+      "building",
+      "utility",
+      "survival friendly",
+      "technology",
+      "structures",
+      "minecraft bedrock"
+    ],
+    "short": "Construa estruturas complexas como esferas, paredes e túneis em segundos no Minecraft Bedrock.",
+    "description": "O Effortless Building traz para o Bedrock um dos mods de construção multibloco mais famosos do Java Edition. Totalmente funcional tanto no modo Criativo quanto no Sobrevivência (consumindo os blocos do seu inventário), este addon permite erguer linhas, curvas de Bezier, paredes, esferas, cones e cilindros com apenas alguns cliques. A versão v3.1 adiciona recursos avançados como o Modo Recortar (Cut), um Gerenciador de Área de Transferência com 20 slots que salva suas construções entre sessões, visualização fantasma (Ghost Preview) em tempo real e um sistema de Paleta de Blocos com 18 padrões de distribuição (como gradientes e xadrez). Ele também inclui um modo de destruição inteligente compatível com encantamentos e não desativa as conquistas do seu mundo.",
+    "downloadUrl": "https://1024terabox.com/s/1u_8wE2jBscSyhvWNyzqykg",
+    "author": "ExterLeo",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "blurrys-java-pvp",
-  "title": "Blurry's Java PvP Addon",
-  "category": "Addon",
-  "version": "2.1 (Beta 4)",
-  "rating": 4.8,
-  "downloads": 699839,
-  "date": "2026-04-10",
-  "image": "https://i.imgur.com/EBXyjqa.gif",
-  "tags": [
-    "addon",
-    "pvp",
-    "java combat",
-    "bedrock",
-    "minecraft",
-    "sweeping edge",
-    "cooldown",
-    "knockback"
-  ],
-  "short": "Recrie perfeitamente o sistema de combate do Minecraft Java Edition no seu Minecraft Bedrock.",
-  "description": "O Blurry's Java PvP é uma recriação fiel do sistema de combate da versão Java para o Minecraft Bedrock, desenvolvido pela Catalyst Interactive e BlurryFACE. O addon introduz mecânicas essenciais como o indicador de ataque (cooldown para dano máximo), knockback de corrida ajustado, o famoso ataque em área Sweeping Edge (Aspecto Varredor) para espadas e o sistema de saturação de fome acelerado do Java. Além disso, traz teias, portas e projéteis idênticos ao Java, remoção de knockback ao usar o escudo e limite de corações da Maçã Dourada. Tudo isso configurável por menus in-game (/admin_config) e o melhor: sem precisar de player.json ou recursos experimentais ativos!",
-  "downloadUrl": "https://1024terabox.com/s/1rhEMqJ5vYSW9KNdVnyjMNQ",
-  "author": "BlurryFACE & Catalyst Interactive",
-  "youtubeId": ""
-},
+    "id": "blurrys-java-pvp",
+    "title": "Blurry's Java PvP Addon",
+    "category": "Addon",
+    "version": "2.1 (Beta 4)",
+    "rating": 4.8,
+    "downloads": 699839,
+    "date": "2026-04-10",
+    "image": "https://i.imgur.com/EBXyjqa.gif",
+    "tags": [
+      "addon",
+      "pvp",
+      "java combat",
+      "bedrock",
+      "minecraft",
+      "sweeping edge",
+      "cooldown",
+      "knockback"
+    ],
+    "short": "Recrie perfeitamente o sistema de combate do Minecraft Java Edition no seu Minecraft Bedrock.",
+    "description": "O Blurry's Java PvP é uma recriação fiel do sistema de combate da versão Java para o Minecraft Bedrock, desenvolvido pela Catalyst Interactive e BlurryFACE. O addon introduz mecânicas essenciais como o indicador de ataque (cooldown para dano máximo), knockback de corrida ajustado, o famoso ataque em área Sweeping Edge (Aspecto Varredor) para espadas e o sistema de saturação de fome acelerado do Java. Além disso, traz teias, portas e projéteis idênticos ao Java, remoção de knockback ao usar o escudo e limite de corações da Maçã Dourada. Tudo isso configurável por menus in-game (/admin_config) e o melhor: sem precisar de player.json ou recursos experimentais ativos!",
+    "downloadUrl": "https://1024terabox.com/s/1rhEMqJ5vYSW9KNdVnyjMNQ",
+    "author": "BlurryFACE & Catalyst Interactive",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "view-model-invisible-background",
-  "title": "View Model Invisible Background Texture Pack",
-  "category": "Texture Pack",
-  "version": "1.0.0",
-  "rating": 4.6,
-  "downloads": 0,
-  "date": "2026-06-11",
-  "image": "https://i.imgur.com/1YvdMDj.jpeg",
-  "tags": [
-    "texture pack",
-    "view model",
-    "invisible background",
-    "customization",
-    "bedrock",
-    "minecraft",
-    "pvp texture"
-  ],
-  "short": "Personalize a posição dos seus itens e braço no Minecraft Bedrock com uma interface de fundo invisível.",
-  "description": "Esta textura de View Model para Minecraft Bedrock traz uma modificação essencial para quem gosta de personalizar a posição das mãos, braços e itens na tela. Ao deixar o fundo do menu de configuração totalmente invisível, ela permite que o jogador ajuste os eixos de visualização em tempo real, vendo exatamente como as alterações impactam o gameplay sem nenhuma interface bloqueando a visão. Perfeito para jogadores de PvP que buscam otimizar o campo de visão (FOV) e deixar a tela mais limpa.",
-  "downloadUrl": "https://1024terabox.com/s/1RzRXtehT4WgxCPVcVHTxmA",
-  "author": "Desconhecido",
-  "youtubeId": ""
-},
-{
-  "id": "utilities-vein-miner",
-  "title": "Utilities Vein Miner Bedrock Addon",
-  "category": "Addon",
-  "version": "5.5",
-  "rating": 4.7,
-  "downloads": 458052,
-  "date": "2026-05-23",
-  "image": "https://i.imgur.com/FaZ6ivd.png",
-  "tags": [
-    "addon",
-    "vein miner",
-    "mining",
-    "bedrock",
-    "minecraft",
-    "tree capitator",
-    "tunnel",
-    "ore"
-  ],
-  "short": "Minere pilhas gigantes de minérios, cascalho ou árvores inteiras de uma só vez no Minecraft Bedrock.",
-  "description": "O Utilities Vein Miner é um addon completo que adiciona diversas funções de mineração facilitada ao Minecraft Vanilla e é totalmente compatível com outros mods. Com ele, você pode quebrar veios inteiros de minérios instantaneamente, escavar túneis automáticos em formatos configuráveis (1x2, 3x3, etc.) e usar a função Tree Capitator para derrubar árvores completas. O mod traz um menu de configurações avançadas in-game ativado ao agachar com uma picareta, permitindo ajustar o limite de blocos, bordas visuais e até deletar blocos indesejados para evitar lag. O melhor de tudo: ele não desativa as conquistas do mundo e não usa o arquivo player.json.",
-  "downloadUrl": "https://1024terabox.com/s/1R66AZbF7F6RqilTt9JGinA",
-  "author": "Endermen76428",
-  "youtubeId": ""
-},
+    "id": "view-model-invisible-background",
+    "title": "View Model Invisible Background Texture Pack",
+    "category": "Texture Pack",
+    "version": "1.0.0",
+    "rating": 4.6,
+    "downloads": 0,
+    "date": "2026-06-11",
+    "image": "https://i.imgur.com/1YvdMDj.jpeg",
+    "tags": [
+      "texture pack",
+      "view model",
+      "invisible background",
+      "customization",
+      "bedrock",
+      "minecraft",
+      "pvp texture"
+    ],
+    "short": "Personalize a posição dos seus itens e braço no Minecraft Bedrock com uma interface de fundo invisível.",
+    "description": "Esta textura de View Model para Minecraft Bedrock traz uma modificação essencial para quem gosta de personalizar a posição das mãos, braços e itens na tela. Ao deixar o fundo do menu de configuração totalmente invisível, ela permite que o jogador ajuste os eixos de visualização em tempo real, vendo exatamente como as alterações impactam o gameplay sem nenhuma interface bloqueando a visão. Perfeito para jogadores de PvP que buscam otimizar o campo de visão (FOV) e deixar a tela mais limpa.",
+    "downloadUrl": "https://1024terabox.com/s/1RzRXtehT4WgxCPVcVHTxmA",
+    "author": "Desconhecido",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "holoprint-7-houses-pack",
-  "title": "Holoprint Mega Pack 7 Casas",
-  "category": "textura",
-  "version": "1.0.0",
-  "rating": 4.9,
-  "downloads": 0,
-  "date": "2026-06-03",
-  "image": "https://i.imgur.com/giB4uxA.jpeg",
-  "tags": [
-    "addon",
-    "holoprint",
-    "structure",
-    "casas",
-    "blueprint",
-    "minecraft",
-    "mega pack"
-  ],
-  "short": "Expanda suas opções de construção com 7 modelos inéditos de casas projetadas via holograma no seu mapa.",
-  "description": "O Holoprint Mega Pack 7 Casas traz uma coleção completa de estruturas planejadas para o seu Minecraft Bedrock. Com este addon, você tem acesso a sete projeções holográficas diferentes, variando estilos, tamanhos e designs para transformar a vila ou a base do seu mundo survival. Perfeito para quem busca variedade e rapidez na hora de erguer construções detalhadas e bonitas. Certifique-se de ativar os recursos experimentais no mundo para o correto funcionamento dos scripts de projeção.",
-  "downloadUrl": "https://1024terabox.com/s/1l9uru4ZD7BAmEvOHk8kRhA",
-  "author": "@",
-  "youtubeId": ""
-},
+    "id": "utilities-vein-miner",
+    "title": "Utilities Vein Miner Bedrock Addon",
+    "category": "Addon",
+    "version": "5.5",
+    "rating": 4.7,
+    "downloads": 458052,
+    "date": "2026-05-23",
+    "image": "https://i.imgur.com/FaZ6ivd.png",
+    "tags": [
+      "addon",
+      "vein miner",
+      "mining",
+      "bedrock",
+      "minecraft",
+      "tree capitator",
+      "tunnel",
+      "ore"
+    ],
+    "short": "Minere pilhas gigantes de minérios, cascalho ou árvores inteiras de uma só vez no Minecraft Bedrock.",
+    "description": "O Utilities Vein Miner é um addon completo que adiciona diversas funções de mineração facilitada ao Minecraft Vanilla e é totalmente compatível com outros mods. Com ele, você pode quebrar veios inteiros de minérios instantaneamente, escavar túneis automáticos em formatos configuráveis (1x2, 3x3, etc.) e usar a função Tree Capitator para derrubar árvores completas. O mod traz um menu de configurações avançadas in-game ativado ao agachar com uma picareta, permitindo ajustar o limite de blocos, bordas visuais e até deletar blocos indesejados para evitar lag. O melhor de tudo: ele não desativa as conquistas do mundo e não usa o arquivo player.json.",
+    "downloadUrl": "https://1024terabox.com/s/1R66AZbF7F6RqilTt9JGinA",
+    "author": "Endermen76428",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "holoprint-3-simple-houses",
-  "title": "Holoprint 3 Casas Simples e Lindas",
-  "category": "textura",
-  "version": "1.0.0",
-  "rating": 4.7,
-  "downloads": 0,
-  "date": "2026-06-02",
-  "image": "https://i.imgur.com/OKTeqMU.png",
-  "tags": [
-    "addon",
-    "holoprint",
-    "structure",
-    "casas",
-    "blueprint",
-    "minecraft",
-    "survival"
-  ],
-  "short": "Projete e construa instantaneamente 3 modelos de casas simples, modernas e lindas no seu mundo.",
-  "description": "O Holoprint 3 Casas Simples e Lindas é um addon focado em construção e praticidade para o seu Minecraft Bedrock. Com ele, você recebe hologramas guias (holoprints) para projetar três modelos diferentes de casas com um visual incrível e estrutura otimizada para o modo survival. Ideal para quem quer decorar o mapa rapidamente, aprender novas técnicas de construção ou iniciar um novo mundo com uma base estilosa. Criado com foco na facilidade de uso, basta ativar o pack nos seus experimentos para começar a projetar.",
-  "downloadUrl": "https://1024terabox.com/s/1wSWpp2JNkByGzb77x1LM-w",
-  "author": "@",
-  "youtubeId": ""
-},
+    "id": "holoprint-7-houses-pack",
+    "title": "Holoprint Mega Pack 7 Casas",
+    "category": "textura",
+    "version": "1.0.0",
+    "rating": 4.9,
+    "downloads": 0,
+    "date": "2026-06-03",
+    "image": "https://i.imgur.com/giB4uxA.jpeg",
+    "tags": [
+      "addon",
+      "holoprint",
+      "structure",
+      "casas",
+      "blueprint",
+      "minecraft",
+      "mega pack"
+    ],
+    "short": "Expanda suas opções de construção com 7 modelos inéditos de casas projetadas via holograma no seu mapa.",
+    "description": "O Holoprint Mega Pack 7 Casas traz uma coleção completa de estruturas planejadas para o seu Minecraft Bedrock. Com este addon, você tem acesso a sete projeções holográficas diferentes, variando estilos, tamanhos e designs para transformar a vila ou a base do seu mundo survival. Perfeito para quem busca variedade e rapidez na hora de erguer construções detalhadas e bonitas. Certifique-se de ativar os recursos experimentais no mundo para o correto funcionamento dos scripts de projeção.",
+    "downloadUrl": "https://1024terabox.com/s/1l9uru4ZD7BAmEvOHk8kRhA",
+    "author": "@",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "fps-boost-texture-pack",
-  "title": "FPS Boost Ultra Pack",
-  "category": "Texture",
-  "version": "1.0.0",
-  "rating": 4.8,
-  "downloads": 0,
-  "date": "2026-06-01",
-  "image": "https://i.imgur.com/U5ZdW9m.png",
-  "tags": [
-    "texture",
-    "resource pack",
-    "fps boost",
-    "otimização",
-    "minecraft",
-    "lag fix",
-    "performance"
-  ],
-  "short": "Um combo de 3 texturas ultra otimizadas para aumentar drasticamente o FPS e remover o lag do seu Minecraft.",
-  "description": "O FPS Boost Ultra Pack é um combo definitivo que reúne 3 texturas focadas exclusivamente em performance e ganho de desempenho. Ele reduz a resolução de partículas desnecessárias, simplifica blocos pesados e otimiza a renderização do jogo sem perder a identidade visual do Minecraft. Ideal para rodar em celulares fracos, PCs de entrada ou para quem busca a máxima fluidez em servidores de PvP. Compatível com diversas versões do Bedrock, basta ativar o resource pack e sentir a diferença imediata na taxa de quadros por segundo.",
-  "downloadUrl": "https://1024terabox.com/s/1MXZBeEZ7jf-SIOc74qjEaw",
-  "author": "@ncmine",
-  "youtubeId": ""
-},
+    "id": "holoprint-3-simple-houses",
+    "title": "Holoprint 3 Casas Simples e Lindas",
+    "category": "textura",
+    "version": "1.0.0",
+    "rating": 4.7,
+    "downloads": 0,
+    "date": "2026-06-02",
+    "image": "https://i.imgur.com/OKTeqMU.png",
+    "tags": [
+      "addon",
+      "holoprint",
+      "structure",
+      "casas",
+      "blueprint",
+      "minecraft",
+      "survival"
+    ],
+    "short": "Projete e construa instantaneamente 3 modelos de casas simples, modernas e lindas no seu mundo.",
+    "description": "O Holoprint 3 Casas Simples e Lindas é um addon focado em construção e praticidade para o seu Minecraft Bedrock. Com ele, você recebe hologramas guias (holoprints) para projetar três modelos diferentes de casas com um visual incrível e estrutura otimizada para o modo survival. Ideal para quem quer decorar o mapa rapidamente, aprender novas técnicas de construção ou iniciar um novo mundo com uma base estilosa. Criado com foco na facilidade de uso, basta ativar o pack nos seus experimentos para começar a projetar.",
+    "downloadUrl": "https://1024terabox.com/s/1wSWpp2JNkByGzb77x1LM-w",
+    "author": "@",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "java-spawn-in-bedrock",
-  "title": "Java Spawn in Bedrock",
-  "category": "Addon",
-  "version": "1.0.0",
-  "rating": 4.5,
-  "downloads": 0,
-  "date": "2026-05-31",
-  "image": "https://i.imgur.com/hgaEgyh.png",
-  "tags": [
-    "addon",
-    "behavior pack",
-    "java spawn",
-    "bedrock",
-    "minecraft",
-    "scripts",
-    "spawn system"
-  ],
-  "short": "Traga  sistema de spawn e mecânicas do Minecraft Java Edition diretamente para o seu Minecraft Bedrock.",
-  "description": "O Java Spawn in Bedrock é um addon desenvolvido para aproximar a experiência do Minecraft Bedrock à versão Java, modificando o sistema de spawn de criaturas e mecânicas internas do jogo. Utilizando a API de scripts do Minecraft (@minecraft/server na versão 1.13.0), o projeto gerencia de forma inteligente a geração de entidades no mundo. Ideal para quem busca um comportamento mais fiel ao Java Edition em servidores, mapas de aventura ou no gameplay survival tradicional. Criado por @ncmine, o pack exige a versão mínima 1.19.70 do jogo com os recursos de experimentos ativos.",
-  "downloadUrl": "https://1024terabox.com/s/1_U7IpPgMscZBbLtJzvJh9w",
-  "author": "@ncmine",
-  "youtubeId": ""
-},
+    "id": "fps-boost-texture-pack",
+    "title": "FPS Boost Ultra Pack",
+    "category": "Texture",
+    "version": "1.0.0",
+    "rating": 4.8,
+    "downloads": 0,
+    "date": "2026-06-01",
+    "image": "https://i.imgur.com/U5ZdW9m.png",
+    "tags": [
+      "texture",
+      "resource pack",
+      "fps boost",
+      "otimização",
+      "minecraft",
+      "lag fix",
+      "performance"
+    ],
+    "short": "Um combo de 3 texturas ultra otimizadas para aumentar drasticamente o FPS e remover o lag do seu Minecraft.",
+    "description": "O FPS Boost Ultra Pack é um combo definitivo que reúne 3 texturas focadas exclusivamente em performance e ganho de desempenho. Ele reduz a resolução de partículas desnecessárias, simplifica blocos pesados e otimiza a renderização do jogo sem perder a identidade visual do Minecraft. Ideal para rodar em celulares fracos, PCs de entrada ou para quem busca a máxima fluidez em servidores de PvP. Compatível com diversas versões do Bedrock, basta ativar o resource pack e sentir a diferença imediata na taxa de quadros por segundo.",
+    "downloadUrl": "https://1024terabox.com/s/1MXZBeEZ7jf-SIOc74qjEaw",
+    "author": "@ncmine",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "sodium-gl-reimagined",
-  "title": "Sodium GL Reimagined FPS Texture Pack",
-  "category": "Texture Pack",
-  "version": "1.0.0",
-  "rating": 4.8,
-  "downloads": 0,
-  "date": "2026-05-30",
-  "image": "https://i.imgur.com/EFSE5Tf.png",
-  "tags": [
-    "texture pack",
-    "fps boost",
-    "optimization",
-    "performance",
-    "bedrock",
-    "lag reduction",
-    "particles",
-    "minecraft"
-  ],
-  "short": "Aumente seu FPS no Minecraft Bedrock desativando partículas e efeitos visuais desnecessários.",
-  "description": "O Sodium GL Reimagined é uma textura de otimização para Minecraft Bedrock desenvolvida para aumentar o desempenho em celulares, PCs e dispositivos mais modestos. O pack permite reduzir ou desativar dezenas de partículas do jogo, incluindo fogo, quebra de blocos, portais, fumaça, redstone, explosões, folhas, bolhas e muitos outros efeitos visuais. Além do ganho de FPS, também reduz distrações durante PvP e gameplay survival. Possui menu de configuração integrado para que cada jogador escolha quais partículas deseja manter ou remover, equilibrando desempenho e qualidade visual conforme sua preferência.",
-  "downloadUrl": "https://1024terabox.com/s/1Y0n98Wxexo9kofS29aQbiQ",
-  "author": "Team Nicverse & BRSpike26",
-  "youtubeId": ""
-},
+    "id": "java-spawn-in-bedrock",
+    "title": "Java Spawn in Bedrock",
+    "category": "Addon",
+    "version": "1.0.0",
+    "rating": 4.5,
+    "downloads": 0,
+    "date": "2026-05-31",
+    "image": "https://i.imgur.com/hgaEgyh.png",
+    "tags": [
+      "addon",
+      "behavior pack",
+      "java spawn",
+      "bedrock",
+      "minecraft",
+      "scripts",
+      "spawn system"
+    ],
+    "short": "Traga  sistema de spawn e mecânicas do Minecraft Java Edition diretamente para o seu Minecraft Bedrock.",
+    "description": "O Java Spawn in Bedrock é um addon desenvolvido para aproximar a experiência do Minecraft Bedrock à versão Java, modificando o sistema de spawn de criaturas e mecânicas internas do jogo. Utilizando a API de scripts do Minecraft (@minecraft/server na versão 1.13.0), o projeto gerencia de forma inteligente a geração de entidades no mundo. Ideal para quem busca um comportamento mais fiel ao Java Edition em servidores, mapas de aventura ou no gameplay survival tradicional. Criado por @ncmine, o pack exige a versão mínima 1.19.70 do jogo com os recursos de experimentos ativos.",
+    "downloadUrl": "https://1024terabox.com/s/1_U7IpPgMscZBbLtJzvJh9w",
+    "author": "@ncmine",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
-  "id": "afk-chunk-loader-bot",
-  "title": "AFK Chunk Loader Bot",
-  "category": "Addon",
-  "version": "1.0.0",
-  "rating": 4.7,
-  "downloads": 10690,
-  "date": "2026-04-02",
-  "image": "https://media.forgecdn.net/attachments/1602/318/picsart_26-03-28_10-34-26-574-jpg.jpg",
-  "tags": ["addon", "chunk loader", "afk bot", "survival", "automação", "bedrock", "achievement friendly"],
-  "short": "Mantenha suas farms funcionando e chunks carregados mesmo estando longe com o AFK Chunk Loader Bot para Minecraft Bedrock.",
-  "description": "O AFK Chunk Loader Bot, criado por Sycure_gaming, é a solução definitiva e leve para sobrevivência que mantém seus chunks ativos e farms rodando sem que você precise estar por perto. O grande diferencial? Ele é totalmente compatível com as conquistas (Achievements) do Minecraft! Basta craftar o controle remoto (2 Tochas de Redstone e 1 Bússola), usá-lo no local desejado e um bot será spawnado para carregar a área permanentemente, mesmo se você mudar de dimensão. Ideal para farms de ferro, plantações automáticas e máquinas de redstone. Nota: não funciona para farms de mobs hostis, que ainda exigem a presença física do jogador para o spawn.",
-  "downloadUrl": "https://1024terabox.com/s/1aXHkihbiCwbMk0ulfZYBRg",
-  "author": "Sycure_gaming",
-  "youtubeId": ""
-},
-{
-  "id": "easy-farm-addon-ncmine",
-  "title": "Easy Farm Addon",
-  "category": "Addon",
-  "version": "1.0",
-  "rating": 5,
-  "downloads": 40000,
-  "date": "2026-05-24",
-  "image": "https://i.imgur.com/CiLVvOa.png",
-  "tags": ["addon", "farm", "holograma", "construção", "bedrock", "fácil"],
-  "short": "Addon criado pelo NCMINE que adiciona hologramas de farms prontas no Minecraft Bedrock — é só colocar os blocos por cima e a farm sai perfeita.",
-  "description": "O Easy Farm Addon do NCMINE revoluciona a forma de construir farms no Minecraft Bedrock Mobile. O addon projeta hologramas 3D diretamente no jogo mostrando exatamente onde cada bloco deve ser colocado. Não importa se você é noob ou experiente — farm de Enderman, Mob Trap, Shulker, Iron Farm e muito mais ficam prontas sem precisar de tutorial. Funciona 100% no Bedrock Mobile.",
-  "downloadUrl": "https://terabox.app/s/10pXwMrrtHKzRbN05R4WBGA",
-  "author": "NCMINE",
-  "youtubeId": ""
-},
+    "id": "sodium-gl-reimagined",
+    "title": "Sodium GL Reimagined FPS Texture Pack",
+    "category": "Texture Pack",
+    "version": "1.0.0",
+    "rating": 4.8,
+    "downloads": 0,
+    "date": "2026-05-30",
+    "image": "https://i.imgur.com/EFSE5Tf.png",
+    "tags": [
+      "texture pack",
+      "fps boost",
+      "optimization",
+      "performance",
+      "bedrock",
+      "lag reduction",
+      "particles",
+      "minecraft"
+    ],
+    "short": "Aumente seu FPS no Minecraft Bedrock desativando partículas e efeitos visuais desnecessários.",
+    "description": "O Sodium GL Reimagined é uma textura de otimização para Minecraft Bedrock desenvolvida para aumentar o desempenho em celulares, PCs e dispositivos mais modestos. O pack permite reduzir ou desativar dezenas de partículas do jogo, incluindo fogo, quebra de blocos, portais, fumaça, redstone, explosões, folhas, bolhas e muitos outros efeitos visuais. Além do ganho de FPS, também reduz distrações durante PvP e gameplay survival. Possui menu de configuração integrado para que cada jogador escolha quais partículas deseja manter ou remover, equilibrando desempenho e qualidade visual conforme sua preferência.",
+    "downloadUrl": "https://1024terabox.com/s/1Y0n98Wxexo9kofS29aQbiQ",
+    "author": "Team Nicverse & BRSpike26",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
+  {
+    "id": "afk-chunk-loader-bot",
+    "title": "AFK Chunk Loader Bot",
+    "category": "Addon",
+    "version": "1.0.0",
+    "rating": 4.7,
+    "downloads": 10690,
+    "date": "2026-04-02",
+    "image": "https://media.forgecdn.net/attachments/1602/318/picsart_26-03-28_10-34-26-574-jpg.jpg",
+    "tags": [
+      "addon",
+      "chunk loader",
+      "afk bot",
+      "survival",
+      "automação",
+      "bedrock",
+      "achievement friendly"
+    ],
+    "short": "Mantenha suas farms funcionando e chunks carregados mesmo estando longe com o AFK Chunk Loader Bot para Minecraft Bedrock.",
+    "description": "O AFK Chunk Loader Bot, criado por Sycure_gaming, é a solução definitiva e leve para sobrevivência que mantém seus chunks ativos e farms rodando sem que você precise estar por perto. O grande diferencial? Ele é totalmente compatível com as conquistas (Achievements) do Minecraft! Basta craftar o controle remoto (2 Tochas de Redstone e 1 Bússola), usá-lo no local desejado e um bot será spawnado para carregar a área permanentemente, mesmo se você mudar de dimensão. Ideal para farms de ferro, plantações automáticas e máquinas de redstone. Nota: não funciona para farms de mobs hostis, que ainda exigem a presença física do jogador para o spawn.",
+    "downloadUrl": "https://1024terabox.com/s/1aXHkihbiCwbMk0ulfZYBRg",
+    "author": "Sycure_gaming",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
+  {
+    "id": "easy-farm-addon-ncmine",
+    "title": "Easy Farm Addon",
+    "category": "Addon",
+    "version": "1.0",
+    "rating": 5,
+    "downloads": 40000,
+    "date": "2026-05-24",
+    "image": "https://i.imgur.com/CiLVvOa.png",
+    "tags": [
+      "addon",
+      "farm",
+      "holograma",
+      "construção",
+      "bedrock",
+      "fácil"
+    ],
+    "short": "Addon criado pelo NCMINE que adiciona hologramas de farms prontas no Minecraft Bedrock — é só colocar os blocos por cima e a farm sai perfeita.",
+    "description": "O Easy Farm Addon do NCMINE revoluciona a forma de construir farms no Minecraft Bedrock Mobile. O addon projeta hologramas 3D diretamente no jogo mostrando exatamente onde cada bloco deve ser colocado. Não importa se você é noob ou experiente — farm de Enderman, Mob Trap, Shulker, Iron Farm e muito mais ficam prontas sem precisar de tutorial. Funciona 100% no Bedrock Mobile.",
+    "downloadUrl": "https://terabox.app/s/10pXwMrrtHKzRbN05R4WBGA",
+    "author": "NCMINE",
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
+  },
   {
     "id": "minecraft-otimizado-ncmine",
     "title": "Minecraft Totalmente Otimizado",
@@ -404,12 +538,24 @@
     "downloads": 4989,
     "date": "2026-05-23",
     "image": "https://i.imgur.com/o2N6byV.png",
-    "tags": ["otimização", "textura", "fps", "desempenho"],
+    "tags": [
+      "otimização",
+      "textura",
+      "fps",
+      "desempenho"
+    ],
     "short": "Addon + textura feito pelo NCMINE que otimiza o Minecraft Bedrock para rodar mais leve e com mais FPS.",
     "description": "Este pacote exclusivo do NCMINE combina um addon e textura otimizada para Minecraft Bedrock, reduzindo o peso gráfico e melhorando o desempenho em todos os dispositivos. Perfeito para quem quer mais FPS sem perder a qualidade visual.",
     "downloadUrl": "https://1024terabox.com/s/1IbG7oCH3cmo_SJ90kaMzJw",
     "author": "NCMINE",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "actions-and-stuff",
@@ -420,12 +566,23 @@
     "downloads": 0,
     "date": "2026-05-09",
     "image": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/77e46684-95a4-4e0d-86a8-15085545e85c/actionsandstuff_Thumbnail_0.jpg",
-    "tags": ["animação", "3d", "textura"],
+    "tags": [
+      "animação",
+      "3d",
+      "textura"
+    ],
     "short": "Actions & Stuff é um pacote de recursos para Minecraft que vai muito além de simples texturas, adicionando animações e modelos 3D.",
     "description": "O Pacote de Animação que Você Não Sabia Que Precisava: Dê vida ao seu mundo com novas animações, partículas, texturas e muito mais!\n\n- Animações do jogador (1ª e 3ª pessoa)\n- Novas e aprimoradas animações de mob\n- Modelos de itens 3D\n- Armadura Personalizada\n- Uma Revisão de Textura Completa e Fiel\n- Compatível com texturas de baunilha ou seus próprios pacotes de textura\n- Agora com 100% visuais mais vibrantes",
     "downloadUrl": "https://1024terabox.com/s/1uGSeZACJ4TGKLk_ltR7ZCA",
     "author": "Oreville Studios",
-    "youtubeId": "VDk8niB2Obw"
+    "youtubeId": "VDk8niB2Obw",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "thirst-on",
@@ -436,12 +593,23 @@
     "downloads": 21413,
     "date": "2026-05-10",
     "image": "https://i.imgur.com/GJckxCh.jpeg",
-    "tags": ["mecanica", "sobrevivencia", "sede"],
+    "tags": [
+      "mecanica",
+      "sobrevivencia",
+      "sede"
+    ],
     "short": "Este addon adiciona dois novos sistemas de sobrevivência: sede e temperatura, tornando a experiência de jogo mais realista e desafiadora.",
     "description": "Visão Geral\nEste addon adiciona dois novos sistemas de sobrevivência: sede e temperatura, tornando a experiência de jogo mais realista e desafiadora.\n\nMecânicas Principais\nSede (Thirst)\nUma nova barra de hidratação aparece na tela\n\nA sede é afetada por temperatura, efeitos de status e consumo de comida\n\nQuando a barra fica abaixo de 3 níveis, aparecem efeitos visuais de sede\n\nComo se hidratar: batendo na água (beber diretamente), usando Water Flask ou garrafa de água comum\n\nTemperatura\nO jogador absorve a temperatura do ambiente (varia por bioma, compatível com biomas personalizados)\n\nSobreaquecimento: ultrapassar o limite causa dano de queimadura\n\nCongelamento: cair abaixo do limite causa morte instantânea\n\nPara resistir, você precisa de armaduras com modificadores de resistência térmica\n\nItens Incluídos\nItem\tFunção\nWinter Armor & Desert Armor\tArmaduras para climas extremos (defesa igual couro)\nDiving Helmet\tCapacete de mergulho melhorado (com tanque de oxigênio)\nTermômetro\tMostra a temperatura da área (slot de amuleto)\nHeated Stone\tMantém o jogador aquecido (pode ser recarregada na fornalha)\nWater Flask\tÁgua filtrada para hidratação\nHot/Cool Drink\tMuda a temperatura temporariamente por 8 minutos\nSewing Tool + Fabric\tAplica atributos térmicos às armaduras\nNovas Barras/Indicadores\nThirst Bar – hidratação atual\n\nSoaked Indicator – nível de molhado (afeta absorção de temperatura)\n\nTemperature Resistance Bar – resistência fornecida pela armadura\n\nBurnt Heart / Frozen Heart – limites de queimadura e congelamento\n\nPlayer Temperature – temperatura corporal atual\n\nRequisitos Obrigatórios\nUI Queue – necessário para a interface funcionar\n\nForging Table – necessário para as receitas personalizadas\n\nOpcionais\nNovelty API – adiciona slot de amuleto para o termômetro\n\nCompatibilidade para Desenvolvedores\nO addon permite que outros criadores adicionem compatibilidade via:\n\nComponente personalizado (adventure_condiment:thirst / adventure_condiment:temperature)\n\nMódulo JavaScript (AdventureCondimentModule.js)\n\nVersões Suportadas\n1.21.100\n\n1.21.90",
     "downloadUrl": "https://1024terabox.com/s/1v_iJkw0YLEqEyb4Pv8DVXA",
     "author": "???",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "core-craft-a-vanilla-expansion-new-villages-update",
@@ -452,12 +620,24 @@
     "downloads": 1672,
     "date": "2026-05-10",
     "image": "https://media.forgecdn.net/attachments/1567/415/villages_update_thumbnail-jpg.jpg",
-    "tags": ["mobs", "villagers", "aldeao", "rpg"],
+    "tags": [
+      "mobs",
+      "villagers",
+      "aldeao",
+      "rpg"
+    ],
     "short": "Core Craft transforms Minecraft into a richer survival-RPG experience packed with new adventures, creatures, and ways to play.",
     "description": "Core Craft transforms Minecraft into a richer survival-RPG experience packed with new adventures, creatures, and ways to play. Explore a world full of quests, structures, unique mobs, and immersive systems designed to make your gameplay deeper and more rewarding.\nKey Features\nQuest System – Meet the Quest Master, collect tasks, and track your progress with the Quest Book. Earn rewards by completing objectives or restart quests for a new challenge.\nNew Mobs – Encounter fresh wildlife, dangerous monsters, and even mystical beings like mermaids and sirens.\nExpanded Survival – Grow new crops, cook fresh recipes, and discover unique farming and cooking mechanics.\nWorld Variety – Decorate your home with furniture, explore lush foliage, and collect rare resources such as Ruby.\nBuilt-in Guidebook – Use the Core Craft Wiki Book to learn about every new feature without leaving the game.\nStep into Core Craft and give your Minecraft world new life with quests, creatures, and creative possibilities!",
     "downloadUrl": "https://1024terabox.com/s/1SYxQEsXkB6x9-fRcw9Pmaw",
     "author": "By CoreCraft",
-    "youtubeId": "g3CBnn_ptHw"
+    "youtubeId": "g3CBnn_ptHw",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "place-items",
@@ -468,12 +648,23 @@
     "downloads": 4124,
     "date": "2026-05-10",
     "image": "https://media.forgecdn.net/attachments/1386/245/captura-de-ecra-2025-09-20-193632-png.png",
-    "tags": ["visual", "efeitos", "3d"],
+    "tags": [
+      "visual",
+      "efeitos",
+      "3d"
+    ],
     "short": "Place Items is a addon that enables the player to put many vanilla items in the ground, as decoration or as utility.",
     "description": "Place Items is a addon that enables the player to put many vanilla items in the ground, as decoration or as utility. Tools can be rested in the wall and rotated to the player desire. Place items addon let you place any item that ussually is not placable, by doing so you can decorate your house with items that you gather in your adventures. To place and move the items just Crouch + Right Click.",
     "downloadUrl": "https://1024terabox.com/s/1gjJyqZ3U4AHLjtd1aAHbcA",
     "author": "Alchemy_Studios",
-    "youtubeId": "HBvhknCsiiI"
+    "youtubeId": "HBvhknCsiiI",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "working-projector",
@@ -484,11 +675,21 @@
     "downloads": 321,
     "date": "2026-05-10",
     "image": "https://blockstate.team/assets/media/project-image/working-projector/1.webp",
-    "tags": ["video", "utilidades"],
+    "tags": [
+      "video",
+      "utilidades"
+    ],
     "short": "Adding your own custom video inside Minecraft!!",
     "description": "Watching videos in Minecraft? It might sound unbelievable, but now, thanks to this Add-On, it's a reality! Introducing Working Projector, an Add-On that enables you to seamlessly play videos in Minecraft. Choose any video you desire—add it to our WebApp, and voila, you now have a projector that can project videos onto a wall, allowing you to watch videos in Minecraft like never before! TO ADD YOUR OWN VIDEOS, YOU NEED TO UPLOAD THEM TO THE WEBAPP! https://blockstate.team/projects/working-projector",
     "downloadUrl": "https://1024terabox.com/s/14FNiaCpasoktOlX7hykWNA",
-    "author": "BlockStateTeam"
+    "author": "BlockStateTeam",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "cinecam",
@@ -509,7 +710,14 @@
     "description": "Create cinematic masterpieces with professional camera tools and smooth path animations.\n- Path Camera with visual particle paths and smooth cinematic shots\n- Multiple modes: Shoulder Surf, Drone, 360 Drone, Static placement\n- Admin tools for managing cameras and global settings\n- Licensed by SE7ENDAYS Studio and published by BLOCKLAB Studios.",
     "downloadUrl": "https://1024terabox.com/s/1wXmpjk-wU3IkQEstz0ZY1Q",
     "author": "BLOCKLAB",
-    "youtubeId": "z_DSttSAmDI"
+    "youtubeId": "z_DSttSAmDI",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "rise-and-survive-progressive-zombie-apocalypse",
@@ -520,14 +728,25 @@
     "downloads": 23112,
     "date": "2026-05-09",
     "image": "https://media.forgecdn.net/attachments/1480/110/1000216680-png.png",
-    "tags": ["apocalipse", "zumbi", "sobrevivencia"],
+    "tags": [
+      "apocalipse",
+      "zumbi",
+      "sobrevivencia"
+    ],
     "short": "Rise and Survive is a progression-based apocalypse addon where zombies grow stronger every day.",
     "description": "Evolving Zombies & Growing Difficulty\nA dynamic difficulty bar increases every day, boosting zombie spawn rates.\nEvery 8 days, zombies move faster, grow stronger, and may unlock new abilities.\nHigher difficulty = higher chance of zombies spawning with armor and weapons.\nUnique Zombie Classes - Each zombie type brings new threats, new behaviors, and new strategies:\nMiner Zombies – break blocks to reach you (faster on higher difficulty).\nBlock Placer Zombies – tower up, bridge, and chase you no matter how high you build.\nWitch Zombies – throw and drink potions.\nBomber Zombies – throw TNT (damage-only).\nEnder Zombies – teleport using ender pearls.\nJumpers – leap at you and onto blocks.\nCrawlers – crawl through small spaces.\nRevealers – scream to expose your location, then flee.\nSpitter - shoots spit from a distance.\nHorde Leaders\n\nGiant – jumps and summons fangs.\nTank – incredibly tough.\nNecromancer – summons more zombies.\nZombies can also spawn with various potion effects like Speed or Fire Resistance.\nAll vanilla hostile mobs are disabled, but their loot is obtainable by killing zombies.\nHorde & Blood Moon System\nBloodmoon occurs every 8 days\nHordes spawn randomly 15 blocks away, always aware of your location.\nHorde size scales with difficulty (customizable in settings).",
     "downloadUrl": "https://1024terabox.com/s/1E9m21QwZ89QTF4g4GT7ejg",
     "author": "Ranzie",
-    "youtubeId": "97u5yVJpYjY"
+    "youtubeId": "97u5yVJpYjY",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
- {
+  {
     "id": "naturalist-add-on-261-by-starfish-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Naturalist Add-On 26.1 by Starfish Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -552,9 +771,16 @@
     "description": "Your world has been overrun by FEARSOME MONSTERS! Enhance any world and try to survive against TERRIFYING creatures! Can you survive? + New horror survival experience + Over... Read More",
     "downloadUrl": "https://1024terabox.com/s/1T-ohs2FUMrTPYs1Fr9pWBQ",
     "author": "Starfish Studios",
-    "youtubeId": "FS06MS8D65E"
+    "youtubeId": "FS06MS8D65E",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "realismcraft-24-by-spark-universe--minecraft-marketplace",
     "title": "RealismCraft 2.4 by Spark Universe - Minecraft Marketplace",
     "category": "Outros",
@@ -580,7 +806,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1FtqNk_IKYM-1ynvuBfDI1Q",
     "author": "Spark Universe",
-    "youtubeId": "7dv82R-ZuBk"
+    "youtubeId": "7dv82R-ZuBk",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "real-minimap-by-melonbp--minecraft-marketplace-via-bedrockexplorercom",
@@ -605,7 +838,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1g5fH-u1a3cj_cNcWZbEi_A",
     "author": "MelonBP",
-    "youtubeId": "awoTmV5sr6A"
+    "youtubeId": "awoTmV5sr6A",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "wildlifecraft-10-by-compycraft--minecraft-marketplace-via-bedrockexplorercom",
@@ -632,9 +872,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1-8QbUpsEoIpTrcILJ7D0pQ",
     "author": "CompyCraft",
-    "youtubeId": "xSVZMFeAx0M"
+    "youtubeId": "xSVZMFeAx0M",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "furniture-life-add-on-v20-by-pixelheads--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Furniture Life Add-On v2.0 by PixelHeads - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -658,9 +905,16 @@
     "description": "Welcome to Furniture Life! With 1500+ real furniture blocks, you can design everything from cozy homes to sprawling cities. From modern styles to timeless classics, there's a... Read More",
     "downloadUrl": "https://1024terabox.com/s/1VrXUFyRAXH70bbUQo6PshQ",
     "author": "PixelHeads",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "biomes-o-plenty-by-4ks-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Biomes O' Plenty by 4KS Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -682,7 +936,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1PjlukKdDs7PqrGdHHfCcxQ",
     "author": "4KS Studios",
-    "youtubeId": "GEKjg8BCAr8"
+    "youtubeId": "GEKjg8BCAr8",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "afk-farms-12-add-on-by-logdotzip--minecraft-marketplace-via-bedrockexplorercom",
@@ -710,9 +971,16 @@
     "description": "+ Works on ANY world, new or old! + 10 traders + New weapons, tools, loot Expand your survival experience with 10 unique traders who offer amazing custom weapons and tools in... Read More",
     "downloadUrl": "https://1024terabox.com/s/1tlXWgsOqtfhk9Esum41JnA",
     "author": "Logdotzip",
-    "youtubeId": "T_e4zUls6Tg"
+    "youtubeId": "T_e4zUls6Tg",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
- {
+  {
     "id": "waystones-by-pathway-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Waystones by Pathway Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -738,9 +1006,16 @@
     "description": "Would you like to be a fox? Then this pack is for you! Choose your outfit and have fun with your friends, go on new adventures and surprise the crowd! 12 Fox Teens! By... Read More",
     "downloadUrl": "https://1024terabox.com/s/1yh1dtsD_mO4t-UuyCjngwA",
     "author": "Pathway Studios",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "avatar-rites-of-passage-by-gamemode-one-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Avatar: Rites of Passage by Gamemode One (Minecraft Marketplace Map) - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -763,9 +1038,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1zKwXFJTIvaYpb68GbkGseQ",
     "author": "Gamemode One",
-    "youtubeId": "g4vwbTONdrM"
+    "youtubeId": "g4vwbTONdrM",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "dragon-ball-z",
     "title": "Dragon Ball Z",
     "category": "Outros",
@@ -787,9 +1069,16 @@
     "description": "Unlock the ultimate decorating experience with Modern Furniture! Dive into a world where style meets creativity across 300 pieces. + Modern, Gaming, Cute & much more furniture to... Read More",
     "downloadUrl": "https://1024terabox.com/s/130Hx-E4iU7TJTOea3THK7Q",
     "author": "Cyclone",
-    "youtubeId": "E7kcUv_-n5c"
+    "youtubeId": "E7kcUv_-n5c",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "essentials-by-unlinked--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Essentials by Unlinked - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -811,7 +1100,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1T6Qcxuy2KFQrfZIfxy3J0Q",
     "author": "Unlinked",
-    "youtubeId": "fnSqKn0p7QE"
+    "youtubeId": "fnSqKn0p7QE",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "better-backpacks-add-on-by-pixelheads--minecraft-marketplace-via-bedrockexplorercom",
@@ -833,9 +1129,16 @@
     "description": "Welcome to Furniture Life! With 1500+ real furniture blocks, you can design everything from cozy homes to sprawling cities. From modern styles to timeless classics, there's a... Read More",
     "downloadUrl": "https://1024terabox.com/s/1xIBsGdp3oP2wnXOOfi-HsA",
     "author": "PixelHeads",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "rlcraft-bedrock-edition-12-by-honeyfrost-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
     "title": "RLCraft Bedrock Edition 1.2 by Honeyfrost (Minecraft Marketplace Map) - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -861,7 +1164,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1yAL3b4JDtgC1nVbl_0Rqjw",
     "author": "Honeyfrost",
-    "youtubeId": "h3BenLL7YCE"
+    "youtubeId": "h3BenLL7YCE",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "combat-actions--weapons-add-on",
@@ -887,9 +1197,16 @@
     "description": "This Add-On adds RPG style combat moves or (Actions) to your game. We've got... double jumps, rolls, slides, dodges and attack combos. And the weapons? Try 100 unique custom weapons of all kinds. Sci-Fi laser blasters? Yep. Spears, flails, daggers, axes and so on? You got it. Overpowered, mythical and completely ridiculous weapons? You better believe it...",
     "downloadUrl": "https://1024terabox.com/s/1STQfJXE8GuGnQIwVAwg4PQ",
     "author": "Tsunami Studios",
-    "youtubeId": "PEMM26t3dNc"
+    "youtubeId": "PEMM26t3dNc",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
- {
+  {
     "id": "realistic-biomes-122-add-on-by-oreville-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Realistic Biomes 1.2.2 Add-On by Oreville Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -914,9 +1231,16 @@
     "description": "The Animation Pack You Didn't Know You Needed: Bring your world to life with new animations, particles, textures, and more! Player Animations (1st & 3rd Person) New &... Read More",
     "downloadUrl": "https://1024terabox.com/s/1eNO-JC0L1QNDaqqBkGpPAw",
     "author": "Oreville Studios",
-    "youtubeId": "CJV_zGRM-hQ"
+    "youtubeId": "CJV_zGRM-hQ",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "vampire-biomes-add-on-100-by-waypoint-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Vampire Biomes Add-On 1.0.0 by Waypoint Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -942,7 +1266,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1_WzFHsu8MYJXfMruYl78wA",
     "author": "Waypoint Studios",
-    "youtubeId": "NoYBOeZFS6c"
+    "youtubeId": "NoYBOeZFS6c",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "crops--farms-14-by-some-game-studio--minecraft-marketplace-via-bedrockexplorercom",
@@ -970,9 +1301,16 @@
     "description": "Live the complete farming dream with our HarvestCraft AddOn! Expand and decorate your homestead, growing new and beautiful crops. Harvest with your NEW tools and craft into your... Read More",
     "downloadUrl": "https://1024terabox.com/s/1-br1qE8yA_Z2c5ua7WIujA",
     "author": "Some Game Studio",
-    "youtubeId": "JGAMXtflGH4"
+    "youtubeId": "JGAMXtflGH4",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-  { 
+  {
     "id": "item-physics--more-add-on-by-blocklab-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Item Physics & More Add-On by BLOCKLAB Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -998,9 +1336,16 @@
     "description": "Create new types of TNT in your world! You can create a world of chaos and explosions! 39 new different craftable TNT Works in any world Works with redstone This... Read More",
     "downloadUrl": "https://1024terabox.com/s/1Ag8dDVuqCs-XKICkcEXhPA",
     "author": "BLOCKLAB Studios",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "parasite-outbreak-add-on-103-by-mythicus--minecraft-marketplace-via-bedrockexplorercom",
     "title": "PARASITE OUTBREAK Add-On 1.0.3 by Mythicus - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1024,7 +1369,14 @@
     "description": "This Weapons + Tools AddOn adds: 200+ new items TOTAL! 20 armor sets! 20 swords! 20 bows! 80+ new tools! 9 new ores with deepslate variants! Custom... Read More",
     "downloadUrl": "https://1024terabox.com/s/1XnkLplg49eRYY85v_A5yCw",
     "author": "Mythicus",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "mowzies-mobs-add-on-11-by-honeyfrost--minecraft-marketplace-via-bedrockexplorercom",
@@ -1051,9 +1403,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1qaIrGAKZ6Ks8E8zE-kbcHA",
     "author": "Honeyfrost",
-    "youtubeId": "Q1VMzRYIgmM"
+    "youtubeId": "Q1VMzRYIgmM",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
- {
+  {
     "id": "furniture-add-on-by-xp-games--minecraft-marketplace-via-bedrockexplorercom",
     "title": "FURNITURE Add-On by XP GAMES - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1078,9 +1437,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1TsiROjgRpmxQ1wWOzkdYZg",
     "author": "XP GAMES",
-    "youtubeId": "iPbkvmthCRQ"
+    "youtubeId": "iPbkvmthCRQ",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "easy-redstone-add-on-11-by-overtales-studio--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Easy Redstone Add-On 1.1 by Overtales Studio - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1103,9 +1469,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/17SSh5WqISIE0LXuaVDzrwQ",
     "author": "Overtales Studio",
-    "youtubeId": "snh0JcY1-7U"
+    "youtubeId": "snh0JcY1-7U",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "furniture-add-on-by-eescal-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Furniture Add-On by Eescal Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1126,9 +1499,16 @@
     "description": "Welcome to your new beautifully crafted Beachfront Villa! Enjoy the splendors of this luxury compound with all the amenities that you love: mansions, yachts, tennis courts, swimming pools, and more!",
     "downloadUrl": "https://1024terabox.com/s/1jSkZzbvfLMtmKOIxvpkV5A",
     "author": "Eescal Studios",
-    "youtubeId": "PRrvYfUHK4A"
+    "youtubeId": "PRrvYfUHK4A",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "amulets-by-jfcrafters--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Amulets by JFCrafters - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1152,9 +1532,16 @@
     "description": "Join these anime villains as they embark on their quest to conquer the city! With their devious schemes and colorful personalities, every moment is an exhilarating journey through... Read More",
     "downloadUrl": "https://1024terabox.com/s/1qRmavNOtD3iM_A6KPwA7DQ",
     "author": "JFCrafters",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-  { 
+  {
     "id": "bosses-add-on-15-by-shapescape--minecraft-marketplace-via-bedrockexplorercom",
     "title": "BOSSES+ Add-On 1.5 by Shapescape - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1179,7 +1566,14 @@
     "description": "Add AWESOME CARS to your world! Customize and mod over 34,000,000 different and epic rides like supercars, electric cars, trucks, and more! + Race, drift, and explore in... Read More",
     "downloadUrl": "https://1024terabox.com/s/1iJ63BGciUD5Mw7-V4yXYEg",
     "author": "Shapescape",
-    "youtubeId": "ko1JSQ3JjuM"
+    "youtubeId": "ko1JSQ3JjuM",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "prizma-visuals-21-by-starfish-studios--minecraft-marketplace-via-bedrockexplorercom",
@@ -1203,7 +1597,14 @@
     "description": "Your world has been overrun by FEARSOME MONSTERS! Enhance any world and try to survive against TERRIFYING creatures! Can you survive? + New horror survival experience + Over... Read More",
     "downloadUrl": "https://1024terabox.com/s/1wd2sXEHwve0mamdg6dytbg",
     "author": "Starfish Studios",
-    "youtubeId": "OZDvWwiRef0"
+    "youtubeId": "OZDvWwiRef0",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "scp-uncaged-add-on-v11-by-cloud-corp--minecraft-marketplace-via-bedrockexplorercom",
@@ -1231,9 +1632,16 @@
     "description": "The SCPs have become UNCAGED across your world, and it is up to you to contain them! Discover 12 SCPs Execute 8 Special Containment Procedures Explore 7+ abandoned... Read More",
     "downloadUrl": "https://1024terabox.com/s/1iZAi3jGQ27fuPYFPmiMS9A",
     "author": "Cloud Corp",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "sonic-add-on-by-gamemode-one--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Sonic Add-On by Gamemode One - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1254,9 +1662,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1jyULpGRph_KFCFVFTptznQ",
     "author": "Gamemode One",
-    "youtubeId": "epwwrYprobo"
+    "youtubeId": "epwwrYprobo",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
- {
+  {
     "id": "furniture-hd-add-on-11-by-square-dreams--minecraft-marketplace-via-bedrockexplorercom",
     "title": "FURNITURE HD Add-On 1.1 by Square Dreams - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1281,7 +1696,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1lLiIm4KLTN0s6FoRULBbpA",
     "author": "Square Dreams",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "security-add-on",
@@ -1309,7 +1731,14 @@
     "description": "Secure YOUR world with laser doors, hidden entrances, security cameras, monitors, secret doors, and more. Control access with color-coded permissions and keycards, ride hoverboards, and deploy pet guard dogs for added protection. Includes a bunker builder with 35+ rooms, including living spaces, prisons, and crop farms. Enhance your world with maximum security!",
     "downloadUrl": "https://1024terabox.com/s/1lLiIm4KLTN0s6FoRULBbpA",
     "author": "57Digital",
-    "youtubeId": "JtQyCJuvUXU"
+    "youtubeId": "JtQyCJuvUXU",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "backrooms-add-on-by-xp-games--minecraft-marketplace-via-bedrockexplorercom",
@@ -1337,7 +1766,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1t8D7IpqbLAy4_kgNuOvZZA",
     "author": "XP GAMES",
-    "youtubeId": "i_C03f1MiRo"
+    "youtubeId": "i_C03f1MiRo",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "warden-dimension-by-shapescape-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
@@ -1362,7 +1798,14 @@
     "description": "Add AWESOME CARS to your world! Customize and mod over 34,000,000 different and epic rides like supercars, electric cars, trucks, and more! + Race, drift, and explore in... Read More",
     "downloadUrl": "https://1024terabox.com/s/1AjxPYH4zmKJd-cy4B8bshA",
     "author": "Shapescape",
-    "youtubeId": "bSgZBE5LpnY"
+    "youtubeId": "bSgZBE5LpnY",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "epicboss-by-systemzees-workshop--minecraft-marketplace-via-bedrockexplorercom",
@@ -1387,7 +1830,14 @@
     "description": "Six powerful bosses have invaded your world in this epic addon! Summon them or track them down in their mysterious structures. Battle to unlock powerful weapons, armor,... Read More",
     "downloadUrl": "https://1024terabox.com/s/1AjxPYH4zmKJd-cy4B8bshA",
     "author": "SystemZee's Workshop",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "buckets-add-on-by-melonbp--minecraft-marketplace-via-bedrockexplorercom",
@@ -1409,9 +1859,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1OR993lzI2XWlSOIH1MDxbQ",
     "author": "MelonBP",
-    "youtubeId": "6QIPkdUiVx4"
+    "youtubeId": "6QIPkdUiVx4",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "dynamic-tree-generation-add-on-by-ka-studios--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Dynamic Tree Generation Add-On by KA Studios - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1434,9 +1891,16 @@
     "description": "Welcome to Islands Adventure, a thrilling map where you can explore four themed islands—Pirate Island, Dinosaur Island, Castle Island, and Spartan Island—each with unique... Read More",
     "downloadUrl": "https://1024terabox.com/s/1fuiS4XoQoc6K3wccFIT9wg",
     "author": "KA Studios",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "realism-vfx-13-add-on-by-spark-universe--minecraft-marketplace-via-bedrockexplorercom",
     "title": "Realism VFX 1.3 Add-On by Spark Universe - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1459,9 +1923,15 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1JdI8qhU0Tr-WAKkPuSJr3A",
     "author": "Spark Universe",
-    "youtubeId": "1Hr4Gpymw8I"
+    "youtubeId": "1Hr4Gpymw8I",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-
   {
     "id": "dynamic-light-add-on-by-xp-games--minecraft-marketplace-via-bedrockexplorercom",
     "title": "DYNAMIC LIGHT Add-On by XP GAMES - Minecraft Marketplace (via bedrockexplorer.com)",
@@ -1486,9 +1956,16 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1YMK9TELOSLtzeQlCf9ulBg",
     "author": "XP GAMES",
-    "youtubeId": "1AG00ybEDZI"
+    "youtubeId": "1AG00ybEDZI",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "structure-generation-add-on-by-pixelusion--minecraft-marketplace-via-bedrockexplorercom",
     "title": "STRUCTURE GENERATION Add-On by Pixelusion - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1513,7 +1990,14 @@
     "description": "Unleash your wild side with 15 jawdropping shark skins! From emo neon kawaii sharks to piratethemed and even fierce knight sharks, this pack brings the ocean's mightiest... Read More",
     "downloadUrl": "https://1024terabox.com/s/1-Ib21JNn1CmaDkGj9bqQRg",
     "author": "Pixelusion",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "realism-11-fieldsforests-by-panascais-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
@@ -1540,7 +2024,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1SftVDt-v2XdXm2ITtBsNkg",
     "author": "Panascais",
-    "youtubeId": "ptrScL0CADU"
+    "youtubeId": "ptrScL0CADU",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "the-one-who-watches-add-on-101-by-mythicus--minecraft-marketplace-via-bedrockexplorercom",
@@ -1566,7 +2057,14 @@
     "description": "This Weapons + Tools AddOn adds: 200+ new items TOTAL! 20 armor sets! 20 swords! 20 bows! 80+ new tools! 9 new ores with deepslate variants! Custom... Read More",
     "downloadUrl": "https://1024terabox.com/s/1EBD5Anx3HoT5UOiJ3_WLNw",
     "author": "Mythicus",
-    "youtubeId": "HDSilfEmvz0"
+    "youtubeId": "HDSilfEmvz0",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "better-on-bedrock-v121-by-foxystar-studios-minecraft-marketplace-map--minecraft-marketplace-via-bedrockexplorercom",
@@ -1594,9 +2092,16 @@
     "description": "Experience a brand new world with Luminous Dreams, a Vibrant Visuals pack that will transform your entire world into something beautiful! Custom Lighting God Rays ... Read More",
     "downloadUrl": "https://1024terabox.com/s/1YUsRhQBgCBlody4UVfHjLA",
     "author": "FoxyStar Studios",
-    "youtubeId": "k8FFEKdFT5o"
+    "youtubeId": "k8FFEKdFT5o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "enchantments-plus",
     "title": "Enchantments Plus",
     "category": "Outros",
@@ -1620,9 +2125,16 @@
     "description": "Upgrade your world with Enchantments Plus! Unlock powerful new abilities for all your tools and weapons, like summoning lightning or harvesting extra crops. With a custom enchanting table, boosting your survival and adventure gameplay is easy. Enhance your gear and take control with Enchantments Plus.",
     "downloadUrl": "https://1024terabox.com/s/1U3BpyFu1iqVCHIS6sKLnDA",
     "author": "StarkTMA",
-    "youtubeId": "nbJTqoarJVQ"
+    "youtubeId": "nbJTqoarJVQ",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-{
+  {
     "id": "more-ores-tools-armor-add-on-by-wonder--minecraft-marketplace-via-bedrockexplorercom",
     "title": "More Ores Tools Armor Add-On by Wonder - Minecraft Marketplace (via bedrockexplorer.com)",
     "category": "Outros",
@@ -1647,7 +2159,14 @@
     "description": "Unleash your inner darkness with Ender Demons HD! This skin pack brings fierce, highdefinition demon characters inspired by the End, featuring sharp designs and dark, powerful... Read More",
     "downloadUrl": "https://1024terabox.com/s/10xvf0gxjkf5lOrva6g5FBA",
     "author": "Wonder",
-    "youtubeId": "9hMBnr3Mb3o"
+    "youtubeId": "9hMBnr3Mb3o",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "wizard-craft-add-on-by-blocklab-studios--minecraft-marketplace-via-bedrockexplorercom",
@@ -1674,7 +2193,14 @@
     "description": "Create new types of TNT in your world! You can create a world of chaos and explosions! 39 new different craftable TNT Works in any world Works with redstone This... Read More",
     "downloadUrl": "https://1024terabox.com/s/1js2CQxsHlO87UveUJXHs3g",
     "author": "BLOCKLAB Studios",
-    "youtubeId": "Z17-qbOEwBQ"
+    "youtubeId": "Z17-qbOEwBQ",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "nc-optimize",
@@ -1685,12 +2211,25 @@
     "downloads": 34214,
     "date": "2026-05-22",
     "image": "https://ugc.production.linktr.ee/605f0b64-af79-4fe0-be7f-e40c2f6047c6_Gemini-Generated-Image-bvh9zsbvh9zsbvh9.png?io=true&size=thumbnail-stack_v1_0",
-    "tags": ["otimização", "fps", "textura", "mcpe", "bedrock"],
+    "tags": [
+      "otimização",
+      "fps",
+      "textura",
+      "mcpe",
+      "bedrock"
+    ],
     "short": "NC Optimize 1.0 é um pacote de recursos focado em otimização extrema de FPS para o Minecraft Bedrock, reduzindo lags e engasgos até em celulares fracos.",
     "description": "A Solução Definitiva para o Lag no seu Minecraft: NC Optimize remove o peso morto e limpa os códigos mal otimizados do jogo para que seus frames alcancem estabilidade máxima sem sacrificar o ganho de conquistas!\n\n- Otimização extrema de performance de renderização no Minecraft Bedrock / PE\n- Menu de Subpacks configurável dentro do jogo\n- Modo Texturas Retas (flat blocks) sem variação pesada de cor\n- Otimização do mapa de cores dos Biomas (color map otimizado)\n- Desativação de animações desnecessárias que superaquecem o dispositivo móvel\n- Totalmente compatível e seguro para uso em servidores PvP (Sem risco de Ban)\n- Suporta mundos Survival e Hardcore mantendo conquistas 100% ativas\n- Compatível com as versões 1.21+",
     "downloadUrl": "https://terabox.com/s/1CudZ7VGs61bwQEV2BRHaAg",
     "author": "ncmine",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "bra-os-longos-actions-stuff-v1-10-minimap-download-2",
@@ -1706,9 +2245,16 @@
     "description": "",
     "downloadUrl": "https://terabox.com/s/1Riq5YGhKNAs7VAKw686Tew",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-    {
+  {
     "id": "op-villagers-4",
     "title": "OP Villagers",
     "category": "Outros",
@@ -1722,7 +2268,14 @@
     "description": "",
     "downloadUrl": "https://terabox.com/s/1G635h51lnRtqFqHT80mg8Q",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "download--apocalipse-zumbi-2026---addon-pack-5",
@@ -1738,9 +2291,16 @@
     "description": "",
     "downloadUrl": "https://terabox.com/s/1ajJK19Dr3oSalUKXjnBogg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-    {
+  {
     "id": "tutorial-de-como-baixar-pelo-terabox--7",
     "title": "tutorial de Como baixar pelo terabox!",
     "category": "Outros",
@@ -1754,9 +2314,16 @@
     "description": "",
     "downloadUrl": "https://youtu.be/fN4BennXjTY?si=9J0W6FCFEWmg9Ll6",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
-   {
+  {
     "id": "fastportal-1-0-0-mcpack-20241211-063119-zip-9",
     "title": "FastPortal_1-0-0.mcpack_20241211_063119.zip",
     "category": "Outros",
@@ -1770,7 +2337,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/1r4xKtvWnkLs78XfASnE5Ug",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "download-advanced-day-minecraft-pack-10",
@@ -1786,7 +2360,14 @@
     "description": "",
     "downloadUrl": "https://doodslink.com/s/1YHMoKw8JiW6KM9qr-h8D3Q",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "ferramentas-longes-bra-os--uso-nos-videos--12",
@@ -1802,7 +2383,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1q-4m7b2t4KBYGE9iFINyzQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "fpscounter--uso-nos-videos--13",
@@ -1818,7 +2406,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1-np-iVbs6y-3yLsEUCMyZA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "minimap--uso-nos-videos--14",
@@ -1834,7 +2429,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/16r11rsXoMKvfvFyA1tzJdw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "rgb-outline--uso-nos-videos--15",
@@ -1850,7 +2452,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.com/s/17o6QyPvxG7P_Qv_ANYrRcg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "--------------------------16",
@@ -1866,7 +2475,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/17Xpywx3CKaNzU0kfsrdpqQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "easy-farm-addon-17",
@@ -1882,7 +2498,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/10pXwMrrtHKzRbN05R4WBGA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "-------------------------------------1-5-beta-18",
@@ -1898,7 +2521,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1cFiOsSNkmEbGkHDh66BUvA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "holagram-pack-by-ncmine-19",
@@ -1914,7 +2544,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1e49Gxu7KIDKOSeB4lxcJgg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "essentials--sem-perder-conquistas--20",
@@ -1930,7 +2567,14 @@
     "description": "",
     "downloadUrl": "https://teraboxapp.com/s/1349K96fPENowQq21GCmJdg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "criativo-addon-graveto-by-ncmine-21",
@@ -1946,7 +2590,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/16du6rfr8MZPKFWaQ6aN8nA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "chunkminer-com-conquistas-22",
@@ -1962,7 +2613,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1qLEty2zb38QbR-AsOPk26A",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "overworld-netherite-byncmine-23",
@@ -1978,7 +2636,14 @@
     "description": "",
     "downloadUrl": "https://terabox.com/s/1tt902ytneAAWkJP1rM7gTQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "diamond-ultra-200--24",
@@ -1994,7 +2659,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/13yIyNuLgVnYEGSbAyxUZmA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "download-the-gilded-toolkit-25",
@@ -2010,7 +2682,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1cQLpf5QMtszRxXQ314imLg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "goodmodo-by-ncmine-26",
@@ -2026,7 +2705,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1h6XEBoLifzwbKoJTMTF7Kg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "multiplyores-by-ncmine-27",
@@ -2042,7 +2728,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1Hpb_my24ZHkBxYz4QpT-vw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "damage-canceler-28",
@@ -2058,7 +2751,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1Ngjsyk2T9WbospnK0_cXRA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "teleport-addon-by-ncmine-29",
@@ -2074,7 +2774,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1AYCJfeUZGarKUraZKw-ulg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "ultra-vein-miner-ui-com-op-oes-by-ncmine-30",
@@ -2090,7 +2797,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1aCiTHOt4R_FrnrGSLxSEww",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "night-vision-atualizada-31",
@@ -2106,7 +2820,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1Xp0e39wMQpYf_lNo_qfmwA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "holo-10-farms-easy-by-ncmine-32",
@@ -2122,7 +2843,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1HPl8ckCqU83LxqGZsczl2Q",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "atividade-paranormal-1-12-2-by--darkzinn777-33",
@@ -2138,7 +2866,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1Yl_Dzok1phob2wx8fghzew",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "download-apocalipse-zumbi-34",
@@ -2154,7 +2889,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/17XMIxw_65It96at_8VCDGw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "nc-utilites--beta--by-ncmine-35",
@@ -2170,7 +2912,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1ww126lBvJGw_z7CmLYzsZw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "keep-inventory-1-21-81-36",
@@ -2186,7 +2935,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1vA3lS0geVs3TxvnYI40NEw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "minerios---by--ncmine-37",
@@ -2202,7 +2958,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1CcNVeUfTHLaDmh93fKQJZw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "infinity-bone-by-ncmine-38",
@@ -2218,7 +2981,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1QkbqGdA060B7LCHTWfqFCg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "netherite----by-ncmine-39",
@@ -2234,7 +3004,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1lqhERBCKMq9zn5lNr2RQDw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "easynetherite-40",
@@ -2250,7 +3027,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1TLKROACwExgP0YZBavFm6g",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "infinity-xp-by-ncmine-41",
@@ -2266,7 +3050,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1GriFYiAVIwK-2DLK2oKolA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "3x3x3-breaker--com-conquistas--42",
@@ -2282,7 +3073,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1Fn3WwDeUORM6__PV3Gh-RQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "autototem-by--ncmine-43",
@@ -2298,7 +3096,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1idBlhnxuDFcDZelYq7br-Q",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "auto-enchanter-44",
@@ -2314,7 +3119,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1KKr8NX6qpkzuI8hrOlA0vQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "diamond-plus-by-ncmine-45",
@@ -2330,7 +3142,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1GGTwCXPDEANEFes7dPLAOA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "spotify-texture-46",
@@ -2346,7 +3165,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1L2BbJGqhVWjeltnMLTNPwA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "keep-inventory-47",
@@ -2362,7 +3188,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1C4UsM0wkSezkkz4Nx7gmcg",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "night-vision-pack-textura-48",
@@ -2378,7 +3211,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.app/s/1G1oFreRN4WGGt1Wd80mq7g",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "3x3x3-vein-miner-49",
@@ -2394,7 +3234,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1BkWFa5VWbno5cubgHmyyMQ",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "force-spectator--modo-espectador--50",
@@ -2410,7 +3257,14 @@
     "description": "",
     "downloadUrl": "https://1024terabox.app/s/1B3PmMbLKyHrd9OvL_rgqlA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "diamond-plus--com-conquistas--51",
@@ -2426,7 +3280,14 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/1cFIO3_4j1eEo9Xz6cBnuWw",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "tree-capitator-com-conquistas-52",
@@ -2442,7 +3303,14 @@
     "description": "",
     "downloadUrl": "https://terabox.com/s/1ItWqjUZUGe-P9LADnCdU-Q",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   },
   {
     "id": "fogos-infinitos-53",
@@ -2458,6 +3326,13 @@
     "description": "",
     "downloadUrl": "https://terabox.app/s/16jMT3GeB7hkMjcISZL2gGA",
     "author": "",
-    "youtubeId": ""
+    "youtubeId": "",
+    "achievementFriendly": true,
+    "platforms": [
+      "Android",
+      "iOS",
+      "Windows"
+    ],
+    "multiplayer": true
   }
 ]

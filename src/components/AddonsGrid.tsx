@@ -1,6 +1,11 @@
-import { useMemo, useState } from "react";
-import { Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import Fuse from "fuse.js";
+import {
+  Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles,
+  Trophy, Mic, Dices, LayoutGrid, List,
+} from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
+import { useAuth } from "@/hooks/use-auth";
 
 type Props = {
   addons: Addon[];
@@ -9,7 +14,11 @@ type Props = {
   onOpen: (a: Addon) => void;
   externalCategory?: string;
   onCategoryChange?: (cat: string) => void;
+  initialQuery?: string;
 };
+
+const ACHIEVEMENT_KEY = "ncmine:filter-achievement";
+const VIEW_KEY = "ncmine:view-mode";
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
@@ -29,13 +38,92 @@ const CATEGORY_CONFIG: CategoryConfig[] = [
   { id: "Addon Pack", label: "Packs", icon: <Sparkles className="h-4 w-4" />, color: "text-[#9C27B0]", bgColor: "bg-[#9C27B0] text-white" },
 ];
 
-export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange }: Props) {
-  const [q, setQ] = useState("");
+export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange, initialQuery }: Props) {
+  const { profile } = useAuth();
+  const [q, setQ] = useState(initialQuery ?? "");
+  useEffect(() => {
+    if (initialQuery) setQ(initialQuery);
+  }, [initialQuery]);
   const [internalCat, setInternalCat] = useState<string>("Todos");
   const [sort, setSort] = useState<Sort>("mix");
+  const [achievementOnly, setAchievementOnly] = useState(false);
+  const [view, setView] = useState<"grid" | "list">("grid");
+  const [listening, setListening] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(ACHIEVEMENT_KEY) === "1") setAchievementOnly(true);
+      const savedView = localStorage.getItem(VIEW_KEY);
+      if (savedView === "list" || savedView === "grid") setView(savedView);
+    } catch {}
+  }, []);
+
+  const toggleAchievementOnly = () => {
+    setAchievementOnly((v) => {
+      const next = !v;
+      try { localStorage.setItem(ACHIEVEMENT_KEY, next ? "1" : "0"); } catch {}
+      return next;
+    });
+  };
+
+  const setViewMode = (v: "grid" | "list") => {
+    setView(v);
+    try { localStorage.setItem(VIEW_KEY, v); } catch {}
+  };
+
+  // Placeholder rotativo com nomes reais do catálogo
+  const placeholder = useRotatingPlaceholder(addons);
+
+  const voiceSearch = () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "pt-BR";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = () => setListening(true);
+    recognition.onend = () => setListening(false);
+    recognition.onerror = () => setListening(false);
+    recognition.onresult = (e: any) => {
+      const transcript = e.results?.[0]?.[0]?.transcript;
+      if (transcript) setQ(transcript);
+    };
+    recognition.start();
+  };
+
+  // Detectado só depois do mount — checar `window` durante o render quebra a hidratação SSR
+  // (servidor nunca tem window, então o botão apareceria "do nada" no client).
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  useEffect(() => {
+    setVoiceSupported("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+  }, []);
+
+  const pickRandom = () => {
+    const favoriteIds = new Set(profile?.favorites ?? []);
+    const pool = addons.filter((a) => !favoriteIds.has(a.id));
+    const source = pool.length > 0 ? pool : addons;
+    const pick = source[Math.floor(Math.random() * source.length)];
+    if (pick) onOpen(pick);
+  };
 
   const cat = externalCategory ?? internalCat;
   const setCat = onCategoryChange ?? setInternalCat;
+
+  const fuse = useMemo(
+    () =>
+      new Fuse(addons, {
+        keys: [
+          { name: "title", weight: 0.4 },
+          { name: "tags", weight: 0.25 },
+          { name: "author", weight: 0.15 },
+          { name: "short", weight: 0.1 },
+          { name: "category", weight: 0.1 },
+        ],
+        threshold: 0.3,
+        ignoreLocation: true,
+      }),
+    [addons],
+  );
 
   const categories = useMemo(() => {
     const set = new Set(addons.map((a) => a.category));
@@ -58,17 +146,19 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   }, [categories]);
 
   const filtered = useMemo(() => {
-    const ql = q.trim().toLowerCase();
-    let list = addons.filter((a) => {
+    const ql = q.trim();
+    let list: Addon[];
+    if (ql) {
+      const matches = new Set(fuse.search(ql).map((r) => r.item.id));
+      list = addons.filter((a) => matches.has(a.id));
+    } else {
+      list = addons;
+    }
+    list = list.filter((a) => {
       const matchesCat = cat === "Todos" || a.category.toLowerCase() === cat.toLowerCase();
       if (!matchesCat) return false;
-      if (!ql) return true;
-      return (
-        a.title.toLowerCase().includes(ql) ||
-        a.author?.toLowerCase().includes(ql) ||
-        a.tags?.some((t) => t.toLowerCase().includes(ql)) ||
-        a.short?.toLowerCase().includes(ql)
-      );
+      if (achievementOnly && a.achievementFriendly === false) return false;
+      return true;
     });
     if (sort === "mix") return list;
     list = [...list].sort((a, b) => {
@@ -85,7 +175,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
       }
     });
     return list;
-  }, [addons, q, cat, sort]);
+  }, [addons, q, cat, sort, achievementOnly, fuse]);
 
   return (
     <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-4 pb-24 sm:px-4 sm:py-20 sm:pb-20">
@@ -131,9 +221,19 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Buscar addon..."
-              className="w-full border-2 border-foreground bg-background py-2.5 pl-9 pr-3 text-sm font-medium outline-none placeholder:text-muted-foreground focus:bg-primary/10"
+              placeholder={`Buscar: ${placeholder}`}
+              className={`w-full border-2 border-foreground bg-background py-2.5 pl-9 text-sm font-medium outline-none placeholder:text-muted-foreground focus:bg-primary/10 ${voiceSupported ? "pr-9" : "pr-3"}`}
             />
+            {voiceSupported && (
+              <button
+                type="button"
+                onClick={voiceSearch}
+                aria-label="Buscar por voz"
+                className={`absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 ${listening ? "animate-pulse text-primary" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                <Mic className="h-4 w-4" />
+              </button>
+            )}
           </label>
           <select
             value={sort}
@@ -148,6 +248,47 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
           </select>
         </div>
       </header>
+
+      {/* Toolbar: conquistas, aleatório, grid/lista */}
+      <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-6">
+        <button
+          type="button"
+          onClick={toggleAchievementOnly}
+          aria-pressed={achievementOnly}
+          className={`flex items-center gap-1.5 border-2 border-foreground px-2.5 py-1.5 text-[10px] font-bold uppercase transition-all sm:text-xs ${
+            achievementOnly ? "bg-primary text-primary-foreground shadow-[3px_3px_0_0_var(--ink)]" : "bg-background hover:bg-muted"
+          }`}
+        >
+          <Trophy className="h-3.5 w-3.5" /> Com conquistas
+        </button>
+        <button
+          type="button"
+          onClick={pickRandom}
+          className="flex items-center gap-1.5 border-2 border-foreground bg-background px-2.5 py-1.5 text-[10px] font-bold uppercase hover:bg-muted sm:text-xs"
+        >
+          <Dices className="h-3.5 w-3.5" /> Surpreenda-me
+        </button>
+        <div className="ml-auto flex border-2 border-foreground">
+          <button
+            type="button"
+            onClick={() => setViewMode("grid")}
+            aria-label="Ver em grade"
+            aria-pressed={view === "grid"}
+            className={`p-2 ${view === "grid" ? "bg-primary text-primary-foreground" : "bg-background hover:bg-muted"}`}
+          >
+            <LayoutGrid className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("list")}
+            aria-label="Ver em lista"
+            aria-pressed={view === "list"}
+            className={`border-l-2 border-foreground p-2 ${view === "list" ? "bg-primary text-primary-foreground" : "bg-background hover:bg-muted"}`}
+          >
+            <List className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
 
       {/* Desktop Categories */}
       <div className="mb-6 hidden gap-2 sm:flex sm:flex-wrap">
@@ -238,13 +379,59 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
           <p className="font-pixel text-xs">NADA ENCONTRADO</p>
           <p className="mt-2 text-sm text-muted-foreground">Tenta outro termo ou categoria.</p>
         </div>
-      ) : (
+      ) : view === "grid" ? (
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((a) => (
-            <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} />
+          {filtered.map((a, i) => (
+            <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {filtered.map((a, i) => (
+            <button
+              key={a.id}
+              type="button"
+              onClick={() => onOpen(a)}
+              className="card-block animate-card-in flex items-center gap-3 p-2 text-left hover:bg-primary/5"
+              style={{ animationDelay: `${Math.min(i, 14) * 30}ms` }}
+            >
+              <img
+                src={a.image}
+                alt={a.title}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="h-14 w-14 shrink-0 border-2 border-foreground object-cover sm:h-16 sm:w-16"
+              />
+              <div className="min-w-0 flex-1">
+                <h3 className="truncate text-xs font-extrabold uppercase sm:text-sm">{a.title}</h3>
+                <p className="mt-0.5 flex items-center gap-2 text-[10px] text-muted-foreground sm:text-xs">
+                  <span className="border border-foreground/30 px-1 py-0.5 uppercase">{a.category}</span>
+                  <span className="inline-flex items-center gap-0.5">
+                    <Download className="h-3 w-3" /> {a.downloads.toLocaleString("pt-BR")}
+                  </span>
+                </p>
+              </div>
+              <span
+                onClick={(e) => { e.stopPropagation(); onDownload(a); }}
+                className="btn-block shrink-0 bg-primary text-primary-foreground !px-3 !py-2 text-[10px] sm:text-xs"
+              >
+                <Download className="h-3.5 w-3.5" /> Baixar
+              </span>
+            </button>
           ))}
         </div>
       )}
     </section>
   );
+}
+
+function useRotatingPlaceholder(addons: Addon[]): string {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (addons.length === 0) return;
+    const id = setInterval(() => setI((n) => (n + 1) % addons.length), 2000);
+    return () => clearInterval(id);
+  }, [addons.length]);
+  if (addons.length === 0) return "addon...";
+  return addons[i % addons.length].title.toLowerCase();
 }

@@ -113,12 +113,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/manifest.json" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap",
       },
+      // Hosts que mais servem thumbnail dos addons — preconnect nos 2 mais usados,
+      // dns-prefetch (mais barato) nos demais.
+      { rel: "preconnect", href: "https://ugc.production.linktr.ee" },
+      { rel: "preconnect", href: "https://images.bedrockexplorer.com" },
+      { rel: "dns-prefetch", href: "https://i.imgur.com" },
+      { rel: "dns-prefetch", href: "https://media.forgecdn.net" },
+      { rel: "dns-prefetch", href: "https://xforgeassets001.xboxlive.com" },
+      { rel: "dns-prefetch", href: "https://xforgeassets002.xboxlive.com" },
+      { rel: "dns-prefetch", href: "https://terabox.com" },
+      { rel: "dns-prefetch", href: "https://1024terabox.com" },
     ],
     scripts: [
       {
@@ -137,10 +148,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+const THEME_INIT_SCRIPT = `try{if(localStorage.getItem('ncmine:theme')==='void'){document.documentElement.classList.add('void')}}catch(e){}`;
+
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
@@ -161,6 +175,7 @@ import { DailyRetention } from "../components/DailyRetention";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { Toaster } from "sonner";
 import { SocialDock } from "../components/SocialDock";
+import { FavoriteUpdatesWatcher } from "../components/FavoriteUpdatesWatcher";
 import { pageview } from "../lib/gtag";
 import { useRouterState } from "@tanstack/react-router";
 
@@ -171,6 +186,12 @@ function RootComponent() {
   useEffect(() => {
     pageview(routerLocation + (typeof window !== "undefined" ? window.location.search : ""));
   }, [routerLocation]);
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+  }, []);
 
   useEffect(() => {
     let lastNotifId = localStorage.getItem('last_global_notif');
@@ -229,6 +250,7 @@ function RootComponent() {
         <DailyRetention />
         <InAppBrowserGuard />
         <SocialDock />
+        <FavoriteUpdatesWatcher />
         <Toaster position="top-center" richColors closeButton />
       </AuthProvider>
     </QueryClientProvider>

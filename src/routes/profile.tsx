@@ -20,6 +20,7 @@ import { ProfileEditor } from '../components/ProfileEditor';
 import { AdminBroadcastPanel } from '../components/AdminBroadcastPanel';
 import { useState } from 'react';
 import { InstagramIcon, YouTubeIcon, DiscordIcon } from '../components/icons/BrandIcons';
+import { BadgeRow } from '../components/BadgeRow';
 
 export const Route = createFileRoute('/profile')({
   component: ProfilePage,
@@ -167,6 +168,8 @@ function ProfilePage() {
             </div>
           </div>
         </div>
+
+        <BadgeRow profile={profile} />
 
         {/* Download History Section */}
         <div className="mt-8">

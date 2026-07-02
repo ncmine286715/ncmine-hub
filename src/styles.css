@@ -158,6 +158,45 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Dark Void — true black + purple, homage to the Null skin. Overrides --ink/--paper
+   (not just the semantic tokens) because .btn-block/.card-block and most brutalist
+   shadows are keyed off those two, not --background/--foreground. */
+.void {
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.06 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.06 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.45 0.19 303); /* deep void purple, ~#6b21a8 */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.14 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.45 0.19 303);
+  --accent-foreground: oklch(0.98 0 0);
+  --border: oklch(0.97 0 0);
+  --input: oklch(0.97 0 0);
+  --ring: oklch(0.45 0.19 303);
+  --ink: oklch(0.97 0 0);
+  --paper: oklch(0 0 0);
+  --shadow-block: 6px 6px 0 0 var(--ink);
+  --shadow-block-sm: 3px 3px 0 0 var(--ink);
+  --shadow-orange: 6px 6px 0 0 oklch(0.45 0.19 303);
+  --hatch:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 22px,
+      rgba(255, 255, 255, 0.05) 22px 23px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 22px,
+      rgba(255, 255, 255, 0.035) 22px 23px
+    );
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -230,6 +269,7 @@
   .animate-mc-scroll-x { animation: mc-scroll-x 40s linear infinite; }
   .animate-mc-rise { animation: mc-rise 0.5s ease-out both; }
   .animate-onboarding-pulse { animation: onboarding-pulse 1.8s ease-in-out infinite; }
+  .animate-card-in { animation: card-in 0.35s ease-out both; }
 }
 
 /* Keyframes at top level (Lightning CSS rejects @keyframes inside @layer in some versions). */
@@ -267,6 +307,10 @@
 @keyframes onboarding-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.45); }
   50% { box-shadow: 0 0 0 6px rgba(255, 122, 0, 0); }
+}
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Custom scrollbar hide for mobile categories */

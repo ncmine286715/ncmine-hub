@@ -24,6 +24,10 @@ interface UserProfile {
   favorites: string[];
   downloadedAddons: string[];
   downloadsCount: number;
+  sharesCount?: number;
+  reportsCount?: number;
+  profileCompleteAwarded?: boolean;
+  favoriteVersions?: Record<string, string>;
 }
 
 interface AuthContextType {

@@ -6,10 +6,10 @@ import { DownloadModal } from "@/components/DownloadModal";
 import { TeraboxSteps } from "@/components/TeraboxSteps";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
-import { AddonCard } from "@/components/AddonCard";
-import { 
-  Download, Star, User, Calendar, Tag, Share2, ArrowLeft, 
-  ExternalLink, Play, ChevronRight, Sparkles, Clock, Info,
+import {
+  Download, Star, User, Calendar, Tag, Share2, ArrowLeft,
+  ExternalLink, Play, Sparkles, Info,
+  Smartphone, Apple, Monitor, Users, Trophy, Check, X,
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
 import { CREATOR_NAME, DISCORD_URL, TIKTOK_URL } from "@/lib/links";
@@ -24,6 +24,8 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import { RelatedAddons } from "@/components/RelatedAddons";
+import { ReportBrokenLink } from "@/components/ReportBrokenLink";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useEffect } from "react";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
@@ -69,10 +71,13 @@ export const Route = createFileRoute("/addon/$id")({
 
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { RatingAndComments } from "@/components/RatingAndComments";
+import { useAuth } from "@/hooks/use-auth";
+import { recordShare } from "@/lib/firebase-services";
 
 function AddonPage() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -90,21 +95,9 @@ function AddonPage() {
     return () => { cleanup && cleanup(); };
   }, [addon?.id]);
   
-  // Get related addons (same category or random if none)
-  const relatedAddons = useMemo(() => {
-    if (!addon) return [];
-    const sameCat = RAW_ADDONS.filter(
-      (a) => a.id !== addon.id && a.category === addon.category
-    ).slice(0, 4);
-    if (sameCat.length >= 4) return sameCat;
-    const others = RAW_ADDONS.filter(
-      (a) => a.id !== addon.id && !sameCat.includes(a)
-    ).slice(0, 4 - sameCat.length);
-    return [...sameCat, ...others];
-  }, [addon]);
-
   const handleShare = async () => {
     if (!addon) return;
+    if (user) recordShare(user.uid, addon.id).catch(() => {});
     await shareAddon(addon, (msg) => {
       setToast(msg);
       window.setTimeout(() => setToast(null), 2200);
@@ -182,6 +175,7 @@ function AddonPage() {
               <Share2 className="h-4 w-4" />
               <span className="hidden sm:inline">Compartilhar</span>
             </button>
+            <ThemeToggle />
           </div>
         </div>
       </header>
@@ -284,15 +278,17 @@ function AddonPage() {
                 {addon.short}
               </p>
 
-              {/* Tags */}
+              {/* Tags — clicáveis, filtram a busca na home */}
               <div className="mb-4 flex flex-wrap gap-1.5">
                 {addon.tags?.slice(0, 6).map((t) => (
-                  <span
+                  <button
                     key={t}
-                    className="border-2 border-foreground bg-background px-2 py-0.5 text-[9px] uppercase sm:text-[10px]"
+                    type="button"
+                    onClick={() => { window.location.href = `/?q=${encodeURIComponent(t)}`; }}
+                    className="border-2 border-foreground bg-background px-2 py-0.5 text-[9px] uppercase transition-colors hover:bg-primary hover:text-primary-foreground sm:text-[10px]"
                   >
                     {t}
-                  </span>
+                  </button>
                 ))}
               </div>
 
@@ -336,6 +332,37 @@ function AddonPage() {
           </div>
         </div>
 
+        {/* Compatibilidade — responde as 4 perguntas antes do scroll */}
+        <div className="mt-4 card-block p-4 sm:mt-6 sm:p-5">
+          <div className="grid grid-cols-3 gap-2 border-b-2 border-foreground pb-3 sm:gap-4">
+            {(addon.platforms ?? ["Android", "iOS", "Windows"]).map((p) => {
+              const Icon = p === "Android" ? Smartphone : p === "iOS" ? Apple : Monitor;
+              return (
+                <div key={p} className="flex flex-col items-center gap-1">
+                  <Icon className="h-5 w-5 text-primary" />
+                  <span className="text-[9px] font-bold uppercase sm:text-[10px]">{p}</span>
+                  <Check className="h-3.5 w-3.5 text-green-600" />
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold uppercase sm:text-xs">
+            <span className="inline-flex items-center gap-1.5">
+              <Trophy className="h-3.5 w-3.5 text-primary" />
+              Achievement-Friendly:{" "}
+              {addon.achievementFriendly === false ? (
+                <span className="inline-flex items-center gap-0.5 text-red-600"><X className="h-3 w-3" /> NÃO</span>
+              ) : (
+                <span className="inline-flex items-center gap-0.5 text-green-600"><Check className="h-3 w-3" /> SIM</span>
+              )}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Users className="h-3.5 w-3.5 text-primary" />
+              Multiplayer: {addon.multiplayer === false ? "NÃO" : "SIM"}
+            </span>
+          </div>
+        </div>
+
         {/* Tutorial — sempre visível */}
         <div id="como-baixar" className="mt-4 scroll-mt-20 sm:mt-6">
           <div data-onboarding="how-it-works" className="mb-2 flex items-center gap-2">
@@ -350,6 +377,9 @@ function AddonPage() {
             <Download className="h-5 w-5" />
             Baixar {addon.title}
           </button>
+          <div className="mt-2 flex justify-center">
+            <ReportBrokenLink addonId={addon.id} addonTitle={addon.title} />
+          </div>
         </div>
 
         {/* Full Description */}
@@ -366,51 +396,10 @@ function AddonPage() {
         {/* Social Features */}
         <RatingAndComments addonId={addon.id} />
 
-        {/* Continue Exploring */}
+        {/* Você pode gostar — mesma categoria + overlap de tags, ordenado por rating */}
         <div className="mt-12 mb-8">
-          <h2 className="mb-6 flex items-center gap-2 font-pixel text-xs sm:text-sm text-primary">
-            <Sparkles className="h-5 w-5" />
-            CONTINUAR EXPLORANDO
-          </h2>
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-4">
-            {relatedAddons.map((ra) => (
-              <AddonCard 
-                key={ra.id} 
-                addon={ra} 
-                onDownload={() => {}} 
-                onOpen={(a) => navigate({ to: '/addon/$id', params: { id: a.id } })} 
-              />
-            ))}
-          </div>
+          <RelatedAddons current={addon} all={RAW_ADDONS} max={4} />
         </div>
-
-        {/* Related Addons */}
-        {relatedAddons.length > 0 && (
-          <section className="mt-6 sm:mt-10">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-pixel text-xs sm:text-sm">
-                <Sparkles className="h-4 w-4 text-primary" />
-                VOCE TAMBEM VAI GOSTAR
-              </h2>
-              <Link
-                to="/"
-                className="flex items-center gap-1 text-xs font-bold text-primary hover:underline"
-              >
-                Ver todos <ChevronRight className="h-3 w-3" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 md:grid-cols-4">
-              {relatedAddons.map((a) => (
-                <AddonCard
-                  key={a.id}
-                  addon={a}
-                  onDownload={handleDownload}
-                  onOpen={(addon) => navigate({ to: "/addon/$id", params: { id: addon.id } })}
-                />
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* Discord CTA */}
         <div className="mt-6 card-block bg-[#5865F2] p-4 text-white sm:mt-10 sm:p-6">

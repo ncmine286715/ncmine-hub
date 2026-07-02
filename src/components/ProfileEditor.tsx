@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/use-auth';
-import { updateProfile } from '../lib/firebase-services';
+import { updateProfile, awardProfileCompleteOnce } from '../lib/firebase-services';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -39,6 +39,10 @@ export const ProfileEditor: React.FC<{ onClose: () => void }> = ({ onClose }) =>
           instagram: formData.instagram,
         }
       });
+      if (formData.username.trim() && formData.avatar.trim() && !profile.profileCompleteAwarded) {
+        const awarded = await awardProfileCompleteOnce(profile.id, false);
+        if (awarded) toast.success('Perfil completo! +5 XP');
+      }
       toast.success('Perfil atualizado com sucesso!');
       onClose();
     } catch (error: any) {
