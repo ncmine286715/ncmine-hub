@@ -77,7 +77,7 @@ export function PersonalizedFeed({ addons, onOpen, onDownload }: Props) {
   }, [addons]);
 
   return (
-    <div className="space-y-4">
+    <div data-onboarding="feed" className="space-y-4">
       {/* Section Tabs */}
       <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
         <FeedTab active={activeSection === 'para_voce'} onClick={() => setActiveSection('para_voce')} icon={<Sparkles className="h-3 w-3" />} label="Pra Voce" />

@@ -126,7 +126,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
 
         <div className="flex w-full items-center gap-2 sm:w-auto">
-          <label className="relative block flex-1 sm:w-72 sm:flex-initial">
+          <label data-onboarding="search" className="relative block flex-1 sm:w-72 sm:flex-initial">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
             <input
               value={q}
@@ -170,7 +170,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
 
       {/* Featured addon (always first) */}
       {featuredAddon && cat === "Todos" && (
-        <div className="mb-4 sm:mb-5">
+        <div data-onboarding="featured" className="mb-4 sm:mb-5">
           <div className="relative overflow-hidden border-2 border-foreground bg-background">
             <button
               type="button"

@@ -19,7 +19,7 @@ function focusSearch() {
 
 export function Hero({ addonsCount }: { addonsCount: number }) {
   return (
-    <header className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6">
+    <header data-onboarding="hero" className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6">
       {/* Sticky-ish top bar */}
       <div className="flex items-center justify-between gap-2 border-b-2 border-foreground pb-2 sm:pb-3">
         <div className="flex items-center gap-2">

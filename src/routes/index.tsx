@@ -14,6 +14,8 @@ import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
 import { NullMascot } from "@/components/NullMascot";
 import { NudgePopup } from "@/components/NudgePopup";
+import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
+import { homeOnboardingSteps } from "@/components/onboarding/homeOnboardingSteps";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -186,7 +188,7 @@ function Index() {
               Hub nao-oficial de addons. Todos os creditos vao para os criadores originais listados em cada addon.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div data-onboarding="social" className="flex flex-wrap gap-2">
             <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#5865F2] text-white !py-2.5 min-h-[44px]"><DiscordIcon className="h-4 w-4" /> Discord</a>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><InstagramIcon className="h-4 w-4" /> Instagram</a>
             <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#FF0000] text-white !py-2.5 min-h-[44px]"><YouTubeIcon className="h-4 w-4" /> YouTube</a>
@@ -237,6 +239,9 @@ function Index() {
       {/* Mascote Null + Nudge de download */}
       <NullMascot />
       <NudgePopup addon={featured} onDownload={handleDownload} />
+
+      {/* Onboarding — explica o hub e guia até o download */}
+      <OnboardingTour steps={homeOnboardingSteps} storageKey="ncmine:onboarding:home:v1" />
     </div>
   );
 }
