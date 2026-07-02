@@ -27,7 +27,11 @@ export type EventType =
   | "tutorial_video_open"
   | "nudge_show"
   | "nudge_click"
-  | "nudge_dismiss";
+  | "nudge_dismiss"
+  | "onboarding_start"
+  | "onboarding_step"
+  | "onboarding_skip"
+  | "onboarding_complete";
 
 const ANON_KEY = "ncmine:anon_id";
 const SESSION_KEY = "ncmine:session_start";

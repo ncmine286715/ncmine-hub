@@ -66,7 +66,7 @@ export function NullMascot() {
   );
 }
 
-function NullSvg({ className }: { className?: string }) {
+export function NullSvg({ className }: { className?: string }) {
   // Minecraft-ish pixel head: solid black, hollow white eyes.
   return (
     <svg viewBox="0 0 8 8" className={className} shapeRendering="crispEdges" xmlns="http://www.w3.org/2000/svg">

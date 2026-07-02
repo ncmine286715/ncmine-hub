@@ -12,12 +12,22 @@ import {
   ExternalLink, Play, ChevronRight, Sparkles, Clock, Info,
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
-import { CREATOR_NAME, DISCORD_URL } from "@/lib/links";
+import { CREATOR_NAME, DISCORD_URL, TIKTOK_URL } from "@/lib/links";
 import { DiscordIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 import { RelatedAddons } from "@/components/RelatedAddons";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useEffect } from "react";
+import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
+import { addonOnboardingSteps } from "@/components/onboarding/addonOnboardingSteps";
 
 const RAW_ADDONS = addonsData as Addon[];
 
@@ -32,21 +42,26 @@ export const Route = createFileRoute("/addon/$id")({
         ],
       };
     }
+    const canonical = `https://mineaddonsnews.online/addon/${addon.id}`;
     return {
       meta: [
         { title: `${addon.title} — Download Gratis | NCMINE` },
         { name: "description", content: addon.short },
+        { name: "robots", content: "index, follow" },
         { property: "og:title", content: `${addon.title} — Download Gratis` },
         { property: "og:description", content: addon.short },
         { property: "og:image", content: addon.image },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: canonical },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: CREATOR_NAME },
         { name: "twitter:title", content: addon.title },
         { name: "twitter:description", content: addon.short },
         { name: "twitter:image", content: addon.image },
         { name: "keywords", content: addon.tags?.join(", ") || "" },
         { name: "author", content: addon.author || CREATOR_NAME },
       ],
+      links: [{ rel: "canonical", href: canonical }],
     };
   },
   component: AddonPage,
@@ -122,10 +137,32 @@ function AddonPage() {
     );
   }
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: addon.title,
+    description: addon.short,
+    image: addon.image,
+    applicationCategory: "GameApplication",
+    operatingSystem: "Android, iOS, Windows",
+    url: `https://mineaddonsnews.online/addon/${addon.id}`,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+    interactionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/DownloadAction",
+      userInteractionCount: addon.downloads,
+    },
+    publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+  };
+
   return (
     <div className="relative min-h-screen pb-20 text-foreground sm:pb-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <FloatingBackground />
-      
+
       {/* Header */}
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2 sm:px-4 sm:py-3">
@@ -157,8 +194,26 @@ function AddonPage() {
       )}
 
       <main className="mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-8">
+        <Breadcrumb className="mb-3 text-xs sm:mb-4">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <span className="text-muted-foreground">{addon.category}</span>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="line-clamp-1">{addon.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
         {/* Addon Hero */}
-        <div className="card-block overflow-hidden">
+        <div data-onboarding="hero" className="card-block overflow-hidden">
           <div className="grid gap-0 sm:grid-cols-2">
             {/* Image/Video */}
             <div className="relative aspect-video w-full overflow-hidden border-b-2 border-foreground bg-muted sm:aspect-auto sm:border-b-0 sm:border-r-2">
@@ -192,7 +247,10 @@ function AddonPage() {
               </h1>
 
               {/* Meta */}
-              <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-3 sm:text-sm">
+              <div
+                data-onboarding="requirements"
+                className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-3 sm:text-sm"
+              >
                 <span className="inline-flex items-center gap-1">
                   <User className="h-3.5 w-3.5" />
                   {addon.author || "Desconhecido"}
@@ -241,6 +299,7 @@ function AddonPage() {
               {/* CTA Buttons */}
               <div className="mt-auto flex flex-col gap-2 sm:flex-row">
                 <button
+                  data-onboarding="download-cta"
                   onClick={() => handleDownload(addon)}
                   className="btn-block flex-1 bg-primary text-primary-foreground !py-3 text-sm animate-mc-pulse-orange sm:!py-4 sm:text-base"
                 >
@@ -255,6 +314,13 @@ function AddonPage() {
                   Como Baixar
                 </button>
               </div>
+
+              <p
+                data-onboarding="security"
+                className="mt-2 text-center text-[10px] font-bold uppercase text-muted-foreground sm:text-left"
+              >
+                🔒 100% grátis · verificado · sem vírus
+              </p>
 
               {addon.youtubeId && (
                 <a
@@ -272,7 +338,7 @@ function AddonPage() {
 
         {/* Tutorial — sempre visível */}
         <div id="como-baixar" className="mt-4 scroll-mt-20 sm:mt-6">
-          <div className="mb-2 flex items-center gap-2">
+          <div data-onboarding="how-it-works" className="mb-2 flex items-center gap-2">
             <span className="font-pixel text-xs text-primary sm:text-sm">COMO BAIXAR ESTE ADDON</span>
             <span className="h-px flex-1 bg-foreground/20" />
           </div>
@@ -388,6 +454,8 @@ function AddonPage() {
         addonId={downloadFor?.id}
       />
 
+      {/* Onboarding — explica a página e guia até o download */}
+      <OnboardingTour steps={addonOnboardingSteps} storageKey="ncmine:onboarding:addon:v1" />
     </div>
   );
 }

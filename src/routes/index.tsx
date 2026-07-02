@@ -9,7 +9,7 @@ import { PersonalizedFeed } from "@/components/PersonalizedFeed";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME } from "@/lib/links";
+import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME, SITE_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
 import { NullMascot } from "@/components/NullMascot";
@@ -125,8 +125,20 @@ function Index() {
     } catch {}
   }, []);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: "https://mineaddonsnews.online",
+    description: `Hub de ${RAW_ADDONS.length} addons gratis para Minecraft Bedrock curado por ${CREATOR_NAME}`,
+  };
+
   return (
     <div className="relative min-h-screen pb-16 text-foreground sm:pb-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} />
 

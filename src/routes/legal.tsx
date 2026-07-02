@@ -88,6 +88,15 @@ function LegalPage() {
           <p className="text-xs text-muted-foreground mt-2">Inclua no assunto: "DMCA - [Nome do Addon]" e anexe prova de autoria (link do marketplace original, publicação oficial, etc).</p>
         </section>
 
+        <section className="card-block p-6">
+          <h2 className="flex items-center gap-2 font-pixel text-xs mb-4 text-primary">
+            <Shield className="h-5 w-5" /> SOBRE O SITE
+          </h2>
+          <p className="text-sm leading-relaxed text-foreground/80">
+            Este hub é mantido por <strong>@ncmine</strong>. Os addons listados pertencem aos seus respectivos criadores originais — o NCMINE HUB atua apenas como curadoria e ponto de acesso aos links de download.
+          </p>
+        </section>
+
         <div className="text-center text-[10px] text-muted-foreground border-t pt-6">
           Última atualização: {new Date().toLocaleDateString('pt-BR')} | NCMINE HUB - Todos os direitos reservados aos respectivos criadores.
         </div>
