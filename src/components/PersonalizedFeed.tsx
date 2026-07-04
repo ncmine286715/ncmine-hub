@@ -194,18 +194,27 @@ function FeedTab({ active, onClick, icon, label }: {
 function MiniAddonCard({ addon, onOpen, onDownload, showDate, showRating }: {
   addon: Addon; onOpen: (a: Addon) => void; onDownload: (a: Addon) => void; showDate?: boolean; showRating?: boolean;
 }) {
+  const [broken, setBroken] = useState(false);
   return (
     <div
       className="border-2 border-foreground bg-background overflow-hidden cursor-pointer transition-all hover:shadow-[3px_3px_0_0_var(--ink)] hover:translate-y-[-2px] group"
       onClick={() => onOpen(addon)}
     >
       <div className="aspect-[4/3] bg-muted overflow-hidden">
-        <img
-          src={addon.image}
-          alt={addon.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-          loading="lazy"
-        />
+        {!broken ? (
+          <img
+            src={addon.image}
+            alt={addon.title}
+            referrerPolicy="no-referrer"
+            onError={() => setBroken(true)}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-foreground text-background font-pixel text-[7px]">
+            NO PREVIEW
+          </div>
+        )}
       </div>
       <div className="p-2">
         <p className="text-[10px] font-black uppercase truncate leading-tight">{addon.title}</p>
