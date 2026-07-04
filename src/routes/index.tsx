@@ -17,6 +17,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { NudgePopup } from "@/components/NudgePopup";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { homeOnboardingSteps } from "@/components/onboarding/homeOnboardingSteps";
+import { DiscordToast, markDownloadForDiscordToast } from "@/components/DiscordToast";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,6 +57,7 @@ function Index() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
+  const [discordToast, setDiscordToast] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
@@ -244,7 +246,13 @@ function Index() {
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
         addonId={downloadFor?.id}
+        onDownloaded={() => {
+          if (markDownloadForDiscordToast()) {
+            window.setTimeout(() => setDiscordToast(true), 1200);
+          }
+        }}
       />
+      <DiscordToast open={discordToast} onClose={() => setDiscordToast(false)} />
 
       {/* Mascote Null + Nudge de download */}
       <NullMascot />

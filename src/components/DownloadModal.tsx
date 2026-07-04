@@ -21,9 +21,11 @@ type Props = {
   title: string;
   onClose: () => void;
   addonId?: string;
+  /** Chamado quando o usuario de fato clica em baixar (nao ao so fechar o popup). */
+  onDownloaded?: () => void;
 };
 
-export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
+export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded }: Props) {
   const [count, setCount] = useState(2);
   const [inApp, setInApp] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
@@ -55,6 +57,7 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
     trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
     gaEvent("download_click", { addon_id: addonId, title });
     setBursting(true);
+    onDownloaded?.();
     if (user && addonId) {
       try {
         await recordDownload(user.uid, addonId);

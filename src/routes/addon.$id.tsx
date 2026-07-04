@@ -4,6 +4,7 @@ import addonsData from "@/data/addons.json";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
+import { DiscordToast, markDownloadForDiscordToast } from "@/components/DiscordToast";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import {
@@ -81,6 +82,7 @@ function AddonPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
+  const [discordToast, setDiscordToast] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const scrollToTutorial = () => {
@@ -452,7 +454,13 @@ function AddonPage() {
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
         addonId={downloadFor?.id}
+        onDownloaded={() => {
+          if (markDownloadForDiscordToast()) {
+            window.setTimeout(() => setDiscordToast(true), 1200);
+          }
+        }}
       />
+      <DiscordToast open={discordToast} onClose={() => setDiscordToast(false)} />
 
       {/* Onboarding — explica a página e guia até o download */}
       <OnboardingTour steps={addonOnboardingSteps} />
