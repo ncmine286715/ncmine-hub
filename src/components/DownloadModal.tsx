@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { X, Download, Copy, Check, ArrowDown, Sparkles, Users } from "lucide-react";
+import { X, Download, Copy, Check, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { gaEvent } from "@/lib/gtag";
 import { awardPoints, recordDownload } from "@/lib/firebase-services";
 import { useAuth } from "@/hooks/use-auth";
+import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import {
   detectInAppBrowser,
   detectPlatform,
@@ -78,7 +79,7 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
     <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="relative w-full max-w-sm card-block bg-background p-4 animate-mc-rise sm:p-5">
+      <div className="relative max-h-[92vh] w-full max-w-sm overflow-y-auto card-block bg-background p-4 animate-mc-rise sm:p-5">
         <div className="mb-2 flex justify-center sm:hidden">
           <div className="h-1 w-12 rounded-full bg-muted-foreground/30" />
         </div>
@@ -118,68 +119,51 @@ export function DownloadModal({ open, url, title, onClose, addonId }: Props) {
             </button>
           </div>
         ) : (
-          <div className="relative pt-2">
-            {/* Baú do Minecraft: fechado enquanto libera, abre quando pronto */}
-            <div className="mb-3 flex flex-col items-center gap-2">
-              <PixelChest open={ready} />
-              <div className="h-3 w-full max-w-[220px] overflow-hidden border-2 border-foreground bg-[#3a3a3a]">
-                <div
-                  className="h-full bg-gradient-to-r from-[#8aff3c] to-[#4fbf1c] transition-all duration-1000 ease-linear"
-                  style={{ width: `${waitProgress}%` }}
+          <div className="pt-1">
+            {/* Video mostra como baixar — sem instrucao escrita */}
+            <div className="mb-3 overflow-hidden border-2 border-foreground bg-muted">
+              <div className="aspect-video w-full">
+                <iframe
+                  className="h-full w-full"
+                  src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}?rel=0&modestbranding=1`}
+                  title="Como baixar"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
               </div>
-              <p className="font-pixel text-[9px] uppercase text-muted-foreground">
-                {ready ? "Baú aberto! 🎉" : `Abrindo o baú… ${count}s`}
-              </p>
             </div>
 
-            <div className="relative pt-4">
-              {ready && (
-                <>
-                  {/* Setas piscando apontando pro botão */}
-                  <ArrowDown className="pointer-events-none absolute -top-1 left-1/2 h-6 w-6 -translate-x-1/2 animate-bounce text-primary" />
-                  <ArrowDown
-                    className="pointer-events-none absolute -top-1 left-[25%] h-4 w-4 animate-bounce text-primary/60"
-                    style={{ animationDelay: "150ms" }}
-                  />
-                  <ArrowDown
-                    className="pointer-events-none absolute -top-1 left-[75%] h-4 w-4 animate-bounce text-primary/60"
-                    style={{ animationDelay: "300ms" }}
-                  />
-                  {/* Null pointing */}
-                  <div className="pointer-events-none absolute -left-1 -top-4 hidden sm:block">
-                    <NullPointer />
-                  </div>
-                </>
-              )}
-              <a
-                href={ready ? url : undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
-                aria-disabled={!ready}
-                className={`btn-block relative w-full !py-5 text-lg font-black ${
-                  ready
-                    ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
-                    : "cursor-wait bg-muted text-muted-foreground"
-                }`}
-              >
-                {ready ? (
-                  <><Download className="h-6 w-6" /> BAIXAR</>
-                ) : (
-                  <span className="font-pixel text-[11px]">Quase lá… {count}s</span>
-                )}
-                {bursting && <BlockBurst />}
-              </a>
+            <div className="mb-2 h-2 w-full overflow-hidden border-2 border-foreground bg-[#3a3a3a]">
+              <div
+                className="h-full bg-gradient-to-r from-[#8aff3c] to-[#4fbf1c] transition-all duration-1000 ease-linear"
+                style={{ width: `${waitProgress}%` }}
+              />
             </div>
+            <a
+              href={ready ? url : undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
+              aria-disabled={!ready}
+              className={`btn-block relative w-full !py-5 text-lg font-black ${
+                ready
+                  ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
+                  : "cursor-wait bg-muted text-muted-foreground"
+              }`}
+            >
+              {ready ? (
+                <><Download className="h-6 w-6" /> BAIXAR</>
+              ) : (
+                <span className="font-pixel text-[11px]">Aguarde {count}s</span>
+              )}
+              {bursting && <BlockBurst />}
+            </a>
           </div>
         )}
 
         <p className="mt-3 text-center text-[10px] font-bold uppercase text-muted-foreground">
-          🔒 100% grátis · sem vírus
-        </p>
-        <p className="mt-1.5 flex items-center justify-center gap-1.5 text-center text-[9px] font-bold text-muted-foreground/80">
-          <Users className="h-3 w-3 shrink-0" /> Criança jogando? Chame um adulto pra ajudar.
+          🔒 Grátis e seguro
         </p>
       </div>
     </div>
@@ -223,91 +207,3 @@ function BlockBurst() {
   );
 }
 
-function PixelChest({ open }: { open: boolean }) {
-  return (
-    <div className="relative h-14 w-14 sm:h-16 sm:w-16">
-      <svg
-        viewBox="0 0 8 8"
-        className={`h-14 w-14 drop-shadow-[3px_3px_0_var(--ink)] sm:h-16 sm:w-16 ${open ? "animate-mc-bob" : ""}`}
-        shapeRendering="crispEdges"
-      >
-        {/* corpo */}
-        <rect x="0" y="3" width="8" height="4" fill="#6b4020" />
-        <rect x="0" y="3" width="8" height="4" fill="none" stroke="#2b1608" strokeWidth="0.15" />
-        {/* faixa dourada */}
-        <rect x="0" y="4.5" width="8" height="1" fill="#e0b83c" />
-        {/* fechadura */}
-        <rect x="3.3" y="4.4" width="1.4" height="1.6" fill="#2b1608" />
-        {open ? (
-          <>
-            {/* tampa aberta */}
-            <rect x="0" y="0.2" width="8" height="2" fill="#8a5a2c" transform="rotate(-16 4 2.2)" />
-            <rect
-              x="0"
-              y="0.2"
-              width="8"
-              height="2"
-              fill="none"
-              stroke="#2b1608"
-              strokeWidth="0.15"
-              transform="rotate(-16 4 2.2)"
-            />
-            {/* brilho interno */}
-            <rect x="1" y="2.5" width="6" height="0.7" fill="#ffe27a" />
-          </>
-        ) : (
-          <>
-            {/* tampa fechada */}
-            <rect x="0" y="1.6" width="8" height="1.4" fill="#8a5a2c" />
-            <rect
-              x="0"
-              y="1.6"
-              width="8"
-              height="1.4"
-              fill="none"
-              stroke="#2b1608"
-              strokeWidth="0.15"
-            />
-          </>
-        )}
-      </svg>
-      {open && (
-        <>
-          <span
-            className="absolute -left-2 -top-2 animate-mc-float text-sm"
-            style={{ animationDelay: "0ms" }}
-          >
-            ✨
-          </span>
-          <span
-            className="absolute -right-2 -top-1 animate-mc-float text-xs"
-            style={{ animationDelay: "300ms" }}
-          >
-            ✨
-          </span>
-          <span
-            className="absolute -bottom-1 left-1/2 animate-mc-float text-xs"
-            style={{ animationDelay: "150ms" }}
-          >
-            ✨
-          </span>
-        </>
-      )}
-    </div>
-  );
-}
-
-function NullPointer() {
-  return (
-    <div className="flex flex-col items-center">
-      <svg viewBox="0 0 8 8" className="h-8 w-8 drop-shadow-[2px_2px_0_var(--ink)]" shapeRendering="crispEdges">
-        <rect width="8" height="8" fill="#0a0a0a" />
-        <rect x="1" y="3" width="2" height="1" fill="#fff" />
-        <rect x="5" y="3" width="2" height="1" fill="#fff" />
-      </svg>
-      <span className="mt-1 border-2 border-foreground bg-background px-1.5 py-0.5 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
-        toca aí!
-      </span>
-    </div>
-  );
-}

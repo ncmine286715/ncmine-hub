@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import addonsData from "@/data/addons.json";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
-import { TeraboxSteps } from "@/components/TeraboxSteps";
+import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import {
@@ -369,7 +369,18 @@ function AddonPage() {
             <span className="font-pixel text-xs text-primary sm:text-sm">COMO BAIXAR ESTE ADDON</span>
             <span className="h-px flex-1 bg-foreground/20" />
           </div>
-          <TeraboxSteps />
+          <div className="card-block overflow-hidden">
+            <div className="aspect-video w-full bg-muted">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}?rel=0&modestbranding=1`}
+                title="Como baixar"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
           <button
             onClick={() => handleDownload(addon)}
             className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-3.5 text-sm font-black animate-mc-pulse-orange sm:text-base"
@@ -444,7 +455,7 @@ function AddonPage() {
       />
 
       {/* Onboarding — explica a página e guia até o download */}
-      <OnboardingTour steps={addonOnboardingSteps} storageKey="ncmine:onboarding:addon:v1" />
+      <OnboardingTour steps={addonOnboardingSteps} />
     </div>
   );
 }

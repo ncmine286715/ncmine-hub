@@ -251,7 +251,7 @@ function Index() {
       <NudgePopup addon={featured} onDownload={handleDownload} />
 
       {/* Onboarding — explica o hub e guia até o download */}
-      <OnboardingTour steps={homeOnboardingSteps} storageKey="ncmine:onboarding:home:v1" />
+      <OnboardingTour steps={homeOnboardingSteps} />
     </div>
   );
 }

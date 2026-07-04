@@ -22,16 +22,14 @@ export type OnboardingStepConfig = {
 
 type Props = {
   steps: OnboardingStepConfig[];
-  /** localStorage key used to remember the tour was seen. Bump it (e.g. :v2) to re-trigger after big content changes. */
-  storageKey: string;
-  /** Delay before auto-starting for first-time visitors. */
+  /** Delay before auto-starting. Fires every time the component mounts — no "seen before" memory. */
   autoStartDelay?: number;
 };
 
 const GAP = 10;
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export function OnboardingTour({ steps, storageKey, autoStartDelay = 900 }: Props) {
+export function OnboardingTour({ steps, autoStartDelay = 900 }: Props) {
   const [open, setOpen] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -42,13 +40,8 @@ export function OnboardingTour({ steps, storageKey, autoStartDelay = 900 }: Prop
   const isLast = stepIndex === steps.length - 1;
   const rect = useTargetRect(step?.target, open);
 
-  // Auto-start once for first-time visitors.
+  // Auto-start on every visit — simplificado de proposito, sem "ja visto".
   useEffect(() => {
-    let seen = false;
-    try {
-      seen = !!localStorage.getItem(storageKey);
-    } catch {}
-    if (seen) return;
     const t = window.setTimeout(() => start(), autoStartDelay);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,12 +104,6 @@ export function OnboardingTour({ steps, storageKey, autoStartDelay = 900 }: Prop
     if (lastFocused.current instanceof HTMLElement) lastFocused.current.focus();
   }
 
-  function persistSeen() {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify({ seenAt: Date.now() }));
-    } catch {}
-  }
-
   function next() {
     if (isLast) return finish();
     setStepIndex((i) => i + 1);
@@ -128,13 +115,11 @@ export function OnboardingTour({ steps, storageKey, autoStartDelay = 900 }: Prop
 
   function skip() {
     trackEvent("onboarding_skip", { step: step?.id, index: stepIndex });
-    persistSeen();
     close();
   }
 
   function finish() {
     trackEvent("onboarding_complete", {});
-    persistSeen();
     close();
   }
 
