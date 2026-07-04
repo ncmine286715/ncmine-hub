@@ -9,6 +9,7 @@ export type Addon = {
   id: string;
   title: string;
   category: string;
+  subcategory?: string;
   version: string;
   rating: number;
   downloads: number;

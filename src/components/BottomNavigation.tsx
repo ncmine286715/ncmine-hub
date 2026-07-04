@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Sparkles, Heart, Users, User, Settings } from "lucide-react";
+import { Home, Grid3X3, Bell, Info, Shield, Package, Image, Layers, Heart, Users, User, Settings } from "lucide-react";
 import { MinecraftBlockIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL } from "@/lib/links";
 import { NotificationHub } from "./NotificationHub";
@@ -109,9 +109,8 @@ type CategoryItem = {
 const CATEGORIES: CategoryItem[] = [
   { id: "Todos", label: "Todos", icon: <Grid3X3 className="h-6 w-6" />, color: "bg-foreground text-background" },
   { id: "Addon", label: "Addons", icon: <Package className="h-6 w-6" />, color: "bg-primary text-primary-foreground" },
-  { id: "Texture Pack", label: "Texturas", icon: <Image className="h-6 w-6" />, color: "bg-[#4CAF50] text-white" },
+  { id: "Textura", label: "Texturas", icon: <Image className="h-6 w-6" />, color: "bg-[#4CAF50] text-white" },
   { id: "Holoprint", label: "Holoprint", icon: <Layers className="h-6 w-6" />, color: "bg-[#2196F3] text-white" },
-  { id: "Addon Pack", label: "Packs", icon: <Sparkles className="h-6 w-6" />, color: "bg-[#9C27B0] text-white" },
 ];
 
 type CategoriesPanelProps = {

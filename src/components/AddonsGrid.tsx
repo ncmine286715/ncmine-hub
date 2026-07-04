@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import {
-  Search, Star, Download, Grid3X3, Package, Image, Layers, Sparkles,
+  Search, Star, Download, Grid3X3, Package, Image, Layers,
   Trophy, Mic, Dices, LayoutGrid, List,
 } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
@@ -33,9 +33,8 @@ type CategoryConfig = {
 const CATEGORY_CONFIG: CategoryConfig[] = [
   { id: "Todos", label: "Todos", icon: <Grid3X3 className="h-4 w-4" />, color: "text-foreground", bgColor: "bg-foreground text-background" },
   { id: "Addon", label: "Addons", icon: <Package className="h-4 w-4" />, color: "text-primary", bgColor: "bg-primary text-primary-foreground" },
-  { id: "Texture Pack", label: "Texturas", icon: <Image className="h-4 w-4" />, color: "text-[#4CAF50]", bgColor: "bg-[#4CAF50] text-white" },
+  { id: "Textura", label: "Texturas", icon: <Image className="h-4 w-4" />, color: "text-[#4CAF50]", bgColor: "bg-[#4CAF50] text-white" },
   { id: "Holoprint", label: "Holoprint", icon: <Layers className="h-4 w-4" />, color: "text-[#2196F3]", bgColor: "bg-[#2196F3] text-white" },
-  { id: "Addon Pack", label: "Packs", icon: <Sparkles className="h-4 w-4" />, color: "text-[#9C27B0]", bgColor: "bg-[#9C27B0] text-white" },
 ];
 
 export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange, initialQuery }: Props) {
@@ -45,6 +44,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
     if (initialQuery) setQ(initialQuery);
   }, [initialQuery]);
   const [internalCat, setInternalCat] = useState<string>("Todos");
+  const [subcat, setSubcat] = useState<string>("Todos");
   const [sort, setSort] = useState<Sort>("mix");
   const [achievementOnly, setAchievementOnly] = useState(false);
   const [view, setView] = useState<"grid" | "list">("grid");
@@ -109,6 +109,10 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   const cat = externalCategory ?? internalCat;
   const setCat = onCategoryChange ?? setInternalCat;
 
+  useEffect(() => {
+    setSubcat("Todos");
+  }, [cat]);
+
   const fuse = useMemo(
     () =>
       new Fuse(addons, {
@@ -145,6 +149,17 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
     });
   }, [categories]);
 
+  const subcategories = useMemo(() => {
+    if (cat === "Todos") return [];
+    const set = new Set(
+      addons
+        .filter((a) => a.category.toLowerCase() === cat.toLowerCase())
+        .map((a) => a.subcategory)
+        .filter((s): s is string => !!s),
+    );
+    return ["Todos", ...Array.from(set).sort()];
+  }, [addons, cat]);
+
   const filtered = useMemo(() => {
     const ql = q.trim();
     let list: Addon[];
@@ -157,6 +172,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
     list = list.filter((a) => {
       const matchesCat = cat === "Todos" || a.category.toLowerCase() === cat.toLowerCase();
       if (!matchesCat) return false;
+      const matchesSubcat = subcat === "Todos" || (a.subcategory ?? "").toLowerCase() === subcat.toLowerCase();
+      if (!matchesSubcat) return false;
       if (achievementOnly && a.achievementFriendly === false) return false;
       return true;
     });
@@ -175,7 +192,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
       }
     });
     return list;
-  }, [addons, q, cat, sort, achievementOnly, fuse]);
+  }, [addons, q, cat, subcat, sort, achievementOnly, fuse]);
 
   return (
     <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-4 pb-24 sm:px-4 sm:py-20 sm:pb-20">
@@ -308,6 +325,27 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
           );
         })}
       </div>
+
+      {/* Subcategorias da categoria selecionada */}
+      {subcategories.length > 1 && (
+        <div className="-mx-3 mb-5 flex gap-1.5 overflow-x-auto px-3 pb-1 scrollbar-hide sm:mx-0 sm:flex-wrap sm:px-0">
+          {subcategories.map((s) => {
+            const active = s.toLowerCase() === subcat.toLowerCase();
+            return (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSubcat(s)}
+                className={`shrink-0 border-2 border-foreground px-2.5 py-1 text-[10px] font-bold uppercase transition-all sm:text-xs ${
+                  active ? "bg-foreground text-background" : "bg-background text-muted-foreground hover:bg-muted"
+                }`}
+              >
+                {s}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Featured addon (always first) */}
       {featuredAddon && cat === "Todos" && (
