@@ -61,8 +61,9 @@ function LegalPage() {
           <div className="space-y-3 text-sm">
             <p><strong>1. Conteúdo Agregado:</strong> O NCMINE HUB apenas exibe informações e links de download fornecidos por usuários ou fontes públicas. <span className="bg-yellow-100 px-1">Não hospedamos nenhum arquivo .mcaddon, .mcworld, .zip ou similar.</span></p>
             <p><strong>2. Direitos Autorais:</strong> Todo addon listado é de propriedade de seu respectivo criador. Se você encontrar um addon que viola seus direitos autorais, entre em contato para remoção imediata.</p>
-            <p><strong>3. Remoção DMCA:</strong> Responderemos a notificações válidas de remoção em até 48 horas úteis. Envie para: <strong>dmca@ncminehub.com</strong> com comprovante de autoria.</p>
-            <p><strong>4. Isenção de Garantia:</strong> Os addons são fornecidos "como estão". Não nos responsabilizamos por danos causados por uso de addons de terceiros.</p>
+            <p><strong>3. Remoção Voluntária Antes de Qualquer Processo:</strong> Se você é o criador original de um addon listado aqui e não deseja que ele seja divulgado nesta plataforma, nós o removemos <strong>imediatamente e sem burocracia</strong> assim que você nos avisar — não é necessário abrir um processo formal, notificação DMCA registrada ou comprovação extensa de autoria antes da remoção. Um e-mail simples identificando o addon já é suficiente para a remoção acontecer em até 48 horas úteis, a nosso critério e de boa-fé, antes de qualquer disputa formal.</p>
+            <p><strong>4. Remoção DMCA:</strong> Para notificações formais de remoção com comprovante de autoria, envie para: <strong>ncmine75@gmail.com</strong>.</p>
+            <p><strong>5. Isenção de Garantia:</strong> Os addons são fornecidos "como estão". Não nos responsabilizamos por danos causados por uso de addons de terceiros.</p>
           </div>
         </section>
 
@@ -84,8 +85,8 @@ function LegalPage() {
             <Mail className="h-5 w-5" /> CONTATO PARA REMOÇÃO DE CONTEÚDO
           </h2>
           <p className="text-sm">Se você é um criador de addon e deseja remover seu trabalho da nossa plataforma ou corrigir créditos, envie um e-mail para:</p>
-          <p className="font-bold text-md mt-2">📧 remover@ncminehub.com</p>
-          <p className="text-xs text-muted-foreground mt-2">Inclua no assunto: "DMCA - [Nome do Addon]" e anexe prova de autoria (link do marketplace original, publicação oficial, etc).</p>
+          <p className="font-bold text-md mt-2">📧 ncmine75@gmail.com</p>
+          <p className="text-xs text-muted-foreground mt-2">Inclua no assunto: "Remoção - [Nome do Addon]". Não é necessário anexar prova de autoria nem abrir processo formal — a remoção é feita de boa-fé assim que identificamos o addon, normalmente em até 48 horas úteis. Prova de autoria (link do marketplace original, publicação oficial, etc.) é bem-vinda mas opcional.</p>
         </section>
 
         <section className="card-block p-6">

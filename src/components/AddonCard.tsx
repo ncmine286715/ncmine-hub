@@ -4,6 +4,7 @@ import { shareAddon } from "@/lib/share";
 import { trackEvent } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
 import { recordShare } from "@/lib/firebase-services";
+import { useCountUp } from "@/hooks/use-count-up";
 
 export type Addon = {
   id: string;
@@ -49,6 +50,7 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
     });
   };
 
+  const animatedDownloads = useCountUp(addon.downloads);
   const isHot = addon.downloads > 5000;
   const isViral = addon.downloads > 10000;
   const authorLower = (addon.author || "").toLowerCase();
@@ -137,7 +139,7 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
           </span>
           <span className="inline-flex items-center gap-0.5 font-pixel text-[7px] sm:gap-1 sm:text-[9px]">
             <Download className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
-            {addon.downloads.toLocaleString("pt-BR")}
+            {animatedDownloads.toLocaleString("pt-BR")}
           </span>
         </div>
 

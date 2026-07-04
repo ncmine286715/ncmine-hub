@@ -30,6 +30,7 @@ import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useEffect } from "react";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { addonOnboardingSteps } from "@/components/onboarding/addonOnboardingSteps";
+import { useCountUp } from "@/hooks/use-count-up";
 
 const RAW_ADDONS = addonsData as Addon[];
 
@@ -86,6 +87,7 @@ function AddonPage() {
   };
 
   const addon = useMemo(() => RAW_ADDONS.find((a) => a.id === id), [id]);
+  const animatedDownloads = useCountUp(addon?.downloads ?? 0);
 
   // Analytics
   useEffect(() => {
@@ -269,7 +271,7 @@ function AddonPage() {
                 </span>
                 <span className="inline-flex items-center gap-1 font-pixel text-xs">
                   <Download className="h-4 w-4" />
-                  {addon.downloads.toLocaleString("pt-BR")} downloads
+                  {animatedDownloads.toLocaleString("pt-BR")} downloads
                 </span>
               </div>
 

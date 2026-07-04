@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 import { useAuth } from "@/hooks/use-auth";
+import { useCountUp } from "@/hooks/use-count-up";
 
 type Props = {
   addons: Addon[];
@@ -105,6 +106,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
     const pick = source[Math.floor(Math.random() * source.length)];
     if (pick) onOpen(pick);
   };
+
+  const animatedFeaturedDownloads = useCountUp(featuredAddon?.downloads ?? 0);
 
   const cat = externalCategory ?? internalCat;
   const setCat = onCategoryChange ?? setInternalCat;
@@ -386,7 +389,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                   {featuredAddon.short}
                 </p>
                 <p className="mt-1 inline-flex items-center gap-1 font-pixel text-[10px]">
-                  <Download className="h-3 w-3" /> {featuredAddon.downloads.toLocaleString("pt-BR")} downloads
+                  <Download className="h-3 w-3" /> {animatedFeaturedDownloads.toLocaleString("pt-BR")} downloads
                 </p>
               </div>
               <button
@@ -399,7 +402,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
             {/* Mobile download button */}
             <div className="flex items-center justify-between gap-2 border-t-2 border-foreground p-3 sm:hidden bg-primary/5">
               <span className="text-[10px] font-bold text-foreground/70 flex items-center gap-1">
-                <Download className="h-3 w-3" /> {featuredAddon.downloads.toLocaleString("pt-BR")}
+                <Download className="h-3 w-3" /> {animatedFeaturedDownloads.toLocaleString("pt-BR")}
               </span>
               <button
                 onClick={() => onDownload(featuredAddon)}
