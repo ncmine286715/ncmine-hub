@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Addon } from "@/components/AddonCard";
 import { shareAddon } from "@/lib/share";
 import { Link } from "@tanstack/react-router";
+import { AddonBlockPreview } from "@/components/AddonBlockPreview";
 
 type Props = {
   addon: Addon | null;
@@ -46,12 +47,7 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
                 allowFullScreen
               />
             ) : (
-              <img
-                src={addon.image}
-                alt={addon.title}
-                referrerPolicy="no-referrer"
-                className="h-full w-full object-cover"
-              />
+              <AddonBlockPreview image={addon.image} alt={addon.title} />
             )}
           </div>
 

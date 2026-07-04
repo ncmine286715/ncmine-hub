@@ -31,6 +31,7 @@ import { useEffect } from "react";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { addonOnboardingSteps } from "@/components/onboarding/addonOnboardingSteps";
 import { useCountUp } from "@/hooks/use-count-up";
+import { AddonBlockPreview } from "@/components/AddonBlockPreview";
 
 const RAW_ADDONS = addonsData as Addon[];
 
@@ -223,12 +224,9 @@ function AddonPage() {
                   allowFullScreen
                 />
               ) : (
-                <img
-                  src={addon.image}
-                  alt={addon.title}
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover"
-                />
+                <div className="absolute inset-0">
+                  <AddonBlockPreview image={addon.image} alt={addon.title} />
+                </div>
               )}
               <span className="absolute left-2 top-2 inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[8px] uppercase text-primary-foreground sm:text-[9px]">
                 <Tag className="h-3 w-3" />
