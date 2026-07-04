@@ -1,7 +1,6 @@
 // Cache-first para thumbnails de addons — sem workbox, sem dependência externa.
 // Só intercepta os hosts de imagem conhecidos; tudo mais passa direto pra rede.
-const CACHE_NAME = "ncmine-thumbs-v1";
-const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+const CACHE_NAME = "ncmine-thumbs-v2";
 const IMAGE_HOSTS = [
   "ugc.production.linktr.ee",
   "images.bedrockexplorer.com",
@@ -39,18 +38,15 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
       const cached = await cache.match(request);
-      if (cached) {
-        const cachedAt = Number(cached.headers.get("x-ncmine-cached-at") || 0);
-        if (Date.now() - cachedAt < MAX_AGE_MS) return cached;
-      }
+      if (cached) return cached;
       try {
-        const response = await fetch(request, { mode: "cors", credentials: "omit" });
-        if (response.ok) {
-          const headers = new Headers(response.headers);
-          headers.set("x-ncmine-cached-at", String(Date.now()));
-          const body = await response.clone().arrayBuffer();
-          const stamped = new Response(body, { status: response.status, statusText: response.statusText, headers });
-          cache.put(request, stamped);
+        // no-cors: replica o que um <img src> faz nativamente. A maioria
+        // desses hosts (bedrockexplorer, forgecdn, linktr.ee) não manda
+        // header CORS — pedir "cors" aqui faz o fetch rejeitar e a imagem
+        // nunca aparece, mesmo a URL sendo válida.
+        const response = await fetch(request, { mode: "no-cors", credentials: "omit" });
+        if (response.ok || response.type === "opaque") {
+          cache.put(request, response.clone());
         }
         return response;
       } catch (err) {
