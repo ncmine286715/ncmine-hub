@@ -114,7 +114,7 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
       </button>
 
       <div className="flex flex-1 flex-col p-2.5 sm:p-4">
-        <h3 className="mb-0.5 line-clamp-2 text-[11px] font-extrabold uppercase leading-tight sm:mb-1 sm:text-base">
+        <h3 className="mb-0.5 line-clamp-2 break-words text-[11px] font-extrabold uppercase leading-tight sm:mb-1 sm:text-base">
           {addon.title}
         </h3>
         <div className="mb-1.5 flex items-center gap-1.5 text-[9px] text-muted-foreground sm:mb-2 sm:gap-3 sm:text-[11px]">
@@ -126,7 +126,7 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
             <Calendar className="h-3 w-3" />{addon.date}
           </span>
         </div>
-        <p className="mb-2 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
+        <p className="mb-2 line-clamp-2 break-words text-[10px] leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
 
         <div className="mb-2 flex items-center justify-between text-[10px] sm:mb-3 sm:text-xs">
           <span className="inline-flex items-center gap-0.5">

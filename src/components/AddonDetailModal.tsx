@@ -56,14 +56,14 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
             <span className="mb-1.5 inline-block self-start bg-primary px-1.5 py-0.5 font-pixel text-[8px] uppercase text-primary-foreground sm:mb-2 sm:px-2 sm:text-[9px]">
               {addon.category}
             </span>
-            <h3 className="mb-1.5 text-lg font-black uppercase leading-tight sm:mb-2 sm:text-2xl">
+            <h3 className="mb-1.5 break-words text-lg font-black uppercase leading-tight sm:mb-2 sm:text-2xl">
               {addon.title}
             </h3>
             
             {/* Meta info */}
             <div className="mb-2 flex flex-wrap items-center gap-2 text-[10px] text-muted-foreground sm:mb-3 sm:gap-3 sm:text-xs">
-              <span className="inline-flex items-center gap-1">
-                <User className="h-3 w-3" />
+              <span className="inline-flex max-w-full items-center gap-1 break-words">
+                <User className="h-3 w-3 shrink-0" />
                 {addon.author || "Desconhecido"}
               </span>
               <span className="inline-flex items-center gap-1">
@@ -92,7 +92,7 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
             </div>
 
             {/* Description - scrollable */}
-            <div className="mb-3 flex-1 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-foreground/80 sm:mb-5 sm:text-sm">
+            <div className="mb-3 flex-1 overflow-y-auto whitespace-pre-wrap break-words text-xs leading-relaxed text-foreground/80 sm:mb-5 sm:text-sm">
               {addon.description}
             </div>
 

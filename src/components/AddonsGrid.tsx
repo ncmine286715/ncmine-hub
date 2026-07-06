@@ -372,20 +372,20 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                 Destaque
               </span>
               <div className="absolute bottom-0 left-0 right-0 p-3 text-white sm:hidden">
-                <h3 className="text-base font-black uppercase leading-tight">
+                <h3 className="line-clamp-2 break-words text-base font-black uppercase leading-tight">
                   {featuredAddon.title}
                 </h3>
-                <p className="mt-0.5 line-clamp-2 text-xs text-white/80">
+                <p className="mt-0.5 line-clamp-2 break-words text-xs text-white/80">
                   {featuredAddon.short}
                 </p>
               </div>
             </button>
             <div className="hidden flex-col gap-2 p-3 sm:flex sm:flex-row sm:items-center sm:justify-between sm:p-4">
-              <div className="flex-1">
-                <h3 className="text-base font-black uppercase leading-tight sm:text-lg">
+              <div className="min-w-0 flex-1">
+                <h3 className="line-clamp-2 break-words text-base font-black uppercase leading-tight sm:text-lg">
                   {featuredAddon.title}
                 </h3>
-                <p className="mt-0.5 max-w-md text-xs text-muted-foreground sm:text-sm">
+                <p className="mt-0.5 line-clamp-2 max-w-md break-words text-xs text-muted-foreground sm:text-sm">
                   {featuredAddon.short}
                 </p>
                 <p className="mt-1 inline-flex items-center gap-1 font-pixel text-[10px]">
