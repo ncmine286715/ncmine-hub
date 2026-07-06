@@ -59,7 +59,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
           <button
             type="button"
             onClick={scrollToAddons}
-            className="btn-block bg-primary text-primary-foreground !px-3 !py-2 text-[11px] font-black uppercase sm:!px-4 sm:!py-2.5 sm:text-xs"
+            className="btn-block btn-rgb !px-3 !py-2 text-[11px] font-black uppercase sm:!px-4 sm:!py-2.5 sm:text-xs"
           >
             <Download className="h-4 w-4" />
             <span className="hidden sm:inline">Baixar agora</span>
@@ -68,10 +68,21 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
         </div>
       </div>
 
+      {/* Minecraft sky + grass strip signature */}
+      <div aria-hidden className="relative mt-3 h-16 overflow-hidden border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] sm:h-20">
+        <div className="sky-strip absolute inset-0" />
+        <div className="grass-strip absolute inset-x-0 bottom-0 h-8 sm:h-10" />
+        <div className="absolute inset-0 flex items-center justify-center px-3">
+          <span className="font-pixel text-[9px] uppercase text-[#0a2540] sm:text-xs">
+            + de <span className="text-rgb">{addonsCount}</span> addons grátis · pra Bedrock · sem enrolação
+          </span>
+        </div>
+      </div>
+
       <section className="relative grid gap-6 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
         <div className="min-w-0 text-center lg:text-left">
           <span
-            className="animate-block-drop inline-block border-2 px-2 py-1 font-pixel text-[8px] uppercase sm:text-[10px]"
+            className="animate-block-drop glint inline-block border-2 px-2 py-1 font-pixel text-[8px] uppercase sm:text-[10px]"
             style={{ borderColor: "var(--diamond)", color: "var(--diamond)" }}
           >
             {addonsCount} addons curados · atualiza toda semana
@@ -82,7 +93,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
             </span>
             <br />
             <span
-              className="animate-block-drop inline-block bg-primary px-1 text-primary-foreground"
+              className="animate-block-drop inline-block px-1 text-rgb"
               style={{ animationDelay: "180ms" }}
             >
               Cola no mundo.
@@ -94,7 +105,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
           <button
             type="button"
             onClick={scrollToAddons}
-            className="btn-block animate-mc-pulse-orange mx-auto mt-5 bg-primary text-primary-foreground !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
+            className="btn-block btn-rgb mx-auto mt-5 !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
           >
             Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
           </button>
