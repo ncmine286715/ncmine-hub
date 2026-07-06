@@ -238,7 +238,7 @@ function AddonPage() {
 
             {/* Content */}
             <div className="flex flex-col p-4 sm:p-6">
-              <h1 className="mb-2 text-xl font-black uppercase leading-tight sm:text-3xl">
+              <h1 className="mb-2 break-words text-xl font-black uppercase leading-tight sm:text-3xl">
                 {addon.title}
               </h1>
 
@@ -247,8 +247,8 @@ function AddonPage() {
                 data-onboarding="requirements"
                 className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-3 sm:text-sm"
               >
-                <span className="inline-flex items-center gap-1">
-                  <User className="h-3.5 w-3.5" />
+                <span className="inline-flex max-w-full items-center gap-1 break-words">
+                  <User className="h-3.5 w-3.5 shrink-0" />
                   {addon.author || "Desconhecido"}
                 </span>
                 <span className="inline-flex items-center gap-1">
@@ -276,7 +276,7 @@ function AddonPage() {
               </div>
 
               {/* Short description */}
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mb-4 break-words text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {addon.short}
               </p>
 
@@ -401,7 +401,7 @@ function AddonPage() {
             <Info className="h-4 w-4 text-primary" />
             SOBRE ESTE ADDON
           </h2>
-          <div className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/80 sm:text-base">
+          <div className="whitespace-pre-wrap break-words text-sm leading-relaxed text-foreground/80 sm:text-base">
             {addon.description}
           </div>
         </div>
