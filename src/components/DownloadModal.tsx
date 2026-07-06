@@ -52,6 +52,9 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
   const browser = realBrowserName(platform);
   const ready = count <= 0;
   const waitProgress = Math.min(100, Math.round(((2 - count) / 2) * 100));
+  // TikTok libera o botao de baixar direto (so com aviso) — os demais
+  // in-apps continuam so com "copiar link", pois o Terabox trava neles.
+  const blockDownload = !!inApp && inApp !== "tiktok";
 
   const handleDownloadClick = async () => {
     trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
@@ -102,7 +105,7 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
           <p className="mt-1.5 line-clamp-2 text-sm font-black uppercase leading-tight">{title}</p>
         </div>
 
-        {inApp ? (
+        {blockDownload ? (
           <div className="border-2 border-yellow-500 bg-yellow-500/10 p-3 text-center">
             <p className="text-[12px] font-extrabold uppercase leading-tight text-yellow-800">
               ⚠️ Abra no {browser}
@@ -123,6 +126,17 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
           </div>
         ) : (
           <div className="pt-1">
+            {inApp === "tiktok" && (
+              <div className="mb-3 border-2 border-yellow-500 bg-yellow-500/10 p-2.5 text-center">
+                <p className="text-[11px] font-extrabold uppercase leading-tight text-yellow-800">
+                  ⚠️ Baixando pelo TikTok
+                </p>
+                <p className="mt-0.5 text-[10px] leading-snug text-yellow-800/90">
+                  Se travar, toque nos ⋯ e abra no {browser}.
+                </p>
+              </div>
+            )}
+
             {/* Video mostra como baixar — sem instrucao escrita */}
             <div className="mb-3 overflow-hidden border-2 border-foreground bg-muted">
               <div className="aspect-video w-full">
@@ -162,6 +176,20 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
               )}
               {bursting && <BlockBurst />}
             </a>
+
+            {inApp === "tiktok" && (
+              <button
+                type="button"
+                onClick={copyLink}
+                className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold uppercase text-muted-foreground hover:text-foreground"
+              >
+                {copied ? (
+                  <><Check className="h-3 w-3" /> Link copiado</>
+                ) : (
+                  <><Copy className="h-3 w-3" /> Se não baixar, copiar link</>
+                )}
+              </button>
+            )}
           </div>
         )}
 

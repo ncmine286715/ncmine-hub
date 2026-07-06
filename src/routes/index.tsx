@@ -259,7 +259,7 @@ function Index() {
       <NudgePopup addon={featured} onDownload={handleDownload} />
 
       {/* Onboarding — explica o hub e guia até o download */}
-      <OnboardingTour steps={homeOnboardingSteps} />
+      <OnboardingTour steps={homeOnboardingSteps} tourId="home" />
     </div>
   );
 }

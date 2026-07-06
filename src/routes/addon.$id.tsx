@@ -463,7 +463,7 @@ function AddonPage() {
       <DiscordToast open={discordToast} onClose={() => setDiscordToast(false)} />
 
       {/* Onboarding — explica a página e guia até o download */}
-      <OnboardingTour steps={addonOnboardingSteps} />
+      <OnboardingTour steps={addonOnboardingSteps} tourId="addon" />
     </div>
   );
 }
