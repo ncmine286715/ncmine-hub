@@ -165,7 +165,7 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
               aria-disabled={!ready}
               className={`btn-block relative w-full !py-5 text-lg font-black ${
                 ready
-                  ? "animate-mc-pulse-orange bg-primary text-primary-foreground"
+                  ? "btn-rgb"
                   : "cursor-wait bg-muted text-muted-foreground"
               }`}
             >

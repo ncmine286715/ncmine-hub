@@ -154,8 +154,8 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
         <div className="mt-auto flex gap-1.5">
           <button
             onClick={() => onOpen(addon)}
-            className={`btn-block flex-1 !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all min-h-[44px] ${
-              isDownloaded ? 'bg-background text-foreground' : 'bg-primary text-primary-foreground'
+            className={`btn-block flex-1 !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm active:translate-y-0.5 transition-all min-h-[44px] ${
+              isDownloaded ? 'bg-background text-foreground shadow-[3px_3px_0_0_var(--ink)]' : 'btn-rgb'
             }`}
           >
             <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver addon' : 'Baixar'}
