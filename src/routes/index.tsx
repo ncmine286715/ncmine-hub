@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, useCallback } from "react";
-import addonsData from "@/data/addons.json";
+import { ADDONS } from "@/lib/addons";
 import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
 import { FloatingBackground } from "@/components/FloatingBackground";
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const RAW_ADDONS = addonsData as Addon[];
+const RAW_ADDONS = ADDONS;
 const NOTIFY_KEY = "ncmine:notify-optin";
 
 // Deterministic shuffle (seeded) so SSR/hydration stay consistent

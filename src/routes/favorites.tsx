@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../hooks/use-auth';
 import { useMemo, useState } from 'react';
-import addonsData from "@/data/addons.json";
+import { ADDONS } from "@/lib/addons";
 import { AddonCard, type Addon } from '@/components/AddonCard';
 import { FloatingBackground } from '@/components/FloatingBackground';
 import { BottomNavigation } from '@/components/BottomNavigation';
@@ -9,7 +9,7 @@ import { Heart, ArrowLeft } from 'lucide-react';
 import { MinecraftBlockIcon } from '@/components/icons/BrandIcons';
 import { DownloadModal } from '@/components/DownloadModal';
 
-const RAW_ADDONS = addonsData as Addon[];
+const RAW_ADDONS: Addon[] = ADDONS;
 
 export const Route = createFileRoute('/favorites')({
   component: FavoritesPage,
