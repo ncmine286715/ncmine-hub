@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import addonsData from "@/data/addons.json";
+import { ADDONS } from "@/lib/addons";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
@@ -34,7 +34,7 @@ import { addonOnboardingSteps } from "@/components/onboarding/addonOnboardingSte
 import { useCountUp } from "@/hooks/use-count-up";
 import { AddonBlockPreview } from "@/components/AddonBlockPreview";
 
-const RAW_ADDONS = addonsData as Addon[];
+const RAW_ADDONS = ADDONS;
 
 export const Route = createFileRoute("/addon/$id")({
   head: ({ params }) => {
