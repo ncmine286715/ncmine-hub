@@ -321,6 +321,93 @@
   .animate-block-spin:hover { animation-play-state: paused; }
 }
 
+/* === RGB / Minecraft signature FX ============================== */
+@layer utilities {
+  /* RGB animated border + glow — used only on the main "BAIXAR" CTA. */
+  .btn-rgb {
+    position: relative;
+    isolation: isolate;
+    color: #fff;
+    background: #0a0a0a;
+    border: 2px solid #000;
+    text-shadow: 0 1px 0 rgba(0,0,0,.6);
+    box-shadow: 6px 6px 0 0 #000;
+    overflow: hidden;
+  }
+  .btn-rgb::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -2;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 0deg,
+      #ff004c, #ff7a00, #ffe600, #22ff88,
+      #00e0ff, #4b6bff, #b400ff, #ff004c
+    );
+    animation: rgb-spin 4s linear infinite;
+    filter: saturate(1.2);
+  }
+  .btn-rgb::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.14), rgba(0,0,0,0) 40%),
+      linear-gradient(180deg, #1a1a1a, #0a0a0a);
+    background-clip: padding-box;
+  }
+  .btn-rgb:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 0 #000; }
+  .btn-rgb:active { transform: translate(6px, 6px); box-shadow: 0 0 0 0 #000; }
+
+  /* Grass-block strip: dirt bottom + grass green top edge, like a Minecraft block. */
+  .grass-strip {
+    background:
+      linear-gradient(180deg, #6fbf3a 0 8px, #58a52a 8px 14px, transparent 14px),
+      repeating-linear-gradient(
+        90deg,
+        #7a4a24 0 12px,
+        #6b3f1e 12px 24px
+      ),
+      #6b3f1e;
+    background-size: 100% 100%, 24px 100%, 100% 100%;
+    image-rendering: pixelated;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,.35);
+  }
+  .sky-strip {
+    background: linear-gradient(180deg, #7ec9ff 0%, #a9dcff 60%, #d6ecff 100%);
+  }
+
+  /* Rainbow text — for accent words. */
+  .text-rgb {
+    background: linear-gradient(90deg, #ff004c, #ff7a00, #ffe600, #22ff88, #00e0ff, #b400ff, #ff004c);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rgb-slide 3.5s linear infinite;
+  }
+
+  /* Diamond-glint pulse for hot chips. */
+  .glint {
+    animation: glint-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes rgb-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rgb-slide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes glint-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(0,224,255,0)); }
+  50% { filter: drop-shadow(0 0 8px rgba(0,224,255,.9)); }
+}
+
 /* Keyframes at top level (Lightning CSS rejects @keyframes inside @layer in some versions). */
 @keyframes mc-float {
   0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
