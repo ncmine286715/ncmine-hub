@@ -69,7 +69,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
       </div>
 
       <section className="relative grid gap-6 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
-        <div className="text-center lg:text-left">
+        <div className="min-w-0 text-center lg:text-left">
           <span
             className="animate-block-drop inline-block border-2 px-2 py-1 font-pixel text-[8px] uppercase sm:text-[10px]"
             style={{ borderColor: "var(--diamond)", color: "var(--diamond)" }}
@@ -101,7 +101,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
         </div>
 
         {slots.length > 0 && (
-          <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+          <div className="mx-auto w-full min-w-0 max-w-md lg:mx-0 lg:max-w-none">
             <div className="-mx-3 flex gap-1.5 overflow-x-auto px-3 pb-1 scrollbar-hide sm:mx-0 sm:gap-2 sm:px-0">
               {slots.map((addon, i) => (
                 <Link
