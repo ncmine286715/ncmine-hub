@@ -235,7 +235,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border: 2px solid #000;
+    border: 2px solid var(--ink);
     background-color: var(--paper);
     color: var(--foreground);
     padding: 0.75rem 1.25rem;
@@ -258,7 +258,7 @@
   }
 
   .card-block {
-    border: 2px solid #000;
+    border: 2px solid var(--ink);
     background-color: var(--paper);
     box-shadow: var(--shadow-block-sm);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -311,118 +311,17 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
   }
-  .animate-mc-float { animation: mc-float 6s ease-in-out infinite; }
-  .animate-mc-drift { animation: mc-drift 12s ease-in-out infinite; }
   .animate-mc-bob { animation: mc-bob 2.4s ease-in-out infinite; }
   .animate-mc-shake { animation: mc-shake 0.4s ease-in-out infinite; }
-  .animate-mc-pulse-orange { animation: mc-pulse-orange 2.2s ease-out infinite; }
-  .animate-mc-scroll-x { animation: mc-scroll-x 40s linear infinite; }
   .animate-mc-rise { animation: mc-rise 0.5s ease-out both; }
   .animate-onboarding-pulse { animation: onboarding-pulse 1.8s ease-in-out infinite; }
   .animate-card-in { animation: card-in 0.35s ease-out both; }
-  .animate-block-drop { animation: block-drop 0.7s cubic-bezier(.25,.9,.3,1.2) both; }
   .animate-block-burst { animation: block-burst 550ms cubic-bezier(.2,.8,.3,1) both; }
   .animate-block-spin { animation: block-spin 9s linear infinite; }
   .animate-block-spin:hover { animation-play-state: paused; }
 }
 
-/* === RGB / Minecraft signature FX ============================== */
-@layer utilities {
-  /* RGB animated border + glow — used only on the main "BAIXAR" CTA. */
-  .btn-rgb {
-    position: relative;
-    isolation: isolate;
-    color: #fff;
-    background: #0a0a0a;
-    border: 2px solid #000;
-    text-shadow: 0 1px 0 rgba(0,0,0,.6);
-    box-shadow: 6px 6px 0 0 #000;
-    overflow: hidden;
-  }
-  .btn-rgb::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    z-index: -2;
-    border-radius: inherit;
-    background: conic-gradient(
-      from 0deg,
-      #ff004c, #ff7a00, #ffe600, #22ff88,
-      #00e0ff, #4b6bff, #b400ff, #ff004c
-    );
-    animation: rgb-spin 4s linear infinite;
-    filter: saturate(1.2);
-  }
-  .btn-rgb::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    z-index: -1;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.14), rgba(0,0,0,0) 40%),
-      linear-gradient(180deg, #1a1a1a, #0a0a0a);
-    background-clip: padding-box;
-  }
-  .btn-rgb:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 0 #000; }
-  .btn-rgb:active { transform: translate(6px, 6px); box-shadow: 0 0 0 0 #000; }
-
-  /* Grass-block strip: dirt bottom + grass green top edge, like a Minecraft block. */
-  .grass-strip {
-    background:
-      linear-gradient(180deg, #6fbf3a 0 8px, #58a52a 8px 14px, transparent 14px),
-      repeating-linear-gradient(
-        90deg,
-        #7a4a24 0 12px,
-        #6b3f1e 12px 24px
-      ),
-      #6b3f1e;
-    background-size: 100% 100%, 24px 100%, 100% 100%;
-    image-rendering: pixelated;
-    box-shadow: inset 0 -2px 0 rgba(0,0,0,.35);
-  }
-  .sky-strip {
-    background: linear-gradient(180deg, #7ec9ff 0%, #a9dcff 60%, #d6ecff 100%);
-  }
-
-  /* Rainbow text — for accent words. */
-  .text-rgb {
-    background: linear-gradient(90deg, #ff004c, #ff7a00, #ffe600, #22ff88, #00e0ff, #b400ff, #ff004c);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: rgb-slide 3.5s linear infinite;
-  }
-
-  /* Diamond-glint pulse for hot chips. */
-  .glint {
-    animation: glint-pulse 2s ease-in-out infinite;
-  }
-}
-
-@keyframes rgb-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes rgb-slide {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-@keyframes glint-pulse {
-  0%, 100% { filter: drop-shadow(0 0 0 rgba(0,224,255,0)); }
-  50% { filter: drop-shadow(0 0 8px rgba(0,224,255,.9)); }
-}
-
 /* Keyframes at top level (Lightning CSS rejects @keyframes inside @layer in some versions). */
-@keyframes mc-float {
-  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-  50% { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 4deg)); }
-}
-@keyframes mc-drift {
-  0% { transform: translate(0,0) rotate(0); }
-  50% { transform: translate(30px,-20px) rotate(8deg); }
-  100% { transform: translate(0,0) rotate(0); }
-}
 @keyframes mc-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -432,14 +331,6 @@
   25% { transform: translate(-2px,1px) rotate(-1deg); }
   50% { transform: translate(2px,-1px) rotate(1deg); }
   75% { transform: translate(-1px,2px) rotate(-1deg); }
-}
-@keyframes mc-pulse-orange {
-  0%,100% { box-shadow: 6px 6px 0 0 #000, 0 0 0 0 rgba(255, 122, 0, 0.6); }
-  50% { box-shadow: 6px 6px 0 0 #000, 0 0 0 16px rgba(255, 122, 0, 0); }
-}
-@keyframes mc-scroll-x {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 @keyframes mc-rise {
   from { opacity: 0; transform: translateY(20px); }
@@ -452,14 +343,6 @@
 @keyframes card-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
-}
-/* Signature hero entrance — headline drops in like a placed block and
-   lands with a squash-bounce, instead of a plain fade. */
-@keyframes block-drop {
-  0% { opacity: 0; transform: translateY(-48px) scale(1, 1); }
-  55% { opacity: 1; transform: translateY(6px) scale(1.05, 0.93); }
-  75% { transform: translateY(-3px) scale(0.98, 1.03); }
-  100% { opacity: 1; transform: translateY(0) scale(1, 1); }
 }
 @keyframes block-burst {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }

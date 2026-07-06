@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, Download, ArrowDown } from "lucide-react";
+import { Search } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { SITE_NAME } from "@/lib/links";
 import type { Addon } from "@/components/AddonCard";
 
@@ -35,12 +36,21 @@ function useSelectedSlot(total: number) {
   return selected;
 }
 
-export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; hotbarAddons?: Addon[] }) {
+export function Hero({
+  addonsCount,
+  hotbarAddons = [],
+}: {
+  addonsCount: number;
+  hotbarAddons?: Addon[];
+}) {
   const slots = hotbarAddons.slice(0, SLOT_COUNT);
   const selected = useSelectedSlot(slots.length);
 
   return (
-    <header data-onboarding="hero" className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6">
+    <header
+      data-onboarding="hero"
+      className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6"
+    >
       {/* Top bar */}
       <div className="flex items-center justify-between gap-2 border-b-2 border-foreground pb-2 sm:pb-3">
         <div className="flex items-center gap-2">
@@ -56,59 +66,29 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
           >
             <Search className="h-4 w-4" />
           </button>
-          <button
-            type="button"
-            onClick={scrollToAddons}
-            className="btn-block btn-rgb !px-3 !py-2 text-[11px] font-black uppercase sm:!px-4 sm:!py-2.5 sm:text-xs"
-          >
-            <Download className="h-4 w-4" />
-            <span className="hidden sm:inline">Baixar agora</span>
-            <span className="sm:hidden">Baixar</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Minecraft sky + grass strip signature */}
-      <div aria-hidden className="relative mt-3 h-16 overflow-hidden border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] sm:h-20">
-        <div className="sky-strip absolute inset-0" />
-        <div className="grass-strip absolute inset-x-0 bottom-0 h-8 sm:h-10" />
-        <div className="absolute inset-0 flex items-center justify-center px-3">
-          <span className="font-pixel text-[9px] uppercase text-[#0a2540] sm:text-xs">
-            + de <span className="text-rgb">{addonsCount}</span> addons grátis · pra Bedrock · sem enrolação
-          </span>
+          <ThemeToggle />
         </div>
       </div>
 
       <section className="relative grid gap-6 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
         <div className="min-w-0 text-center lg:text-left">
-          <span
-            className="animate-block-drop glint inline-block border-2 px-2 py-1 font-pixel text-[8px] uppercase sm:text-[10px]"
-            style={{ borderColor: "var(--diamond)", color: "var(--diamond)" }}
-          >
-            {addonsCount} addons curados · atualiza toda semana
-          </span>
-          <h1 className="mx-auto mt-3 max-w-xl text-3xl font-black uppercase leading-[0.95] tracking-tight sm:mt-4 sm:text-5xl lg:mx-0 lg:text-6xl">
-            <span className="animate-block-drop inline-block" style={{ animationDelay: "90ms" }}>
-              Escolhe o addon.
-            </span>
-            <br />
-            <span
-              className="animate-block-drop inline-block px-1 text-rgb"
-              style={{ animationDelay: "180ms" }}
-            >
-              Cola no mundo.
-            </span>
+          <h1 className="mx-auto max-w-xl text-2xl font-black uppercase leading-tight tracking-tight sm:text-4xl lg:mx-0 lg:text-5xl">
+            Addons pra Minecraft <span className="text-primary">Bedrock</span>
           </h1>
-          <p className="mx-auto mt-3 max-w-md text-[12px] font-medium text-muted-foreground sm:mt-4 sm:text-base lg:mx-0">
-            Sem cadastro pra baixar. Sem anúncio disfarçado de botão. Escolhe, baixa, testa no seu mundo hoje.
+          <p className="mx-auto mt-2 max-w-md text-[12px] font-medium text-muted-foreground sm:mt-3 sm:text-base lg:mx-0">
+            Busca na coleção, baixa o arquivo e ativa no seu mundo.
           </p>
-          <button
-            type="button"
-            onClick={scrollToAddons}
-            className="btn-block btn-rgb mx-auto mt-5 !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
-          >
-            Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
-          </button>
+          <div className="mt-4 flex flex-wrap justify-center gap-2 sm:mt-5 lg:justify-start">
+            <span className="border-2 border-foreground/25 px-2.5 py-1 font-pixel text-[8px] uppercase text-muted-foreground sm:text-[9px]">
+              {addonsCount} addons
+            </span>
+            <span className="border-2 border-foreground/25 px-2.5 py-1 font-pixel text-[8px] uppercase text-muted-foreground sm:text-[9px]">
+              100% grátis
+            </span>
+            <span className="border-2 border-foreground/25 px-2.5 py-1 font-pixel text-[8px] uppercase text-muted-foreground sm:text-[9px]">
+              Bedrock 1.21+
+            </span>
+          </div>
         </div>
 
         {slots.length > 0 && (
@@ -135,7 +115,10 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
                   />
                   <span
                     className="pointer-events-none absolute bottom-0.5 right-1 select-none text-[9px] font-bold text-white/80"
-                    style={{ fontFamily: "var(--font-hud)", textShadow: "0 1px 1px rgba(0,0,0,.8)" }}
+                    style={{
+                      fontFamily: "var(--font-hud)",
+                      textShadow: "0 1px 1px rgba(0,0,0,.8)",
+                    }}
                   >
                     {i + 1}
                   </span>

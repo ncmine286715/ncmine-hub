@@ -1,6 +1,5 @@
 import { createFileRoute, useNavigate, Link } from '@tanstack/react-router';
 import { useAuth } from '../hooks/use-auth';
-import { FloatingBackground } from '@/components/FloatingBackground';
 import { BottomNavigation } from '@/components/BottomNavigation';
 import { 
   User, 
@@ -45,7 +44,6 @@ function ProfilePage() {
   if (!user || !profile) {
     return (
       <div className="relative min-h-screen">
-        <FloatingBackground />
         <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
           <User className="mb-4 h-16 w-16 text-muted-foreground" />
           <h1 className="font-pixel text-2xl uppercase">PERFIL</h1>
@@ -69,7 +67,6 @@ function ProfilePage() {
 
   return (
     <div className="relative min-h-screen pb-20 sm:pb-0">
-      <FloatingBackground />
       
       {isEditing && <ProfileEditor onClose={() => setIsEditing(false)} />}
 

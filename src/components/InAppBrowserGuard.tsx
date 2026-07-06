@@ -75,7 +75,7 @@ export function InAppBrowserGuard() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("inapp_escape", { kind, platform, method: "intent" })}
-            className="inline-flex items-center gap-1 border-2 border-black bg-primary px-2 py-1 text-[10px] font-black uppercase text-primary-foreground shadow-[2px_2px_0_0_#000] animate-mc-pulse-orange"
+            className="inline-flex items-center gap-1 border-2 border-black bg-primary px-2 py-1 text-[10px] font-black uppercase text-primary-foreground shadow-[2px_2px_0_0_#000]"
           >
             <ExternalLink className="h-3 w-3" /> Abrir
           </a>

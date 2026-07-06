@@ -4,7 +4,6 @@ import { useAuth } from "@/hooks/use-auth";
 import { collection, query, orderBy, limit, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import addonsData from "@/data/addons.json";
-import { FloatingBackground } from "@/components/FloatingBackground";
 import { AdminBroadcastPanel } from "@/components/AdminBroadcastPanel";
 import {
   ArrowLeft, Download, Eye, MousePointerClick, Share2, Heart, MessageSquare,
@@ -119,7 +118,6 @@ function AdminPage() {
   if (!isAdmin) {
     return (
       <div className="relative min-h-screen flex items-center justify-center px-4">
-        <FloatingBackground />
         <div className="relative max-w-md text-center card-block p-8 bg-background">
           <Lock className="mx-auto h-12 w-12 mb-3 text-primary" />
           <h1 className="font-pixel text-lg uppercase mb-2">Acesso Restrito</h1>
@@ -156,7 +154,6 @@ function AdminPage() {
 
   return (
     <div className="relative min-h-screen pb-20">
-      <FloatingBackground />
 
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3">

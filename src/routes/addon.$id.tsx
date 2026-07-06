@@ -1,7 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ADDONS } from "@/lib/addons";
-import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import { DiscordToast, markDownloadForDiscordToast } from "@/components/DiscordToast";
@@ -116,7 +115,6 @@ function AddonPage() {
   if (!addon) {
     return (
       <div className="relative min-h-screen pb-16 sm:pb-0">
-        <FloatingBackground />
         <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
           <MinecraftBlockIcon className="mb-4 h-16 w-16 text-muted-foreground" />
           <h1 className="font-pixel text-2xl text-foreground">ADDON NAO ENCONTRADO</h1>
@@ -159,7 +157,6 @@ function AddonPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <FloatingBackground />
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
@@ -299,7 +296,7 @@ function AddonPage() {
                 <button
                   data-onboarding="download-cta"
                   onClick={() => handleDownload(addon)}
-                  className="btn-block flex-1 bg-primary text-primary-foreground !py-3 text-sm animate-mc-pulse-orange sm:!py-4 sm:text-base"
+                  className="btn-block flex-1 bg-primary text-primary-foreground !py-3 text-sm sm:!py-4 sm:text-base"
                 >
                   <Download className="h-5 w-5" />
                   Baixar Gratis
@@ -385,7 +382,7 @@ function AddonPage() {
           </div>
           <button
             onClick={() => handleDownload(addon)}
-            className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-3.5 text-sm font-black animate-mc-pulse-orange sm:text-base"
+            className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-3.5 text-sm font-black sm:text-base"
           >
             <Download className="h-5 w-5" />
             Baixar {addon.title}

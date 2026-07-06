@@ -25,7 +25,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label={isVoid ? "Mudar para tema claro" : "Mudar para tema Dark Void"}
       title={isVoid ? "Tema: Dark Void" : "Tema: Padrão"}
-      className={`btn-block bg-background !px-2.5 !py-2.5 ${className}`}
+      className={`inline-flex h-9 w-9 items-center justify-center border-2 border-foreground bg-background hover:bg-muted sm:h-10 sm:w-10 ${className}`}
     >
       {isVoid ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
     </button>

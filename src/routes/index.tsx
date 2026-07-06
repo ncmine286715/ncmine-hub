@@ -3,7 +3,6 @@ import { useMemo, useState, useEffect, useCallback } from "react";
 import { ADDONS } from "@/lib/addons";
 import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
-import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { PersonalizedFeed } from "@/components/PersonalizedFeed";
 import { BottomNavigation, CategoriesPanel, AboutPanel, NotificationsPanel } from "@/components/BottomNavigation";
@@ -12,9 +11,7 @@ import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME, SITE_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
-import { NullMascot } from "@/components/NullMascot";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { NudgePopup } from "@/components/NudgePopup";
+import { HowToInstall } from "@/components/HowToInstall";
 import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
 import { homeOnboardingSteps } from "@/components/onboarding/homeOnboardingSteps";
 import { DiscordToast, markDownloadForDiscordToast } from "@/components/DiscordToast";
@@ -151,7 +148,6 @@ function Index() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <FloatingBackground />
       <Hero addonsCount={RAW_ADDONS.length} hotbarAddons={hotbar} />
 
       {/* Feed Personalizado */}
@@ -169,6 +165,9 @@ function Index() {
         initialQuery={initialQuery}
       />
 
+      {/* Como instalar — passo a passo rapido */}
+      <HowToInstall />
+
       {/* Pre-footer CTA */}
       {!user && (
         <div className="mx-auto max-w-7xl px-3 sm:px-4 py-8 sm:py-12">
@@ -179,7 +178,7 @@ function Index() {
             </p>
             <Link
               to="/auth"
-              className="btn-block bg-primary text-primary-foreground !px-10 !py-4 text-sm sm:text-base font-black uppercase shadow-[6px_6px_0_0_var(--ink)] animate-mc-pulse-orange"
+              className="btn-block bg-primary text-primary-foreground !px-10 !py-4 text-sm sm:text-base font-black uppercase shadow-[6px_6px_0_0_var(--ink)]"
             >
               CRIAR CONTA GRATIS
             </Link>
@@ -204,7 +203,6 @@ function Index() {
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><InstagramIcon className="h-4 w-4" /> Instagram</a>
             <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-[#FF0000] text-white !py-2.5 min-h-[44px]"><YouTubeIcon className="h-4 w-4" /> YouTube</a>
             <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="btn-block bg-background text-foreground !py-2.5 min-h-[44px]"><TikTokIcon className="h-4 w-4" /> TikTok</a>
-            <ThemeToggle className="min-h-[44px]" />
           </div>
         </div>
         <div className="border-t-2 border-background/20 py-3 text-center font-pixel text-[9px] text-background/60">
@@ -253,10 +251,6 @@ function Index() {
         }}
       />
       <DiscordToast open={discordToast} onClose={() => setDiscordToast(false)} />
-
-      {/* Mascote Null + Nudge de download */}
-      <NullMascot />
-      <NudgePopup addon={featured} onDownload={handleDownload} />
 
       {/* Onboarding — explica o hub e guia até o download */}
       <OnboardingTour steps={homeOnboardingSteps} tourId="home" />

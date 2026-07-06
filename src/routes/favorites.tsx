@@ -3,7 +3,6 @@ import { useAuth } from '../hooks/use-auth';
 import { useMemo, useState } from 'react';
 import { ADDONS } from "@/lib/addons";
 import { AddonCard, type Addon } from '@/components/AddonCard';
-import { FloatingBackground } from '@/components/FloatingBackground';
 import { BottomNavigation } from '@/components/BottomNavigation';
 import { Heart, ArrowLeft } from 'lucide-react';
 import { MinecraftBlockIcon } from '@/components/icons/BrandIcons';
@@ -36,7 +35,6 @@ function FavoritesPage() {
   if (!user) {
     return (
       <div className="relative min-h-screen">
-        <FloatingBackground />
         <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
           <Heart className="mb-4 h-16 w-16 text-muted-foreground" />
           <h1 className="font-pixel text-2xl">FAVORITOS</h1>
@@ -57,7 +55,6 @@ function FavoritesPage() {
 
   return (
     <div className="relative min-h-screen pb-20 sm:pb-0">
-      <FloatingBackground />
       
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-4">

@@ -39,7 +39,7 @@ function NotFoundComponent() {
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <Link
             to="/"
-            className="btn-block bg-primary text-primary-foreground animate-mc-pulse-orange !px-4 !py-2.5 text-sm"
+            className="btn-block bg-primary text-primary-foreground !px-4 !py-2.5 text-sm"
           >
             🧱 Voltar ao Hub
           </Link>

@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { AuthForms } from '../components/AuthForms';
 import { useAuth } from '../hooks/use-auth';
 import { useEffect } from 'react';
-import { FloatingBackground } from '@/components/FloatingBackground';
 import { ShieldCheck, Zap, Star, Trophy, Bell, Heart } from 'lucide-react';
 import { MinecraftBlockIcon } from '@/components/icons/BrandIcons';
 
@@ -22,7 +21,6 @@ function AuthPage() {
 
   return (
     <div className="relative min-h-screen pb-8">
-      <FloatingBackground />
 
       {/* Header */}
       <div className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">

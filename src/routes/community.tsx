@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { getPopularAddons, getTopRatedAddons, getNewUsers, getGlobalActivity } from '../lib/firebase-services';
-import { FloatingBackground } from '@/components/FloatingBackground';
 import { BottomNavigation } from '@/components/BottomNavigation';
 import { useAuth } from '@/hooks/use-auth';
 import {
@@ -52,7 +51,6 @@ function CommunityPage() {
 
   return (
     <div className="relative min-h-screen pb-20 sm:pb-0">
-      <FloatingBackground />
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
@@ -356,7 +354,7 @@ function CommunityPage() {
                 <p className="text-xs text-muted-foreground mb-4">Crie sua conta e apareca na lista de mineradores</p>
                 <button
                   onClick={() => navigate({ to: '/auth' })}
-                  className="btn-block bg-primary text-primary-foreground !py-3 text-sm animate-mc-pulse-orange"
+                  className="btn-block bg-primary text-primary-foreground !py-3 text-sm"
                 >
                   <Sparkles className="h-4 w-4" /> Criar minha conta
                 </button>
