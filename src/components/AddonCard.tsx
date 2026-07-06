@@ -1,9 +1,7 @@
-import { Star, Download, User, Share2, Zap } from "lucide-react";
+import { Star, Download, User, Zap } from "lucide-react";
 import { useState } from "react";
-import { shareAddon } from "@/lib/share";
 import { trackEvent } from "@/lib/analytics";
 import { useAuth } from "@/hooks/use-auth";
-import { recordShare } from "@/lib/firebase-services";
 import { useCountUp } from "@/hooks/use-count-up";
 
 export type Addon = {
@@ -50,20 +48,9 @@ function categoryColor(category: string): string {
 }
 
 export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
-  const { user, profile } = useAuth();
+  const { profile } = useAuth();
   const isDownloaded = profile?.downloadedAddons?.includes(addon.id);
   const [broken, setBroken] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
-
-  const handleShare = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    trackEvent("share", { addonId: addon.id, title: addon.title });
-    if (user) recordShare(user.uid, addon.id).catch(() => {});
-    await shareAddon(addon, (msg) => {
-      setToast(msg);
-      window.setTimeout(() => setToast(null), 2200);
-    });
-  };
 
   const animatedDownloads = useCountUp(addon.downloads);
   const isHot = addon.downloads > 5000;
@@ -133,15 +120,17 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
 
         <p className="mb-2 line-clamp-2 break-words text-[10px] italic leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
 
-        <div className="mb-2 flex items-center justify-between text-[10px] sm:mb-3 sm:text-xs">
-          <span className="inline-flex items-center gap-0.5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/30"}`}
-              />
-            ))}
-          </span>
+        <div className={`mb-2 flex items-center text-[10px] sm:mb-3 sm:text-xs ${addon.rating > 0 ? "justify-between" : "justify-end"}`}>
+          {addon.rating > 0 && (
+            <span className="inline-flex items-center gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/30"}`}
+                />
+              ))}
+            </span>
+          )}
           <span
             className="inline-flex items-center gap-0.5 text-muted-foreground sm:gap-1"
             style={{ fontFamily: "var(--font-hud)" }}
@@ -151,34 +140,15 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
           </span>
         </div>
 
-        <div className="mt-auto flex gap-1.5">
-          <button
-            onClick={() => onOpen(addon)}
-            className={`btn-block flex-1 !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm active:translate-y-0.5 transition-all min-h-[44px] ${
-              isDownloaded ? 'bg-background text-foreground shadow-[3px_3px_0_0_var(--ink)]' : 'btn-rgb'
-            }`}
-          >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver addon' : 'Baixar'}
-          </button>
-          <button
-            type="button"
-            onClick={handleShare}
-            aria-label="Compartilhar"
-            className="inline-flex min-h-[44px] w-10 shrink-0 items-center justify-center border border-foreground/30 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-11"
-          >
-            <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-          </button>
-        </div>
-      </div>
-      {toast && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="pointer-events-none absolute inset-x-1 bottom-1 z-10 border-2 border-foreground bg-background px-1.5 py-0.5 text-center text-[8px] font-bold shadow-[2px_2px_0_0_var(--ink)] sm:inset-x-2 sm:bottom-2 sm:px-2 sm:py-1 sm:text-[10px] sm:shadow-[3px_3px_0_0_var(--ink)]"
+        <button
+          onClick={() => onOpen(addon)}
+          className={`btn-block mt-auto w-full !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm active:translate-y-0.5 transition-all min-h-[44px] ${
+            isDownloaded ? 'bg-background text-foreground shadow-[3px_3px_0_0_var(--ink)]' : 'bg-primary text-primary-foreground'
+          }`}
         >
-          {toast}
-        </div>
-      )}
+          <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver addon' : 'Baixar'}
+        </button>
+      </div>
     </article>
   );
 }

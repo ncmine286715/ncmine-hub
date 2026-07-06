@@ -220,9 +220,20 @@ function RootComponent() {
       } catch {}
     };
 
-    checkGlobalNotif();
+    // Se o tour de onboarding da home ainda nao rodou nesta sessao, da tempo
+    // dele aparecer e ser fechado antes de empilhar este toast por cima.
+    let tourPending = false;
+    try {
+      tourPending = sessionStorage.getItem('ncmine:onboarding-seen:home') !== '1';
+    } catch {}
+    const initialDelay = tourPending ? 6000 : 0;
+
+    const initial = window.setTimeout(checkGlobalNotif, initialDelay);
     const interval = setInterval(checkGlobalNotif, 120000);
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initial);
+      clearInterval(interval);
+    };
   }, []);
 
   useEffect(() => {

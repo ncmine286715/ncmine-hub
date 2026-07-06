@@ -167,37 +167,40 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-/* Dark Void — true black + purple, homage to the Null skin. Overrides --ink/--paper
-   (not just the semantic tokens) because .btn-block/.card-block and most brutalist
-   shadows are keyed off those two, not --background/--foreground. */
+/* Dark Void — true black + redstone, homage to the Null skin dropped in the
+   Nether. Overrides --ink/--paper (not just the semantic tokens) because
+   .btn-block/.card-block and most brutalist shadows are keyed off those two,
+   not --background/--foreground. Overrides --diamond too so the hero's
+   "curated" badge doesn't keep its cool cave-cyan inside a warm void theme. */
 .void {
   --background: oklch(0 0 0);
   --foreground: oklch(0.97 0 0);
-  --card: oklch(0.06 0 0);
+  --card: oklch(0.07 0.014 30);
   --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.06 0 0);
+  --popover: oklch(0.07 0.014 30);
   --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.45 0.19 303); /* deep void purple, ~#6b21a8 */
+  --primary: oklch(0.58 0.22 25);   /* redstone dust glow */
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.14 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.45 0.19 303);
-  --accent-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.15 0.012 30);
+  --muted-foreground: oklch(0.65 0.02 30);
+  --accent: oklch(0.68 0.19 45);    /* ember / torch glow */
+  --accent-foreground: oklch(0.1 0 0);
   --border: oklch(0.97 0 0);
   --input: oklch(0.97 0 0);
-  --ring: oklch(0.45 0.19 303);
+  --ring: oklch(0.58 0.22 25);
   --ink: oklch(0.97 0 0);
   --paper: oklch(0 0 0);
+  --diamond: oklch(0.68 0.19 45);
   --shadow-block: 6px 6px 0 0 var(--ink);
   --shadow-block-sm: 3px 3px 0 0 var(--ink);
-  --shadow-orange: 6px 6px 0 0 oklch(0.45 0.19 303);
+  --shadow-orange: 6px 6px 0 0 oklch(0.58 0.22 25);
   --hatch:
     repeating-linear-gradient(
       135deg,
       transparent 0 22px,
-      rgba(255, 255, 255, 0.05) 22px 23px
+      rgba(255, 90, 60, 0.05) 22px 23px
     ),
     repeating-linear-gradient(
       45deg,
