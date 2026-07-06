@@ -1,5 +1,29 @@
 [
   {
+  "id": "actions-and-stuff-custom-view-model",
+  "title": "Actions & Stuff Custom View Model",
+  "category": "Texture Pack",
+  "version": "1.0.0",
+  "rating": 4.8,
+  "downloads": 145020,
+  "date": "2026-07-05",
+  "image": "https://i.imgur.com/NsKPQAU.png",
+  "tags": [
+    "texture pack",
+    "view model",
+    "customization",
+    "animations",
+    "actions and stuff",
+    "bedrock",
+    "minecraft"
+  ],
+  "short": "Personalize a posição dos itens e braços na tela com total compatibilidade com as animações do Actions & Stuff.",
+  "description": "O Actions & Stuff Custom View Model é uma textura utilitária modificada baseada no projeto original da Oreville Studios com edições por @KugmiDay. Ela foi desenvolvida especificamente para quem utiliza o famoso pack de animações Actions & Stuff e deseja alterar o posicionamento (eixos X, Y e Z) dos itens na mão do jogador e a exibição do braço em primeira pessoa. Com essa modificação, você ganha maior campo de visão (FOV) e uma tela muito mais limpa para o PvP ou gameplay convencional, sem perder a fluidez das animações integradas do jogo.",
+  "downloadUrl": "https://1024terabox.com/s/1M3J9fTiVTLVFTRmof-Ftiw",
+  "author": "Oreville Studios & @KugmiDay",
+  "youtubeId": ""
+},
+  {
     "id": "deesse-ui-pack",
     "title": "Déesse UI Pack",
     "category": "Textura",
