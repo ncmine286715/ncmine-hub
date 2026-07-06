@@ -27,7 +27,7 @@ export function FloatingBackground() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-[0.12] sm:opacity-[0.18]"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-[0.18] sm:opacity-[0.26]"
     >
       {items.map((it) => (
         <img

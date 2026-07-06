@@ -73,7 +73,7 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
 
   return (
     <article
-      className={`card-block animate-card-in relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}
+      className={`card-block shine-sweep animate-card-in relative flex flex-col overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] ${isDownloaded ? 'border-primary/40' : ''}`}
       style={{ animationDelay: `${Math.min(index, 14) * 40}ms` }}
     >
       <button

@@ -280,6 +280,27 @@
       0 0 14px 1px color-mix(in oklch, var(--diamond) 70%, transparent);
   }
 
+  /* Loot-card shine — a light sweep on hover/tap. Independent of the
+     card's own hover transform so the two never fight the cascade. */
+  .shine-sweep {
+    position: relative;
+    isolation: isolate;
+  }
+  .shine-sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.4) 48%, transparent 61%);
+    transform: translateX(-130%);
+    transition: transform 0.55s ease;
+  }
+  .shine-sweep:hover::after,
+  .shine-sweep:focus-visible::after {
+    transform: translateX(130%);
+  }
+
   /* Minecraft-y pixelated image */
   .pixelated {
     image-rendering: pixelated;
@@ -294,6 +315,7 @@
   .animate-mc-rise { animation: mc-rise 0.5s ease-out both; }
   .animate-onboarding-pulse { animation: onboarding-pulse 1.8s ease-in-out infinite; }
   .animate-card-in { animation: card-in 0.35s ease-out both; }
+  .animate-block-drop { animation: block-drop 0.7s cubic-bezier(.25,.9,.3,1.2) both; }
   .animate-block-burst { animation: block-burst 550ms cubic-bezier(.2,.8,.3,1) both; }
   .animate-block-spin { animation: block-spin 9s linear infinite; }
   .animate-block-spin:hover { animation-play-state: paused; }
@@ -338,6 +360,14 @@
 @keyframes card-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* Signature hero entrance — headline drops in like a placed block and
+   lands with a squash-bounce, instead of a plain fade. */
+@keyframes block-drop {
+  0% { opacity: 0; transform: translateY(-48px) scale(1, 1); }
+  55% { opacity: 1; transform: translateY(6px) scale(1.05, 0.93); }
+  75% { transform: translateY(-3px) scale(0.98, 1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1, 1); }
 }
 @keyframes block-burst {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
@@ -386,4 +416,12 @@
 /* Prevent layout shift from scrollbar */
 html {
   overflow-y: scroll;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

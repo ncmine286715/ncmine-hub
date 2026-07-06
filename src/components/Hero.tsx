@@ -70,13 +70,23 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
 
       <section className="relative grid gap-6 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
         <div className="text-center lg:text-left">
-          <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[8px] uppercase text-background sm:text-[10px]">
+          <span
+            className="animate-block-drop inline-block border-2 px-2 py-1 font-pixel text-[8px] uppercase sm:text-[10px]"
+            style={{ borderColor: "var(--diamond)", color: "var(--diamond)" }}
+          >
             {addonsCount} addons curados · atualiza toda semana
           </span>
           <h1 className="mx-auto mt-3 max-w-xl text-3xl font-black uppercase leading-[0.95] tracking-tight sm:mt-4 sm:text-5xl lg:mx-0 lg:text-6xl">
-            Escolhe o addon.
+            <span className="animate-block-drop inline-block" style={{ animationDelay: "90ms" }}>
+              Escolhe o addon.
+            </span>
             <br />
-            <span className="bg-primary px-1 text-primary-foreground">Cola no mundo.</span>
+            <span
+              className="animate-block-drop inline-block bg-primary px-1 text-primary-foreground"
+              style={{ animationDelay: "180ms" }}
+            >
+              Cola no mundo.
+            </span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-[12px] font-medium text-muted-foreground sm:mt-4 sm:text-base lg:mx-0">
             Sem cadastro pra baixar. Sem anúncio disfarçado de botão. Escolhe, baixa, testa no seu mundo hoje.
@@ -84,7 +94,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
           <button
             type="button"
             onClick={scrollToAddons}
-            className="btn-block mx-auto mt-5 bg-foreground text-background !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
+            className="btn-block animate-mc-pulse-orange mx-auto mt-5 bg-primary text-primary-foreground !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
           >
             Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
           </button>
@@ -92,7 +102,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
 
         {slots.length > 0 && (
           <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
-            <div className="-mx-3 flex justify-center gap-1.5 overflow-x-auto px-3 pb-1 scrollbar-hide sm:mx-0 sm:gap-2 sm:px-0">
+            <div className="-mx-3 flex gap-1.5 overflow-x-auto px-3 pb-1 scrollbar-hide sm:mx-0 sm:gap-2 sm:px-0">
               {slots.map((addon, i) => (
                 <Link
                   key={addon.id}
@@ -100,7 +110,7 @@ export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; 
                   params={{ id: addon.id }}
                   aria-label={addon.title}
                   title={addon.title}
-                  className={`hotbar-slot group relative aspect-square w-11 shrink-0 overflow-hidden sm:w-14 ${
+                  className={`hotbar-slot shine-sweep group relative aspect-square w-11 shrink-0 overflow-hidden sm:w-14 ${
                     i === selected ? "hotbar-slot--selected" : ""
                   }`}
                 >
