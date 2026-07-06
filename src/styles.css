@@ -486,7 +486,7 @@
 
   /* Better tap feedback */
   button, a {
-    -webkit-tap-highlight-color: rgba(255, 122, 0, 0.1);
+    -webkit-tap-highlight-color: rgba(46, 204, 113, 0.15);
   }
 
   /* Smoother scrolling */
