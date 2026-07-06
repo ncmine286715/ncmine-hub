@@ -63,45 +63,47 @@
 
 :root {
   --radius: 0.25rem;
-  /* core palette: aggressive black/white/orange */
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.12 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.12 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.12 0 0);
-  --primary: oklch(0.72 0.21 47); /* aggressive orange */
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.12 0 0);
-  --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.4 0 0);
-  --accent: oklch(0.72 0.21 47);
-  --accent-foreground: oklch(0.12 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.12 0 0);
-  --input: oklch(0.12 0 0);
-  --ring: oklch(0.72 0.21 47);
+  /* core palette: Minecraft night/cave — deepslate + emerald + diamond */
+  --background: oklch(0.16 0.02 250);   /* deepslate night */
+  --foreground: oklch(0.96 0.01 90);    /* torch cream */
+  --card: oklch(0.21 0.02 250);         /* stone slab */
+  --card-foreground: oklch(0.96 0.01 90);
+  --popover: oklch(0.21 0.02 250);
+  --popover-foreground: oklch(0.96 0.01 90);
+  --primary: oklch(0.68 0.19 148);      /* emerald / grass block */
+  --primary-foreground: oklch(0.10 0.02 150);
+  --secondary: oklch(0.96 0.01 90);
+  --secondary-foreground: oklch(0.12 0.02 250);
+  --muted: oklch(0.26 0.02 250);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.83 0.13 195);       /* diamond cyan */
+  --accent-foreground: oklch(0.10 0.02 250);
+  --destructive: oklch(0.62 0.24 27);   /* redstone */
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.06 0.02 250);
+  --input: oklch(0.06 0.02 250);
+  --ring: oklch(0.68 0.19 148);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.99 0 0);
-  --sidebar-foreground: oklch(0.12 0 0);
-  --sidebar-primary: oklch(0.72 0.21 47);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.12 0 0);
-  --sidebar-border: oklch(0.12 0 0);
-  --sidebar-ring: oklch(0.72 0.21 47);
+  --sidebar: oklch(0.16 0.02 250);
+  --sidebar-foreground: oklch(0.96 0.01 90);
+  --sidebar-primary: oklch(0.68 0.19 148);
+  --sidebar-primary-foreground: oklch(0.10 0.02 150);
+  --sidebar-accent: oklch(0.26 0.02 250);
+  --sidebar-accent-foreground: oklch(0.96 0.01 90);
+  --sidebar-border: oklch(0.06 0.02 250);
+  --sidebar-ring: oklch(0.68 0.19 148);
 
   /* brand */
-  --orange: oklch(0.72 0.21 47);
+  --orange: oklch(0.72 0.21 47);        /* legacy, kept for a couple of ambient accents */
   --orange-deep: oklch(0.62 0.22 35);
-  --ink: oklch(0.12 0 0);
-  --paper: oklch(0.99 0 0);
+  --emerald: oklch(0.68 0.19 148);
+  --emerald-deep: oklch(0.55 0.18 148);
+  --ink: oklch(0.04 0.02 250);          /* near-black — brutalist shadow */
+  --paper: oklch(0.21 0.02 250);        /* stone slab card surface */
   --font-pixel: "Press Start 2P", system-ui, monospace;
   --font-display: "Inter", system-ui, sans-serif;
   --font-hud: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
@@ -112,22 +114,22 @@
   --slot-bg: oklch(0.34 0.01 260);
   --slot-border: oklch(0.16 0.01 260);
 
-  /* hatched paper background */
+  /* subtle diagonal weave — like faint stone texture on the page */
   --hatch:
     repeating-linear-gradient(
       135deg,
       transparent 0 22px,
-      rgba(0, 0, 0, 0.06) 22px 23px
+      rgba(255, 255, 255, 0.035) 22px 23px
     ),
     repeating-linear-gradient(
       45deg,
       transparent 0 22px,
-      rgba(0, 0, 0, 0.04) 22px 23px
+      rgba(0, 0, 0, 0.25) 22px 23px
     );
 
   --shadow-block: 6px 6px 0 0 #000;
   --shadow-block-sm: 3px 3px 0 0 #000;
-  --shadow-orange: 6px 6px 0 0 #ff7a00;
+  --shadow-orange: 6px 6px 0 0 #2ecc71;
 }
 
 .dark {
