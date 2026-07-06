@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Fuse from "fuse.js";
 import {
   Search, Star, Download, Grid3X3, Package, Image, Layers,
@@ -20,6 +20,11 @@ type Props = {
 
 const ACHIEVEMENT_KEY = "ncmine:filter-achievement";
 const VIEW_KEY = "ncmine:view-mode";
+// Catálogo tem 1300+ addons — renderizar tudo de uma vez gerava HTML de
+// ~11MB por pageview (SSR de 1300+ AddonCard), estourava CPU-time do
+// Worker no Cloudflare. Renderiza em lotes; resto já está em memória
+// (client-side, sem round-trip de rede) pro "carregar mais".
+const PAGE_SIZE = 24;
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
@@ -50,6 +55,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   const [achievementOnly, setAchievementOnly] = useState(false);
   const [view, setView] = useState<"grid" | "list">("grid");
   const [listening, setListening] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -196,6 +203,30 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
     });
     return list;
   }, [addons, q, cat, subcat, sort, achievementOnly, fuse]);
+
+  // Nova busca/filtro/ordenação volta pro topo da paginação.
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [q, cat, subcat, sort, achievementOnly, view]);
+
+  const visible = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
+  const hasMore = visibleCount < filtered.length;
+
+  useEffect(() => {
+    if (!hasMore) return;
+    const el = loadMoreRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((c) => Math.min(filtered.length, c + PAGE_SIZE));
+        }
+      },
+      { rootMargin: "600px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasMore, filtered.length]);
 
   return (
     <section id="addons" className="relative mx-auto w-full max-w-7xl px-3 py-4 pb-24 sm:px-4 sm:py-20 sm:pb-20">
@@ -422,13 +453,13 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
       ) : view === "grid" ? (
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((a, i) => (
+          {visible.map((a, i) => (
             <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />
           ))}
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          {filtered.map((a, i) => (
+          {visible.map((a, i) => (
             <button
               key={a.id}
               type="button"
@@ -460,6 +491,18 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
               </span>
             </button>
           ))}
+        </div>
+      )}
+
+      {hasMore && (
+        <div ref={loadMoreRef} className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setVisibleCount((c) => Math.min(filtered.length, c + PAGE_SIZE))}
+            className="btn-block bg-background text-foreground !px-6 !py-2.5 text-xs"
+          >
+            Carregar mais ({filtered.length - visibleCount} restantes)
+          </button>
         </div>
       )}
     </section>

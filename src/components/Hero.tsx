@@ -1,6 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import { Search, Download, ArrowDown } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { SITE_NAME } from "@/lib/links";
+import type { Addon } from "@/components/AddonCard";
 
 function scrollToAddons() {
   if (typeof document === "undefined") return;
@@ -17,10 +20,28 @@ function focusSearch() {
   }, 400);
 }
 
-export function Hero({ addonsCount }: { addonsCount: number }) {
+const SLOT_COUNT = 9;
+
+/** Hotbar de inventário — cada slot é um addon de verdade, o selecionado roda sozinho. */
+function useSelectedSlot(total: number) {
+  const [selected, setSelected] = useState(0);
+  const reduceMotion = useRef(false);
+  useEffect(() => {
+    reduceMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion.current || total <= 1) return;
+    const id = setInterval(() => setSelected((s) => (s + 1) % total), 1700);
+    return () => clearInterval(id);
+  }, [total]);
+  return selected;
+}
+
+export function Hero({ addonsCount, hotbarAddons = [] }: { addonsCount: number; hotbarAddons?: Addon[] }) {
+  const slots = hotbarAddons.slice(0, SLOT_COUNT);
+  const selected = useSelectedSlot(slots.length);
+
   return (
     <header data-onboarding="hero" className="relative mx-auto w-full max-w-7xl px-3 pt-2 sm:px-4 sm:pt-6">
-      {/* Sticky-ish top bar */}
+      {/* Top bar */}
       <div className="flex items-center justify-between gap-2 border-b-2 border-foreground pb-2 sm:pb-3">
         <div className="flex items-center gap-2">
           <MinecraftBlockIcon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
@@ -47,25 +68,64 @@ export function Hero({ addonsCount }: { addonsCount: number }) {
         </div>
       </div>
 
-      {/* Minimal hero */}
-      <section className="relative py-5 sm:py-10 text-center">
-        <h1 className="mx-auto max-w-3xl text-2xl font-black uppercase leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
-          {addonsCount}{" "}
-          <span className="inline-block bg-primary px-2 py-0.5 text-primary-foreground shadow-[4px_4px_0_0_var(--ink)] rotate-[-1deg]">
-            Addons Grátis
-          </span>{" "}
-          para Minecraft Bedrock
-        </h1>
-        <p className="mx-auto mt-3 max-w-lg text-[12px] font-medium text-muted-foreground sm:mt-4 sm:text-base">
-          Sem cadastro. Sem anúncio de instalação. Clique e baixe.
-        </p>
-        <button
-          type="button"
-          onClick={scrollToAddons}
-          className="btn-block mx-auto mt-4 bg-foreground text-background !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm"
-        >
-          Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
-        </button>
+      <section className="relative grid gap-6 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
+        <div className="text-center lg:text-left">
+          <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[8px] uppercase text-background sm:text-[10px]">
+            {addonsCount} addons curados · atualiza toda semana
+          </span>
+          <h1 className="mx-auto mt-3 max-w-xl text-3xl font-black uppercase leading-[0.95] tracking-tight sm:mt-4 sm:text-5xl lg:mx-0 lg:text-6xl">
+            Escolhe o addon.
+            <br />
+            <span className="bg-primary px-1 text-primary-foreground">Cola no mundo.</span>
+          </h1>
+          <p className="mx-auto mt-3 max-w-md text-[12px] font-medium text-muted-foreground sm:mt-4 sm:text-base lg:mx-0">
+            Sem cadastro pra baixar. Sem anúncio disfarçado de botão. Escolhe, baixa, testa no seu mundo hoje.
+          </p>
+          <button
+            type="button"
+            onClick={scrollToAddons}
+            className="btn-block mx-auto mt-5 bg-foreground text-background !px-5 !py-3 text-xs font-black uppercase tracking-wider sm:mt-6 sm:!px-8 sm:!py-4 sm:text-sm lg:mx-0"
+          >
+            Ver addons <ArrowDown className="h-4 w-4 animate-bounce" />
+          </button>
+        </div>
+
+        {slots.length > 0 && (
+          <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+            <div className="-mx-3 flex justify-center gap-1.5 overflow-x-auto px-3 pb-1 scrollbar-hide sm:mx-0 sm:gap-2 sm:px-0">
+              {slots.map((addon, i) => (
+                <Link
+                  key={addon.id}
+                  to="/addon/$id"
+                  params={{ id: addon.id }}
+                  aria-label={addon.title}
+                  title={addon.title}
+                  className={`hotbar-slot group relative aspect-square w-11 shrink-0 overflow-hidden sm:w-14 ${
+                    i === selected ? "hotbar-slot--selected" : ""
+                  }`}
+                >
+                  <img
+                    src={addon.image}
+                    alt=""
+                    aria-hidden
+                    loading="eager"
+                    referrerPolicy="no-referrer"
+                    className="pixelated h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                  />
+                  <span
+                    className="pointer-events-none absolute bottom-0.5 right-1 select-none text-[9px] font-bold text-white/80"
+                    style={{ fontFamily: "var(--font-hud)", textShadow: "0 1px 1px rgba(0,0,0,.8)" }}
+                  >
+                    {i + 1}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-2 text-center font-pixel text-[8px] uppercase text-muted-foreground lg:text-left">
+              Mais baixados agora — clica pra ver
+            </p>
+          </div>
+        )}
       </section>
     </header>
   );

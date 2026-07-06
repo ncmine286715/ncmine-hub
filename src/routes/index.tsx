@@ -89,12 +89,12 @@ function Index() {
     return () => { cleanup && cleanup(); };
   }, []);
 
-  const { featured, rest } = useMemo(() => {
+  const { featured, rest, hotbar } = useMemo(() => {
     // Featured = addon mais baixado (prova social real)
     const sorted = [...RAW_ADDONS].sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
     const first = sorted[0];
     const others = RAW_ADDONS.filter((a) => a.id !== first.id);
-    return { featured: first, rest: shuffleSeeded(others) };
+    return { featured: first, rest: shuffleSeeded(others), hotbar: sorted.slice(0, 9) };
   }, []);
 
   const handleDownload = (a: Addon) => {
@@ -152,7 +152,7 @@ function Index() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <FloatingBackground />
-      <Hero addonsCount={RAW_ADDONS.length} />
+      <Hero addonsCount={RAW_ADDONS.length} hotbarAddons={hotbar} />
 
       {/* Feed Personalizado */}
       <section className="mx-auto max-w-7xl px-3 sm:px-4 py-3 sm:py-5">

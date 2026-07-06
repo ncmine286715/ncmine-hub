@@ -1,11 +1,17 @@
+// Config "manual" pra quem rodar `wrangler deploy`/`wrangler dev` direto da
+// raiz do repo. O build real (nitro, preset cloudflare-module) gera sua
+// própria versão deste arquivo em .output/server/wrangler.json — aquela é a
+// fonte da verdade a cada build; esta aqui só precisa apontar pro mesmo
+// lugar. Use `npm run deploy` (build + wrangler deploy --cwd .output/server)
+// pra não depender de nenhum dos dois manualmente.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ncmine-hub",
   "compatibility_date": "2026-06-20",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "./dist/server/server.js",
+  "main": "./.output/server/index.mjs",
   "assets": {
-    "directory": "./dist/client",
+    "directory": "./.output/public",
     "binding": "ASSETS"
   },
   "observability": {

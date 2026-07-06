@@ -1,4 +1,4 @@
-import { Star, Download, User, Calendar, Tag, Share2, Zap } from "lucide-react";
+import { Star, Download, User, Share2, Zap } from "lucide-react";
 import { useState } from "react";
 import { shareAddon } from "@/lib/share";
 import { trackEvent } from "@/lib/analytics";
@@ -33,6 +33,21 @@ type Props = {
   onOpen: (a: Addon) => void;
   index?: number;
 };
+
+// Cor "de raridade" (linguagem de tooltip de item do Minecraft) por categoria —
+// mesma paleta usada nos botões de categoria do grid (AddonsGrid.tsx).
+function categoryColor(category: string): string {
+  switch (category.toLowerCase()) {
+    case "addon":
+      return "text-primary";
+    case "textura":
+      return "text-[#4CAF50]";
+    case "holoprint":
+      return "text-[#2196F3]";
+    default:
+      return "text-foreground/70";
+  }
+}
 
 export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
   const { user, profile } = useAuth();
@@ -91,42 +106,32 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
           </div>
         ) : null}
 
-        {isDownloaded && !isViral && !isHot && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/20 pointer-events-none">
-            <span className="bg-primary text-white border-2 border-foreground px-2 py-1 font-pixel text-[7px] uppercase shadow-[2px_2px_0_0_var(--ink)]">
-              Ja baixou
-            </span>
-          </div>
-        )}
-
-        <span className="absolute left-1 top-1 inline-flex items-center gap-0.5 border-2 border-foreground bg-primary px-1.5 py-0.5 font-pixel text-[7px] uppercase text-primary-foreground sm:left-2 sm:top-2 sm:gap-1 sm:px-2 sm:text-[9px]">
-          <Tag className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
-          <span className="max-w-[60px] truncate sm:max-w-none">{addon.category}</span>
-        </span>
-        <span className="absolute right-1 top-1 border-2 border-foreground bg-background px-1.5 py-0.5 font-pixel text-[7px] sm:right-2 sm:top-2 sm:px-2 sm:text-[9px]">
-          v{addon.version}
-        </span>
-        {isNcmine && (
-          <span className="absolute right-1 bottom-1 border-2 border-foreground bg-primary px-1.5 py-0.5 font-pixel text-[7px] uppercase text-primary-foreground sm:right-2 sm:bottom-2 sm:px-2 sm:text-[9px]">
-            @ncmine
+        {isDownloaded && (
+          <span className="absolute left-1 top-1 border-2 border-foreground bg-background/90 px-1.5 py-0.5 font-pixel text-[7px] uppercase sm:left-2 sm:top-2 sm:px-2 sm:text-[9px]">
+            ✓ Baixado
           </span>
         )}
       </button>
 
       <div className="flex flex-1 flex-col p-2.5 sm:p-4">
-        <h3 className="mb-0.5 line-clamp-2 break-words text-[11px] font-extrabold uppercase leading-tight sm:mb-1 sm:text-base">
+        <h3 className="mb-0.5 line-clamp-2 break-words text-[11px] font-extrabold uppercase leading-tight sm:text-base">
           {addon.title}
         </h3>
-        <div className="mb-1.5 flex items-center gap-1.5 text-[9px] text-muted-foreground sm:mb-2 sm:gap-3 sm:text-[11px]">
-          <span className="inline-flex items-center gap-0.5 truncate sm:gap-1">
-            <User className="h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" />
-            <span className="max-w-[70px] truncate sm:max-w-none">{addon.author || "Desconhecido"}</span>
+
+        {/* Linha "tooltip de item": categoria colorida (raridade) + autor + versão */}
+        <div className="mb-1.5 flex items-center gap-1.5 text-[9px] font-bold uppercase sm:gap-2 sm:text-[10px]">
+          <span className={categoryColor(addon.category)}>{addon.category}</span>
+          <span className="text-muted-foreground/50">·</span>
+          <span className="inline-flex min-w-0 items-center gap-0.5 truncate text-muted-foreground normal-case">
+            <User className="h-2.5 w-2.5 shrink-0" />
+            <span className="truncate">{addon.author || "Desconhecido"}</span>
           </span>
-          <span className="hidden items-center gap-1 sm:inline-flex">
-            <Calendar className="h-3 w-3" />{addon.date}
-          </span>
+          {isNcmine && (
+            <span className="shrink-0 border border-primary/60 px-1 text-primary">@ncmine</span>
+          )}
         </div>
-        <p className="mb-2 line-clamp-2 break-words text-[10px] leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
+
+        <p className="mb-2 line-clamp-2 break-words text-[10px] italic leading-relaxed text-muted-foreground sm:mb-3 sm:line-clamp-3 sm:text-xs">{addon.short}</p>
 
         <div className="mb-2 flex items-center justify-between text-[10px] sm:mb-3 sm:text-xs">
           <span className="inline-flex items-center gap-0.5">
@@ -137,26 +142,29 @@ export function AddonCard({ addon, onDownload, onOpen, index = 0 }: Props) {
               />
             ))}
           </span>
-          <span className="inline-flex items-center gap-0.5 font-pixel text-[7px] sm:gap-1 sm:text-[9px]">
+          <span
+            className="inline-flex items-center gap-0.5 text-muted-foreground sm:gap-1"
+            style={{ fontFamily: "var(--font-hud)" }}
+          >
             <Download className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
             {animatedDownloads.toLocaleString("pt-BR")}
           </span>
         </div>
 
-        <div className="mt-auto flex gap-1.5 sm:gap-2">
+        <div className="mt-auto flex gap-1.5">
           <button
             onClick={() => onOpen(addon)}
             className={`btn-block flex-1 !px-2 !py-2.5 text-[10px] sm:!px-5 sm:!py-3 sm:text-sm shadow-[3px_3px_0_0_var(--ink)] active:translate-y-0.5 active:shadow-none transition-all min-h-[44px] ${
               isDownloaded ? 'bg-background text-foreground' : 'bg-primary text-primary-foreground'
             }`}
           >
-            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver' : 'Baixar'}
+            <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {isDownloaded ? 'Ver addon' : 'Baixar'}
           </button>
           <button
             type="button"
             onClick={handleShare}
             aria-label="Compartilhar"
-            className="btn-block bg-background !px-2.5 !py-2.5 text-[10px] sm:!px-3 sm:!py-3 border-2 border-foreground hover:bg-muted active:scale-95 transition-all min-h-[44px]"
+            className="inline-flex min-h-[44px] w-10 shrink-0 items-center justify-center border border-foreground/30 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-11"
           >
             <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>
