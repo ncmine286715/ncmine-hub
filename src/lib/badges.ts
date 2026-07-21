@@ -1,4 +1,4 @@
-import addonsData from "@/data/addons.json";
+import addonsData from "@/data/all-addons";
 import type { Addon } from "@/components/AddonCard";
 
 const RAW_ADDONS = addonsData as Addon[];

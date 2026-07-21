@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import addonsData from "@/data/addons.json";
+import addonsData from "@/data/all-addons";
 
 type Addon = { id: string; image: string; title: string };
 

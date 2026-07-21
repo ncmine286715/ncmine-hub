@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { collection, query, orderBy, limit, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import addonsData from "@/data/addons.json";
+import addonsData from "@/data/all-addons";
 import { FloatingBackground } from "@/components/FloatingBackground";
 import { AdminBroadcastPanel } from "@/components/AdminBroadcastPanel";
 import {

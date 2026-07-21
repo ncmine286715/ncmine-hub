@@ -44,8 +44,18 @@ function getFreePort() {
   });
 }
 
+// Catálogo dividido em múltiplos JSONs (ver src/data/all-addons.ts) — some
+// os arquivos aqui na mesma ordem sempre que um novo shard for criado.
+const ADDON_SHARDS = ["addons.json", "addons-2.json"];
+
+function loadAddons() {
+  return ADDON_SHARDS.flatMap((file) =>
+    JSON.parse(readFileSync(join(ROOT, "src", "data", file), "utf8")),
+  );
+}
+
 function loadRoutes() {
-  const addons = JSON.parse(readFileSync(join(ROOT, "src", "data", "addons.json"), "utf8"));
+  const addons = loadAddons();
   const staticRoutes = ["/", "/legal", "/community", "/auth", "/favorites", "/profile", "/admin"];
   const addonRoutes = addons.map((a) => `/addon/${a.id}`);
   return [...new Set([...staticRoutes, ...addonRoutes])];

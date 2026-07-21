@@ -1,4 +1,4 @@
-import addonsData from "@/data/addons.json";
+import addonsData from "@/data/all-addons";
 import type { Addon } from "@/components/AddonCard";
 
 // Downloads e rating no addons.json sao preenchidos manualmente (e boa

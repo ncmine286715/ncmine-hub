@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { toast } from "sonner";
-import addonsData from "@/data/addons.json";
+import addonsData from "@/data/all-addons";
 import type { Addon } from "@/components/AddonCard";
 import { useAuth } from "@/hooks/use-auth";
 import { setFavoriteVersionSeen } from "@/lib/firebase-services";
@@ -9,7 +9,7 @@ const RAW_ADDONS = addonsData as Addon[];
 
 /**
  * Sem FCM/Cloud Function: compara a versão atual de cada addon favoritado
- * (vinda do addons.json já embutido no bundle) contra a última versão vista,
+ * (vinda do catálogo de addons já embutido no bundle) contra a última versão vista,
  * guardada no doc do usuário. Diferente -> avisa. Zero infra nova.
  */
 export function FavoriteUpdatesWatcher() {
