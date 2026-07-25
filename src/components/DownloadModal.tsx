@@ -30,7 +30,6 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
   const [inApp, setInApp] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
   const [copied, setCopied] = useState(false);
-  const [bursting, setBursting] = useState(false);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -59,7 +58,6 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
   const handleDownloadClick = async () => {
     trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
     gaEvent("download_click", { addon_id: addonId, title });
-    setBursting(true);
     onDownloaded?.();
     if (user && addonId) {
       try {
@@ -174,7 +172,6 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
               ) : (
                 <span className="font-pixel text-[11px]">Aguarde {count}s</span>
               )}
-              {bursting && <BlockBurst />}
             </a>
 
             {inApp === "tiktok" && (
@@ -200,41 +197,3 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
     </div>
   );
 }
-
-const BLOCK_COLORS = ["#6b4020", "#4a7c2c", "#8aff3c", "#e0b83c", "#4fd1e8", "#e05a3c"];
-
-function BlockBurst() {
-  const [particles] = useState(() =>
-    Array.from({ length: 14 }, (_, i) => {
-      const angle = (Math.PI * 2 * i) / 14 + Math.random() * 0.4;
-      const dist = 50 + Math.random() * 55;
-      return {
-        tx: Math.cos(angle) * dist,
-        ty: Math.sin(angle) * dist - 16,
-        rot: Math.random() * 320 - 160,
-        color: BLOCK_COLORS[i % BLOCK_COLORS.length],
-        delay: Math.random() * 70,
-      };
-    }),
-  );
-
-  return (
-    <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center overflow-visible">
-      {particles.map((p, i) => (
-        <span
-          key={i}
-          className="absolute h-2.5 w-2.5 animate-block-burst"
-          style={{
-            backgroundColor: p.color,
-            boxShadow: "1px 1px 0 0 rgba(0,0,0,0.4)",
-            "--tx": `${p.tx}px`,
-            "--ty": `${p.ty}px`,
-            "--rot": `${p.rot}deg`,
-            animationDelay: `${p.delay}ms`,
-          } as React.CSSProperties}
-        />
-      ))}
-    </div>
-  );
-}
-

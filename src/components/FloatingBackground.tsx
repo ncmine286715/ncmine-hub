@@ -1,27 +1,47 @@
-import { useMemo } from "react";
-import addonsData from "@/data/addons.json";
+import { useEffect, useState } from "react";
 
 type Addon = { id: string; image: string; title: string };
+type Item = Addon & {
+  top: number;
+  left: number;
+  size: number;
+  delay: number;
+  duration: number;
+  rotate: number;
+};
 
 /**
  * Floating addon thumbnails drifting behind the page.
- * Pure CSS animations — performant.
+ * Pure CSS animations — performant. The addon dataset is loaded lazily
+ * (code-split) so this purely decorative layer never bloats the initial
+ * bundle of every route just to grab a handful of thumbnails.
  */
 export function FloatingBackground() {
-  const items = useMemo(() => {
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const count = isMobile ? 8 : 18;
-    const pool = (addonsData as Addon[]).filter((a) => a.image).slice(0, count);
-    return pool.map((a, i) => ({
-      ...a,
-      // deterministic pseudo-random placement so it doesn't reflow each render
-      top: (i * 53) % 90,
-      left: (i * 37) % 92,
-      size: (isMobile ? 50 : 70) + ((i * 19) % (isMobile ? 50 : 90)),
-      delay: (i % 7) * 0.6,
-      duration: 8 + (i % 5) * 2,
-      rotate: ((i * 23) % 30) - 15,
-    }));
+  const [items, setItems] = useState<Item[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    import("@/data/addons.json").then((mod) => {
+      if (cancelled) return;
+      const isMobile = window.innerWidth < 768;
+      const count = isMobile ? 3 : 6;
+      const pool = (mod.default as Addon[]).filter((a) => a.image).slice(0, count);
+      setItems(
+        pool.map((a, i) => ({
+          ...a,
+          // deterministic pseudo-random placement so it doesn't reflow each render
+          top: (i * 53) % 90,
+          left: (i * 37) % 92,
+          size: (isMobile ? 50 : 70) + ((i * 19) % (isMobile ? 50 : 90)),
+          delay: (i % 7) * 0.6,
+          duration: 8 + (i % 5) * 2,
+          rotate: ((i * 23) % 30) - 15,
+        })),
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

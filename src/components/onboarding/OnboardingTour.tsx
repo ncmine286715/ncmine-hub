@@ -22,17 +22,14 @@ export type OnboardingStepConfig = {
 
 type Props = {
   steps: OnboardingStepConfig[];
-  /** Identifies this tour for the "already seen this session" flag (e.g. "home", "addon"). */
+  /** Identifies this tour (e.g. "home", "addon"); kept for future per-tour analytics. */
   tourId: string;
-  /** Delay before auto-starting. */
-  autoStartDelay?: number;
 };
 
 const GAP = 10;
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-const SEEN_KEY_PREFIX = "ncmine:onboarding-seen:";
 
-export function OnboardingTour({ steps, tourId, autoStartDelay = 900 }: Props) {
+export function OnboardingTour({ steps, tourId }: Props) {
   const [open, setOpen] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -43,22 +40,8 @@ export function OnboardingTour({ steps, tourId, autoStartDelay = 900 }: Props) {
   const isLast = stepIndex === steps.length - 1;
   const rect = useTargetRect(step?.target, open);
 
-  // Auto-start no maximo 1x por sessao do navegador (sessionStorage). O
-  // botao "?" continua abrindo o tour manualmente a qualquer momento.
-  useEffect(() => {
-    const key = SEEN_KEY_PREFIX + tourId;
-    try {
-      if (sessionStorage.getItem(key) === "1") return;
-    } catch {}
-    const t = window.setTimeout(() => {
-      try {
-        sessionStorage.setItem(key, "1");
-      } catch {}
-      start();
-    }, autoStartDelay);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Nao auto-inicia mais: o tour so abre se a pessoa tocar no botao "?".
+  // Menos popup forcado, menos leitura empurrada em quem so quer navegar.
 
   // Keyboard: ESC to skip, arrows to navigate, Tab trapped inside the card.
   useEffect(() => {
