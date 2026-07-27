@@ -63,71 +63,73 @@
 
 :root {
   --radius: 0.25rem;
-  /* core palette: aggressive black/white/orange */
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.12 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.12 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.12 0 0);
-  --primary: oklch(0.72 0.21 47); /* aggressive orange */
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.12 0 0);
-  --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.4 0 0);
-  --accent: oklch(0.72 0.21 47);
-  --accent-foreground: oklch(0.12 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.12 0 0);
-  --input: oklch(0.12 0 0);
-  --ring: oklch(0.72 0.21 47);
+  /* Core palette: Minecraft "night cave" — deepslate bg, emerald CTA,
+     diamond cyan accent, XP gold highlight. Coeso, vibrante, gamer. */
+  --background: oklch(0.16 0.02 260);        /* deepslate */
+  --foreground: oklch(0.97 0.005 240);        /* bone white */
+  --card: oklch(0.22 0.025 260);              /* stone slab */
+  --card-foreground: oklch(0.97 0.005 240);
+  --popover: oklch(0.20 0.025 260);
+  --popover-foreground: oklch(0.97 0.005 240);
+  --primary: oklch(0.72 0.20 152);            /* emerald / grass block */
+  --primary-foreground: oklch(0.10 0.02 260);
+  --secondary: oklch(0.97 0.005 240);
+  --secondary-foreground: oklch(0.14 0.02 260);
+  --muted: oklch(0.28 0.02 260);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.83 0.15 195);             /* diamond cyan */
+  --accent-foreground: oklch(0.12 0.02 260);
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.97 0.005 240 / 90%);
+  --input: oklch(0.97 0.005 240 / 90%);
+  --ring: oklch(0.72 0.20 152);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.99 0 0);
-  --sidebar-foreground: oklch(0.12 0 0);
-  --sidebar-primary: oklch(0.72 0.21 47);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.12 0 0);
-  --sidebar-border: oklch(0.12 0 0);
-  --sidebar-ring: oklch(0.72 0.21 47);
+  --sidebar: oklch(0.16 0.02 260);
+  --sidebar-foreground: oklch(0.97 0.005 240);
+  --sidebar-primary: oklch(0.72 0.20 152);
+  --sidebar-primary-foreground: oklch(0.10 0.02 260);
+  --sidebar-accent: oklch(0.28 0.02 260);
+  --sidebar-accent-foreground: oklch(0.97 0.005 240);
+  --sidebar-border: oklch(0.97 0.005 240 / 90%);
+  --sidebar-ring: oklch(0.72 0.20 152);
 
-  /* brand */
-  --orange: oklch(0.72 0.21 47);
+  /* brand — brutalist keys used by .btn-block/.card-block/shadows */
+  --orange: oklch(0.78 0.18 65);              /* torch / lava glow (accent only) */
   --orange-deep: oklch(0.62 0.22 35);
-  --ink: oklch(0.12 0 0);
-  --paper: oklch(0.99 0 0);
+  --ink: oklch(0.97 0.005 240);               /* bone white — the "line" color */
+  --paper: oklch(0.22 0.025 260);             /* stone slab — card surface */
+  --xp: oklch(0.85 0.17 95);                  /* xp orb gold */
   --font-pixel: "Press Start 2P", system-ui, monospace;
   --font-display: "Inter", system-ui, sans-serif;
   --font-hud: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
 
-  /* second accent (enchant-table cyan) — used sparingly, never competes with primary CTA orange */
-  --diamond: oklch(0.83 0.13 195);
-  /* hotbar chrome (inventory-slot grey) — hero signature element only */
+  /* second accent (enchant-table cyan) */
+  --diamond: oklch(0.83 0.15 195);
+  /* hotbar chrome (inventory-slot grey) — theme-invariant, reads as game UI */
   --slot-bg: oklch(0.34 0.01 260);
-  --slot-border: oklch(0.16 0.01 260);
+  --slot-border: oklch(0.08 0.01 260);
 
-  /* hatched paper background */
+  /* Cave hatch — subtle diagonal veins on deepslate */
   --hatch:
     repeating-linear-gradient(
       135deg,
       transparent 0 22px,
-      rgba(0, 0, 0, 0.06) 22px 23px
+      rgba(255, 255, 255, 0.04) 22px 23px
     ),
     repeating-linear-gradient(
       45deg,
       transparent 0 22px,
-      rgba(0, 0, 0, 0.04) 22px 23px
+      rgba(114, 214, 168, 0.05) 22px 23px
     );
 
-  --shadow-block: 6px 6px 0 0 #000;
-  --shadow-block-sm: 3px 3px 0 0 #000;
-  --shadow-orange: 6px 6px 0 0 #ff7a00;
+  --shadow-block: 6px 6px 0 0 var(--ink);
+  --shadow-block-sm: 3px 3px 0 0 var(--ink);
+  --shadow-orange: 6px 6px 0 0 oklch(0.72 0.20 152);
 }
 
 .dark {
@@ -233,7 +235,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border: 2px solid #000;
+    border: 2px solid var(--ink);
     background-color: var(--paper);
     color: var(--foreground);
     padding: 0.75rem 1.25rem;
@@ -256,7 +258,7 @@
   }
 
   .card-block {
-    border: 2px solid #000;
+    border: 2px solid var(--ink);
     background-color: var(--paper);
     box-shadow: var(--shadow-block-sm);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -331,9 +333,9 @@
     isolation: isolate;
     color: #fff;
     background: #0a0a0a;
-    border: 2px solid #000;
+    border: 2px solid var(--ink);
     text-shadow: 0 1px 0 rgba(0,0,0,.6);
-    box-shadow: 6px 6px 0 0 #000;
+    box-shadow: var(--shadow-block);
     overflow: hidden;
   }
   .btn-rgb::before {
@@ -360,8 +362,8 @@
       linear-gradient(180deg, #1a1a1a, #0a0a0a);
     background-clip: padding-box;
   }
-  .btn-rgb:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 0 #000; }
-  .btn-rgb:active { transform: translate(6px, 6px); box-shadow: 0 0 0 0 #000; }
+  .btn-rgb:hover { transform: translate(2px, 2px); box-shadow: var(--shadow-block-sm); }
+  .btn-rgb:active { transform: translate(6px, 6px); box-shadow: 0 0 0 0 var(--ink); }
 
   /* Grass-block strip: dirt bottom + grass green top edge, like a Minecraft block. */
   .grass-strip {
