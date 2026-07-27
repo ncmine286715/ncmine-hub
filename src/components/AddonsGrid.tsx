@@ -5,7 +5,6 @@ import {
   Trophy, Mic, Dices, LayoutGrid, List,
 } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
-import { useAuth } from "@/hooks/use-auth";
 import { useCountUp } from "@/hooks/use-count-up";
 
 type Props = {
@@ -44,7 +43,6 @@ const CATEGORY_CONFIG: CategoryConfig[] = [
 ];
 
 export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange, initialQuery }: Props) {
-  const { profile } = useAuth();
   const [q, setQ] = useState(initialQuery ?? "");
   useEffect(() => {
     if (initialQuery) setQ(initialQuery);
@@ -107,7 +105,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   }, []);
 
   const pickRandom = () => {
-    const favoriteIds = new Set(profile?.favorites ?? []);
+    const favoriteIds = new Set<string>();
     const pool = addons.filter((a) => !favoriteIds.has(a.id));
     const source = pool.length > 0 ? pool : addons;
     const pick = source[Math.floor(Math.random() * source.length)];

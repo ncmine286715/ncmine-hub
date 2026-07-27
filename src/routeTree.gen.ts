@@ -9,43 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LegalRouteImport } from './routes/legal'
-import { Route as FavoritesRouteImport } from './routes/favorites'
-import { Route as CommunityRouteImport } from './routes/community'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddonIdRouteImport } from './routes/addon.$id'
 
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LegalRoute = LegalRouteImport.update({
   id: '/legal',
   path: '/legal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FavoritesRoute = FavoritesRouteImport.update({
-  id: '/favorites',
-  path: '/favorites',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CommunityRoute = CommunityRouteImport.update({
-  id: '/community',
-  path: '/community',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,121 +31,41 @@ const AddonIdRoute = AddonIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/auth': typeof AuthRoute
-  '/community': typeof CommunityRoute
-  '/favorites': typeof FavoritesRoute
   '/legal': typeof LegalRoute
-  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/auth': typeof AuthRoute
-  '/community': typeof CommunityRoute
-  '/favorites': typeof FavoritesRoute
   '/legal': typeof LegalRoute
-  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/auth': typeof AuthRoute
-  '/community': typeof CommunityRoute
-  '/favorites': typeof FavoritesRoute
   '/legal': typeof LegalRoute
-  '/profile': typeof ProfileRoute
   '/addon/$id': typeof AddonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/admin'
-    | '/auth'
-    | '/community'
-    | '/favorites'
-    | '/legal'
-    | '/profile'
-    | '/addon/$id'
+  fullPaths: '/' | '/legal' | '/addon/$id'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/admin'
-    | '/auth'
-    | '/community'
-    | '/favorites'
-    | '/legal'
-    | '/profile'
-    | '/addon/$id'
-  id:
-    | '__root__'
-    | '/'
-    | '/admin'
-    | '/auth'
-    | '/community'
-    | '/favorites'
-    | '/legal'
-    | '/profile'
-    | '/addon/$id'
+  to: '/' | '/legal' | '/addon/$id'
+  id: '__root__' | '/' | '/legal' | '/addon/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
-  AuthRoute: typeof AuthRoute
-  CommunityRoute: typeof CommunityRoute
-  FavoritesRoute: typeof FavoritesRoute
   LegalRoute: typeof LegalRoute
-  ProfileRoute: typeof ProfileRoute
   AddonIdRoute: typeof AddonIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/legal': {
       id: '/legal'
       path: '/legal'
       fullPath: '/legal'
       preLoaderRoute: typeof LegalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/favorites': {
-      id: '/favorites'
-      path: '/favorites'
-      fullPath: '/favorites'
-      preLoaderRoute: typeof FavoritesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/community': {
-      id: '/community'
-      path: '/community'
-      fullPath: '/community'
-      preLoaderRoute: typeof CommunityRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -197,12 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
-  AuthRoute: AuthRoute,
-  CommunityRoute: CommunityRoute,
-  FavoritesRoute: FavoritesRoute,
   LegalRoute: LegalRoute,
-  ProfileRoute: ProfileRoute,
   AddonIdRoute: AddonIdRoute,
 }
 export const routeTree = rootRouteImport

@@ -2,20 +2,10 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system — "Ivory & Ember".
+ * Uncommon premium palette: warm ivory white + chili-orange primary + deep espresso ink.
+ * Single light theme. Clean, editorial, high-contrast.
  */
 
 @theme inline {
@@ -23,9 +13,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -45,470 +32,159 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.25rem;
-  /* Core palette: Minecraft "night cave" — deepslate bg, emerald CTA,
-     diamond cyan accent, XP gold highlight. Coeso, vibrante, gamer. */
-  --background: oklch(0.16 0.02 260);        /* deepslate */
-  --foreground: oklch(0.97 0.005 240);        /* bone white */
-  --card: oklch(0.22 0.025 260);              /* stone slab */
-  --card-foreground: oklch(0.97 0.005 240);
-  --popover: oklch(0.20 0.025 260);
-  --popover-foreground: oklch(0.97 0.005 240);
-  --primary: oklch(0.72 0.20 152);            /* emerald / grass block */
-  --primary-foreground: oklch(0.10 0.02 260);
-  --secondary: oklch(0.97 0.005 240);
-  --secondary-foreground: oklch(0.14 0.02 260);
-  --muted: oklch(0.28 0.02 260);
-  --muted-foreground: oklch(0.72 0.02 250);
-  --accent: oklch(0.83 0.15 195);             /* diamond cyan */
-  --accent-foreground: oklch(0.12 0.02 260);
-  --destructive: oklch(0.62 0.24 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.97 0.005 240 / 90%);
-  --input: oklch(0.97 0.005 240 / 90%);
-  --ring: oklch(0.72 0.20 152);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.16 0.02 260);
-  --sidebar-foreground: oklch(0.97 0.005 240);
-  --sidebar-primary: oklch(0.72 0.20 152);
-  --sidebar-primary-foreground: oklch(0.10 0.02 260);
-  --sidebar-accent: oklch(0.28 0.02 260);
-  --sidebar-accent-foreground: oklch(0.97 0.005 240);
-  --sidebar-border: oklch(0.97 0.005 240 / 90%);
-  --sidebar-ring: oklch(0.72 0.20 152);
+  --radius: 0.5rem;
 
-  /* brand — brutalist keys used by .btn-block/.card-block/shadows */
-  --orange: oklch(0.78 0.18 65);              /* torch / lava glow (accent only) */
-  --orange-deep: oklch(0.62 0.22 35);
-  --ink: oklch(0.97 0.005 240);               /* bone white — the "line" color */
-  --paper: oklch(0.22 0.025 260);             /* stone slab — card surface */
-  --xp: oklch(0.85 0.17 95);                  /* xp orb gold */
+  /* Core: ivory white + espresso ink + chili ember */
+  --background: oklch(0.995 0.004 80);         /* pure ivory white */
+  --foreground: oklch(0.20 0.02 40);            /* espresso ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.02 40);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.02 40);
+
+  /* Chili ember — deep, warm, editorial (not pumpkin, not tailwind-orange) */
+  --primary: oklch(0.60 0.19 40);               /* ~#D24515 */
+  --primary-foreground: oklch(0.995 0.004 80);
+
+  --secondary: oklch(0.96 0.01 70);             /* warm sand */
+  --secondary-foreground: oklch(0.20 0.02 40);
+
+  --muted: oklch(0.965 0.008 70);
+  --muted-foreground: oklch(0.45 0.02 45);      /* AA on white */
+
+  --accent: oklch(0.94 0.05 65);                /* peach highlight */
+  --accent-foreground: oklch(0.28 0.05 40);
+
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.995 0 0);
+
+  --border: oklch(0.90 0.01 60);
+  --input: oklch(0.90 0.01 60);
+  --ring: oklch(0.60 0.19 40);
+
+  /* Brutalist keys (still used by btn-block/card-block, softened) */
+  --ink: oklch(0.20 0.02 40);                   /* espresso — the "line" color */
+  --paper: oklch(1 0 0);
+  --ember: oklch(0.60 0.19 40);                 /* primary alias */
+  --ember-soft: oklch(0.92 0.06 55);            /* tinted highlight */
+
   --font-pixel: "Press Start 2P", system-ui, monospace;
   --font-display: "Inter", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
   --font-hud: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
 
-  /* second accent (enchant-table cyan) */
-  --diamond: oklch(0.83 0.15 195);
-  /* hotbar chrome (inventory-slot grey) — theme-invariant, reads as game UI */
-  --slot-bg: oklch(0.34 0.01 260);
-  --slot-border: oklch(0.08 0.01 260);
-
-  /* Cave hatch — subtle diagonal veins on deepslate */
-  --hatch:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 22px,
-      rgba(255, 255, 255, 0.04) 22px 23px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent 0 22px,
-      rgba(114, 214, 168, 0.05) 22px 23px
-    );
-
-  --shadow-block: 6px 6px 0 0 var(--ink);
-  --shadow-block-sm: 3px 3px 0 0 var(--ink);
-  --shadow-orange: 6px 6px 0 0 oklch(0.72 0.20 152);
-}
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-}
-
-/* Dark Void — true black + redstone, homage to the Null skin dropped in the
-   Nether. Overrides --ink/--paper (not just the semantic tokens) because
-   .btn-block/.card-block and most brutalist shadows are keyed off those two,
-   not --background/--foreground. Overrides --diamond too so the hero's
-   "curated" badge doesn't keep its cool cave-cyan inside a warm void theme. */
-.void {
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.07 0.014 30);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.07 0.014 30);
-  --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.58 0.22 25);   /* redstone dust glow */
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.15 0.012 30);
-  --muted-foreground: oklch(0.65 0.02 30);
-  --accent: oklch(0.68 0.19 45);    /* ember / torch glow */
-  --accent-foreground: oklch(0.1 0 0);
-  --border: oklch(0.97 0 0);
-  --input: oklch(0.97 0 0);
-  --ring: oklch(0.58 0.22 25);
-  --ink: oklch(0.97 0 0);
-  --paper: oklch(0 0 0);
-  --diamond: oklch(0.68 0.19 45);
-  --shadow-block: 6px 6px 0 0 var(--ink);
-  --shadow-block-sm: 3px 3px 0 0 var(--ink);
-  --shadow-orange: 6px 6px 0 0 oklch(0.58 0.22 25);
-  --hatch:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 22px,
-      rgba(255, 90, 60, 0.05) 22px 23px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent 0 22px,
-      rgba(255, 255, 255, 0.035) 22px 23px
-    );
+  --shadow-block: 4px 4px 0 0 var(--ink);
+  --shadow-block-sm: 2px 2px 0 0 var(--ink);
+  --shadow-soft: 0 6px 20px -8px oklch(0.20 0.02 40 / 15%);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
+  * { border-color: var(--color-border); }
+
+  html { -webkit-text-size-adjust: 100%; }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
-    background-image: var(--hatch);
-    background-attachment: fixed;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+
+  /* Selection uses ember */
+  ::selection { background: var(--ember); color: var(--primary-foreground); }
 }
 
 @layer utilities {
-  .font-pixel {
-    font-family: var(--font-pixel);
-    letter-spacing: 0.02em;
-  }
+  .font-pixel { font-family: var(--font-pixel); letter-spacing: 0.02em; }
+  .font-serif-display { font-family: var(--font-serif); }
 
-  /* Brutalist block button: thick border + hard shadow that "presses" */
+  /* Premium block button — flat + hard shadow, subtle press */
   .btn-block {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border: 2px solid var(--ink);
+    border: 1.5px solid var(--ink);
     background-color: var(--paper);
     color: var(--foreground);
     padding: 0.75rem 1.25rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    border-radius: var(--radius);
     box-shadow: var(--shadow-block);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
     cursor: pointer;
     text-decoration: none;
     line-height: 1.2;
   }
-  .btn-block:hover {
-    transform: translate(2px, 2px);
-    box-shadow: var(--shadow-block-sm);
+  .btn-block:hover { transform: translate(1px, 1px); box-shadow: var(--shadow-block-sm); }
+  .btn-block:active { transform: translate(3px, 3px); box-shadow: 0 0 0 0 var(--ink); }
+
+  /* Ghost variant for secondary actions */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    border-radius: var(--radius);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    cursor: pointer;
+    text-decoration: none;
   }
-  .btn-block:active {
-    transform: translate(6px, 6px);
-    box-shadow: 0 0 0 0 var(--ink);
-  }
+  .btn-ghost:hover { background-color: var(--muted); }
 
   .card-block {
-    border: 2px solid var(--ink);
+    border: 1.5px solid var(--ink);
     background-color: var(--paper);
+    border-radius: var(--radius);
     box-shadow: var(--shadow-block-sm);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card-block:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--shadow-block);
-  }
+  .card-block:hover { transform: translate(-1px, -1px); box-shadow: var(--shadow-block); }
 
-  /* Hero signature: a Minecraft hotbar. Grey inventory-slot chrome is
-     intentionally theme-invariant (light/dark/void) — it reads as game UI,
-     not page background. */
-  .hotbar-slot {
-    position: relative;
-    background-color: var(--slot-bg);
-    border: 2px solid var(--slot-border);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    background: var(--muted);
+    color: var(--muted-foreground);
   }
-  .hotbar-slot--selected {
-    border-color: #fff;
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.25),
-      0 0 0 2px var(--slot-border),
-      0 0 14px 1px color-mix(in oklch, var(--diamond) 70%, transparent);
-  }
+  .chip-primary { background: var(--ember-soft); color: var(--primary); }
 
-  /* Loot-card shine — a light sweep on hover/tap. Independent of the
-     card's own hover transform so the two never fight the cascade. */
-  .shine-sweep {
-    position: relative;
-    isolation: isolate;
-  }
-  .shine-sweep::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 30;
-    pointer-events: none;
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.4) 48%, transparent 61%);
-    transform: translateX(-130%);
-    transition: transform 0.55s ease;
-  }
-  .shine-sweep:hover::after,
-  .shine-sweep:focus-visible::after {
-    transform: translateX(130%);
-  }
-
-  /* Minecraft-y pixelated image */
   .pixelated {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
   }
-  .animate-mc-float { animation: mc-float 6s ease-in-out infinite; }
-  .animate-mc-drift { animation: mc-drift 12s ease-in-out infinite; }
-  .animate-mc-bob { animation: mc-bob 2.4s ease-in-out infinite; }
-  .animate-mc-shake { animation: mc-shake 0.4s ease-in-out infinite; }
-  .animate-mc-pulse-orange { animation: mc-pulse-orange 2.2s ease-out infinite; }
-  .animate-mc-scroll-x { animation: mc-scroll-x 40s linear infinite; }
-  .animate-mc-rise { animation: mc-rise 0.5s ease-out both; }
-  .animate-onboarding-pulse { animation: onboarding-pulse 1.8s ease-in-out infinite; }
-  .animate-card-in { animation: card-in 0.35s ease-out both; }
-  .animate-block-drop { animation: block-drop 0.7s cubic-bezier(.25,.9,.3,1.2) both; }
-  .animate-block-spin { animation: block-spin 9s linear infinite; }
-  .animate-block-spin:hover { animation-play-state: paused; }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { scrollbar-width: none; }
+
+  .animate-card-in { animation: card-in 0.32s ease-out both; }
+  .animate-rise { animation: rise 0.5s ease-out both; }
+  .animate-mc-rise { animation: rise 0.5s ease-out both; }
 }
 
-/* === RGB / Minecraft signature FX ============================== */
-@layer utilities {
-  /* RGB animated border + glow — used only on the main "BAIXAR" CTA. */
-  .btn-rgb {
-    position: relative;
-    isolation: isolate;
-    color: #fff;
-    background: #0a0a0a;
-    border: 2px solid var(--ink);
-    text-shadow: 0 1px 0 rgba(0,0,0,.6);
-    box-shadow: var(--shadow-block);
-    overflow: hidden;
-  }
-  .btn-rgb::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    z-index: -2;
-    border-radius: inherit;
-    background: conic-gradient(
-      from 0deg,
-      #ff004c, #ff7a00, #ffe600, #22ff88,
-      #00e0ff, #4b6bff, #b400ff, #ff004c
-    );
-    animation: rgb-spin 4s linear infinite;
-    filter: saturate(1.2);
-  }
-  .btn-rgb::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    z-index: -1;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.14), rgba(0,0,0,0) 40%),
-      linear-gradient(180deg, #1a1a1a, #0a0a0a);
-    background-clip: padding-box;
-  }
-  .btn-rgb:hover { transform: translate(2px, 2px); box-shadow: var(--shadow-block-sm); }
-  .btn-rgb:active { transform: translate(6px, 6px); box-shadow: 0 0 0 0 var(--ink); }
-
-  /* Grass-block strip: dirt bottom + grass green top edge, like a Minecraft block. */
-  .grass-strip {
-    background:
-      linear-gradient(180deg, #6fbf3a 0 8px, #58a52a 8px 14px, transparent 14px),
-      repeating-linear-gradient(
-        90deg,
-        #7a4a24 0 12px,
-        #6b3f1e 12px 24px
-      ),
-      #6b3f1e;
-    background-size: 100% 100%, 24px 100%, 100% 100%;
-    image-rendering: pixelated;
-    box-shadow: inset 0 -2px 0 rgba(0,0,0,.35);
-  }
-  .sky-strip {
-    background: linear-gradient(180deg, #7ec9ff 0%, #a9dcff 60%, #d6ecff 100%);
-  }
-
-  /* Rainbow text — for accent words. */
-  .text-rgb {
-    background: linear-gradient(90deg, #ff004c, #ff7a00, #ffe600, #22ff88, #00e0ff, #b400ff, #ff004c);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: rgb-slide 3.5s linear infinite;
-  }
-
-  /* Diamond-glint pulse for hot chips. */
-  .glint {
-    animation: glint-pulse 2s ease-in-out infinite;
-  }
-}
-
-@keyframes rgb-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes rgb-slide {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-@keyframes glint-pulse {
-  0%, 100% { filter: drop-shadow(0 0 0 rgba(0,224,255,0)); }
-  50% { filter: drop-shadow(0 0 8px rgba(0,224,255,.9)); }
-}
-
-/* Keyframes at top level (Lightning CSS rejects @keyframes inside @layer in some versions). */
-@keyframes mc-float {
-  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-  50% { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 4deg)); }
-}
-@keyframes mc-drift {
-  0% { transform: translate(0,0) rotate(0); }
-  50% { transform: translate(30px,-20px) rotate(8deg); }
-  100% { transform: translate(0,0) rotate(0); }
-}
-@keyframes mc-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes mc-shake {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  25% { transform: translate(-2px,1px) rotate(-1deg); }
-  50% { transform: translate(2px,-1px) rotate(1deg); }
-  75% { transform: translate(-1px,2px) rotate(-1deg); }
-}
-@keyframes mc-pulse-orange {
-  0%,100% { box-shadow: 6px 6px 0 0 #000, 0 0 0 0 rgba(255, 122, 0, 0.6); }
-  50% { box-shadow: 6px 6px 0 0 #000, 0 0 0 16px rgba(255, 122, 0, 0); }
-}
-@keyframes mc-scroll-x {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes mc-rise {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes onboarding-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.45); }
-  50% { box-shadow: 0 0 0 6px rgba(255, 122, 0, 0); }
-}
-@keyframes card-in {
+@keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
-}
-/* Signature hero entrance — headline drops in like a placed block and
-   lands with a squash-bounce, instead of a plain fade. */
-@keyframes block-drop {
-  0% { opacity: 0; transform: translateY(-48px) scale(1, 1); }
-  55% { opacity: 1; transform: translateY(6px) scale(1.05, 0.93); }
-  75% { transform: translateY(-3px) scale(0.98, 1.03); }
-  100% { opacity: 1; transform: translateY(0) scale(1, 1); }
-}
-@keyframes block-spin {
-  from { transform: rotateX(-18deg) rotateY(0deg); }
-  to { transform: rotateX(-18deg) rotateY(360deg); }
-}
-
-/* Custom scrollbar hide for mobile categories */
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* Improve touch targets on mobile */
-@media (max-width: 640px) {
-  .btn-block {
-    min-height: 44px;
-  }
-
-  /* Better tap feedback */
-  button, a {
-    -webkit-tap-highlight-color: rgba(255, 122, 0, 0.15);
-  }
-
-  /* Smoother scrolling */
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Safe area for bottom navigation */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .pb-safe {
-    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
-  }
-}
-
-/* Prevent layout shift from scrollbar */
-html {
-  overflow-y: scroll;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
