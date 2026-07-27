@@ -6,7 +6,7 @@
 // pra não depender de nenhum dos dois manualmente.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ncmine-hub",
+  "name": "mineadddonsnews",
   "compatibility_date": "2026-06-20",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./.output/server/index.mjs",
