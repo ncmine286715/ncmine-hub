@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
-import { X, Download, Copy, Check, Sparkles } from "lucide-react";
+import { X, Download, Copy, Check, ExternalLink } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { gaEvent } from "@/lib/gtag";
-import { awardPoints, recordDownload } from "@/lib/firebase-services";
-import { useAuth } from "@/hooks/use-auth";
-import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import {
   detectInAppBrowser,
   detectPlatform,
   currentUrl,
-  inAppLabel,
   realBrowserName,
+  buildExternalHref,
   type InAppKind,
   type Platform,
 } from "@/lib/inAppBrowser";
@@ -21,7 +18,6 @@ type Props = {
   title: string;
   onClose: () => void;
   addonId?: string;
-  /** Chamado quando o usuario de fato clica em baixar (nao ao so fechar o popup). */
   onDownloaded?: () => void;
 };
 
@@ -30,44 +26,30 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
   const [inApp, setInApp] = useState<InAppKind>(null);
   const [platform, setPlatform] = useState<Platform>("other");
   const [copied, setCopied] = useState(false);
-  const { user } = useAuth();
 
   useEffect(() => {
     if (!open) return;
-    const k = detectInAppBrowser();
-    const p = detectPlatform();
-    setInApp(k);
-    setPlatform(p);
+    setInApp(detectInAppBrowser());
+    setPlatform(detectPlatform());
     setCount(2);
     const t = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
-    trackEvent("download_start", { addonId, title, inApp: k ?? "none", platform: p });
+    trackEvent("download_start", { addonId, title });
     gaEvent("download_start", { addon_id: addonId, title });
     return () => clearInterval(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, addonId, title]);
 
   if (!open) return null;
 
-  const browser = realBrowserName(platform);
   const ready = count <= 0;
-  const waitProgress = Math.min(100, Math.round(((2 - count) / 2) * 100));
-  // TikTok libera o botao de baixar direto (so com aviso) — os demais
-  // in-apps continuam so com "copiar link", pois o Terabox trava neles.
   const blockDownload = !!inApp && inApp !== "tiktok";
+  const browser = realBrowserName(platform);
+  const externalHref = buildExternalHref(currentUrl(), platform);
 
-  const handleDownloadClick = async () => {
-    trackEvent("terabox_open", { addonId, title, platform, inApp: inApp ?? "none" });
+  const handleDownload = () => {
+    trackEvent("terabox_open", { addonId, title });
     gaEvent("download_click", { addon_id: addonId, title });
     onDownloaded?.();
-    if (user && addonId) {
-      try {
-        await recordDownload(user.uid, addonId);
-        await awardPoints(user.uid, 5);
-      } catch (error) {
-        console.error("Error recording download:", error);
-      }
-    }
-    setTimeout(onClose, 550);
+    setTimeout(onClose, 400);
   };
 
   const copyLink = async () => {
@@ -75,124 +57,68 @@ export function DownloadModal({ open, url, title, onClose, addonId, onDownloaded
       await navigator.clipboard.writeText(currentUrl());
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-      trackEvent("inapp_escape", { kind: inApp, platform, method: "copy", source: "download_modal" });
     } catch {}
   };
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/70 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-[90] flex items-end justify-center bg-foreground/60 backdrop-blur-sm sm:items-center sm:p-4">
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="relative max-h-[92vh] w-full max-w-sm overflow-y-auto card-block bg-background p-4 animate-mc-rise sm:p-5">
-        <div className="mb-2 flex justify-center sm:hidden">
-          <div className="h-1 w-12 rounded-full bg-muted-foreground/30" />
-        </div>
-
+      <div className="card-block relative max-h-[90vh] w-full max-w-sm overflow-y-auto bg-background p-5 animate-rise">
         <button
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute right-2 top-2 border-2 border-foreground bg-background p-1 hover:bg-primary hover:text-primary-foreground sm:right-3 sm:top-3"
+          className="btn-ghost absolute right-2 top-2 !p-1.5"
         >
           <X className="h-4 w-4" />
         </button>
 
-        <div className="mb-4 pr-8">
-          <span className="inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[9px] uppercase text-primary-foreground">
-            <Sparkles className="h-3 w-3" /> Liberado
-          </span>
-          <p className="mt-1.5 line-clamp-2 text-sm font-black uppercase leading-tight">{title}</p>
+        <div className="pr-8">
+          <span className="chip chip-primary">Pronto para baixar</span>
+          <h2 className="mt-2 line-clamp-2 text-lg font-bold leading-tight">{title}</h2>
         </div>
 
         {blockDownload ? (
-          <div className="border-2 border-yellow-500 bg-yellow-500/10 p-3 text-center">
-            <p className="text-[12px] font-extrabold uppercase leading-tight text-yellow-800">
-              ⚠️ Abra no {browser}
+          <div className="mt-5 rounded-md border border-primary/30 bg-primary/5 p-4">
+            <p className="text-sm font-semibold text-foreground">
+              Abra no {browser} para baixar
             </p>
-            <p className="mt-0.5 text-[10px] leading-snug text-yellow-800/90">
-              Aqui no {inAppLabel(inApp)} o download trava.
+            <p className="mt-1 text-xs text-muted-foreground">
+              O download não funciona dentro deste app. Toque em abrir ou copie o link.
             </p>
-            <button
-              onClick={copyLink}
-              className="btn-block mt-3 w-full bg-yellow-600 text-white !py-2 text-[11px]"
-            >
-              {copied ? (
-                <><Check className="h-4 w-4" /> Link copiado</>
-              ) : (
-                <><Copy className="h-4 w-4" /> Copiar link</>
-              )}
-            </button>
+            <div className="mt-3 flex gap-2">
+              <a
+                href={externalHref}
+                className="btn-block flex-1 bg-primary text-primary-foreground !py-2.5 !text-xs"
+              >
+                <ExternalLink className="h-3.5 w-3.5" /> Abrir no {browser}
+              </a>
+              <button onClick={copyLink} className="btn-block bg-background !py-2.5 !text-xs">
+                {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                {copied ? "Copiado" : "Copiar"}
+              </button>
+            </div>
           </div>
         ) : (
-          <div className="pt-1">
-            {inApp === "tiktok" && (
-              <div className="mb-3 border-2 border-yellow-500 bg-yellow-500/10 p-2.5 text-center">
-                <p className="text-[11px] font-extrabold uppercase leading-tight text-yellow-800">
-                  ⚠️ Baixando pelo TikTok
-                </p>
-                <p className="mt-0.5 text-[10px] leading-snug text-yellow-800/90">
-                  Se travar, toque nos ⋯ e abra no {browser}.
-                </p>
-              </div>
-            )}
-
-            {/* Video mostra como baixar — sem instrucao escrita */}
-            <div className="mb-3 overflow-hidden border-2 border-foreground bg-muted">
-              <div className="aspect-video w-full">
-                <iframe
-                  className="h-full w-full"
-                  src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}?rel=0&modestbranding=1`}
-                  title="Como baixar"
-                  loading="lazy"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-
-            <div className="mb-2 h-2 w-full overflow-hidden border-2 border-foreground bg-[#3a3a3a]">
-              <div
-                className="h-full bg-gradient-to-r from-[#8aff3c] to-[#4fbf1c] transition-all duration-1000 ease-linear"
-                style={{ width: `${waitProgress}%` }}
-              />
-            </div>
+          <div className="mt-5">
             <a
               href={ready ? url : undefined}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={ready ? handleDownloadClick : (e) => e.preventDefault()}
+              onClick={ready ? handleDownload : (e) => e.preventDefault()}
               aria-disabled={!ready}
-              className={`btn-block relative w-full !py-5 text-lg font-black ${
-                ready
-                  ? "btn-rgb"
-                  : "cursor-wait bg-muted text-muted-foreground"
+              className={`btn-block w-full !py-4 !text-base font-bold tracking-wide transition-opacity ${
+                ready ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground opacity-70 pointer-events-none"
               }`}
             >
-              {ready ? (
-                <><Download className="h-6 w-6" /> BAIXAR</>
-              ) : (
-                <span className="font-pixel text-[11px]">Aguarde {count}s</span>
-              )}
+              <Download className="h-5 w-5" />
+              {ready ? "BAIXAR AGORA" : `Preparando… ${count}s`}
             </a>
-
-            {inApp === "tiktok" && (
-              <button
-                type="button"
-                onClick={copyLink}
-                className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold uppercase text-muted-foreground hover:text-foreground"
-              >
-                {copied ? (
-                  <><Check className="h-3 w-3" /> Link copiado</>
-                ) : (
-                  <><Copy className="h-3 w-3" /> Se não baixar, copiar link</>
-                )}
-              </button>
-            )}
+            <p className="mt-3 text-center text-[11px] text-muted-foreground">
+              100% grátis · sem vírus · via Terabox
+            </p>
           </div>
         )}
-
-        <p className="mt-3 text-center text-[10px] font-bold uppercase text-muted-foreground">
-          🔒 Grátis e seguro
-        </p>
       </div>
     </div>
   );

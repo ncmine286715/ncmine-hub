@@ -31,11 +31,7 @@ export function InAppBrowserGuard() {
       try {
         if (sessionStorage.getItem(DISMISS_KEY) === "1") setDismissed(true);
       } catch {}
-      trackEvent(
-        "inapp_detected",
-        { kind: k, platform: detectPlatform() },
-        { onceKey: "inapp_detected" },
-      );
+      trackEvent("inapp_detected", { kind: k, platform: detectPlatform() });
     }
   }, []);
 

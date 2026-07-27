@@ -1,36 +1,18 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { ADDONS } from "@/lib/addons";
-import { FloatingBackground } from "@/components/FloatingBackground";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
-import { DiscordToast, markDownloadForDiscordToast } from "@/components/DiscordToast";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import type { Addon } from "@/components/AddonCard";
 import {
-  Download, Star, User, Calendar, Tag, Share2, ArrowLeft,
-  ExternalLink, Play, Sparkles, Info,
-  Smartphone, Apple, Monitor, Users, Trophy, Check, X,
+  Download, Star, User, Calendar, Tag, Share2, ArrowLeft, Play,
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
-import { CREATOR_NAME, DISCORD_URL, TIKTOK_URL } from "@/lib/links";
-import { DiscordIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-
+import { CREATOR_NAME, TIKTOK_URL } from "@/lib/links";
+import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { RelatedAddons } from "@/components/RelatedAddons";
-import { ReportBrokenLink } from "@/components/ReportBrokenLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { trackEvent, initScrollTracker, initSession } from "@/lib/analytics";
-import { useEffect } from "react";
-import { OnboardingTour } from "@/components/onboarding/OnboardingTour";
-import { addonOnboardingSteps } from "@/components/onboarding/addonOnboardingSteps";
+import { trackEvent, initScrollTracker } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/use-count-up";
 import { AddonBlockPreview } from "@/components/AddonBlockPreview";
 
@@ -40,31 +22,20 @@ export const Route = createFileRoute("/addon/$id")({
   head: ({ params }) => {
     const addon = RAW_ADDONS.find((a) => a.id === params.id);
     if (!addon) {
-      return {
-        meta: [
-          { title: "Addon nao encontrado — NCMINE" },
-          { name: "description", content: "Este addon nao existe ou foi removido." },
-        ],
-      };
+      return { meta: [{ title: "Addon não encontrado — @ncmine" }] };
     }
-    const canonical = `https://mineaddonsnews.online/addon/${addon.id}`;
+    const canonical = `https://ncmine-hub.lovable.app/addon/${addon.id}`;
     return {
       meta: [
-        { title: `${addon.title} — Download Gratis | NCMINE` },
+        { title: `${addon.title} — Download grátis | @ncmine` },
         { name: "description", content: addon.short },
-        { name: "robots", content: "index, follow" },
-        { property: "og:title", content: `${addon.title} — Download Gratis` },
+        { property: "og:title", content: `${addon.title} — Download grátis` },
         { property: "og:description", content: addon.short },
         { property: "og:image", content: addon.image },
         { property: "og:type", content: "article" },
         { property: "og:url", content: canonical },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:site", content: CREATOR_NAME },
-        { name: "twitter:title", content: addon.title },
-        { name: "twitter:description", content: addon.short },
         { name: "twitter:image", content: addon.image },
-        { name: "keywords", content: addon.tags?.join(", ") || "" },
-        { name: "author", content: addon.author || CREATOR_NAME },
       ],
       links: [{ rel: "canonical", href: canonical }],
     };
@@ -72,65 +43,38 @@ export const Route = createFileRoute("/addon/$id")({
   component: AddonPage,
 });
 
-import { FavoriteButton } from "@/components/FavoriteButton";
-import { RatingAndComments } from "@/components/RatingAndComments";
-import { useAuth } from "@/hooks/use-auth";
-import { recordShare } from "@/lib/firebase-services";
-
 function AddonPage() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
-  const [discordToast, setDiscordToast] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
-
-  const scrollToTutorial = () => {
-    document.getElementById("como-baixar")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const addon = useMemo(() => RAW_ADDONS.find((a) => a.id === id), [id]);
   const animatedDownloads = useCountUp(addon?.downloads ?? 0);
 
-  // Analytics
   useEffect(() => {
-    initSession();
     if (addon) trackEvent("addon_view", { addonId: addon.id, title: addon.title });
     const cleanup = initScrollTracker();
     return () => { cleanup && cleanup(); };
   }, [addon?.id]);
-  
+
   const handleShare = async () => {
     if (!addon) return;
-    if (user) recordShare(user.uid, addon.id).catch(() => {});
     await shareAddon(addon, (msg) => {
       setToast(msg);
       window.setTimeout(() => setToast(null), 2200);
     });
   };
 
-  const handleDownload = (a: Addon) => {
-    setDownloadFor(a);
-  };
-
   if (!addon) {
     return (
-      <div className="relative min-h-screen pb-16 sm:pb-0">
-        <FloatingBackground />
-        <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
-          <MinecraftBlockIcon className="mb-4 h-16 w-16 text-muted-foreground" />
-          <h1 className="font-pixel text-2xl text-foreground">ADDON NAO ENCONTRADO</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Este addon nao existe ou foi removido.
-          </p>
-          <Link
-            to="/"
-            className="btn-block mt-6 bg-primary text-primary-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> Voltar para Home
-          </Link>
-        </div>
-        <BottomNavigation activeTab="home" onTabChange={() => navigate({ to: "/" })} />
+      <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
+        <MinecraftBlockIcon className="mb-4 h-14 w-14 text-muted-foreground" />
+        <h1 className="text-2xl font-bold">Addon não encontrado</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Este addon não existe ou foi removido.</p>
+        <Link to="/" className="btn-block mt-6 bg-primary text-primary-foreground">
+          <ArrowLeft className="h-4 w-4" /> Voltar ao hub
+        </Link>
       </div>
     );
   }
@@ -143,79 +87,49 @@ function AddonPage() {
     image: addon.image,
     applicationCategory: "GameApplication",
     operatingSystem: "Android, iOS, Windows",
-    url: `https://mineaddonsnews.online/addon/${addon.id}`,
+    url: `https://ncmine-hub.lovable.app/addon/${addon.id}`,
     offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
-    interactionStatistic: {
-      "@type": "InteractionCounter",
-      interactionType: "https://schema.org/DownloadAction",
-      userInteractionCount: addon.downloads,
-    },
     publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
   };
 
   return (
-    <div className="relative min-h-screen pb-20 text-foreground sm:pb-0">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <FloatingBackground />
+    <div className="relative min-h-screen text-foreground">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2 sm:px-4 sm:py-3">
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-sm font-bold hover:text-primary"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span className="hidden sm:inline">Voltar</span>
+      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <Link to="/" className="btn-ghost !px-2 !py-1.5 !text-sm">
+            <ArrowLeft className="h-4 w-4" /> <span className="hidden sm:inline">Voltar</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <FavoriteButton addonId={addon.id} />
-            <button
-              onClick={handleShare}
-              className="btn-block bg-background !px-2 !py-1.5 text-xs sm:!px-3 sm:!py-2"
-            >
-              <Share2 className="h-4 w-4" />
-              <span className="hidden sm:inline">Compartilhar</span>
-            </button>
-            <ThemeToggle />
-          </div>
+          <button onClick={handleShare} className="btn-ghost border border-border !px-3 !py-1.5 !text-xs">
+            <Share2 className="h-4 w-4" /> <span className="hidden sm:inline">Compartilhar</span>
+          </button>
         </div>
       </header>
 
-      {/* Toast */}
       {toast && (
-        <div className="fixed left-1/2 top-16 z-50 -translate-x-1/2 border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold shadow-[3px_3px_0_0_var(--ink)]">
+        <div className="fixed left-1/2 top-16 z-50 -translate-x-1/2 rounded-full border border-border bg-background px-4 py-1.5 text-xs font-semibold shadow-md">
           {toast}
         </div>
       )}
 
-      <main className="mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-8">
-        <Breadcrumb className="mb-3 text-xs sm:mb-4">
+      <main className="mx-auto max-w-6xl px-4 py-6 sm:py-10">
+        <Breadcrumb className="mb-4 text-xs">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/">Home</Link>
-              </BreadcrumbLink>
+              <BreadcrumbLink asChild><Link to="/">Home</Link></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <span className="text-muted-foreground">{addon.category}</span>
-            </BreadcrumbItem>
+            <BreadcrumbItem><span className="text-muted-foreground">{addon.category}</span></BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="line-clamp-1">{addon.title}</BreadcrumbPage>
-            </BreadcrumbItem>
+            <BreadcrumbItem><BreadcrumbPage className="line-clamp-1">{addon.title}</BreadcrumbPage></BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
-        {/* Addon Hero */}
-        <div data-onboarding="hero" className="card-block overflow-hidden">
+        <div className="card-block overflow-hidden">
           <div className="grid gap-0 sm:grid-cols-2">
-            {/* Image/Video */}
-            <div className="relative aspect-video w-full overflow-hidden border-b-2 border-foreground bg-muted sm:aspect-auto sm:border-b-0 sm:border-r-2">
+            <div className="relative aspect-video w-full overflow-hidden border-b border-border bg-muted sm:aspect-auto sm:border-b-0 sm:border-r">
               {addon.youtubeId ? (
                 <iframe
                   className="absolute inset-0 h-full w-full"
@@ -230,240 +144,95 @@ function AddonPage() {
                   <AddonBlockPreview image={addon.image} alt={addon.title} />
                 </div>
               )}
-              <span className="absolute left-2 top-2 inline-flex items-center gap-1 border-2 border-foreground bg-primary px-2 py-0.5 font-pixel text-[8px] uppercase text-primary-foreground sm:text-[9px]">
-                <Tag className="h-3 w-3" />
-                {addon.category}
+              <span className="chip chip-primary absolute left-3 top-3">
+                <Tag className="h-3 w-3" /> {addon.category}
               </span>
             </div>
 
-            {/* Content */}
-            <div className="flex flex-col p-4 sm:p-6">
-              <h1 className="mb-2 break-words text-xl font-black uppercase leading-tight sm:text-3xl">
-                {addon.title}
-              </h1>
+            <div className="flex flex-col p-5 sm:p-8">
+              <h1 className="text-2xl font-black leading-tight sm:text-4xl">{addon.title}</h1>
 
-              {/* Meta */}
-              <div
-                data-onboarding="requirements"
-                className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-3 sm:text-sm"
-              >
-                <span className="inline-flex max-w-full items-center gap-1 break-words">
-                  <User className="h-3.5 w-3.5 shrink-0" />
-                  {addon.author || "Desconhecido"}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5" />
-                  {addon.date}
-                </span>
-                <span className="font-pixel text-[9px] sm:text-[10px]">v{addon.version}</span>
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1"><User className="h-3.5 w-3.5" /> {addon.author || "Desconhecido"}</span>
+                <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {addon.date}</span>
+                <span className="font-pixel text-[10px]">v{addon.version}</span>
               </div>
 
-              {/* Rating & Downloads */}
-              <div className="mb-4 flex items-center gap-4">
+              <div className="mt-4 flex items-center gap-4">
                 <span className="inline-flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 sm:h-5 sm:w-5 ${i < addon.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}`}
-                    />
+                    <Star key={i} className={`h-4 w-4 ${i < addon.rating ? "fill-primary text-primary" : "text-border"}`} />
                   ))}
-                  <span className="ml-1 text-xs font-bold">{addon.rating}/5</span>
+                  {addon.rating > 0 && <span className="ml-1 text-xs font-semibold">{addon.rating}/5</span>}
                 </span>
-                <span className="inline-flex items-center gap-1 font-pixel text-xs">
-                  <Download className="h-4 w-4" />
-                  {animatedDownloads.toLocaleString("pt-BR")} downloads
+                <span className="inline-flex items-center gap-1 text-xs font-medium tabular-nums text-muted-foreground">
+                  <Download className="h-4 w-4" /> {animatedDownloads.toLocaleString("pt-BR")}
                 </span>
               </div>
 
-              {/* Short description */}
-              <p className="mb-4 break-words text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {addon.short}
-              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{addon.short}</p>
 
-              {/* Tags — clicáveis, filtram a busca na home */}
-              <div className="mb-4 flex flex-wrap gap-1.5">
-                {addon.tags?.slice(0, 6).map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => { window.location.href = `/?q=${encodeURIComponent(t)}`; }}
-                    className="border-2 border-foreground bg-background px-2 py-0.5 text-[9px] uppercase transition-colors hover:bg-primary hover:text-primary-foreground sm:text-[10px]"
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="mt-auto flex flex-col gap-2 sm:flex-row">
-                <button
-                  data-onboarding="download-cta"
-                  onClick={() => handleDownload(addon)}
-                  className="btn-block flex-1 bg-primary text-primary-foreground !py-3 text-sm animate-mc-pulse-orange sm:!py-4 sm:text-base"
-                >
-                  <Download className="h-5 w-5" />
-                  Baixar Gratis
-                </button>
-                <button
-                  onClick={scrollToTutorial}
-                  className="btn-block bg-foreground text-background !py-3 text-sm sm:!py-4"
-                >
-                  <Play className="h-5 w-5" />
-                  Como Baixar
-                </button>
-              </div>
-
-              <p
-                data-onboarding="security"
-                className="mt-2 text-center text-[10px] font-bold uppercase text-muted-foreground sm:text-left"
-              >
-                🔒 100% grátis · verificado · sem vírus
-              </p>
-
-              {addon.youtubeId && (
-                <a
-                  href={`https://youtu.be/${addon.youtubeId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-                >
-                  Ver video completo no YouTube <ExternalLink className="h-3 w-3" />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Compatibilidade — responde as 4 perguntas antes do scroll */}
-        <div className="mt-4 card-block p-4 sm:mt-6 sm:p-5">
-          <div className="grid grid-cols-3 gap-2 border-b-2 border-foreground pb-3 sm:gap-4">
-            {(addon.platforms ?? ["Android", "iOS", "Windows"]).map((p) => {
-              const Icon = p === "Android" ? Smartphone : p === "iOS" ? Apple : Monitor;
-              return (
-                <div key={p} className="flex flex-col items-center gap-1">
-                  <Icon className="h-5 w-5 text-primary" />
-                  <span className="text-[9px] font-bold uppercase sm:text-[10px]">{p}</span>
-                  <Check className="h-3.5 w-3.5 text-green-600" />
+              {addon.tags?.length ? (
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {addon.tags.slice(0, 8).map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => { window.location.href = `/?q=${encodeURIComponent(t)}`; }}
+                      className="chip hover:bg-primary hover:text-primary-foreground"
+                    >
+                      {t}
+                    </button>
+                  ))}
                 </div>
-              );
-            })}
-          </div>
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold uppercase sm:text-xs">
-            <span className="inline-flex items-center gap-1.5">
-              <Trophy className="h-3.5 w-3.5 text-primary" />
-              Achievement-Friendly:{" "}
-              {addon.achievementFriendly === false ? (
-                <span className="inline-flex items-center gap-0.5 text-red-600"><X className="h-3 w-3" /> NÃO</span>
-              ) : (
-                <span className="inline-flex items-center gap-0.5 text-green-600"><Check className="h-3 w-3" /> SIM</span>
-              )}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Users className="h-3.5 w-3.5 text-primary" />
-              Multiplayer: {addon.multiplayer === false ? "NÃO" : "SIM"}
-            </span>
-          </div>
-        </div>
+              ) : null}
 
-        {/* Tutorial — sempre visível */}
-        <div id="como-baixar" className="mt-4 scroll-mt-20 sm:mt-6">
-          <div data-onboarding="how-it-works" className="mb-2 flex items-center gap-2">
-            <span className="font-pixel text-xs text-primary sm:text-sm">COMO BAIXAR ESTE ADDON</span>
-            <span className="h-px flex-1 bg-foreground/20" />
-          </div>
-          <div className="card-block overflow-hidden">
-            <div className="aspect-video w-full bg-muted">
-              <iframe
-                className="h-full w-full"
-                src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}?rel=0&modestbranding=1`}
-                title="Como baixar"
-                loading="lazy"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <button
+                onClick={() => setDownloadFor(addon)}
+                className="btn-block mt-6 bg-primary text-primary-foreground !py-3.5 !text-base"
+              >
+                <Download className="h-5 w-5" /> Baixar agora
+              </button>
             </div>
           </div>
-          <button
-            onClick={() => handleDownload(addon)}
-            className="btn-block mt-3 w-full bg-primary text-primary-foreground !py-3.5 text-sm font-black animate-mc-pulse-orange sm:text-base"
-          >
-            <Download className="h-5 w-5" />
-            Baixar {addon.title}
-          </button>
-          <div className="mt-2 flex justify-center">
-            <ReportBrokenLink addonId={addon.id} addonTitle={addon.title} />
+        </div>
+
+        {addon.description && addon.description !== addon.short && (
+          <section className="mx-auto mt-8 max-w-3xl">
+            <h2 className="text-xl font-bold">Sobre o addon</h2>
+            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/85">
+              {addon.description}
+            </p>
+          </section>
+        )}
+
+        <section id="como-baixar" className="mx-auto mt-10 max-w-3xl">
+          <h2 className="text-xl font-bold">Como baixar do Terabox</h2>
+          <p className="mt-2 text-sm text-muted-foreground">Tutorial rápido do @ncmine.</p>
+          <div className="card-block mt-4 aspect-video overflow-hidden">
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube.com/embed/${TERABOX_TUTORIAL_YT_ID}`}
+              title="Como baixar do Terabox"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
-        </div>
+        </section>
 
-        {/* Full Description */}
-        <div className="mt-4 card-block p-4 sm:mt-6 sm:p-6">
-          <h2 className="mb-3 flex items-center gap-2 font-pixel text-xs sm:text-sm">
-            <Info className="h-4 w-4 text-primary" />
-            SOBRE ESTE ADDON
-          </h2>
-          <div className="whitespace-pre-wrap break-words text-sm leading-relaxed text-foreground/80 sm:text-base">
-            {addon.description}
-          </div>
-        </div>
-
-        {/* Social Features */}
-        <RatingAndComments addonId={addon.id} />
-
-        {/* Você pode gostar — mesma categoria + overlap de tags, ordenado por rating */}
-        <div className="mt-12 mb-8">
-          <RelatedAddons current={addon} all={RAW_ADDONS} max={4} />
-        </div>
-
-        {/* Discord CTA */}
-        <div className="mt-6 card-block bg-[#5865F2] p-4 text-white sm:mt-10 sm:p-6">
-          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-            <DiscordIcon className="h-12 w-12 shrink-0 sm:h-16 sm:w-16" />
-            <div className="flex-1">
-              <h3 className="font-pixel text-sm sm:text-base">ENTRE NO DISCORD</h3>
-              <p className="mt-1 text-xs text-white/80 sm:text-sm">
-                Receba novos addons em primeira mao, tire duvidas e conheca a comunidade.
-              </p>
-            </div>
-            <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-block bg-white text-[#5865F2] !px-6 !py-3 text-sm font-bold"
-            >
-              Entrar Agora
-            </a>
-          </div>
-        </div>
+        <section className="mt-12">
+          <RelatedAddons current={addon} all={RAW_ADDONS} />
+        </section>
       </main>
 
-      {/* Footer mini */}
-      <footer className="border-t-2 border-foreground bg-foreground py-4 text-center font-pixel text-[8px] text-background/60 sm:text-[9px]">
-        &copy; {new Date().getFullYear()} {CREATOR_NAME} &middot; Todos os direitos reservados
-      </footer>
-
-      {/* Bottom Navigation (mobile) */}
-      <BottomNavigation 
-        activeTab="home" 
-        onTabChange={() => navigate({ to: "/" })} 
-      />
-
-      {/* Download Modal */}
       <DownloadModal
         open={!!downloadFor}
         url={downloadFor?.downloadUrl ?? "#"}
         title={downloadFor?.title ?? ""}
         onClose={() => setDownloadFor(null)}
         addonId={downloadFor?.id}
-        onDownloaded={() => {
-          if (markDownloadForDiscordToast()) {
-            window.setTimeout(() => setDiscordToast(true), 1200);
-          }
-        }}
       />
-      <DiscordToast open={discordToast} onClose={() => setDiscordToast(false)} />
-
-      {/* Onboarding — explica a página e guia até o download */}
-      <OnboardingTour steps={addonOnboardingSteps} tourId="addon" />
     </div>
   );
 }

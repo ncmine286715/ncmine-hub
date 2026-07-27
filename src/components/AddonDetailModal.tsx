@@ -125,7 +125,6 @@ export function AddonDetailModal({ addon, onClose, onDownload }: Props) {
   );
 }
 
-import { FavoriteButton } from "./FavoriteButton";
 
 function DetailActions({
   addon,
@@ -149,7 +148,6 @@ function DetailActions({
       >
         <Download className="h-4 w-4" /> Baixar agora
       </button>
-      <FavoriteButton addonId={addon.id} />
       <button
         type="button"
         onClick={handleShare}
