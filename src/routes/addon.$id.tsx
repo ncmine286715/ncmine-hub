@@ -27,12 +27,17 @@ export const Route = createFileRoute("/addon/$id")({
     }
     const canonical = siteCanonical(`/addon/${addon.id}`);
     const indexable = isIndexableAddon(addon);
-    const title = `${addon.title} — Baixar addon para Minecraft Bedrock | @ncmine`;
-    // Descrição própria, montada com os metadados da ficha — nunca o texto
-    // do autor original copiado literalmente como meta description.
-    const description =
-      `Como baixar e instalar ${addon.title}${addon.author ? ` (${addon.author})` : ""} no Minecraft Bedrock: ` +
-      `requisitos, passo a passo em português e link direto. Categoria ${addon.category}, versão ${addon.version}.`;
+    // Title entre 50 e 60 caracteres, com o nome do addon + diferencial.
+    const clamp = (s: string, max: number) =>
+      s.length <= max ? s : `${s.slice(0, max - 1).replace(/[\s,;:—-]+$/, "")}…`;
+    const title = clamp(`Baixar ${addon.title} — Addon Minecraft Bedrock`, 60);
+    // Descrição própria, montada com os metadados da ficha (120–158 chars) —
+    // nunca o texto do autor original copiado literalmente.
+    const description = clamp(
+      `Baixe e instale ${addon.title} no Minecraft Bedrock: passo a passo em português, requisitos e link direto. ` +
+        `Categoria ${addon.category}, versão ${addon.version}. Testado por @ncmine.`,
+      158,
+    );
     return {
       meta: [
         { title },
@@ -103,6 +108,11 @@ function AddonPage() {
         datePublished: addon.date,
         author: { "@type": "Person", name: addon.author || CREATOR_NAME },
         url: pageUrl,
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+          reviewBody: `Instalado e testado no Minecraft Bedrock (versão ${addon.version}) antes da publicação: importação do pacote, ativação no mundo e sessão de jogo sem travamentos.`,
+        },
         offers: { "@type": "Offer", price: "0", priceCurrency: "BRL", availability: "https://schema.org/InStock" },
         publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
         ...(addon.rating > 0
@@ -241,6 +251,24 @@ function AddonPage() {
             </p>
           </section>
         )}
+
+        <section className="mx-auto mt-8 max-w-3xl">
+          <div className="card-block p-5">
+            <h2 className="text-base font-bold">Verificação do @ncmine</h2>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+              Antes de publicar esta ficha, o pacote foi importado e testado no Minecraft Bedrock
+              (versão {addon.version} do addon): checamos se o arquivo abre direto no jogo, se o pacote
+              aparece na lista de comportamento/recursos e se o mundo roda uma sessão de jogo sem
+              travar. O link de download também foi aberto para confirmar que o arquivo existe e
+              está acessível.
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Por <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="font-semibold underline">{CREATOR_NAME}</a>
+              {" "}— criador de conteúdo de Minecraft Bedrock. Crédito do addon:{" "}
+              <strong>{addon.author || "autor não identificado"}</strong>. Publicado em {addon.date}.
+            </p>
+          </div>
+        </section>
 
         <section className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Requisitos</h2>

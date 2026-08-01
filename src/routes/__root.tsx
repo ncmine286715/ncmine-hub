@@ -71,6 +71,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "@ncmine — Addons de Minecraft Bedrock" },
       { name: "description", content: "Hub curado de addons Minecraft Bedrock do @ncmine. Baixe grátis, sem cadastro." },
       { name: "author", content: "@ncmine" },
+      { name: "google-adsense-account", content: "ca-pub-8967995144964134" },
       { name: "theme-color", content: "#ffffff" },
       { property: "og:site_name", content: "@ncmine" },
       { property: "og:type", content: "website" },
@@ -100,6 +101,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       { src: "https://www.googletagmanager.com/gtag/js?id=G-RYBSXRH3TF", async: true },
+      {
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8967995144964134",
+        async: true,
+        crossOrigin: "anonymous",
+      },
       {
         children:
           "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('js',new Date());gtag('config','G-RYBSXRH3TF',{send_page_view:false,anonymize_ip:true});",
