@@ -30,16 +30,16 @@ export function enrichAddons(list: Addon[]): Addon[] {
 }
 
 /**
- * Página só é indexável quando tem texto editorial próprio suficiente.
- * As demais ficam acessíveis, mas com noindex e fora do sitemap
- * (evita o padrão "thin/scraped content" reprovado pelo AdSense).
+ * Página só é indexável quando tem texto editorial próprio suficiente
+ * (1000+ caracteres). As demais ficam acessíveis, mas com noindex e fora
+ * do sitemap (evita o padrão "thin content" reprovado pelo AdSense).
  */
-export const MIN_EDITORIAL_WORDS = 40;
+export const MIN_EDITORIAL_CHARS = 1000;
 
 export function isIndexableAddon(addon: Pick<Addon, "short" | "description">): boolean {
   const description = norm(addon.description);
   if (!description || description === norm(addon.short)) return false;
-  return description.split(" ").length >= MIN_EDITORIAL_WORDS;
+  return description.length >= MIN_EDITORIAL_CHARS;
 }
 
 export const ADDONS: Addon[] = enrichAddons(addonsData as Addon[]);
