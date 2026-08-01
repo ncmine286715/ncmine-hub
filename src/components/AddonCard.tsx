@@ -53,6 +53,7 @@ export function AddonCard({ addon, onOpen, index = 0 }: Props) {
             src={addon.image}
             alt={addon.title}
             loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setBroken(true)}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

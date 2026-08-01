@@ -8,6 +8,7 @@ import type { Addon } from "@/components/AddonCard";
 import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME, SITE_NAME } from "@/lib/links";
 import { trackEvent, initScrollTracker } from "@/lib/analytics";
+import { AdsterraBanner } from "@/components/ads/AdsterraBanner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -86,6 +87,10 @@ function Index() {
         onOpen={handleOpen}
         initialQuery={initialQuery}
       />
+
+      <div className="mx-auto w-full max-w-6xl px-4 py-6">
+        <AdsterraBanner />
+      </div>
 
       {/* Footer */}
       <footer className="mt-8 border-t border-border">

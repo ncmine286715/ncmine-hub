@@ -15,6 +15,8 @@ import { RelatedAddons } from "@/components/RelatedAddons";
 import { trackEvent, initScrollTracker } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/use-count-up";
 import { AddonBlockPreview } from "@/components/AddonBlockPreview";
+import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
+import { AdsterraBanner } from "@/components/ads/AdsterraBanner";
 
 const RAW_ADDONS = ADDONS;
 
@@ -206,6 +208,10 @@ function AddonPage() {
           </section>
         )}
 
+        <div className="mx-auto mt-8 max-w-3xl">
+          <AdsterraNativeBanner />
+        </div>
+
         <section id="como-baixar" className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Como baixar do Terabox</h2>
           <p className="mt-2 text-sm text-muted-foreground">Tutorial rápido do @ncmine.</p>
@@ -224,6 +230,10 @@ function AddonPage() {
         <section className="mt-12">
           <RelatedAddons current={addon} all={RAW_ADDONS} />
         </section>
+
+        <div className="mx-auto mt-10 flex max-w-3xl justify-center">
+          <AdsterraBanner />
+        </div>
       </main>
 
       <DownloadModal

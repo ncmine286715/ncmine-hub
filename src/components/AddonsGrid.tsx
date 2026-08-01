@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 import { useCountUp } from "@/hooks/use-count-up";
+import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
 
 type Props = {
   addons: Addon[];
@@ -24,6 +25,9 @@ const VIEW_KEY = "ncmine:view-mode";
 // Worker no Cloudflare. Renderiza em lotes; resto já está em memória
 // (client-side, sem round-trip de rede) pro "carregar mais".
 const PAGE_SIZE = 24;
+// Onde o banner nativo entra no feed — depois da 1a leva de cards, antes
+// de "carregar mais" existir, pra sempre aparecer numa posicao previsivel.
+const AD_SLOT_INDEX = 8;
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
@@ -392,6 +396,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
                 src={featuredAddon.image}
                 alt={featuredAddon.title}
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -451,43 +457,26 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
       ) : view === "grid" ? (
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {visible.map((a, i) => (
+          {visible.slice(0, AD_SLOT_INDEX).map((a, i) => (
             <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />
+          ))}
+          {visible.length > AD_SLOT_INDEX && (
+            <div className="col-span-full">
+              <AdsterraNativeBanner />
+            </div>
+          )}
+          {visible.slice(AD_SLOT_INDEX).map((a, i) => (
+            <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i + AD_SLOT_INDEX} />
           ))}
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          {visible.map((a, i) => (
-            <button
-              key={a.id}
-              type="button"
-              onClick={() => onOpen(a)}
-              className="card-block animate-card-in flex items-center gap-3 p-2 text-left hover:bg-primary/5"
-              style={{ animationDelay: `${Math.min(i, 14) * 30}ms` }}
-            >
-              <img
-                src={a.image}
-                alt={a.title}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                className="h-14 w-14 shrink-0 border-2 border-foreground object-cover sm:h-16 sm:w-16"
-              />
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate text-xs font-extrabold uppercase sm:text-sm">{a.title}</h3>
-                <p className="mt-0.5 flex items-center gap-2 text-[10px] text-muted-foreground sm:text-xs">
-                  <span className="border border-foreground/30 px-1 py-0.5 uppercase">{a.category}</span>
-                  <span className="inline-flex items-center gap-0.5">
-                    <Download className="h-3 w-3" /> {a.downloads.toLocaleString("pt-BR")}
-                  </span>
-                </p>
-              </div>
-              <span
-                onClick={(e) => { e.stopPropagation(); onDownload(a); }}
-                className="btn-block shrink-0 bg-primary text-primary-foreground !px-3 !py-2 text-[10px] sm:text-xs"
-              >
-                <Download className="h-3.5 w-3.5" /> Baixar
-              </span>
-            </button>
+          {visible.slice(0, AD_SLOT_INDEX).map((a, i) => (
+            <AddonListRow key={a.id} addon={a} index={i} onOpen={onOpen} onDownload={onDownload} />
+          ))}
+          {visible.length > AD_SLOT_INDEX && <AdsterraNativeBanner className="my-1" />}
+          {visible.slice(AD_SLOT_INDEX).map((a, i) => (
+            <AddonListRow key={a.id} addon={a} index={i + AD_SLOT_INDEX} onOpen={onOpen} onDownload={onDownload} />
           ))}
         </div>
       )}
@@ -504,6 +493,50 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
       )}
     </section>
+  );
+}
+
+function AddonListRow({
+  addon: a,
+  index: i,
+  onOpen,
+  onDownload,
+}: {
+  addon: Addon;
+  index: number;
+  onOpen: (a: Addon) => void;
+  onDownload: (a: Addon) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(a)}
+      className="card-block animate-card-in flex items-center gap-3 p-2 text-left hover:bg-primary/5"
+      style={{ animationDelay: `${Math.min(i, 14) * 30}ms` }}
+    >
+      <img
+        src={a.image}
+        alt={a.title}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        className="h-14 w-14 shrink-0 border-2 border-foreground object-cover sm:h-16 sm:w-16"
+      />
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-xs font-extrabold uppercase sm:text-sm">{a.title}</h3>
+        <p className="mt-0.5 flex items-center gap-2 text-[10px] text-muted-foreground sm:text-xs">
+          <span className="border border-foreground/30 px-1 py-0.5 uppercase">{a.category}</span>
+          <span className="inline-flex items-center gap-0.5">
+            <Download className="h-3 w-3" /> {a.downloads.toLocaleString("pt-BR")}
+          </span>
+        </p>
+      </div>
+      <span
+        onClick={(e) => { e.stopPropagation(); onDownload(a); }}
+        className="btn-block shrink-0 bg-primary text-primary-foreground !px-3 !py-2 text-[10px] sm:text-xs"
+      >
+        <Download className="h-3.5 w-3.5" /> Baixar
+      </span>
+    </button>
   );
 }
 
