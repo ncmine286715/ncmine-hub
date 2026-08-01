@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
-import { ADDONS } from "@/lib/addons";
+import { ADDONS, isIndexableAddon } from "@/lib/addons";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import type { Addon } from "@/components/AddonCard";
@@ -26,12 +26,20 @@ export const Route = createFileRoute("/addon/$id")({
       return { meta: [{ title: "Addon não encontrado — @ncmine" }] };
     }
     const canonical = siteCanonical(`/addon/${addon.id}`);
+    const indexable = isIndexableAddon(addon);
+    const title = `${addon.title} — Baixar addon para Minecraft Bedrock | @ncmine`;
+    // Descrição própria, montada com os metadados da ficha — nunca o texto
+    // do autor original copiado literalmente como meta description.
+    const description =
+      `Como baixar e instalar ${addon.title}${addon.author ? ` (${addon.author})` : ""} no Minecraft Bedrock: ` +
+      `requisitos, passo a passo em português e link direto. Categoria ${addon.category}, versão ${addon.version}.`;
     return {
       meta: [
-        { title: `${addon.title} — Download grátis | @ncmine` },
-        { name: "description", content: addon.short },
-        { property: "og:title", content: `${addon.title} — Download grátis` },
-        { property: "og:description", content: addon.short },
+        { title },
+        { name: "description", content: description },
+        ...(indexable ? [] : [{ name: "robots", content: "noindex, follow" }]),
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:image", content: addon.image },
         { property: "og:type", content: "article" },
         { property: "og:url", content: canonical },
@@ -178,19 +186,27 @@ function AddonPage() {
                 <span className="font-pixel text-[10px]">v{addon.version}</span>
               </div>
 
-              <div className="mt-4 flex items-center gap-4">
-                <span className="inline-flex items-center gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className={`h-4 w-4 ${i < addon.rating ? "fill-primary text-primary" : "text-border"}`} />
-                  ))}
-                  {addon.rating > 0 && <span className="ml-1 text-xs font-semibold">{addon.rating}/5</span>}
-                </span>
-                <span className="inline-flex items-center gap-1 text-xs font-medium tabular-nums text-muted-foreground">
-                  <Download className="h-4 w-4" /> {animatedDownloads.toLocaleString("pt-BR")}
-                </span>
-              </div>
+              {(addon.rating > 0 || addon.downloads > 0) && (
+                <div className="mt-4 flex items-center gap-4">
+                  {addon.rating > 0 && (
+                    <span className="inline-flex items-center gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className={`h-4 w-4 ${i < addon.rating ? "fill-primary text-primary" : "text-border"}`} />
+                      ))}
+                      <span className="ml-1 text-xs font-semibold">{addon.rating}/5</span>
+                    </span>
+                  )}
+                  {addon.downloads > 0 && (
+                    <span className="inline-flex items-center gap-1 text-xs font-medium tabular-nums text-muted-foreground">
+                      <Download className="h-4 w-4" /> {animatedDownloads.toLocaleString("pt-BR")}
+                    </span>
+                  )}
+                </div>
+              )}
 
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{addon.short}</p>
+              {addon.short && (
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{addon.short}</p>
+              )}
 
               {addon.tags?.length ? (
                 <div className="mt-4 flex flex-wrap gap-1.5">
