@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
-import { ADDONS, isIndexableAddon } from "@/lib/addons";
+import { ADDONS } from "@/lib/addons";
+import { hasArticle, loadArticle, type AddonArticle } from "@/lib/articles";
 import { DownloadModal } from "@/components/DownloadModal";
 import { TERABOX_TUTORIAL_YT_ID } from "@/lib/tutorial";
 import type { Addon } from "@/components/AddonCard";
@@ -20,13 +21,14 @@ import { AddonBlockPreview } from "@/components/AddonBlockPreview";
 const RAW_ADDONS = ADDONS;
 
 export const Route = createFileRoute("/addon/$id")({
+  loader: ({ params }) => loadArticle(params.id),
   head: ({ params }) => {
     const addon = RAW_ADDONS.find((a) => a.id === params.id);
     if (!addon) {
       return { meta: [{ title: "Addon não encontrado — @ncmine" }] };
     }
     const canonical = siteCanonical(`/addon/${addon.id}`);
-    const indexable = isIndexableAddon(addon);
+    const indexable = hasArticle(addon.id);
     // Title entre 50 e 60 caracteres, com o nome do addon + diferencial.
     const clamp = (s: string, max: number) =>
       s.length <= max ? s : `${s.slice(0, max - 1).replace(/[\s,;:—-]+$/, "")}…`;
@@ -59,6 +61,7 @@ export const Route = createFileRoute("/addon/$id")({
 
 function AddonPage() {
   const { id } = Route.useParams();
+  const article = Route.useLoaderData() as AddonArticle | null;
   const navigate = useNavigate();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -127,6 +130,30 @@ function AddonPage() {
           { "@type": "ListItem", position: 3, name: addon.title, item: pageUrl },
         ],
       },
+      ...(article?.faq?.length
+        ? [{
+            "@type": "FAQPage",
+            mainEntity: article.faq.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }]
+        : []),
+      ...(article
+        ? [{
+            "@type": "Article",
+            headline: `${addon.title}: análise, instalação e FAQ`,
+            image: addon.image,
+            inLanguage: "pt-BR",
+            datePublished: addon.date,
+            dateModified: article.updatedAt || addon.date,
+            wordCount: article.wordCount,
+            mainEntityOfPage: pageUrl,
+            author: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+            publisher: { "@type": "Organization", name: "MineAddonsNews", url: SITE_URL },
+          }]
+        : []),
     ],
   };
 
@@ -243,14 +270,51 @@ function AddonPage() {
           </div>
         </div>
 
-        {addon.description && addon.description !== addon.short && (
+        {article ? (
+          <article className="mx-auto mt-8 max-w-3xl">
+            <h2 className="text-xl font-bold">{addon.title}: o que esperar</h2>
+            {article.intro.split(/\n{2,}/).filter(Boolean).map((p, i) => (
+              <p key={i} className="mt-3 text-sm leading-relaxed text-foreground/85">{p}</p>
+            ))}
+
+            {article.sections.map((s) => (
+              <section key={s.h2} className="mt-8">
+                <h2 className="text-lg font-bold">{s.h2}</h2>
+                {s.body.split(/\n{2,}/).filter(Boolean).map((p, i) => (
+                  <p key={i} className="mt-3 text-sm leading-relaxed text-foreground/85">{p}</p>
+                ))}
+              </section>
+            ))}
+
+            {article.verdict && (
+              <section className="mt-8">
+                <h2 className="text-lg font-bold">Vale a pena?</h2>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">{article.verdict}</p>
+              </section>
+            )}
+
+            {article.faq.length > 0 && (
+              <section id="faq" className="mt-10">
+                <h2 className="text-xl font-bold">Perguntas frequentes sobre {addon.title}</h2>
+                <dl className="mt-4 space-y-4">
+                  {article.faq.map((f) => (
+                    <div key={f.q} className="card-block p-4">
+                      <dt className="text-sm font-bold">{f.q}</dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-foreground/85">{f.a}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            )}
+          </article>
+        ) : addon.description && addon.description !== addon.short ? (
           <section className="mx-auto mt-8 max-w-3xl">
             <h2 className="text-xl font-bold">Sobre o addon</h2>
             <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/85">
               {addon.description}
             </p>
           </section>
-        )}
+        ) : null}
 
         <section className="mx-auto mt-8 max-w-3xl">
           <div className="card-block p-5">
