@@ -146,11 +146,35 @@ async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   const addons = JSON.parse(await readFile("src/data/addons.json", "utf8"));
   const seen = new Set();
-  const pending = addons.filter((a) => {
+  let pending = addons.filter((a) => {
     if (!a?.id || seen.has(a.id)) return false;
     seen.add(a.id);
     return !existsSync(join(OUT_DIR, `${a.id}.json`));
-  }).slice(0, LIMIT);
+  });
+
+  // Fila por prioridade: o AdSense olha as páginas mais fortes primeiro.
+  // Ordena por download real, depois por ficha mais completa (resumo + tags),
+  // e intercala categorias para o lote inicial não ficar todo do mesmo tipo.
+  pending.sort((a, b) => {
+    const d = (Number(b.downloads) || 0) - (Number(a.downloads) || 0);
+    if (d) return d;
+    const score = (x) => (x.short ? x.short.length : 0) + (x.tags?.length || 0) * 20 + (x.image ? 50 : 0);
+    return score(b) - score(a);
+  });
+  const buckets = new Map();
+  for (const a of pending) {
+    const k = a.category || "outros";
+    if (!buckets.has(k)) buckets.set(k, []);
+    buckets.get(k).push(a);
+  }
+  const interleaved = [];
+  while (interleaved.length < pending.length) {
+    for (const list of buckets.values()) {
+      const next = list.shift();
+      if (next) interleaved.push(next);
+    }
+  }
+  pending = interleaved.slice(0, LIMIT);
 
   const done = (await readdir(OUT_DIR)).filter((f) => f.endsWith(".json")).length;
   console.log(`[articles] ${done} prontos | ${pending.length} nesta rodada | concorrência ${CONCURRENCY}`);
