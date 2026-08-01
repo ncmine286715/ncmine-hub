@@ -6,12 +6,15 @@
   "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "node scripts/sync-addons.mjs && vite build && node scripts/prerender.mjs",
     "build:dev": "vite build --mode development",
     "preview": "wrangler dev --cwd .output/server",
     "deploy": "npm run build && wrangler deploy --cwd .output/server",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sync:addons": "node scripts/sync-addons.mjs",
+    "predev": "node scripts/sync-addons.mjs",
+    "prebuild": "node scripts/sync-addons.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
