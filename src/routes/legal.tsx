@@ -1,5 +1,4 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { FloatingBackground } from '@/components/FloatingBackground';
 import { ArrowLeft, Scale, Shield, FileText, AlertTriangle, Mail } from 'lucide-react';
 
 export const Route = createFileRoute('/legal')({
