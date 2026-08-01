@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { useLiveAddons } from "@/hooks/use-live-addons";
 import { Hero } from "@/components/Hero";
