@@ -208,7 +208,7 @@ function AddonPage() {
           </section>
         )}
 
-        <div className="mx-auto mt-8 max-w-3xl">
+        <div className="mx-auto mt-6 max-w-3xl sm:mt-8">
           <AdsterraNativeBanner />
         </div>
 
@@ -231,7 +231,7 @@ function AddonPage() {
           <RelatedAddons current={addon} all={RAW_ADDONS} />
         </section>
 
-        <div className="mx-auto mt-10 flex max-w-3xl justify-center">
+        <div className="mx-auto mt-6 flex max-w-3xl justify-center px-2 sm:mt-10 sm:px-0">
           <AdsterraBanner />
         </div>
       </main>

@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { AddonCard, type Addon } from "@/components/AddonCard";
 import { useCountUp } from "@/hooks/use-count-up";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
 
 type Props = {
@@ -27,10 +28,15 @@ const VIEW_KEY = "ncmine:view-mode";
 const PAGE_SIZE = 24;
 // Cada anuncio nativo roda isolado num iframe sandbox (AdSandbox), entao
 // da pra repetir a cada N cards sem colidir id/variavel global entre eles.
-const AD_INTERVAL = 16;
+// Intervalo menor no mobile: a grade tem so 2 colunas la, entao o mesmo
+// N de itens do desktop (4 colunas) levaria o dobro de rolagem pra
+// aparecer um anuncio — ajusta pra manter a mesma frequencia por linha.
+const AD_INTERVAL_DESKTOP = 16;
+const AD_INTERVAL_MOBILE = 8;
 
 function interleaveAds<T>(
   items: T[],
+  interval: number,
   renderItem: (item: T, i: number) => React.ReactNode,
   renderAd: (adIndex: number) => React.ReactNode,
 ): React.ReactNode[] {
@@ -38,7 +44,7 @@ function interleaveAds<T>(
   let adIndex = 0;
   items.forEach((item, i) => {
     nodes.push(renderItem(item, i));
-    if ((i + 1) % AD_INTERVAL === 0 && i + 1 < items.length) {
+    if ((i + 1) % interval === 0 && i + 1 < items.length) {
       nodes.push(renderAd(adIndex++));
     }
   });
@@ -75,6 +81,8 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   const [listening, setListening] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const adInterval = isMobile ? AD_INTERVAL_MOBILE : AD_INTERVAL_DESKTOP;
 
   useEffect(() => {
     try {
@@ -475,6 +483,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
           {interleaveAds(
             visible,
+            adInterval,
             (a, i) => <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />,
             (adI) => (
               <div key={`ad-${adI}`} className="col-span-full">
@@ -487,6 +496,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         <div className="flex flex-col gap-2">
           {interleaveAds(
             visible,
+            adInterval,
             (a, i) => <AddonListRow key={a.id} addon={a} index={i} onOpen={onOpen} onDownload={onDownload} />,
             (adI) => <AdsterraNativeBanner key={`ad-${adI}`} className="my-1" />,
           )}
