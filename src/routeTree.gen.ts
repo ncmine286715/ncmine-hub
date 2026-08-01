@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermosRouteImport } from './routes/termos'
+import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as DmcaRouteImport } from './routes/dmca'
@@ -21,6 +22,11 @@ import { Route as AddonIdRouteImport } from './routes/addon.$id'
 const TermosRoute = TermosRouteImport.update({
   id: '/termos',
   path: '/termos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
   '/addon/$id': typeof AddonIdRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/dmca'
     | '/legal'
     | '/privacidade'
+    | '/sobre'
     | '/termos'
     | '/addon/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/dmca'
     | '/legal'
     | '/privacidade'
+    | '/sobre'
     | '/termos'
     | '/addon/$id'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/dmca'
     | '/legal'
     | '/privacidade'
+    | '/sobre'
     | '/termos'
     | '/addon/$id'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   DmcaRoute: typeof DmcaRoute
   LegalRoute: typeof LegalRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
+  SobreRoute: typeof SobreRoute
   TermosRoute: typeof TermosRoute
   AddonIdRoute: typeof AddonIdRoute
 }
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/termos'
       fullPath: '/termos'
       preLoaderRoute: typeof TermosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidade': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   DmcaRoute: DmcaRoute,
   LegalRoute: LegalRoute,
   PrivacidadeRoute: PrivacidadeRoute,
+  SobreRoute: SobreRoute,
   TermosRoute: TermosRoute,
   AddonIdRoute: AddonIdRoute,
 }
