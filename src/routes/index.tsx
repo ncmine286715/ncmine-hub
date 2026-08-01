@@ -96,34 +96,6 @@ function Index() {
         loading={loading && rest.length === 0}
       />
 
-      <div className="mx-auto w-full max-w-6xl px-2 py-4 sm:px-4 sm:py-6">
-        <AdsterraBanner />
-      </div>
-
-      {/* Footer */}
-      <footer className="mt-8 border-t border-border">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <MinecraftBlockIcon className="h-5 w-5 text-primary" />
-              <span className="font-pixel text-xs uppercase tracking-wider">{SITE_NAME}</span>
-            </div>
-            <p className="mt-2 max-w-sm text-xs text-muted-foreground">
-              Hub não-oficial de addons. Os créditos vão para os criadores originais listados em cada addon.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <FooterLink href={DISCORD_URL} label="Discord"><DiscordIcon className="h-4 w-4" /></FooterLink>
-            <FooterLink href={INSTAGRAM_URL} label="Instagram"><InstagramIcon className="h-4 w-4" /></FooterLink>
-            <FooterLink href={YOUTUBE_URL} label="YouTube"><YouTubeIcon className="h-4 w-4" /></FooterLink>
-            <FooterLink href={TIKTOK_URL} label="TikTok"><TikTokIcon className="h-4 w-4" /></FooterLink>
-          </div>
-        </div>
-        <div className="border-t border-border py-3 text-center font-pixel text-[9px] text-muted-foreground">
-          © {new Date().getFullYear()} {CREATOR_NAME} · <Link to="/legal" className="hover:text-foreground">Política de Privacidade e Termos</Link>
-        </div>
-      </footer>
-
       <DownloadModal
         open={!!downloadFor}
         url={downloadFor?.downloadUrl ?? "#"}
@@ -132,20 +104,5 @@ function Index() {
         addonId={downloadFor?.id}
       />
     </div>
-  );
-}
-
-function FooterLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="btn-ghost border border-border !px-3 !py-2 !text-xs"
-      aria-label={label}
-    >
-      {children}
-      <span>{label}</span>
-    </a>
   );
 }
