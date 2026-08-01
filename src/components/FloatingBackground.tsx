@@ -63,7 +63,7 @@ export function FloatingBackground() {
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
     </div>
   );
 }
