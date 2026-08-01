@@ -1,0 +1,65 @@
+{
+ "id": "nlow-s-fast-smelt",
+ "title": "Nlow's Fast Smelt",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1233,
+ "intro": "Se você passa horas no Minecraft Bedrock esperando minérios derreterem ou alimentos assarem, o Nlow's Fast Smelt foi feito para resolver essa demora. Criado pelo desenvolvedor nlowshii, este addon foca em uma melhoria direta na qualidade de vida dentro do jogo, acelerando drasticamente o tempo que os blocos de cozimento levam para processar itens.\n\nA proposta do projeto é direta e sem firulas: aumentar a velocidade de funcionamento da fornalha comum, do defumador, da fogueira e do alto-forno. Para quem joga no modo Survival e prefere economizar tempo na base sem precisar construir sistemas gigantescos de funis, essa modificação altera o ritmo de produção no seu mapa mantendo a essência do gameplay original.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "Na prática, a mudança é sentida imediatamente no momento em que você acende qualquer bloco de fundição. No Minecraft padrão, assar vários packs de ferro, ouro ou comida exige paciência. Com o Nlow's Fast Smelt instalado, a velocidade base de cozimento é multiplicada, fazendo com que os itens fiquem prontos em poucos segundos.\n\nIsso significa que você passa muito menos tempo parado na sua base esperando suprimentos ficarem prontos antes de partir para uma caçada, exploração de cavernas ou combate contra chefões. O ciclo de coleta e processamento de recursos ganha um ritmo dinâmico, permitindo focar na construção e na evolução dos seus equipamentos.\n\nOutro ponto prático é a otimização da rotina. Em vez de deixar o jogo aberto em segundo plano esperando fornos trabalharem, o processo acontece tão rápido que dá para acompanhar a queima e já voltar direto para a ação."
+  },
+  {
+   "h2": "Recursos principais e estações de trabalho afetadas",
+   "body": "O addon abrange as principais estações de processamento térmico do Bedrock. A fornalha tradicional, usada desde o início da jornada para esquentar blocos e comida, passa a trabalhar com um tempo de resposta muito menor do que o padrão do jogo.\n\nO defumador e o alto-forno, que originalmente já possuem o dobro da velocidade de uma fornalha comum, ficam ainda mais rápidos com o Nlow's Fast Smelt. O alto-forno derrete minérios de ferro, ouro e armaduras quase instantaneamente, enquanto o defumador prepara estoques imensos de carne e peixe sem complicação.\n\nA fogueira convencional também recebe o benefício do addon. Como a fogueira permite assar até quatro alimentos ao mesmo tempo sem gastar carvão ou madeira, a aceleração do tempo torna o item uma excelente alternativa no início do jogo para garantir comida rápida."
+  },
+  {
+   "h2": "Como instalar passo a passo no Bedrock",
+   "body": "A instalação do Nlow's Fast Smelt no Minecraft Bedrock é simples em qualquer plataforma. O arquivo vem no formato padronizado do jogo (.mcaddon ou .mcpack), facilitando a importação direta para o seu dispositivo.\n\nNo Android e iOS, faça o download do arquivo, abra o seu gerenciador de arquivos e toque no pacote baixado. Selecione a opção de abrir com o Minecraft. O jogo será iniciado e exibirá no topo da tela a mensagem de que a importação foi concluída com sucesso.\n\nNo Windows 10 e 11, o processo é igual: basta dar um duplo clique sobre o arquivo baixado para que o Minecraft abra e importe o conteúdo. Em seguida, entre nas configurações do seu mapa, navegue até a aba de Pacotes de Comportamento (Behavior Packs), localize o Nlow's Fast Smelt na lista e clique em ativar."
+  },
+  {
+   "h2": "Desempenho e compatibilidade com outros pacotes",
+   "body": "Por ser uma modificação leve voltada para alterar apenas parâmetros de tempo e comportamento de blocos específicos, o impacto no desempenho do dispositivo é nulo. O addon não adiciona entidades pesadas, modelos 3D complexos ou texturas de alta resolução que possam causar quedas de quadros (FPS).\n\nVocê pode jogar com esse pacote ativado em celulares mais fracos ou consoles sem enfrentar travamentos. O funcionamento é fluido e otimizado para o motor gráfico da Bedrock Engine.\n\nEm relação à compatibilidade, o Nlow's Fast Smelt funciona perfeitamente ao lado de pacotes de textura, shaders e addons que adicionam novas criaturas ou estruturas ao mundo. Apenas evite usá-lo junto com outros addons que modifiquem especificamente o funcionamento e a lógica interna dos mesmos fornos para evitar conflitos."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais comuns relatados por jogadores é a falha ao importar o arquivo no jogo. Se isso acontecer, verifique se o arquivo não foi baixado com a extensão .zip no final. Se for o caso, use um gerenciador de arquivos para renomear o arquivo, removendo o final .zip e deixando apenas a extensão .mcpack ou .mcaddon.\n\nOutra falha frequente é importar o addon mas não sentir diferença na velocidade do forno. Lembre-se de que não basta baixar o arquivo: você precisa ir nas configurações do mundo salvo e ativá-lo manualmente na seção de Pacotes de Comportamento.\n\nCaso o problema persista, acesse as opções do seu mundo e certifique-se de ativar as opções de Recursos Experimentais (como 'Recursos de Criador Festivo' ou 'APIs de Script'). Muitos addons exigem essas chaves ativadas para aplicar as alterações nos blocos do jogo."
+  },
+  {
+   "h2": "Dicas para aproveitar o máximo do addon no seu mapa",
+   "body": "Para tirar o melhor proveito da velocidade do Nlow's Fast Smelt, mantenha seus estoques de combustível organizados perto das fornalhas. Como o tempo de cozimento diminui, os blocos consomem o combustível rapidamente para acompanhar a velocidade dos itens processados.\n\nUma excelente estratégia é utilizar o defumador acelerado logo após retornar de fazendas de animais ou pescarias. Em poucos minutos é possível assar baús inteiros de alimentos, garantindo suprimentos para longas sessões de exploração.\n\nSe você joga em mundos multiplayer com amigos, este addon evita filas e brigas pelo uso das estações de trabalho na base principal, permitindo que vários jogadores preparem seus recursos quase ao mesmo tempo sem perder tempo."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Nlow's Fast Smelt é totalmente gratuito?",
+   "a": "Sim, o pacote criado por nlowshii é totalmente gratuito para baixar e instalar no seu Minecraft Bedrock Edition."
+  },
+  {
+   "q": "Posso liberar conquistas na Xbox Live com este addon ativo?",
+   "a": "Não. Ao ativar qualquer pacote de comportamento (Behavior Pack) em um mundo do Bedrock Edition, as conquistas do Xbox são desativadas naquele mapa."
+  },
+  {
+   "q": "O addon funciona no celular (Android e iOS)?",
+   "a": "Funciona perfeitamente. O arquivo é totalmente compatível com dispositivos móveis, além de rodar no Windows e consoles."
+  },
+  {
+   "q": "Consigo ativar o pacote em um mundo que já foi criado antes?",
+   "a": "Sim. Basta acessar as configurações do seu mundo já existente, ir até a seção de Pacotes de Comportamento e ativar o addon."
+  },
+  {
+   "q": "Funciona no modo multiplayer com amigos?",
+   "a": "Sim. Se o dono do mapa ativar o addon no mundo, todos os jogadores que entrarem na partida aproveitarão o cozimento acelerado."
+  },
+  {
+   "q": "O que fazer se o arquivo der erro de importação falhada?",
+   "a": "Verifique se o arquivo tem a extensão .mcaddon ou .mcpack. Caso esteja como .zip, renomeie o arquivo apagando o .zip do final antes de abrir."
+  },
+  {
+   "q": "O addon consome mais combustível do que o normal?",
+   "a": "Não, o consumo de combustível permanece proporcional ao número de itens queimados, alterando apenas o tempo que o processo leva para ser concluído."
+  }
+ ],
+ "verdict": "O Nlow's Fast Smelt é uma modificação extremamente útil para quem quer economizar tempo e eliminar a espera mecânica do Minecraft Bedrock. Vale muito a pena para jogadores de Survival solo ou mundos cooperativos que buscam uma jogabilidade mais ágil e direta. Por outro lado, pode não ser a escolha ideal para puristas que preferem a velocidade padrão da experiência vanilla ou para quem não abre mão de liberar conquistas da Xbox Live no seu mundo principal."
+}

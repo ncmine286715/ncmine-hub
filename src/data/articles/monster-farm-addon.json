@@ -1,0 +1,65 @@
+{
+ "id": "monster-farm-addon",
+ "title": "Monster farm Addon モンスターファームアドオン",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1703,
+ "intro": "Quem joga Minecraft Bedrock sabe o trabalho gigantesco que dá construir uma farm de mobs tradicional no modo sobrevivência. São horas dedicadas a coletar milhares de blocos, erguer estruturas colossais no céu ou escavar áreas imensas no subsolo, tudo isso para conseguir itens essenciais como pólvora, ossos, linhas e carne podre. Se você quer automatizar a coleta desses recursos sem precisar transformar o horizonte do seu mapa em uma obra infinita de engenharia, o Monster Farm Addon do criador tunekeshisan surge como uma solução extremamente prática e direta.\n\nA proposta deste complemento é simples e inteligente: permitir que o jogador gere os drops de monstros diretamente através de blocos geradores funcionais, sem a necessidade de mob grinders cheios de água e alçapões. É o addon ideal para quem prefere focar em construções arquitetônicas, exploração ou para quem joga em celulares e consoles mais fracos e sofre com o lag constante gerado pela quantidade de monstros vivos nos arredores da base.",
+ "sections": [
+  {
+   "h2": "O que muda na sua jogatina na prática",
+   "body": "Na prática, esse addon transforma radicalmente a sua rotina de sobrevivência e a gestão de tempo no mapa. Em vez de ficar gastando picaretas e acumulando pilhas de pedregulho para erguer plataformas de spawn escuras no topo do mundo, você passa a produzir os insumos de monstros de forma compacta e controlada. Isso economiza dezenas de horas de trabalho braçal e mantém a paisagem do seu mundo limpa e bonita.\n\nOutra mudança fundamental está no ganho de desempenho e otimização. As farms de monstros do jogo padrão exigem que dezenas de entidades vivas nasçam, caiam e morram em tempo real, o que consome muita memória RAM e processamento do dispositivo. Ao substituir esse ciclo de entidades vivas por geradores estáticos que entregam diretamente os itens, a taxa de quadros por segundo (FPS) do seu jogo se mantém estável mesmo em aparelhos mais simples.\n\nAlém disso, você ganha autonomia total sobre a sua produção de materiais. Não é mais preciso esperar a noite chegar ou ficar horas parado em um ponto de espera (AFK) para obter pólvora para os seus foguetes de elitros ou ossos para multiplicar suas plantações. A produção se torna constante, rápida e totalmente ajustável às suas necessidades imediatas."
+  },
+  {
+   "h2": "Recursos e funcionamento dos geradores",
+   "body": "O funcionamento do Monster Farm Addon é focado em blocos utilitários projetados para simular a recompensa do combate contra monstros hostis. Cada bloco gerador é voltado para tipos específicos de drops, cobrindo os principais materiais disponibilizados por criaturas como Creepers, Esqueletos, Zumbis, Aranha e outros mobs clássicos do Minecraft.\n\nPara colocar o sistema para funcionar, basta fabricar ou pegar o bloco desejado e posicioná-lo onde achar melhor. O addon foi desenvolvido de maneira modular para se integrar perfeitamente ao sistema padrão de redstone do Bedrock. Isso significa que você pode conectar funis, baús duplos e sistemas de dispensadores diretamente ao gerador para criar uma central de distribuição automatizada ocupando apenas dois ou três blocos de espaço.\n\nComo o sistema não gera a entidade do monstro em si, mas sim o item final do loot, a segurança da sua base fica garantida. Você não corre o risco de ter um Creeper aparecendo por engano em uma zona sem iluminação ou de ouvir barulhos incômodos de monstros o tempo todo enquanto trabalha na sua área de armazenamento."
+  },
+  {
+   "h2": "Como instalar o Monster Farm Addon no celular e PC",
+   "body": "A instalação do addon no Minecraft Bedrock é simples e rápida, independentemente de você jogar no Android, iOS ou no Windows. O primeiro passo é fazer o download do arquivo no formato .mcaddon ou .mcpack disponibilizado pelo desenvolvedor tunekeshisan diretamente para a memória do seu dispositivo.\n\nCaso esteja utilizando um celular Android ou iPhone, abra o gerenciador de arquivos de sua preferência, navegue até a pasta de downloads e dê um toque sobre o arquivo baixado. Escolha a opção de abrir com o Minecraft. O jogo será executado automaticamente e exibirá a mensagem de que a importação do pacote de comportamento foi concluída com sucesso no topo da tela. No computador com Windows, o processo é ainda mais simples: basta dar um duplo clique no arquivo para que o jogo abra e instale o pacote de forma automática.\n\nDepois que a importação terminar, entre no Minecraft, vá nas configurações do seu mundo existente ou crie um novo mapa. Na barra lateral esquerda, acesse a aba 'Pacotes de Comportamento' (Behavior Packs) e ative o Monster Farm Addon. Lembre-se também de entrar na seção 'Experimentos' e ativar os recursos de criador e testes para garantir que todas as funções do addon rodem sem falhas."
+  },
+  {
+   "h2": "Desempenho, compatibilidade e suporte",
+   "body": "Um dos pontos fortes deste addon é a sua leveza técnica. Ele foi totalmente estruturado para rodar liso no ecossistema Bedrock, sendo compatível com a versão 1.20 e atualizado para as versões 1.21 do jogo. Por não carregar scripts pesados nem modelos 3D absurdamente detalhados, ele roda sem engasgos em celulares intermediários e de entrada.\n\nEm mundos multijogador e servidores como o Realms, o addon apresenta um comportamento bastante estável. Para que tudo funcione perfeitamente na partida online, certifique-se de marcar a opção que exige que os jogadores façam o download dos pacotes de recursos ao entrar na sala. Como o processamento dos blocos é simples, o consumo de banda de internet durante o multiplayer é insignificante.\n\nA compatibilidade com outros complementos também é excelente. Como o Monster Farm Addon adiciona blocos próprios e não altera a tabela de código original dos monstros nativos do jogo, você pode usá-lo tranquilamente em conjunto com pacotes de textura, shaders, addons de móveis, novos minérios ou modificações de interface sem medo de gerar conflitos."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "O erro mais comum relatado pelos jogadores ao tentar instalar addons no Bedrock é a falha na importação do arquivo. Se isso acontecer com você, confira se o arquivo baixado não veio com a extensão '.zip' no final do nome. Se o arquivo estiver como 'addon.mcaddon.zip', use o gerenciador de arquivos para renomear e apagar o '.zip', mantendo apenas o final '.mcaddon' antes de tentar abrir no Minecraft novamente.\n\nSe você já instalou o pacote, mas os blocos não aparecem no menu do modo Criativo ou não podem ser fabricados, o motivo geralmente é a falta de ativação dos Recursos Experimentais. Entre no menu de edição do mundo, vá até a aba 'Experimentos' e ligue as chaves relativas a 'Recursos do Criador de Ferramentas' e 'Recursos Modificáveis'. Salve e entre no mundo novamente para recarregar os dados.\n\nCaso note algum travamento ou queda repentina de FPS na área onde colocou os geradores, verifique se os itens produzidos não estão caindo no chão. Se o bloco gerador expelir itens soltos sem um funil embaixo para coletá-los, centenas de itens flutuantes vão se acumular no chão, o que causa lag por excesso de entidades no mapa. Mantenha sempre um sistema de coleta com funil e baú acoplado ao gerador."
+  },
+  {
+   "h2": "Dicas de uso e organização eficiente",
+   "body": "Para manter o seu mundo organizado e com um visual bonito, crie uma sala técnica dedicada exclusivamente à sua produção de recursos. Uma boa ideia é fazer uma sala subterrânea abaixo da sua base principal, com paredes de pedra polida e acesso por um elevador de água ou alçapão, concentrando todos os seus geradores em um único lugar prático.\n\nCombine o Monster Farm Addon com sistemas de separação automática de itens (item sorters) feitos com redstone tradicional. Como a produção de materiais como ossos, pólvora e linhas é contínua, direcionar o fluxo de itens diretamente para fileiras de baús duplos organizados por categoria evita que seu inventário fique lotado de tralhas espalhadas durante as suas jogatinas.\n\nPor fim, saiba dosar a quantidade de blocos geradores colocados na mesma área. Você não precisa exagerar e colocar dezenas de blocos do mesmo tipo para ter bons resultados. Apenas um ou dois blocos de cada mob já garantem um suprimento diário gigantesco para atender todas as suas necessidades de poções, flechas, blocos de osso para agricultura e foguetes de alumínio para voar com a Elitro."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Monster Farm Addon desativa as conquistas do meu mundo?",
+   "a": "Sim. Como qualquer addon que utiliza pacotes de comportamento (Behavior Packs) ou ativa recursos experimentais no Minecraft Bedrock, o uso deste complemento desativa permanentemente a conquista de troféus do Xbox naquele mundo específico."
+  },
+  {
+   "q": "O complemento é totalmente gratuito para baixar?",
+   "a": "Sim, o Monster Farm Addon criado por tunekeshisan é um conteúdo gratuito desenvolvido pela comunidade para o Minecraft Bedrock."
+  },
+  {
+   "q": "O addon funciona no Minecraft de celular (Android e iOS)?",
+   "a": "Funciona perfeitamente. O arquivo foi feito sob medida para o Minecraft PE/Bedrock e roda muito bem em dispositivos móveis Android, iPhones, iPads, PCs com Windows e consoles."
+  },
+  {
+   "q": "Preciso criar um mundo novo para conseguir usar o addon?",
+   "a": "Não é necessário criar um mundo novo. Você pode ativar o pacote de comportamento em um mundo antigo já existente, mas é sempre recomendável fazer uma cópia de segurança do mapa antes de ativar qualquer addon."
+  },
+  {
+   "q": "O addon funciona em servidores multiplayer e Realms?",
+   "a": "Sim, ele funciona perfeitamente em partidas multijogador. Apenas certifique-se de que a opção de forçar os jogadores a baixarem o pacote de recursos esteja marcada nas configurações do mapa para que todos vejam os blocos corretamente."
+  },
+  {
+   "q": "O que fazer se os blocos geradores não aparecerem no jogo?",
+   "a": "Confira se o pacote de comportamento está ativo na aba do mundo e certifique-se de ter ligado os botões da seção 'Experimentos' nas configurações do mapa antes de carregar o jogo."
+  },
+  {
+   "q": "O addon causa travamentos ou lag no celular?",
+   "a": "Não, o addon é muito leve. O único cuidado necessário é colocar funis embaixo dos geradores para evitar que os itens fiquem acumulados no chão provocando lag de entidades soltas."
+  }
+ ],
+ "verdict": "O Monster Farm Addon desenvolvido por tunekeshisan é uma solução fantástica para quem busca eficiência, praticidade e otimização no Minecraft Bedrock. Ele elimina a necessidade cansativa de construir mob grinders colossais que pesam o mapa, sendo a escolha perfeita para quem joga em celulares modesto, para construtores focados na estética do mundo e para quem dispõe de pouco tempo para farmar recursos manualmente. Por outro lado, pode não agradar aos jogadores técnicos puristas que gostam do desafio de projetar e construir complexas farms de redstone usando as mecânicas nativas do jogo."
+}
