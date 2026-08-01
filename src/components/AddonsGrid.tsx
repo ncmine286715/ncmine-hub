@@ -8,6 +8,7 @@ import { AddonCard, type Addon } from "@/components/AddonCard";
 import { useCountUp } from "@/hooks/use-count-up";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
+import { AddonsGridSkeleton } from "@/components/AddonSkeleton";
 
 type Props = {
   addons: Addon[];
@@ -17,6 +18,8 @@ type Props = {
   externalCategory?: string;
   onCategoryChange?: (cat: string) => void;
   initialQuery?: string;
+  /** Catálogo ainda carregando: mostra skeletons no lugar da grade. */
+  loading?: boolean;
 };
 
 const ACHIEVEMENT_KEY = "ncmine:filter-achievement";
@@ -68,7 +71,7 @@ const CATEGORY_CONFIG: CategoryConfig[] = [
   { id: "Holoprint", label: "Holoprint", icon: <Layers className="h-4 w-4" />, color: "text-[#2196F3]", bgColor: "bg-[#2196F3] text-white" },
 ];
 
-export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange, initialQuery }: Props) {
+export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, externalCategory, onCategoryChange, initialQuery, loading }: Props) {
   const [q, setQ] = useState(initialQuery ?? "");
   useEffect(() => {
     if (initialQuery) setQ(initialQuery);
@@ -471,7 +474,9 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
       )}
 
-      {filtered.length === 0 ? (
+      {loading ? (
+        <AddonsGridSkeleton count={8} />
+      ) : filtered.length === 0 ? (
         <div className="card-block p-10 text-center">
           <p className="font-pixel text-xs">NADA ENCONTRADO</p>
           <p className="mt-2 text-sm text-muted-foreground">Tenta outro termo ou categoria.</p>
