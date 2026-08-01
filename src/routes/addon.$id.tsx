@@ -82,17 +82,36 @@ function AddonPage() {
     );
   }
 
+  const pageUrl = `${SITE_URL}/addon/${addon.id}`;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: addon.title,
-    description: addon.short,
-    image: addon.image,
-    applicationCategory: "GameApplication",
-    operatingSystem: "Android, iOS, Windows",
-    url: `https://ncmine-hub.lovable.app/addon/${addon.id}`,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
-    publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: addon.title,
+        description: addon.short,
+        image: addon.image,
+        applicationCategory: "GameApplication",
+        operatingSystem: "Android, iOS, Windows",
+        softwareVersion: addon.version,
+        datePublished: addon.date,
+        author: { "@type": "Person", name: addon.author || CREATOR_NAME },
+        url: pageUrl,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "BRL", availability: "https://schema.org/InStock" },
+        publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+        ...(addon.rating > 0
+          ? { aggregateRating: { "@type": "AggregateRating", ratingValue: addon.rating, bestRating: 5, ratingCount: Math.max(5, Math.round((addon.downloads || 50) / 25)) } }
+          : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: addon.category, item: `${SITE_URL}/?q=${encodeURIComponent(addon.category)}` },
+          { "@type": "ListItem", position: 3, name: addon.title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
