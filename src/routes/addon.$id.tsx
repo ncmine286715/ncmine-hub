@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
 import { CREATOR_NAME, TIKTOK_URL } from "@/lib/links";
+import { SITE_URL, canonical as siteCanonical } from "@/lib/site";
 import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { RelatedAddons } from "@/components/RelatedAddons";
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/addon/$id")({
     if (!addon) {
       return { meta: [{ title: "Addon não encontrado — @ncmine" }] };
     }
-    const canonical = `https://ncmine-hub.lovable.app/addon/${addon.id}`;
+    const canonical = siteCanonical(`/addon/${addon.id}`);
     return {
       meta: [
         { title: `${addon.title} — Download grátis | @ncmine` },
