@@ -228,9 +228,30 @@ function AddonPage() {
           </section>
         )}
 
-        <div className="mx-auto mt-6 max-w-3xl sm:mt-8">
-          <AdsterraNativeBanner />
-        </div>
+        <section className="mx-auto mt-10 max-w-3xl">
+          <h2 className="text-xl font-bold">Requisitos</h2>
+          <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
+            <li>• Minecraft Bedrock Edition {addon.version ? `— testado na versão ${addon.version} do addon` : ""} (Android, iOS, Windows, console com importação de mundo).</li>
+            <li>• Espaço livre para o arquivo do pacote e para o backup do seu mundo.</li>
+            <li>• Alternâncias experimentais (Experimental Toggles) ativadas no mundo — necessário na maioria dos addons de comportamento.</li>
+            <li>• Pacote de comportamento e pacote de recursos ativados juntos, quando o addon trouxer os dois.</li>
+          </ul>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Addons desativam conquistas no mundo em que forem ligados. Faça backup antes de aplicar em um mundo antigo.
+          </p>
+        </section>
+
+        <section id="como-instalar" className="mx-auto mt-10 max-w-3xl">
+          <h2 className="text-xl font-bold">Como instalar {addon.title}</h2>
+          <ol className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
+            <li><strong>1.</strong> Toque em "Baixar agora" e conclua o download do arquivo (.mcaddon, .mcpack ou .mcworld).</li>
+            <li><strong>2.</strong> Abra o arquivo no gerenciador de downloads do celular ou dê dois cliques no PC — o Minecraft abre sozinho e importa o conteúdo.</li>
+            <li><strong>3.</strong> No Minecraft, entre em <em>Jogar → Editar mundo</em> (ou crie um mundo novo).</li>
+            <li><strong>4.</strong> Em <em>Pacotes de comportamento</em> e <em>Pacotes de recursos</em>, ative o pacote com o nome {addon.title}.</li>
+            <li><strong>5.</strong> Em <em>Configurações do mundo</em>, ligue as alternâncias experimentais se o addon usar entidades, blocos ou scripts personalizados.</li>
+            <li><strong>6.</strong> Salve, entre no mundo e confirme que o conteúdo apareceu. Se não aparecer, saia e entre de novo no mundo.</li>
+          </ol>
+        </section>
 
         <section id="como-baixar" className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Como baixar do Terabox</h2>
@@ -251,9 +272,6 @@ function AddonPage() {
           <RelatedAddons current={addon} all={RAW_ADDONS} />
         </section>
 
-        <div className="mx-auto mt-6 flex max-w-3xl justify-center px-2 sm:mt-10 sm:px-0">
-          <AdsterraBanner />
-        </div>
       </main>
 
       <DownloadModal
