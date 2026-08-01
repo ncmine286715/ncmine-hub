@@ -1,0 +1,65 @@
+{
+ "id": "fire-magic",
+ "title": "Fire Magic",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1544,
+ "intro": "Se você gosta do gênero de fantasia e sente falta de um sistema de combate mágico mais variado e ofensivo no Minecraft Bedrock, o addon Fire Magic, desenvolvido por ZKlint, chega como uma opção direta e bem focada. O pacote adiciona mecânicas e habilidades baseadas inteiramente no elemento fogo ao seu personagem, permitindo que você lance projéteis flamejantes, incendeie seus alvos e domine o campo de batalha com um poder destrutivo renovado.\n\nEsse tipo de modificação é ideal tanto para quem joga no modo sobrevivência tradicional e procura uma vantagem estratégica contra hordas de mobs, quanto para criadores de mapas e jogadores focados em partidas PvP que buscam duelos mais dinâmicos. Neste artigo, você confere todos os detalhes das mecânicas, desempenho, dicas de uso e um guia completo de instalação para todas as plataformas suportadas.",
+ "sections": [
+  {
+   "h2": "O que o addon altera na sua jogatina",
+   "body": "No jogo padrão, o combate à distância fica bastante restrito ao uso de arcos, bestas, tridentes e poções arremessáveis. O Fire Magic muda esse cenário ao entregar habilidades místicas focadas no controle elemental do fogo. Em vez de depender exclusivamente de armas de corte ou projéteis físicos de ferro e diamante, seu personagem passa a manipular o fogo como uma verdadeira ferramenta de ataque e controle de grupo.\n\nNa prática, as lutas do dia a dia ganham uma camada de estratégia muito maior. Em vez de apenas se aproximar e golpear os inimigos, você consegue criar áreas de bloqueio incendiárias, aplicar danos contínuos de queimadura e forçar adversários em partidas multiplayer a mudarem constantemente de posição para evitar o calor.\n\nAlém do impacto direto nas lutas, a adição dessas mecânicas transforma a forma como você interage com a exploração. O elemento fogo deixa de ser apenas um perigo ambiental do Nether ou de lagos de lava para se tornar uma habilidade ativa ao alcance das suas mãos, agregando bastante valor para quem gosta de criar histórias de RPG ou mapas temáticos."
+  },
+  {
+   "h2": "Principais recursos e mecânicas de fogo",
+   "body": "Nesta versão 1.0.0, o foco do Fire Magic está na entrega de poderes ofensivos práticos e eficientes. O jogador recebe capacidade para disparar ataques flamejantes à distância, gerando focos de incêndio no terreno e atingindo criaturas ou outros jogadores antes mesmo que eles consigam se aproximar para um golpe físico.\n\nO dano por fogo gerado pelas habilidades do addon acumula com o tempo, o que ajuda a desgastar inimigos com muita vida, como chefes do jogo ou oponentes equipados com armaduras pesadas no PvP. Esse tipo de mecânica transforma o fogo em uma excelente opção para abrir combates ou para cobrir retiradas estratégicas.\n\nEsteticamente, o complemento utiliza efeitos visuais de partículas e iluminação que acompanham o lançamento dos feitiços. As trajetórias de fumaça e as chamas deixam os confrontos muito mais vivos na tela do celular ou do computador, garantindo que os poderes passem uma sensação real de impacto ao atingir qualquer superfície."
+  },
+  {
+   "h2": "Como instalar no Android, iOS e Windows",
+   "body": "A instalação no Minecraft Bedrock é simples e rápida, exigindo apenas que você abra o arquivo no formato correto (.mcaddon ou .mcpack) usando o próprio jogo. No Android, após baixar o arquivo, utilize um gerenciador de arquivos de sua preferência, toque no pacote baixado e selecione a opção de abrir com o Minecraft. O aplicativo será carregado e iniciará o processo de importação automática do pacote de recursos e de comportamento.\n\nNo sistema iOS (iPhone ou iPad), o procedimento é praticamente idêntico. Abra o aplicativo Arquivos do seu dispositivo após concluir o download, localize o pacote de magia e toque nele. O sistema operacional enviará o conteúdo diretamente para o Minecraft. Caso o arquivo venha compactado no formato .zip, basta renomeá-lo apagando o final '.zip' para que ele volte a ser um arquivo .mcaddon antes de executar.\n\nNo Windows (Bedrock Edition), o processo é ainda mais rápido. Dê dois cliques seguidos sobre o arquivo baixado. O jogo abrirá na tela e mostrará uma notificação na parte superior confirmando que a importação do Fire Magic foi realizada com sucesso.\n\nPara finalizar o processo em qualquer plataforma, entre no Minecraft, crie um novo mundo ou edite um mapa existente. Na aba de configurações, vá até 'Pacotes de Recursos' e 'Pacotes de Comportamento' para ativar o Fire Magic. Lembre-se também de entrar na aba 'Jogo' e ativar os Recursos de Criador Festivos e as opções de experimentos para garantir que todos os scripts funcionem sem falhas."
+  },
+  {
+   "h2": "Desempenho, peso e compatibilidade",
+   "body": "Por focar especificamente em habilidades de combate elemental sem alterar todo o ecossistema de geração de terreno do jogo, o Fire Magic é um complemento bastante leve. Ele não costuma causar quedas bruscas na taxa de quadros por segundo (FPS), rodando de forma estável na maioria dos celulares intermediários, consoles e computadores.\n\nEm termos de compatibilidade com outros mods, o addon costuma conviver bem com pacotes de textura, shaders e mapas de aventura. No entanto, se você tentar combinar o Fire Magic com outros complementos complexos que modifiquem drasticamente o arquivo base do jogador (player.json) ou adicionem outros sistemas de magia pesados, pode haver algum tipo de conflito nos scripts de habilidade.\n\nEm dispositivos móveis mais antigos, a única recomendação é evitar disparar poderes de fogo de forma desenfreada em florestas densas ou vilas cheias de blocos de madeira, pois a propagação massiva de chamas pelo cenário pode exigir mais processamento do aparelho."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "O problema mais relatado por jogadores ao usar addons de magia é tentar acionar os poderes dentro do jogo e nada acontecer. Na maioria das vezes, isso ocorre porque os 'Recursos Experimentais' não foram ativados nas opções do mundo antes de iniciar a partida. Verifique se as opções de API de Modding e Recursos de Testes estão ligadas no menu de criação.\n\nOutro inconveniente comum é incendiar a própria base ou itens valiosos sem querer durante um combate. Se você pretende usar o Fire Magic perto de construções de madeira ou fazendas, você pode desativar a propagação de fogo nas configurações do jogo ou digitando o comando '/gamerule doFireTick false' no chat do mundo.\n\nSe ao tentar importar o arquivo aparecer a mensagem 'Falha ao importar', verifique se o seu Minecraft Bedrock está atualizado para a versão oficial mais recente. Arquivos criados para versões mais novas do jogo costumam falhar ao serem carregados em compilações antigas da Bedrock Edition."
+  },
+  {
+   "h2": "Dicas de estratégias para PvP e sobrevivência",
+   "body": "Para tirar o máximo proveito do Fire Magic em partidas de PvP contra outros jogadores, utilize os feitiços para cobrir a visão do adversário. O efeito visual de estar em chamas dificulta a mira do oponente, criando a oportunidade perfeita para você se aproximar com uma espada de diamantes ou netherita e finalizar o duelo.\n\nNo modo sobrevivência, uma ótima combinação é tomar uma Poção de Resistência ao Fogo antes de entrar em cavernas ou enfrentar grandes grupos de monstros. Com a imunidade garantida, você pode incendiar o chão ao seu próprio redor sem sofrer dano, criando uma armadilha mortal para zumbis, aranhas e creepers que tentarem se aproximar.\n\nAntes de entrar em batalhas decisivas em servidores ou no seu mundo principal, vale a pena abrir um mundo no modo criativo para testar o alcance e o tempo de recarga de cada magia. Conhecer a distância exata do seu ataque evita que você fique indefeso enquanto aguarda a recarga das habilidades."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Fire Magic é totalmente gratuito?",
+   "a": "Sim, o complemento desenvolvido por ZKlint é distribuído gratuitamente para a comunidade do Minecraft Bedrock."
+  },
+  {
+   "q": "Posso jogar com este addon no meu celular Android ou iPhone?",
+   "a": "Com certeza. O Fire Magic é totalmente compatível com dispositivos móveis rodando Android ou iOS, além do Windows."
+  },
+  {
+   "q": "O Fire Magic desativa a conquista de troféus no meu mundo?",
+   "a": "Sim. Ao ativar qualquer addon de comportamento ou ligar os recursos experimentais, o jogo desativa as conquistas da conta Xbox naquele mundo."
+  },
+  {
+   "q": "Funciona em partidas multiplayer com amigos?",
+   "a": "Sim. O dono do mundo só precisa ativar os pacotes de recurso e comportamento no mapa. Quando os amigos entrarem, o download será feito automaticamente."
+  },
+  {
+   "q": "Posso adicionar o Fire Magic em um mundo que já criei antigamente?",
+   "a": "Pode sim. Basta acessar as configurações do seu mundo existente, ir na aba de pacotes, ativar o addon e certificar-se de ligar as opções experimentais."
+  },
+  {
+   "q": "O que fazer se o jogo der erro ao tentar importar o arquivo?",
+   "a": "Verifique se o seu Minecraft está atualizado na loja do seu dispositivo e confirme se a extensão do arquivo é .mcaddon ou .mcpack."
+  },
+  {
+   "q": "O Fire Magic precisa de outro addon para funcionar?",
+   "a": "Não, o pacote é independente e não exige nenhum outro complemento para ter suas mecânicas funcionando no jogo."
+  }
+ ],
+ "verdict": "O Fire Magic criado por ZKlint é uma adição prática, divertida e bem focada para quem deseja incluir combates elementais no Minecraft Bedrock sem complicação. Se você gosta de mapas temáticos de RPG, curte duelos PvP dinâmicos ou simplesmente quer uma alternativa poderosa para incinerar mobs no modo sobrevivência, o pacote cumpre exatamente o que promete. Por outro lado, se a sua intenção for encontrar um sistema mágico profundo com dezenas de elementos, rituais e árvores de habilidades complexas, esta versão 1.0.0 focada apenas no fogo pode parecer direta demais. No entanto, pelo que entrega com simplicidade e bom desempenho, vale a pena testar no seu mundo."
+}

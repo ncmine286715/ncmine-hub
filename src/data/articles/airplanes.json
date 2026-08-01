@@ -1,0 +1,65 @@
+{
+ "id": "airplanes",
+ "title": "Airplanes",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1346,
+ "intro": "Se você sempre achou que atravessar milhares de blocos no Minecraft Bedrock a pé ou usando apenas a Élitro é algo demorado e cansativo, o addon Airplanes chega para resolver esse problema de forma prática. Desenvolvido por TryzzMC na versão 1.0.0, este complemento traz uma mecânica completa de aviação diretamente para o seu jogo, permitindo que você construa e pilote suas próprias aeronaves sem complicações.\n\nA proposta aqui é dar total liberdade para quem gosta de explorar biomas distantes, transportar itens entre bases ou simplesmente quer observar o mapa do alto. Diferente de outros complementos que apenas trocam a textura de mobs existentes, o Airplanes adiciona veículos próprios para o ar com receitas de fabricação no survival e suporte a visuais vibrantes.",
+ "sections": [
+  {
+   "h2": "O que muda no seu mundo na prática",
+   "body": "Na prática, a dinâmica de navegação e transporte do seu Minecraft muda completamente. Em vez de gastar recursos criando longas estradas de gelo no Nether ou consumir dezenas de foguetes para voar com a Élitro, você ganha a capacidade de decolar de qualquer ponto plano e cruzar o mapa em alta velocidade.\n\nA exploração ganha uma nova utilidade no dia a dia. Mapear novos biomas, encontrar estruturas raras como Cidades do End ou Templos do Oceano e localizar vilas torna-se uma tarefa rápida. Você consegue visualizar toda a geração do terreno do alto sem a necessidade de ativar truques ou usar o modo criativo.\n\nAlém da mobilidade pura, a presença de helicópteros e aviões transforma a arquitetura das suas construções. Criar pistas de pouso funcionais, helipontos no topo de arranha-céus ou hangares decorados no seu servidor passa a fazer todo sentido dentro da rotina do seu jogo."
+  },
+  {
+   "h2": "Aeronaves disponíveis e fabricação",
+   "body": "O addon inclui 10 opções de aeronaves artesanais, divididas entre aviões de asa fixa e helicópteros utilitários. Cada modelo foi projetado com receitas próprias de crafting para o modo sobrevivência, o que significa que você precisará coletar materiais como lingotes de ferro, madeira e outros itens do jogo para montar suas máquinas no bancada de trabalho.\n\nOs aviões oferecem maior velocidade máxima para deslocamentos em linha reta, sendo perfeitos para viagens de longa distância entre bases distantes. Já os helicópteros se destacam pelo controle preciso e manobrabilidade, permitindo decolagens e pousos verticais em qualquer espaço reduzido.\n\nOutro ponto relevante é o suporte a visuais vibrantes. O addon foi desenvolvido para se integrar bem aos recursos gráficos recentes do Bedrock, garantindo que as texturas dos veículos e os efeitos visuais fiquem bonitos tanto em iluminação padrão quanto em mapas que usam recursos gráficos avançados."
+  },
+  {
+   "h2": "Como instalar no Android, iOS e Windows",
+   "body": "Para instalar o Airplanes em dispositivos Android ou iOS, faça o download do arquivo no formato .mcaddon ou .mcpack. Após concluir o baixar, abra o gerenciador de arquivos do seu celular e toque no arquivo baixado. Selecione a opção de abrir com o Minecraft para que o jogo importe automaticamente os pacotes de comportamento e de recursos.\n\nNo Windows 10 e Windows 11, o processo é ainda mais simples. Basta dar um duplo clique no arquivo baixado. O Minecraft Bedrock será aberto sozinho e exibirá a mensagem de importação concluída com sucesso no topo da tela inicial.\n\nApós importar, entre no jogo e crie um novo mundo ou edite um mapa existente. No menu lateral de configurações do mundo, vá até as abas Pacotes de Recursos e Pacotes de Comportamento para ativar o Airplanes. Em seguida, acesse a aba Jogo, role até a seção Experimentos e ative as opções de jogabilidade experimental para garantir que os veículos e receitas funcionem sem erros."
+  },
+  {
+   "h2": "Desempenho, gráficos e compatibilidade",
+   "body": "O Airplanes foi desenvolvido para rodar perfeitamente nas versões recentes do Minecraft Bedrock, cobrindo as atualizações da linha 1.21. Por ser um addon leve e bem estruturado, os modelos das aeronaves não causam quedas bruscas de quadros por segundo (FPS) na maioria dos telefones e computadores.\n\nEm celulares com especificações mais modestas, a recomendação é reduzir levemente a distância de renderização nas opções de vídeo do jogo. Como os aviões se movem rapidamente, o Minecraft precisará carregar novos blocos do mapa em velocidade acelerada. Manter a renderização moderada evita engasgos enquanto você voa alto.\n\nO complemento também responde bem quando combinado com outros pacotes de textura e recursos de renderização diferida do Bedrock Engine. Os aviões e helicópteros mantêm suas sombras e detalhes visuais sem apresentar falhas de textura ou bugs de transparência."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "O problema mais relatado pelos jogadores ocorre quando as aeronaves não aparecem no menu de fabricação ou os itens surgem sem textura no inventário. Isso acontece quase sempre porque o jogador esqueceu de ativar os Recursos Experimentais nas configurações do mundo antes de carregar o mapa. Certifique-se de ligar todas as chaves de experimentos.\n\nSe o jogo indicar uma mensagem de erro na importação dizendo que o pacote está duplicado ou falhou, feche o Minecraft completamente. Abra o gerenciador de arquivos, vá até os diretórios internos do jogo e exclua versões antigas da pasta do addon antes de tentar abrir o arquivo novamente.\n\nCaso note pequenos travamentos ao voar rápido demais, o motivo costuma ser o limite de processamento do dispositivo ao gerar novos terrenos. Para resolver, basta diminuir a velocidade do voo ou reduzir o campo de visão (FOV) e as configurações de partículas nas opções visuais."
+  },
+  {
+   "h2": "Dicas de pilotagem e uso no survival",
+   "body": "Ao começar seu mundo sobrevivência com o addon instalado, evite tentar fabricar a aeronave mais complexa de imediato. A dica principal é reservar uma área plana perto da sua casa principal para construir uma pista de pouso simples com blocos de concreto ou pedra, facilitando as manobras iniciais.\n\nDurante a pilotagem de aviões, mantenha sempre uma altitude de segurança antes de tentar fazer curvas fechadas. Como os modelos de asa fixa têm um raio de curva mais longo, voar muito perto de árvores altas, serras ou montanhas pode causar colisões indesejadas.\n\nSe o seu objetivo é explorar ravinas, cavernas abertas ou construir postos avançados em locais de difícil acesso, prefira usar o helicóptero. Sua capacidade de pairar e realizar pousos na vertical garante que você consiga desembarcar em topo de árvores, picos de montanhas ou pequenas plataformas no meio do oceano."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Airplanes funciona na versão 1.21 do Bedrock?",
+   "a": "Sim, o addon é compatível com as versões recentes do Minecraft Bedrock, incluindo as atualizações da linha 1.21. Lembre-se apenas de ativar os recursos experimentais do mundo."
+  },
+  {
+   "q": "Ativar este addon desativa as conquistas do mundo?",
+   "a": "Sim. Como qualquer addon que utiliza pacotes de comportamento e requer experimentos ativos no mundo, as conquistas da conta Xbox serão desativadas naquele mapa."
+  },
+  {
+   "q": "Posso jogar em multiplayer com meus amigos?",
+   "a": "Com certeza. Basta que o dono do mundo instale e ative os pacotes no mapa. Quando os amigos entrarem no servidor local ou mundo compartilhado, o jogo baixará os arquivos necessários automaticamente."
+  },
+  {
+   "q": "O addon roda sem travar em celulares fracos?",
+   "a": "Sim, os modelos são bem otimizados. Porém, se sentir quedas de FPS ao voar, é recomendado diminuir a distância de renderização nas opções de vídeo do jogo."
+  },
+  {
+   "q": "Consigo adicionar o Airplanes em um mundo antigo que já criei?",
+   "a": "Sim, você pode ativar o addon nas configurações de um mundo existente. Apenas faça um backup do seu mapa antes e lembre-se de ativar as opções experimentais na edição do mundo."
+  },
+  {
+   "q": "O que fazer se der erro de importação ao abrir o arquivo?",
+   "a": "Verifique se o arquivo tem a extensão .mcaddon correta. Se o erro persistir, apague versões anteriores do addon salvas no armazenamento do jogo e tente importar o arquivo novamente."
+  },
+  {
+   "q": "O addon Airplanes é totalmente gratuito?",
+   "a": "Sim, este addon criado por TryzzMC é disponibilizado gratuitamente para a comunidade Bedrock."
+  }
+ ],
+ "verdict": "O addon Airplanes desenvolvido por TryzzMC é uma excelente escolha para quem deseja transformar a navegação no Minecraft Bedrock de forma divertida e funcional. Com 10 aeronaves artesanais e boa integração visual, ele é perfeito para jogadores que gostam de explorar grandes mapas, construir bases conectadas ou jogar multiplayer survival. Por outro lado, pode não agradar quem busca uma jogabilidade estritamente vanilla sem a necessidade de ativar recursos experimentais no mundo."
+}

@@ -1,0 +1,65 @@
+{
+ "id": "ninja-craft-bed-studio",
+ "title": "Ninja Craft (bed studio)",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1411,
+ "intro": "Se você quer transformar a jogabilidade do seu Minecraft Bedrock com mecânicas focadas em velocidade, furtividade e combate tático, o addon Ninja Craft (bed studio) é uma escolha certeira. Desenvolvido pelo Bedrock Studio 1, este complemento traz o universo dos guerreiros das sombras para o seu jogo, permitindo que você navegue pelo mapa com muito mais agilidade e enfrente inimigos usando técnicas diferenciadas.\n\nNa versão 1.0.0, o foco do pacote é oferecer ferramentas funcionais para quem curte modos Survival e batalhas PvP. Se a sua intenção é fugir de emboscadas, escalar estruturas altas com rapidez ou desorientar oponentes durante o combate, o Ninja Craft adiciona justamente esse toque de fantasia e ação que falta no jogo padrão.",
+ "sections": [
+  {
+   "h2": "Como o Ninja Craft altera a jogabilidade na prática",
+   "body": "Na prática, o Ninja Craft muda a maneira como você explora e se defende dentro do jogo. No Minecraft tradicional, a movimentação inicial é um pouco limitada e depende quase sempre de caminhadas longas ou do uso avançado da Elitra na reta final do jogo. Ao instalar esse addon, a dinâmica muda imediatamente, dando ao jogador opções imediatas para lidar com terrenos difíceis.\n\nA grande vantagem está na capacidade de reação durante o combate. Em vez de simplesmente segurar o escudo e golpear com a espada, você passa a contar com um leque de equipamentos táticos para alternar entre ataque e esquiva. Isso torna a exploração de cavernas e a navegação noturna muito mais seguras e divertidas.\n\nAlém disso, para quem joga em servidores ou mapas focados em sobrevivência com amigos, o addon cria uma dinâmica totalmente nova. O ritmo das batalhas fica mais acelerado e exige que os jogadores pensem no posicionamento do personagem em vez de apenas comparar o nível dos seus encantamentos."
+  },
+  {
+   "h2": "Recursos, equipamentos e ferramentas táticas",
+   "body": "O Ninja Craft adiciona um conjunto direto e eficiente de itens indispensáveis para qualquer ninja. O grande destaque é a Bomba de Fumaça (Smoke Bomb). Ao ser arremessada no chão, ela cria uma cobertura de fumaça que aplica o efeito de cegueira (Blindness) nos jogadores e mobs ao redor, garantindo o tempo necessário para você se curar ou planejar uma fuga.\n\nOutro item fundamental é o Gancho de Disparo (Grappling Hook). Essa ferramenta permite arremessar uma corda com gancho em direção a blocos e estruturas, puxando o seu personagem rapidamente. Com ela, escalar montanhas, sair de ravinas profundas ou subir no teto de construções leva apenas alguns segundos.\n\nPara o combate à distância, o complemento traz as Shurikens. Essas estrelas ninja funcionam como projéteis rápidos e precisos para atacar alvos sem a necessidade de carregar um arco ou gastar flechas. A combinação desses três recursos entrega um kit completo de mobilidade, controle de grupo e dano."
+  },
+  {
+   "h2": "Como instalar o Ninja Craft no Android, iOS e Windows",
+   "body": "A instalação do Ninja Craft no Minecraft Bedrock é simples e rápida. O primeiro passo é fazer o download do arquivo com extensão `.mcaddon` ou `.mcpack` diretamente para o armazenamento do seu dispositivo celular ou computador.\n\nNo Android e no iOS, abra o seu gerenciador de arquivos de preferência, localize o arquivo baixado e toque nele, selecionando a opção de abrir com o Minecraft. O jogo vai abrir sozinho e mostrará uma notificação no topo da tela confirmando a importação do pacote de recursos e do pacote de comportamento. No Windows 10/11, basta dar dois cliques rápidos no arquivo para que o processo seja concluído de forma automática.\n\nDepois de importar, entre no jogo, crie um novo mundo ou clique no ícone de lápis para editar um mapa existente. Acesse a seção de Pacotes de Recursos e Pacotes de Comportamento no menu esquerdo e ative o Ninja Craft em ambos. Por fim, role até a aba Experimentos e ative as opções de recursos de criador para garantir que todos os itens funcionem corretamente."
+  },
+  {
+   "h2": "Desempenho, peso e suporte para partidas multiplayer",
+   "body": "Uma das vantagens do Ninja Craft é o seu excelente desempenho. Como o pacote é leve e focado em scripts e itens bem otimizados, ele não sobrecarrega o processamento do seu celular nem consome muita memória RAM. Isso garante que o jogo rode com taxa de quadros estável até mesmo em aparelhos mais antigos.\n\nSe você gosta de jogar com amigos, o addon é totalmente compatível com o modo multiplayer. Se você for o dono do mapa, basta ativar os pacotes no seu mundo e marcar a caixa que obriga os outros jogadores a baixarem os arquivos de recurso para entrar. Assim que eles conectarem, o download será feito automaticamente.\n\nO complemento também apresenta uma boa convivência com outros addons que adicionam construções, biomas ou móveis. Desde que os outros pacotes não modifiquem radicalmente o sistema de movimentação do jogador, o Ninja Craft roda perfeitamente sem gerar travamentos ou erros."
+  },
+  {
+   "h2": "Solução de problemas e erros frequentes",
+   "body": "Se você encontrar algum erro durante a importação do pacote, o motivo mais comum é a presença de arquivos corrompidos ou versões antigas salvas na memória. Para resolver, vá até as Configurações do Minecraft, acesse Armazenamento, procure por Pacotes de Comportamento/Recursos e exclua as versões anteriores antes de importar o arquivo da versão 1.0.0 novamente.\n\nOutra situação comum é quando os itens do addon aparecem no jogo, mas o gancho ou as bombas não funcionam como deveriam. Isso acontece quase sempre quando os Recursos Experimentais não foram ligados nas configurações do mundo. Certifique-se de ativar as opções de API e experimentos do criador antes de carregar a partida.\n\nCaso o problema ocorra em partidas multiplayer, confirme se o criador do mundo deu as permissões necessárias de uso de itens especiais aos visitantes. Em mundos antigos atualizados recentemente, também é recomendado fazer um backup do mapa antes de aplicar o addon."
+  },
+  {
+   "h2": "Dicas de uso tático no Survival e no PvP",
+   "body": "Para aproveitar ao máximo o Ninja Craft na sua jogatina de sobrevivência, use a bomba de fumaça sempre como uma ferramenta de emergência. Quando estiver cercado por monstros em uma caverna escura com pouca vida, jogue a bomba nos seus pés para cegar os mobs e use o gancho imediatamente para se posicionar em um local alto e seguro.\n\nNo combate contra outros jogadores, a chave do sucesso é a movimentação constante. Use o gancho para mudar de direção rapidamente e confundir a mira do adversário. Enquanto se movimenta, lance shurikens para causar dano contínuo e quebrar a regeneração de vida do oponente sem precisar se aproximar demais.\n\nVocê também pode combinar os itens ninjas com poções do próprio Minecraft, como poções de Velocidade e Visão Noturna. Essa combinação transforma seu personagem em um gank imprevisível em invasões a vilas ou batalhas em arenas customizadas."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Ninja Craft funciona na versão mais recente do Minecraft Bedrock?",
+   "a": "Sim, a versão 1.0.0 do addon foi projetada para rodar perfeitamente nas atualizações recentes do Minecraft Bedrock no celular e no PC."
+  },
+  {
+   "q": "Posso liberar conquistas do Xbox usando este addon?",
+   "a": "Não. Ao ativar pacotes de comportamento ou recursos experimentais no mundo, o Minecraft desativa automaticamente a conquista de troféus naquele mapa."
+  },
+  {
+   "q": "O addon funciona em mundos multiplayer com amigos?",
+   "a": "Funciona sem problemas. Todos os jogadores que entrarem no mundo com o addon ativo poderão usar o gancho, as shurikens e as bombas de fumaça."
+  },
+  {
+   "q": "O pacote causa travamentos em celulares mais fracos?",
+   "a": "Não, o Ninja Craft é um addon leve e bem otimizado, feito para rodar sem exigir muito do processador ou da memória do celular."
+  },
+  {
+   "q": "Preciso criar um mundo totalmente novo para jogar?",
+   "a": "Não é obrigatório, mas é recomendado. Você pode ativar o pacote em um mundo antigo, desde que faça um backup antes e ligue os Recursos Experimentais."
+  },
+  {
+   "q": "O Ninja Craft (bed studio) é grátis?",
+   "a": "Sim, o complemento é disponibilizado gratuitamente pelo criador para a comunidade do Minecraft Bedrock Edition."
+  },
+  {
+   "q": "O que fazer se os itens não funcionarem após a instalação?",
+   "a": "Verifique nas configurações do seu mundo se a aba de Experimentos está com todas as opções ativadas, pois elas são necessárias para a execução dos scripts."
+  }
+ ],
+ "verdict": "O Ninja Craft (bed studio) é um excelente addon para quem deseja sair da rotina do combate tradicional do Minecraft e adicionar uma mecânica de movimentação ágil e divertida ao jogo. A combinação do gancho com bombas de fumaça e shurikens renova o modo Survival e garante partidas PvP cheias de ação. No entanto, se o seu objetivo principal é manter o jogo 100% fiel ao estilo vanilla original ou continuar acumulando conquistas no seu mapa principal, este complemento pode não ser a melhor opção para o seu perfil."
+}

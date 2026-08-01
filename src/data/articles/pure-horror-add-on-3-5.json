@@ -1,0 +1,65 @@
+{
+ "id": "pure-horror-add-on-3-5",
+ "title": "Pure Horror Add-On 3.5",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1343,
+ "intro": "Para quem gosta de tomar susto no Minecraft Bedrock, o Pure Horror Add-On 3.5 chega como uma das opções mais tensas para transformar o mapa tradicional em um ambiente hostil. Desenvolvido pelo criador BabaBoyMrBoy, o pacote foca em mudar drasticamente a forma como você explora o mundo, transformando a noite e até mesmo o dia em uma experiência constante de paranoia e perigo iminente.\n\nSe você já se cansou dos monstros padrão do jogo como zumbis e creepers, este complemento foi feito sob medida para o seu survival. O objetivo aqui não é apenas adicionar mobs mais fortes, mas sim introduzir criaturas imprevisíveis que usam mecânicas psicológicas, perseguindo o jogador nas sombras ou se disfarçando na paisagem antes de atacar.",
+ "sections": [
+  {
+   "h2": "Como o addon transforma a jogabilidade na prática",
+   "body": "Ao ativar o Pure Horror Add-On 3.5 no seu mundo, a sensação de segurança desaparece completamente. A jogabilidade tradicional de minerar e construir sem preocupações dá lugar a um ritmo muito mais cauteloso. A atmosfera fica densa, e qualquer barulho diferente no bioma pode indicar que algo está observando seus passos à distância.\n\nA grande diferença prática é que as criaturas não correm cegamente na sua direção como os mobs normais do Minecraft. Elas estudam seu comportamento, seguem seus passos em silêncio e esperam o momento de maior vulnerabilidade para agir. Isso faz com que ficar andando sozinho à noite ou explorar cavernas profundas se torne uma tarefa extremamente arriscada.\n\nAlém disso, a rotina de coleta de recursos exige muito mais atenção. Um animal aparentemente inofensivo no pasto pode se revelar uma aberração em segundos, forçando você a reformular suas táticas de combate, iluminação da base e estocagem de equipamentos de defesa."
+  },
+  {
+   "h2": "Recursos principais e comportamentos das criaturas",
+   "body": "O grande destaque do trabalho de BabaBoyMrBoy são as mecânicas exclusivas programadas para cada entidade. Diferente de mods genéricos que apenas mudam a textura das criaturas, o Pure Horror entrega comportamentos distintos que pegam até os jogadores mais experientes de surpresa durante a exploração.\n\nEntre as mecânicas mais perturbadoras está o sistema de disfarce. Algumas entidades conseguem copiar a aparência de mobs passivos comuns, como ovelhas ou vacas. Quando você se aproxima achando que vai conseguir comida, a criatura revela sua forma verdadeira e parte para o ataque sem dar margem para reação rápida.\n\nOutras criaturas atuam como perseguidores silenciosos. Elas mantêm uma distância calculada, aparecendo no limite do seu campo de visão no topo de morros ou entre as árvores. Se você olhar diretamente para elas ou tentar se aproximar, elas podem desaparecer instantaneamente ou avançar com extrema velocidade, criando momentos de pura tensão."
+  },
+  {
+   "h2": "Guia de instalação no Android, iOS e Windows",
+   "body": "A instalação do Pure Horror Add-On no Minecraft Bedrock é simples e rápida, já que o pacote vem nos formatos padrão da edição Bedrock (.mcaddon ou .mcpack). O primeiro passo é baixar o arquivo completo no seu dispositivo mobile ou no computador.\n\nNo Android e iOS, utilize um gerenciador de arquivos para localizar o arquivo baixado. Toque sobre ele e escolha a opção de abrir com o Minecraft. O jogo será executado automaticamente e iniciará o processo de importação do pacote de comportamento e do pacote de recursos no topo da tela.\n\nNo Windows, o processo é ainda mais direto: basta dar dois cliques no arquivo baixado para que o Minecraft abra e conclua a instalação. Depois que a importação for concluída com sucesso, entre na criação de mundo, vá até as abas de Pacotes de Recursos e Pacotes de Comportamento e ative o addon no seu mapa."
+  },
+  {
+   "h2": "Desempenho, otimização e compatibilidade",
+   "body": "Como o addon introduz códigos de comportamento avançados e novas animações para as entidades, o impacto no desempenho pode variar de acordo com a plataforma em que você joga. Em computadores e consoles atuais, a taxa de quadros se mantém estável mesmo durante os encontros mais intensos.\n\nJá em celulares intermediários ou de entrada, é recomendável ajustar algumas configurações de vídeo do próprio Minecraft para evitar travamentos. Reduzir a distância de renderização dos chunks e desativar detalhes gráficos pesados ajuda a manter o jogo fluido quando muitas entidades estiverem carregadas na área.\n\nEm termos de compatibilidade, o complemento roda perfeitamente na versão 1.20.50 e superiores do Bedrock. No entanto, por alterar comportamentos globais de spawn e IA de entidades, misturar este mod com outros addons pesados que também alterem mobs pode causar conflitos ou comportamentos estranhos."
+  },
+  {
+   "h2": "Problemas comuns e soluções durante a jogabilidade",
+   "body": "Um dos erros mais relatados pelos jogadores é o addon não carregar os comportamentos corretamente após a criação do mundo. Isso acontece quase sempre porque os Recursos Experimentais não foram ativados nas configurações do mapa antes de iniciar a partida.\n\nCaso as criaturas não estejam surgindo ou apresentem texturas invisíveis ou em xadrez rosa, certifique-se de que ativou todas as opções de recursos para criadores e recursos experimentais na aba do mundo. Sem essas chaves ligadas, a API do Bedrock não consegue ler os scripts customizados do pacote.\n\nOutro problema comum é o erro de importação com mensagem de pacote duplicado ou falha no arquivo. Para resolver, apague o arquivo antigo na pasta do Minecraft, feche o jogo completamente, baixe o arquivo atualizado da versão 3.5 novamente e repita a importação."
+  },
+  {
+   "h2": "Dicas essenciais para sobreviver ao terror",
+   "body": "Para ter uma chance de sobrevivência contra as entidades do Pure Horror 3.5, a primeira regra é nunca explorar sem iluminação adequada. Mantenha tochas ou fontes de luz sempre à mão, pois muitas criaturas tiram proveito da escuridão para se aproximar sem serem detectadas.\n\nSempre observe o comportamento dos animais ao seu redor. Se uma vaca ou ovelha agir de forma estranha, parada sem se mover ou olhando fixamente para você, mantenha distância e prepare seu arco ou espada antes de se aproximar. O ataque surpresa dessas entidades disfarçadas pode ser fatal se você estiver sem armadura adequada.\n\nPor fim, construa uma base bem protegida com portas duplas, iluminação pesada no perímetro e sem aberturas no teto. Não confie apenas em cercas baixas, já que algumas criaturas possuem capacidade de salto aumentada ou conseguem se mover rapidamente sobre obstáculos."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Pure Horror Add-On 3.5 é totalmente gratuito?",
+   "a": "Sim, o addon é gratuito e pode ser baixado sem custos para o Minecraft Bedrock. O criador disponibiliza o projeto para a comunidade de forma livre."
+  },
+  {
+   "q": "O addon funciona no Minecraft para celular Android e iOS?",
+   "a": "Funciona perfeitamente em ambas as plataformas mobile. Basta baixar o arquivo .mcaddon e abri-lo usando o aplicativo do Minecraft para fazer a instalação."
+  },
+  {
+   "q": "Ativar este mod desativa as conquistas do meu mundo?",
+   "a": "Sim. Como o addon utiliza pacotes de comportamento customizados e exige recursos experimentais, as conquistas da conta Xbox são desativadas no mapa."
+  },
+  {
+   "q": "Consigo jogar em modo multiplayer com meus amigos?",
+   "a": "Sim, é possível jogar com amigos. Para isso, o dono do mundo deve ativar o addon e marcar a opção que exige que os outros jogadores baixem o pacote ao entrar."
+  },
+  {
+   "q": "Posso colocar o Pure Horror Add-On em um mundo antigo já criado?",
+   "a": "É possível sim, mas é recomendável fazer um backup do seu mapa antes de ativar o pacote de comportamentos para evitar qualquer problema de compatibilidade com construções anteriores."
+  },
+  {
+   "q": "O que fazer se aparecer erro de importação ao abrir o arquivo?",
+   "a": "Certifique-se de que o arquivo foi baixado completamente e tem a extensão .mcaddon ou .mcpack. Se o erro persistir, limpe o cache do jogo e tente importar novamente."
+  },
+  {
+   "q": "Preciso ativar recursos experimentais para o addon funcionar?",
+   "a": "Sim, é obrigatório ligar as opções de recursos experimentais nas configurações do mundo para que as mecânicas das criaturas e os scripts funcionem corretamente."
+  }
+ ],
+ "verdict": "O Pure Horror Add-On 3.5 é uma excelente pedida para quem busca transformar o Minecraft Bedrock em um verdadeiro jogo de sobrevivência e suspense. Se você gosta de desafios intensos, sustos e de sentir que nunca está totalmente seguro no mapa, vale a pena instalar. Por outro lado, se o seu foco é apenas construir tranquilamente sem ser perturbado por monstros inteligentes ou se você joga em um celular muito antigo que sofre com travamentos, talvez seja melhor optar por um mod mais leve."
+}

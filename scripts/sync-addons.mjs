@@ -2,6 +2,8 @@
 // arquivo estático, atualizável sem redeploy) e regenera public/sitemap.xml
 // com as rotas reais do site + uma URL por addon.
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 const SITE_URL = "https://mineaddonsnews.online";
 
@@ -10,21 +12,15 @@ await copyFile("src/data/addons.json", "public/addons.json");
 
 const raw = JSON.parse(await readFile("src/data/addons.json", "utf8"));
 
-const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
-const MIN_EDITORIAL_CHARS = 1000;
+const ARTICLES_DIR = "src/data/articles";
 
-// Deduplica por id e mantém no sitemap só o que tem texto editorial próprio
+// Deduplica por id e mantém no sitemap só o que tem artigo editorial próprio
 // (o resto vai com noindex na página, então não pode entrar aqui).
 const seen = new Set();
 const addons = raw.filter((a) => {
   if (!a?.id || seen.has(a.id)) return false;
   seen.add(a.id);
-  const description = norm(a.description);
-  return (
-    description &&
-    description !== norm(a.short) &&
-    description.length >= MIN_EDITORIAL_CHARS
-  );
+  return existsSync(join(ARTICLES_DIR, `${a.id}.json`));
 });
 
 const staticRoutes = [

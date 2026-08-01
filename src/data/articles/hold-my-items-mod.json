@@ -1,0 +1,65 @@
+{
+ "id": "hold-my-items-mod",
+ "title": "Hold My Items Mod",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1383,
+ "intro": "Se você joga Minecraft Bedrock há algum tempo, provavelmente já reparou que a forma como o jogo exibe os itens na mão do personagem nem sempre é a mais bonita ou funcional. Muitas vezes, ferramentas grandes parecem ocupar quase metade da tela no modo em primeira pessoa, e colocar um item na segunda mão pode gerar uma visualização estranha e desalinhada. O Hold My Items Mod surge como uma solução prática para esse problema visual, ajustando o posicionamento, a escala e a rotação dos equipamentos no corpo do jogador.\n\nEste pacote é focado em aprimorar a experiência de jogo sem quebrar a estética clássica do Minecraft, mantendo o estilo Vanilla+ de forma elegante. Se você procura mais visibilidade para minerar, encarar combates contra mobs ou construir sem ter o campo de visão bloqueado por modelos desproporcionais de espadas e escudos, este mod foi feito sob medida para o seu mapa.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "Na prática, a mudança mais perceptível trazida pelo Hold My Items Mod é a libertação do seu campo de visão em primeira pessoa (viewmodel). No Minecraft padrão do Bedrock, ferramentas como picaretas, machados e espadas tendem a ocupar um espaço exagerado na tela, escondendo partes do cenário ou atrapalhando a mira. Com as alterações de renderização deste mod, o ângulo do item segurado é reajustado para que ele fique posicionado mais abaixo e próximo ao canto da tela.\n\nAlém da visualização em primeira pessoa, o uso da segunda mão (offhand) ganha um destaque especial. Em vez de objetos como tochas, escudos, mapas ou poções ficarem flutuando de forma pouco natural no braço esquerdo, eles recebem um alinhamento limpo e realista em relação ao modelo do personagem.\n\nEssa mudança estética também impacta quem joga ou observa a partida em terceira pessoa. Outros jogadores em partidas multiplayer ou em servidores conseguirão ver o seu personagem segurando os equipamentos de maneira anatomicamente correta e bem posicionada junto ao corpo."
+  },
+  {
+   "h2": "Principais recursos e melhorias visuais",
+   "body": "O grande diferencial deste projeto é o ajuste individual nas proporções de escala das ferramentas e armas. Espadas de diamante, machados de netherita e arcos têm suas dimensões ligeiramente reduzidas na visualização do jogador, oferecendo um uso muito mais leve e agradável durante o combate e a exploração.\n\nOutro recurso marcante é a melhoria no angulamento de itens consumíveis e utilitários. Ao consumir poções, comer alimentos ou segurar baldes com água, o modelo do item não cobre a mira central do jogo, garantindo que você não perca a atenção em meio a um combate tenso.\n\nVale ressaltar que o mod preserva 100% o design original das texturas do jogo base. Ele não altera a arte pixelada nem insere elementos futuristas ou ultra-realistas; o objetivo é puramente corrigir as coordenadas e a escala dos modelos padrão para oferecer mais conforto visual."
+  },
+  {
+   "h2": "Como instalar no Bedrock (Android, iOS e Windows)",
+   "body": "A instalação do Hold My Items Mod no Minecraft Bedrock é bastante direta. No Android, após fazer o download do arquivo no formato .mcpack ou .mcaddon, abra o gerenciador de arquivos do seu dispositivo e toque no arquivo baixado. Selecione a opção de abrir com o Minecraft para que o próprio jogo inicie e conclua a importação automática.\n\nNo iOS (iPhone e iPad), o procedimento é idêntico. Abra o arquivo baixado através do aplicativo Arquivos ou direto pelo navegador Safari, selecione o menu de compartilhamento e escolha o ícone do Minecraft. O aplicativo abrirá exibindo o aviso de importação concluída no topo do menu principal.\n\nPara quem joga no Windows 10 ou 11, basta dar um duplo clique com o mouse sobre o arquivo do mod. O Minecraft abrirá sozinho e fará a instalação. Em seguida, acesse as configurações do seu mundo ou as Configurações Globais do jogo, navegue até a aba Pacotes de Recursos e ative o pacote para aplicar as mudanças."
+  },
+  {
+   "h2": "Desempenho e compatibilidade",
+   "body": "Como este mod atua ajustando as coordenadas de exibição e renderização de modelos que já existem no jogo, o impacto no desempenho é praticamente nulo. Ele não consome memória RAM adicional e nem exige mais do processador do celular ou PC, garantindo uma taxa de quadros (FPS) estável do início ao fim.\n\nEm termos de compatibilidade, o mod funciona perfeitamente ao lado de pacotes de textura de blocos, mapas customizados e a maioria dos recursos visuais do Bedrock Edition. O único cuidado necessário é em relação a outros modificadores de animação do jogador.\n\nSe você utiliza outro mod focado em alterar as animações da câmera ou das mãos do personagem, certifique-se de posicionar o Hold My Items Mod no topo da lista de pacotes de recursos ativos no seu menu do Minecraft."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais comuns relatados ocorre quando o mod está ativado na lista, mas os itens continuam aparecendo no tamanho original. Se isso acontecer no seu jogo, verifique a ordem dos pacotes ativos e mova o mod para o topo da lista. Isso evita que outra textura sobrescreva o posicionamento dos itens.\n\nOutra situação frequente é o erro de importação do arquivo no celular. Caso receba a mensagem de arquivo inválido ao clicar para instalar, confira se a extensão do arquivo não foi alterada para .zip. Se estiver em .zip, renomeie o final do arquivo para .mcpack usando o gerenciador de arquivos e tente abrir novamente.\n\nPor fim, caso note itens flutuando em posições estranhas ao jogar no modo multiplayer, certifique-se de que o seu Minecraft esteja atualizado para a versão 1.21 ou superior do Bedrock, garantindo suporte completo aos códigos de renderização do pacote."
+  },
+  {
+   "h2": "Dicas de uso para aproveitar ao máximo",
+   "body": "Para conseguir o visual mais limpo possível no seu jogo, uma excelente recomendação é ajustar a opção de Campo de Visão (FOV) nas configurações de vídeo do Minecraft Bedrock. Configurar o FOV em um valor entre 75 e 85 combinado com este mod entrega uma sensação de perspectiva muito equilibrada.\n\nSe você é criador de conteúdo, costuma gravar vídeos ou gosta de tirar capturas de tela das suas construções, tente desativar a exibição da interface da tela (HUD). A melhoria no alinhamento das ferramentas seguradas permite registrar ótimas imagens e takes em primeira pessoa com ar de realismo e organização sem poluição na tela."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Hold My Items Mod desativa as conquistas no meu mundo?",
+   "a": "Não, o pacote funciona como um recurso estritamente visual. Por ser focado na renderização de itens, ele não desativa o sistema de conquistas do Xbox Network no seu mapa survival."
+  },
+  {
+   "q": "Funciona em servidores multiplayer e Realms?",
+   "a": "Sim, você pode ativar o pacote nas suas Configurações Globais do menu para usá-lo em servidores públicos e no Realms. As alterações visuais na sua tela funcionarão normalmente durante o jogo online."
+  },
+  {
+   "q": "O mod roda sem travar em celulares fracos?",
+   "a": "Roda perfeitamente em qualquer aparelho. Por alterar apenas o posicionamento e a escala das ferramentas sem adicionar texturas pesadas, ele não causa travamentos ou quedas de FPS."
+  },
+  {
+   "q": "Preciso criar um mundo novo para conseguir usar?",
+   "a": "Não é necessário criar um novo mapa. Você pode ativar ou desativar o pacote em mundos que já existem acessando as configurações do mapa antes de entrar."
+  },
+  {
+   "q": "O que fazer se der erro ao tentar importar o arquivo?",
+   "a": "Verifique se o download terminou corretamente e confirme a extensão do arquivo. Caso esteja terminado em .zip, basta renomear a extensão do arquivo para .mcpack e abrir pelo seu gerenciador de arquivos."
+  },
+  {
+   "q": "Este mod de Minecraft Bedrock é gratuito?",
+   "a": "Sim, o projeto é totalmente gratuito e foi desenvolvido pela comunidade de modificações para o Minecraft Bedrock Edition."
+  },
+  {
+   "q": "Posso usar este mod junto com outros pacotes de textura?",
+   "a": "Sim, ele é compatível com a grande maioria dos pacotes de textura. Apenas lembre-se de deixá-lo no topo da lista de pacotes ativos no menu de recursos do seu Minecraft."
+  }
+ ],
+ "verdict": "O Hold My Items Mod é um pacote indispensável para quem deseja um Minecraft Bedrock com visual mais limpo, prático e agradável sem perder a essência do jogo original. Ele atende perfeitamente criadores de conteúdo, jogadores focados em PvP e fãs do estilo Vanilla+ que não aguentam mais ter a visão da tela bloqueada por ferramentas desproporcionais. Por outro lado, para quem está em busca de modificações profundas de gameplay, novas mecânicas de combate ou itens inéditos no mapa, este mod pode parecer simples por focar exclusivamente na parte estética."
+}

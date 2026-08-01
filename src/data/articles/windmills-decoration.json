@@ -1,0 +1,69 @@
+{
+ "id": "windmills-decoration",
+ "title": "Windmills Decoration",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1429,
+ "intro": "Quem gosta de construir vilas medievais ou fazendas no Minecraft Bedrock sabe que um dos maiores desafios é dar vida às construções. Edifícios de pedra e madeira costumam ficar estáticos na paisagem, parecendo maquetes sem movimento. É exatamente para resolver esse problema que o addon Windmills Decoration, criado pelo desenvolvedor Hazelntz, foi projetado.\n\nEsse complemento adiciona moinhos de vento com animações fluidas de rotação e um estilo visual que se encaixa perfeitamente na estética vanilla do jogo. Se você procura uma forma simples de transformar um campo de trigo sem graça em um cenário vivo e acolhedor, este addon entrega exatamente o que promete sem complicar a jogabilidade.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "Na prática, o Windmills Decoration altera completamente o clima visual das áreas rurais e vilas do seu mundo. Em vez de erguer estruturas gigantescas compostas por dezenas de blocos fixos para simular as pás de um moinho, o addon introduz rotores e blocos decorativos que giram em tempo real. Isso traz uma sensação imediata de movimento e movimento constante ao horizonte do jogo.\n\nOutro ponto relevante é a ambientação sonora e visual. O movimento das pás cria uma atmosfera muito mais realista quando posicionado no topo de morros ou ao lado de plantações vastas. O complemento transforma o cenário estático do Minecraft Bedrock em um ambiente dinâmico, onde a arquitetura rural realmente parece funcional e habitada.\n\nAlém do impacto visual imediato, a adição desses elementos não quebra a imersão. As texturas foram desenhadas mantendo a paleta de cores e o nível de detalhe do próprio Minecraft, o que garante que as estruturas construídas não pareçam fora de lugar ou exageradamente modificadas em relação aos blocos padrão."
+  },
+  {
+   "h2": "Principais recursos e mecânicas de crafting",
+   "body": "O addon foca na simplicidade de uso e no acesso facilitado durante a sobrevivência. Para criar as pás e o rotor do moinho, os ingredientes necessários são acessíveis logo no início do jogo, exigindo itens básicos como cercas de madeira, troncos e lãs de diferentes cores. Isso permite que qualquer jogador decore sua base sem a necessidade de minerar minérios raros.\n\nA interatividade é um dos grandes destaques do trabalho de Hazelntz. Ao posicionar o rotor no local desejado, o jogador pode interagir com o bloco para iniciar ou parar a rotação. Além disso, ao utilizar a mecânica de agachar (Sneak) e interagir com o objeto, é possível alternar as cores e variações visuais das pás, permitindo combinar a decoração com o padrão de madeira da sua construção.\n\nDependendo da forma como o pacote é utilizado, também há integração com blocos de corte de pedra (cortador de pedras) para obter variações das peças. O complemento ainda oferece suporte para receitas temáticas, permitindo produzir itens consumíveis como pão e farinha de forma mais eficiente do que na bancada tradicional, unindo utilidade com decoração."
+  },
+  {
+   "h2": "Como instalar no Minecraft Bedrock (Android, iOS e Windows)",
+   "body": "A instalação do Windmills Decoration no Minecraft Bedrock é direta, independentemente da plataforma em que você joga. O primeiro passo é baixar o arquivo no formato `.mcaddon` ou `.mcpack` correspondente à versão do seu jogo. No Android ou iOS, após concluir o download, toque no arquivo e selecione a opção de abrir com o Minecraft. O jogo será inicializado automaticamente e importará o pacote de recursos e de comportamento.\n\nNo Windows 10 ou 11, o processo é ainda mais simples: basta dar um duplo clique sobre o arquivo baixado para que o Minecraft abra e conclua a importação. Caso o arquivo venha compactado em `.zip`, renomeie a extensão para `.mcaddon` antes de executar para garantir a integração automática.\n\nCom os arquivos importados, vá até as configurações do mundo onde deseja adicionar os moinhos. Na aba de Pacotes de Recursos e Pacotes de Comportamento, ative o Windmills Decoration em ambos os menus. Certifique-se de salvar as alterações antes de carregar o mapa para garantir que todas as texturas e animações funcionem corretamente."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no Bedrock",
+   "body": "Por utilizar modelos otimizados para a engine Bedrock, o addon apresenta excelente desempenho até mesmo em dispositivos móveis com hardware mais modesto. As animações de rotação utilizam sistemas leves do jogo, o que impede quedas bruscas de quadros por segundo (FPS) ao carregar vários moinhos na mesma área renderizada.\n\nQuanto à compatibilidade, o complemento foi desenvolvido focado na atualização 1.21 do Minecraft Bedrock. Ele funciona perfeitamente junto a outros addons de móveis, novos biomas ou modificações rurais, já que não altera arquivos essenciais do código do jogo nem substitui mobis originais do universo vanilla.\n\nPara quem joga no PC ou em consoles, a performance permanece cravada na taxa de quadros máxima. Em celulares e tablets, a recomendação geral é evitar colocar dezenas de rotores animados exatamente na mesma chunk para otimizar o uso da memória RAM do aparelho."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais relatados por jogadores é o rotor do moinho não girar ou aparecer como um bloco invisível após a colocação. Isso geralmente acontece quando o jogador ativa apenas o pacote de recursos, esquecendo de ativar o pacote de comportamento no menu do mundo. Para corrigir, volte à tela de edição do mapa e ative ambos os pacotes.\n\nSe você receber a mensagem de erro de falha na importação do arquivo, verifique se a versão do seu jogo está atualizada. Addons recentes exigem versões atuais do Minecraft Bedrock para carregar as propriedades de script e modelos 3D sem conflitos.\n\nPor fim, se estiver jogando em multiplayer e outros jogadores virem os moinhos sem textura, certifique-se de marcar a opção 'Exigir que os jogadores aceitem os pacotes de recursos para entrar' nas configurações do mundo ou do servidor. Isso força o download automático das texturas para todos os participantes."
+  },
+  {
+   "h2": "Dicas de construção e decoração medieval",
+   "body": "Para tirar o melhor proveito visual do Windmills Decoration, a localização da construção faz toda a diferença. O ideal é erguer uma torre usando uma mistura de tijolos de pedra, pedra musgosa e troncos de madeira descascados no topo de uma colina elevada, posicionando o rotor na fachada principal virado para a área aberta.\n\nAo redor da base do moinho, crie detalhes que complementem o ambiente rural. Utilize blocos de fardo de feno, terra batida, cascalho e cercas baixas. Adicionar uma pequena plantação de trigo ao redor dá a impressão de um complexo agrícola completo e em pleno funcionamento.\n\nAproveite também a mecânica de troca de cores do rotor para criar moinhos temáticos. Lãs brancas dão um ar clássico e europeu, enquanto cores como marrom ou cinza escuro combinam com cenários mais rústicos, sombrios ou de época medieval avançada."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Windmills Decoration é gratuito?",
+   "a": "Sim, o addon é gratuito e foi disponibilizado pelo criador Hazelntz para a comunidade do Minecraft Bedrock."
+  },
+  {
+   "q": "O addon funciona na versão 1.21 do Minecraft Bedrock?",
+   "a": "Sim, o conteúdo foi atualizado e testado para funcionar perfeitamente na versão 1.21 e suas subversões recentes."
+  },
+  {
+   "q": "É preciso ativar os recursos experimentais no mundo?",
+   "a": "Dependendo da versão exata instalada, é recomendável ativar opções como 'Recursos de Criador de Férias' nas configurações do mundo para evitar falhas nas animações."
+  },
+  {
+   "q": "Posso ganhar conquistas da conta Xbox com este addon ativo?",
+   "a": "Não. Ao ativar qualquer pacote de comportamento (Behavior Pack) que altere mecânicas no mundo, as conquistas do mapa são desativadas permanentemente."
+  },
+  {
+   "q": "O addon funciona em servidores multiplayer e Realms?",
+   "a": "Funciona perfeitamente. Basta o dono do mapa ativar os pacotes de recurso e comportamento no Realm ou servidor para que todos os jogadores vejam e usem os moinhos."
+  },
+  {
+   "q": "O moinho causa lag ou queda de FPS no celular?",
+   "a": "Não, o addon é bastante leve. No entanto, evite colocar dezenas de moinhos animados concentrados em um único espaço pequeno se jogar em celulares antigos."
+  },
+  {
+   "q": "Posso adicionar o moinho a um mundo que já foi criado antigo?",
+   "a": "Sim. Você pode editar as configurações do seu mapa existente e ativar os pacotes de recursos e comportamentos a qualquer momento sem perder suas construções."
+  },
+  {
+   "q": "O que fazer se o arquivo .mcaddon der erro ao importar?",
+   "a": "Confira se o arquivo não está corrompido, atualize o seu Minecraft Bedrock para a versão mais recente e tente abrir o arquivo através de um gerenciador de arquivos."
+  }
+ ],
+ "verdict": "O Windmills Decoration é um excelente addon para construtores, jogadores focados em cenários medievais e amantes da estética rural que querem dar vida às suas fazendas sem complicação. Se o seu objetivo é enriquecer o visual do mundo com animações fluidas e boa integração vanilla, o download vale muito a pena. Por outro lado, se você busca automações industriais avançadas, sistemas redstone complexos ou máquinas funcionais de grande porte, este complemento pode não atender a essas necessidades específicas."
+}

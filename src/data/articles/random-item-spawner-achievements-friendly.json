@@ -1,0 +1,65 @@
+{
+ "id": "random-item-spawner-achievements-friendly",
+ "title": "random item spawner [Achievements Friendly]",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1459,
+ "intro": "Se você já jogou RPGs no estilo Genshin Impact, sabe como é caminhada por estradas e cidades encontrando itens espalhados pelo chão para coletar. No Minecraft Bedrock tradicional, a exploração não funciona assim: você só encontra recursos se quebrar blocos, eliminar mobs ou abrir baús em estruturas geradas. O addon random item spawner surge para mudar essa lógica, adicionando spawns aleatórios de itens pelo mapa enquanto você explora.\n\nO grande destaque desta modificação criada pelo Bedrock Studio 1 é ser \"Achievements Friendly\". Isso significa que você pode adicionar o pacote ao seu mapa de sobrevivência sem perder a capacidade de obter conquistas na sua conta Xbox. É uma excelente escolha para quem busca uma experiência no estilo Vanilla+ refinada, sem alterar drasticamente o código base do jogo ou exigir recursos experimentais pesados.",
+ "sections": [
+  {
+   "h2": "O que muda no seu mundo na prática",
+   "body": "Ao instalar o random item spawner no seu Minecraft Bedrock, a exploração do mapa ganha uma nova camada de utilidade. Conforme você caminha pelos biomas, faz viagens longas ou explora vilas e cavernas, pequenos drops de itens começam a aparecer pelo chão ao longo do seu trajeto. Não é nada exagerado que vá lotar seu inventário a cada segundo, mas sim uma mecânica constante de recompensa por caminhar.\n\nNa prática, isso transforma viagens cansativas entre bases em momentos de coleta produtiva. Em vez de apenas andar em linha reta para chegar a uma vila, você vai se pegar desviando do caminho para pegar uma fruta, um recurso de construção ou um material útil que surgiu ali no chão. Isso dá uma sensação de vida ao ecossistema do mapa, como se outros viajantes tivessem passado por ali ou recursos tivessem caído de árvores e estruturas.\n\nPara quem curte mapas de Roleplay ou servidores focados em exploração, essa mecânica faz total sentido. As estradas ganham utilidade e caminhar se torna tão interessante quanto minerar em camadas profundas, mantendo o ritmo da jogatina leve e fluido."
+  },
+  {
+   "h2": "Como funciona o sistema de loot por dimensão",
+   "body": "Um ponto crucial desenvolvido no projeto é a coerência no spawn dos itens. O addon não joga recursos aleatórios de qualquer jeito sem critério. Ele utiliza tabelas de loot ajustadas de acordo com a localização e a dimensão em que o jogador se encontra no momento.\n\nIsso significa que você nunca vai encontrar Pó de Blaze ou Rocha do Nether jogados no meio de uma floresta no Overworld. Da mesma forma, quando você estiver explorando as fortalezas ou os biomas do Nether, os itens espalhados no chão serão nativos daquela dimensão específica. Isso preserva completamente a progressão natural do jogo e impede que você obtenha itens avançados de forma apelativa antes da hora.\n\nAlém da separação por dimensão, o sistema respeita o ambiente ao seu redor. Os drops acontecem em frequências calculadas para não poluir o mapa, garantindo que o jogador receba surpresas agradáveis durante a jornada sem acumular centenas de entidades desnecessárias."
+  },
+  {
+   "h2": "Guia de instalação passo a passo (Android, iOS e Windows)",
+   "body": "A instalação do random item spawner é bastante direta no Bedrock Edition, pois o arquivo vem no formato padrão do jogo (.mcpack ou .mcaddon). O primeiro passo é fazer o download do arquivo diretamente para o seu dispositivo móvel ou computador.\n\nNo Android e no iOS, basta abrir o seu gerenciador de arquivos após baixar o pacote, localizar o arquivo e tocar nele. Escolha a opção de abrir com o Minecraft. O jogo será iniciado automaticamente e exibirá a mensagem de importação concluída no topo da tela. No Windows 10/11, o processo é ainda mais simples: dê dois cliques sobre o arquivo baixado e o jogo fará a instalação sozinho.\n\nDepois de importar, abra o Minecraft, vá em criar um novo mundo ou edite um mundo existente. Acesse a aba Pacotes de Recursos ou Pacotes de Comportamento na barra lateral esquerda, localize o random item spawner e clique em Ativar. Como o addon é feito para manter as conquistas ativas, não é preciso ativar opções experimentais que possam desativar seus troféus."
+  },
+  {
+   "h2": "Desempenho, compatibilidade e conquistas liberadas",
+   "body": "Uma das maiores preocupações de quem joga no celular ou em computadores mais fracos é o impacto do addon na taxa de quadros (FPS). Como este pacote foi construído de forma otimizada para a categoria Vanilla+, ele roda com extrema leveza. Os itens que surgem no chão seguem as regras normais de despawn do próprio jogo, o que evita o acúmulo excessivo de entidades no mundo.\n\nEm termos de compatibilidade, o complemento se conecta muito bem com quase todos os outros addons e texturas que você já utiliza. Como ele não altera a geração de terreno nem substitui os blocos nativos do Minecraft Bedrock, os riscos de conflito com outros pacotes de recursos são mínimos.\n\nO diferencial mais relevante é a preservação do sistema de conquistas da conta Xbox. Muitos addons exigem a ativação dos recursos de jogabilidade experimental nas configurações do mundo, o que bloqueia permanentemente as conquistas naquele save. Este pacote foi estruturado para funcionar nas regras padrão do jogo, mantendo suas conquistas liberadas enquanto você joga."
+  },
+  {
+   "h2": "Solução de problemas e erros de importação",
+   "body": "Se você tentar importar o arquivo e receber a mensagem de falha na importação ou pacote duplicado, não se preocupe. Na maioria das vezes, a falha por duplicidade ocorre porque você já tinha uma versão anterior instalada. Para resolver, vá até as Configurações do jogo, selecione Armazenamento, acesse a pasta de Pacotes e apague a versão antiga antes de clicar no novo arquivo.\n\nCaso os itens não estejam aparecendo no seu mundo após a ativação, verifique se o pacote foi aplicado corretamente no mundo desejado. Lembre-se também de que o spawn não é imediato nem exagerado; é preciso caminhar e explorar novas áreas para que os drops comecem a surgir pelo caminho.\n\nNo caso de usuários de Android que não conseguem abrir o arquivo direto pelo gerenciador padrão, a dica é usar um aplicativo gerenciador de arquivos alternativo. Renomeie a extensão do arquivo removendo o sufixo .zip caso ele apareça, mantendo apenas .mcpack no final, e execute o arquivo novamente."
+  },
+  {
+   "h2": "Dicas para aproveitar o addon no Survival e Roleplay",
+   "body": "Para tirar o máximo proveito do random item spawner no seu sobrevivência tradicional, combine a exploração com a criação de rotas comerciais ou estradas entre as suas bases. Conforme você viaja com frequência por essas rotas, sempre haverá pequenos recursos úteis para recolher no caminho, otimizando seu tempo de jogo.\n\nSe você joga em mapas estilo Roleplay ou com amigos em um servidor Realm, este addon adiciona um toque imersivo excelente. Ele simula a ideia de que o mundo é vivo e habitado, onde pequenos suprimentos ficam esquecidos pelas trilhas. É uma forma divertida de incentivar os jogadores a saírem de suas bases e explorarem biomas distantes sem a necessidade de comandos complexos.\n\nOutra boa estratégia é utilizar os itens encontrados aleatoriamente para criar desafios pessoais, como tentar sobreviver usando apenas o que você encontra pelo chão durante os primeiros dias de jogo, sem quebrar blocos de recursos primários até encontrar ferramentas descartadas."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Este addon desativa as conquistas do Xbox no meu mundo?",
+   "a": "Não, o addon foi desenvolvido especificamente para ser Achievements Friendly, permitindo que você obtenha conquistas normalmente no seu save sem bloquear o progresso."
+  },
+  {
+   "q": "Funciona na versão do Minecraft para celular (Android e iOS)?",
+   "a": "Sim, o pacote é totalmente compatível com dispositivos móveis Android, iOS e também com o Windows 10/11 Bedrock."
+  },
+  {
+   "q": "O addon é gratuito para baixar?",
+   "a": "Sim, este projeto está disponível gratuitamente para a comunidade do Minecraft Bedrock."
+  },
+  {
+   "q": "Preciso ativar as opções experimentais do mundo?",
+   "a": "Não é necessário ativar recursos experimentais, o que garante que seu mundo continue elegível para liberar conquistas do Xbox."
+  },
+  {
+   "q": "Posso colocar esse pacote em um mundo antigo que já tenho?",
+   "a": "Sim, você pode ativar o addon nas configurações do seu mundo já existente sem a necessidade de criar um save do zero."
+  },
+  {
+   "q": "Funciona em partidas multiplayer ou servidores Realms?",
+   "a": "Sim, funciona perfeitamente em sessões multiplayer e Realms, desde que o dono do mundo aplique o pacote nas configurações do servidor."
+  },
+  {
+   "q": "O que fazer se o arquivo der erro de importação ao clicar?",
+   "a": "Certifique-se de que o arquivo termina com a extensão .mcpack e, se der erro de duplicidade, apague a versão anterior nas configurações de armazenamento do jogo."
+  }
+ ],
+ "verdict": "O random item spawner é uma adição excelente para quem procura dar uma dinâmica de RPG ao Minecraft Bedrock sem estragar a essência da sobrevivência tradicional. Por ser leve e não desativar as conquistas do Xbox, ele é altamente recomendado para jogadores que curtem o estilo Vanilla+ e gostam de ser recompensados enquanto exploram o mapa. Por outro lado, se você espera uma modificação radical que altere monstros, crie novos biomas ou traga sistemas complexos de combate, este pacote pode parecer simples demais para o seu gosto."
+}

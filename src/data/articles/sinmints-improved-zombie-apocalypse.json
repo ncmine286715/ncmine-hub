@@ -1,0 +1,65 @@
+{
+ "id": "sinmints-improved-zombie-apocalypse",
+ "title": "SinMints Improved Zombie Apocalypse",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1385,
+ "intro": "Se você já se cansou de ver os zumbis do Minecraft queimando no primeiro raio de sol e virando piada depois da primeira noite, o addon SinMints Improved Zombie Apocalypse vem para mudar completamente essa dinâmica no Bedrock. Ele pega a ameaça mais básica do jogo e a transforma em um pesadelo constante que não dá trégua, obrigando você a repensar cada passo desde o primeiro minuto de jogo.\n\nEsse complemento foi feito sob medida para quem busca um desafio de sobrevivência focado em horror e hordas implacáveis. Se a sua intenção é construir tranquilamente sem se preocupar com monstros durante o dia, este modificador definitivamente não é para você. A proposta aqui é transformar o seu mundo em um cenário apocalíptico onde a luz do sol já não traz mais nenhuma segurança.",
+ "sections": [
+  {
+   "h2": "O que muda na jogabilidade na prática",
+   "body": "Na prática, a primeira grande mudança que você vai sentir ao ativar o addon é o fim do alívio matinal. No Minecraft tradicional, o amanhecer funciona como uma limpeza de mapa para os mortos-vivos, mas aqui os zumbis continuam firmes e fortes andando sob a luz do sol, pois não pegam mais fogo.\n\nAlém da imunidade à luz solar, a visão deles foi drasticamente ampliada. Se antes você conseguia passar despercebido a uma distância razoável, agora os mortos-vivos conseguem te enxergar de muito longe. Ao te detectarem, eles correm mais rápido e batem muito mais forte, exigindo cautela extrema ao explorar áreas abertas.\n\nOutro fator crucial é o comportamento ao dormir. Usar a cama para passar a noite não elimina mais a ameaça ao redor do seu abrigo. Como esses monstros sobrevivem durante o dia, os grupos que surgiram à noite continuarão ao redor da sua base na manhã seguinte, esperando uma oportunidade para te atacar."
+  },
+  {
+   "h2": "Recursos principais e novos perigos",
+   "body": "O ponto alto do SinMints Improved Zombie Apocalypse é a formação de hordas violentas. Em vez de encontrar zumbis isolados pelo mapa, o jogo passa a gerar grupos que variam entre 10 e 30 mortos-vivos de uma só vez. Essa densidade torna qualquer confronto direto em campo aberto uma péssima ideia.\n\nA distribuição dessas criaturas também foi alterada para cobrir todos os cantos do mapa. Seja explorando biomas frios, planícies ou descendo em cavernas profundas, a presença dos zumbis é constante. As cavernas, em especial, tornam-se locais de alto risco, já que o espaço reduzido favorece o cerco por parte das hordas.\n\nAlém das mudanças mecânicas focadas nos zumbis, o addon traz um toque visual diferenciado ao alterar as texturas de outros monstros clássicos, como skeletons e creepers. Essa atualização gráfica nos inimigos ajuda a reforçar o clima sombrio do apocalipse enquanto você luta para manter seu personagem vivo."
+  },
+  {
+   "h2": "Guia e dicas de sobrevivência básica",
+   "body": "Para sobreviver nos primeiros dias com este complemento instalado, sua prioridade absoluta deve ser erguer um abrigo seguro antes do primeiro anoitecer. Não perca tempo coletando itens desnecessários; foque em madeira, pedra e comida rápida, pois uma horda pode te cercar antes mesmo de você conseguir suas primeiras ferramentas de ferro.\n\nEvite ao máximo o combate direto contra grupos grandes nos momentos iniciais. Como os zumbis se movem mais rápido e possuem mais força de ataque, tente criar barreiras com blocos de dois de altura para golpear as pernas dos inimigos sem correr o risco de ser encurralado.\n\nOutra estratégia vital é o uso inteligente de iluminação e portas reforçadas. Como a noite não despawna essas criaturas e dormir apenas muda o horário no relógio, verifique sempre os arredores pelas janelas antes de abrir a porta da sua base pela manhã."
+  },
+  {
+   "h2": "Como instalar o addon no Minecraft Bedrock",
+   "body": "A instalação do SinMints Improved Zombie Apocalypse no Minecraft Bedrock é simples e funciona de forma parecida nas diferentes plataformas suportadas. O arquivo geralmente vem no formato .mcaddon ou .mcpack, o que facilita bastante o processo de importação direta para o seu jogo.\n\nNo Windows e no Android, basta baixar o arquivo e clicar diretamente sobre ele para que o Minecraft abra automaticamente e inicie o processo de importação. No iOS, após fazer o download, use o aplicativo Arquivos para selecionar a opção de abrir o pacote através do Minecraft.\n\nCom o arquivo importado com sucesso, vá até as configurações do seu mundo, acesse a aba Pacotes de Comportamento (Behavior Packs) e ative o addon. Não se esqueça de verificar a aba Pacotes de Recursos para garantir que o pacote visual correspondente também esteja ativo antes de iniciar a partida."
+  },
+  {
+   "h2": "Desempenho e compatibilidade nas plataformas",
+   "body": "Como este mod faz com que grupos de 10 a 30 zumbis apareçam simultaneamente no mapa sem queimarem no sol, o impacto no desempenho pode ser notado em dispositivos mais fracos. Em celulares de entrada ou consoles mais antigos, o acúmulo de entidades na tela pode causar pequenas quedas de quadros durante o combate.\n\nPara evitar problemas de travamento ou lag excessivo, é recomendado ajustar a distância de renderização e a distância de simulação nas opções de vídeo do Bedrock. Reduzir a simulação para 4 ou 6 pedaços (chunks) ajuda o jogo a processar menos mobs distantes ao mesmo tempo.\n\nEm termos de compatibilidade, o addon roda bem na versão Bedrock v1.0.0 e posteriores. Se você planeja jogar em modo multijogador, certifique-se de que o host da sala tenha ativado a opção de exigir que os jogadores baixem os recursos para que todos vejam as texturas e comportamentos corretamente."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um erro frequente relatado por jogadores é o addon não funcionar após a instalação. Isso costuma acontecer quando o pacote de comportamento é ativado, mas as opções de jogo experimental no menu do mundo deixam de ser ligadas. Lembre-se de ativar recursos de criador modificado caso o pacote exija.\n\nSe você perceber que os zumbis ainda estão queimando no sol ou agindo como na versão normal do jogo, verifique a ordem dos pacotes na lista do seu mundo. Garanta que o SinMints Improved Zombie Apocalypse esteja no topo da hierarquia de pacotes de comportamento ativos para evitar que outro mod sobresscreva suas mecânicas.\n\nCaso o arquivo baixe como .zip em vez de .mcaddon, basta renomear a extensão do arquivo no gerenciador do seu dispositivo, apagando a parte .zip e deixando apenas .mcaddon. Depois disso, toque no arquivo novamente para forçar a abertura pelo aplicativo oficial do jogo."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Este addon funciona no Minecraft Bedrock para celulares Android e iOS?",
+   "a": "Sim, o complemento é totalmente compatível com dispositivos móveis rodando a versão Bedrock. Basta baixar o arquivo compatível e executá-lo para abrir direto no jogo."
+  },
+  {
+   "q": "É possível liberar conquistas no Xbox usando este addon?",
+   "a": "Não, a ativação de qualquer pacote de comportamento personalizado desativa a obtenção de conquistas no mundo. Isso é uma limitação padrão do próprio Minecraft Bedrock."
+  },
+  {
+   "q": "O addon funciona em mundos que já foram criados anteriormente?",
+   "a": "Sim, você pode adicionar o pacote a um mundo antigo existente pelas configurações do mapa. No entanto, é recomendável fazer um backup do arquivo antes de aplicar a modificação."
+  },
+  {
+   "q": "O SinMints Improved Zombie Apocalypse é um addon gratuito?",
+   "a": "Sim, o pacote criado por SinMints é distribuído gratuitamente pela comunidade para a versão Bedrock do Minecraft."
+  },
+  {
+   "q": "Posso jogar este addon em modo multiplayer com meus amigos?",
+   "a": "Com certeza. Desde que o dono do mundo ative o pacote e marque a opção para forçar o download dos recursos, todos os participantes verão as modificações no jogo."
+  },
+  {
+   "q": "O que fazer se der erro de importação ao abrir o arquivo?",
+   "a": "Verifique se o seu jogo está atualizado e se o arquivo não baixou corrompido. Renomear o formato do arquivo para a extensão .mcaddon resolve a maioria das falhas de leitura."
+  },
+  {
+   "q": "Os zumbis somem do mapa se eu dormir na cama durante a noite?",
+   "a": "Não, como esses zumbis são totalmente resistentes à luz do sol, dormir apenas avança o horário no relógio do jogo, mantendo as hordas vivas ao redor do seu abrigo."
+  }
+ ],
+ "verdict": "O SinMints Improved Zombie Apocalypse é um addon excelente para quem quer transformar o Minecraft Bedrock em um verdadeiro teste de sobrevivência contra hordas implacáveis. Se você gosta de desafios intensos, gerenciamento de abrigo e mecânicas agressivas, o download vale muito a pena. Por outro lado, se você prefere um estilo de jogo calmo, focado em construções sem a pressão constante de ser perseguido por dezenas de mortos-vivos durante o dia, é melhor passar longe deste mod."
+}

@@ -1,0 +1,65 @@
+{
+ "id": "eatable-items",
+ "title": "Eatable Items",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1203,
+ "intro": "Para quem gosta de movimentar o mapa e pregar peças nos amigos durante as jogatinas, o addon Eatable Items, desenvolvido pelo criador flappyguy, chega como uma adição bastante divertida e inusitada para o Minecraft Bedrock. A proposta principal deste pacote é simples, mas extremamente eficiente: permitir que você coma itens que normalmente seriam totalmente inedíveis no jogo padrão, transformando objetos comuns do inventário em opções de alimento.\n\nCom mais de 53 mil downloads registrados pela comunidade, essa modificação foca no fator surpresa e no humor. Se você está procurando uma forma leve de quebrar a rotina do seu mundo survival ou quer trollar seus parceiros de equipe consumindo blocos e ferramentas na frente deles, o complemento entrega exatamente o que promete sem complicar a mecânica base do jogo.",
+ "sections": [
+  {
+   "h2": "Como o Eatable Items altera a jogabilidade no dia a dia",
+   "body": "Na prática, o addon modifica o comportamento de diversos itens do inventário para que o jogador consiga consumi-los utilizando o botão direito no PC ou segurando a tela nos dispositivos móveis. Em vez de ficar preso apenas às carnes, maçãs e pães tradicionais, o seu personagem ganha a capacidade bizarra de mastigar matérias-primas e objetos que antes só serviam para construção ou criação de ferramentas.\n\nEssa mudança traz um dinamismo totalmente diferente para o modo sobrevivência. Imagine estar no meio de uma exploração profunda em uma caverna, ficar completamente sem comida tradicional e precisar recorrer aos recursos minerados para não morrer de fome. Além de ser uma excelente ferramenta para brincadeiras em servidores ou mundos multiplayer, a modificação cria momentos inusitados em qualquer sessão de jogo."
+  },
+  {
+   "h2": "Principais recursos e itens consumíveis do addon",
+   "body": "O grande destaque da versão 1.0.0 é a transformação direta da utilidade de itens convencionais dentro do universo do jogo. Ao instalar o pacote, vários objetos ganham a animação e o som característico de mastigação do Minecraft Bedrock, permitindo que o jogador consuma os itens diretamente da mão principal como se fossem refeições normais.\n\nEssa mecânica abre margem para trollagens impagáveis com seus amigos. Você pode fingir que vai entregar um recurso raro para outro jogador e simplesmente comer o item na frente dele. O criador flappyguy focou em manter a integração simples para que a experiência seja fluida, garantindo que a interação com os itens seja direta e sem menus complicados."
+  },
+  {
+   "h2": "Passo a passo para instalar no Android, iOS e Windows",
+   "body": "A instalação no Minecraft Bedrock é bastante direta em todas as plataformas suportadas. Após baixar o arquivo com a extensão .mcaddon ou .mcpack, o processo varia ligeiramente dependendo do sistema operacional que você utiliza no momento. No Android e no iOS, basta tocar no arquivo baixado utilizando um gerenciador de arquivos e selecionar a opção de abrir com o Minecraft para que a importação comece automaticamente dentro do jogo.\n\nNo Windows 10 ou 11, o procedimento é ainda mais simples: dê um duplo clique no arquivo baixado e o próprio jogo será aberto, exibindo a mensagem de importação concluída no topo da tela. Após a importação, vá até as configurações do seu mundo, acesse a aba de Pacotes de Comportamento e ative o Eatable Items. Não se esqueça de ativar os recursos experimentais nas opções do mundo para garantir que todas as funções funcionem sem erros."
+  },
+  {
+   "h2": "Desempenho, peso do arquivo e compatibilidade",
+   "body": "Por se tratar de um addon leve que apenas altera a propriedade de itens existentes no jogo base, o Eatable Items apresenta um impacto quase nulo no desempenho do jogo. Ele roda perfeitamente bem em celulares mais fracos, consoles e computadores modestos, sem causar quedas de quadros por segundo (FPS) ou travamentos na hora de carregar os cenários.\n\nEm termos de compatibilidade de versões, o pacote suporta diversas atualizações do Minecraft Bedrock, cobrindo edições recentes como a 1.26 e compilações anteriores. Como o pacote depende da estrutura padrão de comportamentos do Bedrock, ele tende a ser bastante estável, exigindo apenas que você mantenha os recursos de criador ativados nas configurações daquele mundo específico."
+  },
+  {
+   "h2": "Resolução de problemas comuns na importação e uso",
+   "body": "Se ao tentar instalar o arquivo você receber a mensagem de erro de importação ou falha ao carregar o pacote, o primeiro passo é verificar se o arquivo não foi corrompido durante o download. Caso o erro persista, tente renomear a extensão do arquivo de .zip para .mcaddon antes de tentar abrir no jogo novamente através do seu gerenciador de arquivos.\n\nOutro problema recorrente acontece quando os itens não ficam comestíveis dentro do mapa. Na grande maioria das vezes, isso ocorre porque o jogador esqueceu de ativar as opções experimentais do mundo nas configurações antes de entrar no jogo. Lembre-se sempre de criar uma cópia do seu mundo de teste antes de aplicar novos addons para evitar perda de dados."
+  },
+  {
+   "h2": "Dicas de uso e estratégias para trollar seus amigos",
+   "body": "Para tirar o melhor proveito do Eatable Items em sessões multiplayer, o segredo é o elemento surpresa. Convide seus amigos para um mundo de sobrevivência convencional sem avisar que o pacote está ativo. Durante a coleta de recursos, comece a comer minérios ou ferramentas preciosas na frente deles enquanto finge que nada de errado está acontecendo.\n\nAlém das brincadeiras, você pode usar o addon para criar desafios customizados de sobrevivência com regras próprias. Por exemplo, criar um mapa onde a única fonte de alimento permitida seja comer itens coletados pelo chão, transformando a dinâmica clássica do Minecraft em uma corrida maluca e engraçada pela sobrevivência."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Eatable Items funciona em todas as plataformas do Bedrock?",
+   "a": "Sim, ele é compatível com Android, iOS, Windows e consoles que permitam a importação de pacotes de comportamento para mundos locais ou servidores."
+  },
+  {
+   "q": "O Eatable Items é gratuito?",
+   "a": "Sim, o complemento foi disponibilizado gratuitamente pelo autor flappyguy para toda a comunidade de Minecraft Bedrock."
+  },
+  {
+   "q": "Ativar este addon desativa as conquistas do meu mundo?",
+   "a": "Sim. Como qualquer pacote de comportamento (Behavior Pack) aplicado a um mundo no Bedrock, as conquistas do Xbox Network são desativadas naquele mapa."
+  },
+  {
+   "q": "Posso usar o addon em mundos antigos já criados?",
+   "a": "Pode sim. Basta acessar as configurações do seu mundo existente, ativar o pacote de comportamento e certificar-se de ligar as opções experimentais."
+  },
+  {
+   "q": "Funciona perfeitamente no modo multiplayer?",
+   "a": "Funciona muito bem. Todos os jogadores que entrarem no mundo baixarão o pacote automaticamente, desde que a opção de forçar download de pacotes esteja ativa no host."
+  },
+  {
+   "q": "O que fazer se der erro de importação do arquivo?",
+   "a": "Verifique a extensão do arquivo baixado. Se ele estiver no formato .zip, renomeie para .mcaddon e tente abrir diretamente pelo gerenciador do seu dispositivo."
+  },
+  {
+   "q": "Preciso ativar recursos experimentais para o addon funcionar?",
+   "a": "Sim, é altamente recomendável ativar as opções de recursos de criador e experimentos nas configurações do mundo para evitar falhas no consumo dos itens."
+  }
+ ],
+ "verdict": "O Eatable Items do flappyguy é um addon extremamente divertido, focado no público que deseja dar risadas e trollar amigos em partidas multiplayer do Minecraft Bedrock. Se o seu objetivo é ter momentos engraçados e alterar a rotina do survival sem complicações, a instalação vale muito a pena. No entanto, se você busca uma modificação profunda com novos bosses, sistemas complexos de RP ou quer manter as conquistas ativas no seu mapa principal, esse pacote não é o mais indicado para o seu estilo de jogo."
+}
