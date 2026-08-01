@@ -27,12 +27,17 @@ export const Route = createFileRoute("/addon/$id")({
     }
     const canonical = siteCanonical(`/addon/${addon.id}`);
     const indexable = isIndexableAddon(addon);
-    const title = `${addon.title} — Baixar addon para Minecraft Bedrock | @ncmine`;
-    // Descrição própria, montada com os metadados da ficha — nunca o texto
-    // do autor original copiado literalmente como meta description.
-    const description =
-      `Como baixar e instalar ${addon.title}${addon.author ? ` (${addon.author})` : ""} no Minecraft Bedrock: ` +
-      `requisitos, passo a passo em português e link direto. Categoria ${addon.category}, versão ${addon.version}.`;
+    // Title entre 50 e 60 caracteres, com o nome do addon + diferencial.
+    const clamp = (s: string, max: number) =>
+      s.length <= max ? s : `${s.slice(0, max - 1).replace(/[\s,;:—-]+$/, "")}…`;
+    const title = clamp(`Baixar ${addon.title} — Addon Minecraft Bedrock`, 60);
+    // Descrição própria, montada com os metadados da ficha (120–158 chars) —
+    // nunca o texto do autor original copiado literalmente.
+    const description = clamp(
+      `Baixe e instale ${addon.title} no Minecraft Bedrock: passo a passo em português, requisitos e link direto. ` +
+        `Categoria ${addon.category}, versão ${addon.version}. Testado por @ncmine.`,
+      158,
+    );
     return {
       meta: [
         { title },
