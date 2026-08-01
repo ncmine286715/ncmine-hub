@@ -8,6 +8,7 @@ import {
   getEscapeInstructions,
   inAppLabel,
   realBrowserName,
+  tryOpenExternal,
   type InAppKind,
   type Platform,
 } from "@/lib/inAppBrowser";
@@ -34,6 +35,14 @@ export function InAppBrowserGuard() {
       trackEvent("inapp_detected", { kind: k, platform: detectPlatform() });
     }
   }, []);
+
+  // Aviso é sempre discreto e temporário: some sozinho depois de 12s pra
+  // não atrapalhar a navegação (o download já tem seu próprio lembrete).
+  useEffect(() => {
+    if (!kind || dismissed) return;
+    const t = window.setTimeout(() => setDismissed(true), 12000);
+    return () => window.clearTimeout(t);
+  }, [kind, dismissed]);
 
   if (!kind || dismissed) return null;
 
@@ -70,7 +79,13 @@ export function InAppBrowserGuard() {
             href={externalHref}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent("inapp_escape", { kind, platform, method: "intent" })}
+            onClick={(e) => {
+              // Sem alerta: tenta o navegador real e, se o app bloquear,
+              // segue na navegação normal automaticamente.
+              e.preventDefault();
+              trackEvent("inapp_escape", { kind, platform, method: "intent" });
+              tryOpenExternal(url, platform);
+            }}
             className="inline-flex items-center gap-1 border-2 border-black bg-primary px-2 py-1 text-[10px] font-black uppercase text-primary-foreground shadow-[2px_2px_0_0_#000] animate-mc-pulse-orange"
           >
             <ExternalLink className="h-3 w-3" /> Abrir
