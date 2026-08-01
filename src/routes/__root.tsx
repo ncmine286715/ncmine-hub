@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { Toaster } from "sonner";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { SocialDock } from "../components/SocialDock";
+import { FloatingBackground } from "../components/FloatingBackground";
 import { pageview } from "../lib/gtag";
 
 import appCssUrl from "../styles.css?url";
@@ -130,6 +131,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <FloatingBackground />
       <Outlet />
       <InAppBrowserGuard />
       <SocialDock />

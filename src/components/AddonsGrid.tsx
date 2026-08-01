@@ -281,14 +281,11 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
 
       <header className="mb-4 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="inline-block bg-foreground px-2 py-1 font-pixel text-[9px] text-background sm:text-[10px]">
-            ADDONS
-          </span>
-          <h2 className="mt-2 text-xl font-black uppercase leading-none sm:mt-3 sm:text-5xl">
-            {cat === "Todos" ? "Toda a colecao" : cat}
+          <h2 className="text-xl font-black uppercase leading-none sm:text-4xl">
+            {cat === "Todos" ? "Coleção" : cat}
           </h2>
-          <p className="mt-1 max-w-xl text-[11px] text-muted-foreground sm:mt-2 sm:text-sm">
-            {filtered.length} {filtered.length === 1 ? "addon" : "addons"} {cat !== "Todos" ? `em ${cat}` : "curados"}. Busque, filtre e baixe.
+          <p className="mt-1 text-[11px] text-muted-foreground sm:text-sm">
+            {filtered.length} {filtered.length === 1 ? "addon" : "addons"}
           </p>
         </div>
 

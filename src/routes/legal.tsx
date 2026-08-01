@@ -11,7 +11,6 @@ function LegalPage() {
 
   return (
     <div className="relative min-h-screen pb-20 text-foreground">
-      <FloatingBackground />
       
       <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-3 py-4">
