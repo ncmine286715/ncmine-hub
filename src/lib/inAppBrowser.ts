@@ -29,9 +29,29 @@ export type Platform = "android" | "ios" | "windows" | "other";
 
 export function detectInAppBrowser(): InAppKind {
   if (typeof navigator === "undefined") return null;
-  const ua = navigator.userAgent || "";
+  const nav = navigator as Navigator & {
+    userAgentData?: { brands?: { brand: string }[] };
+  };
+  const brands = (nav.userAgentData?.brands || []).map((b) => b.brand).join(" ");
+  const ua = `${navigator.userAgent || ""} ${brands}`;
 
-  if (/musical_ly|Bytedance|TikTok|BytedanceWebview/i.test(ua)) return "tiktok";
+  // Sinais extras do TikTok fora do UA: parâmetros de campanha que o app
+  // adiciona ao link e o bridge JS injetado na webview.
+  if (typeof window !== "undefined") {
+    const w = window as unknown as Record<string, unknown>;
+    if (w.ttJSBridge || w.TiktokJSBridge || w.__tiktok_bridge__) return "tiktok";
+    const search = window.location.search;
+    if (/[?&](utm_source=tiktok|tt_from|is_from_webapp|share_app_name=tiktok)/i.test(search)) {
+      return "tiktok";
+    }
+  }
+
+  // TikTok: o app usa vários nomes de webview conforme região/versão
+  // (musical.ly na Ásia, trill/aweme nos builds internacionais, TTWebView
+  // no Android novo, BytedanceWebview no iOS). Também há o TikTok Lite.
+  if (/musical_ly|musically|BytedanceWebview|Bytedance|TTWebView|tiktok|trill|aweme|Lark|ByteLocale|byteFullScreen/i.test(ua)) {
+    return "tiktok";
+  }
   if (/Instagram/i.test(ua)) return "instagram";
   if (/Messenger|MessengerForiOS/i.test(ua)) return "messenger";
   if (/FB_IAB|FBAN|FBAV|FBIOS|FB4A/i.test(ua)) return "facebook";
@@ -114,11 +134,28 @@ export function tryOpenExternal(url: string, platform: Platform = detectPlatform
   if (typeof window === "undefined") return false;
   if (platform === "android") {
     try {
+      // Tenta o intent:// (abre o Chrome). Se o app bloquear/ignorar, a
+      // página continua onde estava — então caímos direto pra navegação
+      // normal, sem alerta nenhum pro usuário.
+      const before = Date.now();
       window.location.href = buildExternalHref(url, "android");
+      window.setTimeout(() => {
+        if (document.hidden) return; // saiu do app: deu certo
+        if (Date.now() - before < 2500) window.open(url, "_blank", "noopener");
+      }, 1200);
       return true;
     } catch {
+      try {
+        window.open(url, "_blank", "noopener");
+      } catch {}
       return false;
     }
+  }
+  // iOS/desktop: abre normalmente, sem prompt.
+  try {
+    window.open(url, "_blank", "noopener");
+  } catch {
+    window.location.href = url;
   }
   return false;
 }
