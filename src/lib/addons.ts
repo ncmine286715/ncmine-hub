@@ -43,11 +43,15 @@ function randomRating(rand: () => number): number {
   return Math.round((3.8 + biased * 1.2) * 10) / 10;
 }
 
-export const ADDONS: Addon[] = (addonsData as Addon[]).map((addon) => {
-  const rand = mulberry32(hashSeed(addon.id));
-  return {
-    ...addon,
-    downloads: randomDownloads(rand),
-    rating: Math.min(5, randomRating(rand)),
-  };
-});
+export function enrichAddons(list: Addon[]): Addon[] {
+  return list.map((addon) => {
+    const rand = mulberry32(hashSeed(addon.id));
+    return {
+      ...addon,
+      downloads: randomDownloads(rand),
+      rating: Math.min(5, randomRating(rand)),
+    };
+  });
+}
+
+export const ADDONS: Addon[] = enrichAddons(addonsData as Addon[]);
