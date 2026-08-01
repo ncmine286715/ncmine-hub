@@ -1,0 +1,65 @@
+{
+ "id": "would-you-rather",
+ "title": "Would You Rather",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1556,
+ "intro": "Se você busca transformar sua rotina de sobrevivência no Minecraft Bedrock em algo totalmente imprevisível, o addon Would You Rather é uma adição direta ao ponto. Desenvolvido pelo criador Flappyguy na versão 1.0.0, este projeto adapta a famosa brincadeira \"O que você prefere?\" para a mecânica interna do jogo. Em vez de apenas responder verbalmente, as escolhas feitas na tela trazem consequências imediatas no seu mundo, alterando o rumo da sua partida a qualquer momento.\n\nO mod foi projetado especialmente para jogadores que já dominaram o modo sobrevivência tradicional e desejam adicionar um elemento constante de risco e recompensa. Seja jogando sozinho para testar sua capacidade de adaptação ou em servidores com amigos para gerar situações cômicas e caóticas, a proposta é simples: tomar a decisão certa no momento exato ou arcar com os prejuízos causados pelas suas próprias escolhas.",
+ "sections": [
+  {
+   "h2": "Como o addon altera a jogabilidade na prática",
+   "body": "Na prática, o Would You Rather interrompe o ritmo comum de mineração, construção e exploração ao apresentar dilemas diretos ao jogador. Periodicamente ou sob certas condições, o sistema exibe opções na tela exigindo uma tomada de decisão rápida. Você precisa ler com atenção e selecionar qual caminho prefere seguir, sabendo que nenhuma escolha sai totalmente de graça dentro do ecossistema do jogo.\n\nEssas escolhas mudam o foco da partida instantaneamente. Em uma situação de combate severo ou durante a exploração de uma mina abandonada, a surgimento de uma pergunta pode garantir os recursos necessários para a sua sobrevivência ou introduzir uma ameaça capaz de destruir todo o seu progresso local. O dinamismo do jogo muda de uma sobrevivência passiva para um gerenciamento constante de crises.\n\nAlém disso, o fator surpresa impede que o jogador crie táticas totalmente seguras. Como os eventos dependem das respostas selecionadas, você nunca estará cem por cento preparado para o que vai acontecer no segundo seguinte, o que força a criação de abrigos mais seguros e a manutenção de um inventário diversificado para enfrentar eventuais punições."
+  },
+  {
+   "h2": "Recursos principais e o sistema de 30 perguntas",
+   "body": "A versão 1.0.0 criada por Flappyguy traz um conjunto focado de 30 perguntas do tipo \"O que você prefere?\". Cada uma dessas perguntas foi programada com desdobramentos lógicos dentro do código do Bedrock. As opções variam entre escolhas relativamente leves até dilemas extremos que afetam diretamente o status do seu personagem e o terreno ao seu redor.\n\nO grande diferencial do conteúdo está no equilíbrio entre benefícios e penalidades. Escolher uma opção pode conceder itens raros, efeitos de poção duradouros ou atalhos de exploração. Por outro lado, a alternativa perdedora ou a resposta mal planejada pode invocar multidões de criaturas hostis, aplicar efeitos negativos como lentidão e cegueira, ou gerar mudanças climáticas e estruturais drásticas.\n\nEsse pacote de dados funciona sem a necessidade de comandos complexos por parte do usuário final. Todo o sistema de perguntas roda de forma integrada, permitindo que a interface interativa apareça de maneira limpa no menu ou na tela do jogador sem poluir a visão geral do bloco de jogo."
+  },
+  {
+   "h2": "Como instalar o addon no Android, iOS e Windows",
+   "body": "A instalação no Minecraft Bedrock varia levemente dependendo da plataforma, mas segue o padrão universal de pacotes `.mcaddon` ou `.mcpack`. No Android, após baixar o arquivo original do autor Flappyguy, utilize um gerenciador de arquivos para tocar no arquivo e selecionar a opção \"Abrir com Minecraft\". O jogo iniciará automaticamente e fará a importação do pacote de comportamento e de recursos.\n\nNo iOS (iPhone e iPad), o processo é semelhante. Abra o aplicativo Arquivos, localize o pacote baixado na pasta de downloads e toque nele. O sistema operacional transferirá o arquivo diretamente para o Minecraft Bedrock, exibindo a mensagem de importação concluída com sucesso no topo da tela inicial do jogo.\n\nNo Windows 10 e 11, o procedimento é ainda mais simples: basta dar um duplo clique no arquivo baixado. O jogo abrirá sozinho e executará a instalação. Após a importação em qualquer plataforma, vá até as configurações do mundo onde deseja jogar, navegue até as abas de Pacotes de Recursos e Pacotes de Comportamento, ative o Would You Rather em ambas e garanta que os recursos experimentais estejam ligados antes de carregar o mapa."
+  },
+  {
+   "h2": "Desempenho, estabilidade e compatibilidade",
+   "body": "Por ser um addon estruturado principalmente em scripts e funções leves de pacotes de dados, o Would You Rather apresenta um impacto extremamente baixo no desempenho geral do dispositivo. O consumo de memória RAM extra é mínimo, permitindo que ele rode sem quedas de quadros (FPS) mesmo em celulares Android e iOS mais antigos ou de entrada.\n\nNo quesito estabilidade, a versão 1.0.0 cumpre o que promete sem gerar travamentos no motor do Bedrock. Por não substituir texturas pesadas do jogo base e nem adicionar centenas de blocos tridimensionais complexos, a execução das rotinas de código ocorre de forma limpa no processador.\n\nQuanto à compatibilidade com outros mods, o addon pode ser executado em conjunto com pacotes de textura, shaders e pequenos addons de utilidade. No entanto, é recomendado evitar o uso simultâneo com mods que alterem profundamente a interface do usuário (UI) ou que utilizem sistemas de scripts conflitantes para evitar falhas na exibição das perguntas."
+  },
+  {
+   "h2": "Problemas comuns e soluções práticas",
+   "body": "Um dos problemas mais relatados pelos jogadores é a não exibição das perguntas após entrar no mundo. Na maioria das vezes, isso ocorre porque as opções de jogabilidade experimental não foram ativadas na criação do mapa. Para resolver, acesse o menu de edição do mundo, vá na seção de experimentos e ative todas as opções relacionadas a APIs de script e recursos de criadores.\n\nOutra falha conhecida é o erro de importação indicando arquivo inválido ou falha ao extrair. Caso isso aconteça no celular, verifique se o arquivo baixado não terminou com a extensão `.zip` duplicada (como `.mcaddon.zip`). Se for o caso, renomeie o arquivo removendo a parte `.zip` do final antes de tentar abrir no Minecraft.\n\nSe o evento da pergunta acionar mas a consequência não aparecer na tela ou no cenário, certifique-se de que os comandos no chat do seu mundo estão permitidos e que as regras de jogo não estão bloqueando a execução de blocos de comando e scripts do servidor."
+  },
+  {
+   "h2": "Dicas para aproveitar o addon ao máximo",
+   "body": "Para tirar o melhor proveito do Would You Rather, a primeira dica é nunca responder a uma pergunta enquanto estiver em locais perigosos, como pontes no Nether ou na beira de lagos de lava. Como as consequências podem incluir explosões, efeitos de empurrão ou surgimento de monstros, escolha suas respostas sempre estando em local seguro e plano.\n\nSe você joga em modo multijogador com amigos, estabeleça uma regra para responder às perguntas em conjunto ou crie uma arena dedicada para o uso do addon. Isso transforma o mod em um minijogo completo dentro do seu próprio mundo, onde a sobrevivência do grupo depende das decisões individuais de cada participante.\n\nPor fim, faça cópias de segurança do seu mundo principal antes de ativar o addon. Como algumas consequências das 30 perguntas podem ser destrutivas para construções e estruturas próximas, ter um backup garante que você possa se divertir com o desafio sem o risco de perder construções antigas e valiosas."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Would You Rather é totalmente gratuito?",
+   "a": "Sim, o addon criado por Flappyguy é um projeto gratuito disponibilizado para a comunidade de Minecraft Bedrock. Você pode baixá-lo e instalá-lo sem a necessidade de gastar moedas do jogo."
+  },
+  {
+   "q": "O uso desse addon desativa as conquistas no meu mundo?",
+   "a": "Sim. Como o addon exige a ativação do pacote de comportamento e de recursos experimentais nas configurações, o Minecraft Bedrock desativa automaticamente o ganho de conquistas do Xbox naquele mapa."
+  },
+  {
+   "q": "Posso instalar o Would You Rather em um mundo antigo que já tenho?",
+   "a": "Sim, é possível ativar o pacote em mundos existentes. Basta acessar as configurações do mapa no menu principal, aplicar os pacotes de recursos e comportamento e ativar os recursos experimentais necessários."
+  },
+  {
+   "q": "O mod funciona perfeitamente em partidas multiplayer e Realms?",
+   "a": "Funciona normalmente. Quando o dono do mundo ativa o pacote, os outros jogadores baixam os arquivos automaticamente ao entrar na partida, permitindo que todos vejam e sofram os efeitos das escolhas."
+  },
+  {
+   "q": "O que fazer se o jogo der mensagem de falha ao importar o arquivo?",
+   "a": "Verifique se o arquivo baixado está íntegro e com a extensão correta `.mcaddon`. Caso o problema persista, feche o Minecraft totalmente, limpe o cache do dispositivo e tente reabrir o arquivo."
+  },
+  {
+   "q": "Ele roda bem em celulares fracos com pouca memória?",
+   "a": "Sim. O Would You Rather é um addon leve baseado em texto e mecânicas simples, não exigindo hardware avançado para funcionar sem travamentos no Android ou iOS."
+  },
+  {
+   "q": "Como sei se ativei as opções experimentais corretas?",
+   "a": "Dentro da tela de edição do seu mundo, vá até a aba Experimentos e marque todas as opções disponíveis. Isso garante que as funções de script do Flappyguy funcionem sem erros."
+  }
+ ],
+ "verdict": "O Would You Rather de Flappyguy é uma excelente opção para quem busca sair da rotina tradicional do Minecraft Bedrock e adicionar um tempero de imprevisibilidade à jogabilidade. Ele vale muito a pena para grupos de amigos em busca de momentos divertidos e para jogadores solo que gostam de desafios aleatórios. No entanto, se você prefere um jogo calmo, focado estritamente em construções complexas sem o risco de perder recursos de forma inesperada, este addon pode acabar atrapalhando o seu estilo de jogo."
+}

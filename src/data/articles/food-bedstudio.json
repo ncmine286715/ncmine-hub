@@ -1,0 +1,65 @@
+{
+ "id": "food-bedstudio",
+ "title": "FOOD+ (BedStudio)",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1200,
+ "intro": "Para quem joga o Minecraft Bedrock no modo sobrevivência há algum tempo, a rotina alimentar do jogo pode ficar bastante repetitiva. Comer apenas bife assado, pão ou carne de porco seca atende à necessidade de fome, mas não traz nenhuma graça para a sua rotina no mapa. É exatamente para resolver esse ponto que o addon FOOD+ (BedStudio) chega como uma solução prática para a comunidade.\n\nCriado pelo Bedrock Studio 1, o FOOD+ expande o cardápio do Bedrock Edition adicionando pratos modernos e lanches variados sem complicar demais a mecânica original do jogo. Seja você um jogador solo buscando mais imersão na sua base ou alguém que gosta de montar lanchonetes em servidores com amigos, este complemento entrega uma adição simples, direta e muito funcional para o seu mundo.",
+ "sections": [
+  {
+   "h2": "O que muda no seu Survival no dia a dia",
+   "body": "Na prática, o FOOD+ substitui a monotonia das refeições padrão por uma lista rica de opções gastronômicas. Em vez de andar pela sua mina carregando apenas um pente de bifes, você passa a criar e estocar pratos mais elaborados. Isso muda a dinâmica de colheita e organização dos seus baús, já que diferentes receitas exigem combinações de ingredientes variados para serem preparadas.\n\nAlém disso, o addon mantém um estilo simplista e focado na experiência de sobrevivência, garantindo que o equilíbrio do jogo não seja quebrado. Os novos itens de comida fornecem diferentes níveis de saturação e regeneração de fome, incentivando você a explorar novos tipos de receitas à medida que avança na sua jornada e acumula recursos na sua fazenda."
+  },
+  {
+   "h2": "Novos alimentos e receitas do cardápio",
+   "body": "O grande destaque do FOOD+ é a variedade de pratos urbanos e lanches modernos que chegam ao seu inventário. O complemento adiciona opções clássicas como hambúrgueres suculentos, cachorros-quentes, rosquinhas (donuts), biscoitos diferenciados e fatias de bacon crocante. Cada um desses itens possui sua própria textura adaptada ao visual em blocos do Bedrock.\n\nUm dos itens de maior destaque na atualização é a Special Cheese Pizza (Pizza Especial de Queijo). Essa receita combina fatias de bacon com um molho de queijo cremoso e rico, sendo perfeita para recuperar uma quantidade considerável de fome de uma só vez. A proposta é justamente permitir que você prepare desde um lanche rápido para explorações curtas até refeições completas para grandes batalhas."
+  },
+  {
+   "h2": "Passo a passo de instalação no Bedrock",
+   "body": "A instalação do FOOD+ no Minecraft Bedrock é bastante direta em qualquer plataforma suportada. No Windows, basta baixar o arquivo do addon, dar um duplo clique sobre ele e aguardar o próprio jogo abrir automaticamente para fazer a importação do pacote de comportamentos e de recursos para a sua biblioteca interna.\n\nNo Android e iOS, o processo é semelhante: após baixar o arquivo, abra-o usando um gerenciador de arquivos e selecione o Minecraft para concluir a importação. Em seguida, acesse as configurações do seu mundo existente (ou crie um novo mundo), vá até as abas de Pacotes de Recursos e Pacotes de Comportamento, ative o FOOD+ em ambas as seções e garanta que as opções de jogo experimental estejam ativas se o pacote solicitar."
+  },
+  {
+   "h2": "Desempenho em celulares fracos e compatibilidade",
+   "body": "Por ser um addon simplista e com foco temático leve, o FOOD+ apresenta um excelente desempenho até mesmo em celulares mais modestos ou consoles de entrada. As texturas e os códigos dos itens foram otimizados para não causar quedas de quadros (FPS) ou travamentos durante as partidas, garantindo que o jogo rode de forma fluida em qualquer dispositivo.\n\nEm termos de compatibilidade, por utilizar o sistema padrão de addons do Bedrock na versão 1.0.0, ele convive muito bem com pacotes de textura personalizados e mods de iluminação. No entanto, se você utilizar outros addons que alterem drasticamente a tabela de saídas de itens (loot tables) dos mesmos animais ou plantas, pode ser necessário ajustar a ordem de prioridade dos pacotes nas configurações do mundo."
+  },
+  {
+   "h2": "Resolução de problemas e erros comuns",
+   "body": "O problema mais frequente relatado por jogadores ao usar o FOOD+ é os itens não aparecerem no inventário criativo ou as receitas não funcionarem na bancada de trabalho. Na maioria dos casos, isso acontece porque as opções de Recursos Experimentais (Experimental Gameplay) não foram ativadas nas configurações do mundo antes de carregar o mapa.\n\nCaso receba uma mensagem de falha ao importar o pacote, verifique se o arquivo não foi corrompido durante o download ou se você já possui uma versão antiga instalada. Se for esse o caso, vá em Configurações, selecione a aba Armazenamento no menu do Minecraft, apague a versão anterior do FOOD+ e tente realizar a importação do arquivo atualizado novamente."
+  },
+  {
+   "h2": "Dicas para aproveitar o addon no seu mundo",
+   "body": "Para extrair o máximo do FOOD+ no seu mapa Survival, crie uma área dedicada para a produção dos seus ingredientes. Estruturar fazendas organizadas de trigo, criação de porcos para o bacon e colheita de outros insumos vai garantir que você sempre tenha estoque para preparar os pratos mais avançados sem ter que interromper suas aventuras.\n\nSe você joga em multiplayer ou em um servidor com amigos, uma ótima ideia é construir lanchonetes, pizzarias e cozinhas temáticas na sua vila principal. Como os itens trazem ícones e visuais de comidas modernas, o FOOD+ agrega um valor estético muito legal ao roleplay do jogo, permitindo até criar um sistema de trocas e comércio entre os jogadores."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon FOOD+ desativa as conquistas do mundo?",
+   "a": "Sim. Como a maioria dos addons do Bedrock Edition que utilizam pacotes de comportamento (Behavior Packs), ativar o FOOD+ no seu mundo vai desabilitar o ganho de conquistas do Xbox."
+  },
+  {
+   "q": "Funciona em celulares mais fracos (Android e iOS)?",
+   "a": "Funciona perfeitamente. O complemento é leve, focado apenas em novos itens de comida, e não exige processamento pesado do seu aparelho."
+  },
+  {
+   "q": "Posso instalar o FOOD+ em um mundo antigo já criado?",
+   "a": "Pode sim. Basta acessar as configurações do seu mundo salvo na tela de seleção de mapas, ativar o pacote de recursos e de comportamento e carregar a partida normalmente."
+  },
+  {
+   "q": "O complemento é gratuito?",
+   "a": "Sim, o FOOD+ (BedStudio) é disponibilizado gratuitamente pelo criador para a comunidade do Minecraft Bedrock."
+  },
+  {
+   "q": "É necessário ativar os Recursos Experimentais?",
+   "a": "Sim. Para garantir que todos os itens novos e receitas personalizadas funcionem sem falhas, é recomendável ativar os recursos experimentais nas opções do seu mundo."
+  },
+  {
+   "q": "Posso jogar online com amigos usando este addon?",
+   "a": "Com certeza. Ao ativar o pacote no seu mundo e marcar a opção para obrigar os jogadores a baixarem o recurso, qualquer amigo que entrar no seu jogo poderá ver e usar as comidas."
+  },
+  {
+   "q": "O que fazer se der erro de falha ao importar?",
+   "a": "Certifique-se de que o arquivo foi baixado por completo e remova versões antigas do pacote em Configurações no menu Armazenamento do Minecraft antes de tentar de novo."
+  }
+ ],
+ "verdict": "O FOOD+ (BedStudio) vale muito a pena para jogadores que querem dar mais cor e variedade à alimentação do Minecraft sem transformar o jogo em um simulador super complexo. Se você gosta de manter o clima clássico do Survival com um toque moderno de lanches e pizzas, o download é indispensável. Por outro lado, se você procura um mod técnico pesado, com máquinas industriais de cozinha e mecânicas avançadas de culinária, ele pode parecer simples demais para o seu gosto."
+}

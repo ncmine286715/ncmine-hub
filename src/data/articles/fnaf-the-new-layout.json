@@ -1,0 +1,65 @@
+{
+ "id": "fnaf-the-new-layout",
+ "title": "FNaF: The New Layout",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1392,
+ "intro": "Se você jogou o Five Nights at Freddy's original e conhece a famosa pizzaria do Freddy Fazbear de cor, o mapa FNaF: The New Layout traz uma proposta diferente para o Minecraft Bedrock. Desenvolvido pelo criador iEarthyaCF, este projeto refaz do zero a estrutura do local, deixando de lado aqueles corredores apertados e claustrofóbicos para entregar uma planta arquitetônica inédita, muito mais ampla e funcional.\n\nO objetivo principal do criador foi transformar um dos cenários mais icônicos do terror dos games em um grande espaço de exploração, criação e roleplay. Seja para reunir seus amigos em partidas de PvP e esconde-esconde ou para usar a pizzaria como base de um servidor, o mapa atualiza a atmosfera do jogo com sistemas interativos de segurança e salas totalmente personalizáveis.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "A primeira diferença visível ao entrar em FNaF: The New Layout é o espaço físico da pizzaria. Nos mapas tradicionais de FNaF no Minecraft Bedrock, os criadores costumam reproduzir exatamente o layout rígido do jogo original, o que resulta em corredores estreitos e salas pequenas que dificultam a movimentação de vários jogadores ao mesmo tempo. Aqui, a arquitetura foi repensada para dar liberdade de locomoção sem perder o clima sombrio do restaurante.\n\nAlém do design amplo, o mapa traz um sistema interativo de câmeras de segurança funcionais. Você pode se posicionar na sala do guarda e alternar pelas visões de diferentes cômodos do estabelecimento em tempo real. Essa mecânica adiciona uma camada extra de imersão, ideal para quem quer reproduzir a tensão da vigilância noturna com amigos.\n\nA iluminação e os blocos foram organizados para manter a estética clássica da pizzaria, misturando áreas bem iluminadas como o palco principal com bastidores sombrios e tubulações escuras. O resultado é um ambiente dinâmico que funciona tanto como um mapa de exploração sandbox quanto como uma arena temática para partidas multiplayer."
+  },
+  {
+   "h2": "Conteúdo e recursos principais do mapa",
+   "body": "O grande destaque de FNaF: The New Layout é a flexibilidade oferecida aos jogadores. A estrutura foi planejada para atender a diferentes estilos de jogo no Minecraft Bedrock, desde quem busca aventura até criadores de conteúdo que precisam de um cenário pronto para gravações e roleplay.\n\nO sistema de câmeras de segurança é totalmente integrado via comandos e mecânicas internas do mapa, dispensando a necessidade de instalar modificações pesadas por fora para funcionar. Ao interagir com os painéis da sala do guarda, você consegue monitorar o salão principal, a cozinha, os corredores laterais e as áreas de serviço de forma prática.\n\nOutro ponto forte é a capacidade de customização. O mapa não vem travado no modo aventura estrito, permitindo que você altere blocos, adicione novos add-ons de animatrônicos, crie passagens secretas ou monte sistemas de redstone adicionais. As tags do projeto reforçam esse foco versátil, englobando Survival, Creation, PvP e Adventure no mesmo pacote."
+  },
+  {
+   "h2": "Como instalar passo a passo no Bedrock",
+   "body": "Instalar o FNaF: The New Layout no Minecraft Bedrock é um processo simples, mas que exige alguns cuidados dependendo da sua plataforma, seja Android, iOS ou Windows 10/11.\n\nNo Android e iOS, faça o download do arquivo no formato .mcworld. Após concluir o download, abra o gerenciador de arquivos do seu celular e toque diretamente sobre o arquivo baixado. Escolha a opção de abrir com o Minecraft. O jogo será iniciado automaticamente e exibirá a mensagem de que a importação do mundo foi concluída com sucesso no topo da tela.\n\nNo Windows 10/11, o procedimento é ainda mais direto. Com o Minecraft fechado ou minimizado, dê um duplo clique no arquivo .mcworld. O sistema operacional reconhece o formato e lança o jogo automaticamente, realizando a instalação. Depois disso, basta procurar por FNaF: The New Layout na sua lista de mundos salvos, ajustar as configurações de dificuldade ou multiplayer se desejar e começar a jogar."
+  },
+  {
+   "h2": "Desempenho e compatibilidade nas plataformas",
+   "body": "Como se trata de um mapa focado na reestruturação arquitetônica e no uso inteligente de recursos nativos do Bedrock Engine, o desempenho geral é excelente. Diferente de mods pesados que travam celulares intermediários, o FNaF: The New Layout roda de maneira fluida na grande maioria dos dispositivos móveis e consoles.\n\nO mapa foi desenvolvido na versão 1.0.0 e mantém total compatibilidade com as atualizações recentes do Minecraft Bedrock. Por usar blocos padrão e sistemas otimizados de comandos para as câmeras, a taxa de quadros por segundo permanece estável mesmo quando você joga em salas multiplayer com vários participantes.\n\nPara garantir a melhor experiência em dispositivos com hardware mais modesto, recomendamos manter a distância de renderização entre 8 e 12 chunks. Isso evita engasgos ao transitar rapidamente pelas diferentes alas da pizzaria e garante que a iluminação do mapa carregue sem atrasos visuais."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Durante o uso do mapa, alguns jogadores podem se deparar com pequenas falhas de carregamento ou comportamento inesperado das mecânicas. O erro mais frequente é a falha na importação do arquivo .mcworld, que geralmente acontece quando o arquivo é baixado incompleto ou quando o Minecraft está desatualizado.\n\nSe o sistema de câmeras de segurança não responder aos comandos ou não trocar de tela, verifique se a opção de Blocos de Comando está ativada nas configurações do mundo. Caso você esteja jogando no modo Criativo e tenha quebrado acidentalmente algum circuito de redstone ou bloco invisível de comando sob a sala do guarda, o ideal é reimportar o mapa original para restaurar as funções.\n\nOutro detalhe importante envolve a integração com add-ons externos de animatrônicos. Se você adicionar mods de entidades e elas não gerarem naturalmente pela pizzaria, verifique se os recursos experimentais do mundo estão habilitados na aba de jogo antes de carregar a partida."
+  },
+  {
+   "h2": "Dicas para aproveitar ao máximo a pizzaria",
+   "body": "O formato expandido do mapa abre diversas possibilidades que não seriam viáveis na pizzaria clássica de FNaF. Uma das melhores formas de aproveitar o local é organizando partidas de esconde-esconde ou PvP temático com amigos, aproveitando as novas salas e pontos cegos do ambiente.\n\nSe o seu objetivo é o roleplay, você pode combinar este mapa com add-ons de móveis ou de personagens da franquia Five Nights at Freddy's. Como o chão e as paredes foram pensados para serem totalmente editáveis, fica fácil incluir salas de manutenção personalizadas, cozinhas equipadas e áreas de festas com decorações animadas.\n\nPara quem curte criação e circuitos, o FNaF: The New Layout serve como um excelente modelo base. Você pode expandir o subsolo construindo áreas de testes ocultas, implementar portas automáticas controladas por redstone ou criar um sistema de energia limitada que desliga as luzes do restaurante ao longo da noite."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O mapa FNaF: The New Layout é gratuito?",
+   "a": "Sim, o download do mapa é totalmente gratuito para todos os jogadores do Minecraft Bedrock Edition."
+  },
+  {
+   "q": "É possível jogar este mapa no celular Android e iOS?",
+   "a": "Com certeza. O mapa foi otimizado para rodar perfeitamente em dispositivos móveis Android e iOS, bastando baixar e abrir o arquivo .mcworld."
+  },
+  {
+   "q": "Posso ativar conquistas do Xbox jogando neste mundo?",
+   "a": "Não. Por utilizar recursos customizados, comandos internos e estrutura pré-construída de mapa, as conquistas ficam desativadas neste mundo."
+  },
+  {
+   "q": "O mapa funciona em sessões multiplayer com amigos?",
+   "a": "Sim, você pode abrir o mundo para amigos via Xbox Network ou rodar o mapa em um servidor dedicado Bedrock sem problemas."
+  },
+  {
+   "q": "Preciso ativar os Recursos Experimentais para jogar?",
+   "a": "Para o mapa base não é obrigatório, mas se você pretender adicionar add-ons de animatrônicos externos, recomendamos ativar as opções experimentais."
+  },
+  {
+   "q": "Posso importar o mapa em um mundo antigo que eu já criei?",
+   "a": "Não é possível fundir o mapa com um mundo pré-existente. Ele é baixado como um arquivo de mundo completo e independente."
+  },
+  {
+   "q": "O que fazer se der erro de importação ao abrir o arquivo?",
+   "a": "Renomeie a extensão do arquivo baixado de .mcworld para .zip, extraia a pasta e mova-a manualmente para a pasta minecraftWorlds do seu dispositivo."
+  }
+ ],
+ "verdict": "O FNaF: The New Layout é uma excelente escolha para fãs de Five Nights at Freddy's que buscam uma experiência renovada no Minecraft Bedrock, especialmente quem gosta de criar conteúdos, fazer roleplay ou jogar partidas multiplayer em mapas espaçosos e bem estruturados. A inclusão do sistema de câmeras funcional e a liberdade para modificar o cenário justificam o download. Por outro lado, se você prefere uma reprodução idêntica e claustrofóbica do jogo original de 2014 sem nenhuma alteração na planta arquitetônica, este mapa pode não atender às suas expectativas puristas."
+}

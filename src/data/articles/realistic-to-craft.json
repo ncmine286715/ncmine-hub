@@ -1,0 +1,65 @@
+{
+ "id": "realistic-to-craft",
+ "title": "Realistic to Craft",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1405,
+ "intro": "Se você joga Minecraft no modo sobrevivência há algum tempo, já deve ter percebido como certas receitas de criação do jogo base não fazem o menor sentido. Fazer uma picareta completa usando apenas tábuas de madeira e pedras brutas, sem nenhuma etapa intermediária de montagem ou refinamento, é apenas um dos vários exemplos de como a lógica vanilla é simplificada. O addon Realistic to Craft, desenvolvido pelo Bedrock Studio 1, chega exatamente para mudar essa dinâmica e trazer uma camada extra de coerência para a sua mesa de bancada.\n\nDisponível para o Minecraft Bedrock na versão 1.0.0, este complemento altera a lógica das receitas tradicionais do jogo. Ele foi pensado especialmente para jogadores que buscam uma experiência de survival mais imersiva, desafiadora e voltada para o roleplay. Em vez de simplesmente juntar materiais aleatórios na grade de criação, você precisará pensar de forma mais realista durante toda a sua jornada de evolução dentro do mapa.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "Na prática, o Realistic to Craft desacelera o ritmo acelerado ao qual estamos acostumados no Minecraft tradicional. No jogo padrão, é comum conseguir um conjunto completo de ferramentas de pedra nos primeiros dois minutos de partida. Com este addon ativado, a progressão se torna um processo gradual, onde cada item exige etapas lógicas antes de ficar pronto.\n\nIsso significa que você não vai mais construir ferramentas avançadas ou itens complexos sem antes preparar os insumos adequados. A mudança impacta diretamente a exploração, pois o jogador passa a dar valor a materiais que antes eram ignorados nos primeiros dias de sobrevivência. O resultado é uma rotina de jogo muito mais gratificante, na qual cada conquista parece realmente merecida.\n\nAlém disso, o aspecto de roleplay ganha um salto de qualidade gigantesco. Se você gosta de criar servidores com amigos ou gravar séries focado na ambientação, o processo de fabricação passa a ser uma parte ativa da história do seu personagem, e não apenas um clique rápido em um menu suspenso."
+  },
+  {
+   "h2": "Recursos e mecânicas de criação",
+   "body": "O foco central do pacote está na reformulação e expansão do sistema de fabricação do Bedrock Edition. O Bedrock Studio 1 reestruturou as receitas para que os componentes façam sentido visual e físico. Para montar uma ferramenta ou estrutura, é preciso unir peças que realmente se encaixem na vida real.\n\nO addon utiliza os próprios elementos do universo Bedrock para manter o visual limpo e minimalista, sem poluir a interface com itens desnecessários. A proposta é ser simplista porém realista, garantindo que o jogador entenda a lógica da receita logo de cara, sem a necessidade de consultar manuais gigantescos ou decorados de cor.\n\nEssa abordagem integrada garante que o mundo de bloco continue parecendo com o Minecraft que você conhece, mas com uma camada tática adicional. Você precisará gerenciar melhor o seu inventário e planejar quais recursos levar para suas viagens de mineração ou construção."
+  },
+  {
+   "h2": "Como instalar no Minecraft Bedrock",
+   "body": "A instalação do Realistic to Craft é simples e segue o padrão dos arquivos modernos do Bedrock Edition, funcionado no Android, iOS e Windows. O primeiro passo é baixar os arquivos do addon, que geralmente vêm nos formatos .mcaddon ou separadas em .mcpack para o Pacote de Comportamento (Behavior Pack) e Pacote de Recursos (Resource Pack).\n\nNo celular (Android ou iOS), use um gerenciador de arquivos para localizar o arquivo baixado e toque nele. Selecione a opção de abrir com o Minecraft. O jogo será executado automaticamente e iniciará a importação no topo da tela. No Windows, o processo é ainda mais direto: basta dar dois cliques no arquivo baixado para que o jogo abra e faça a instalação sozinho.\n\nCom os arquivos importados, vá até a tela de criação ou edição do seu mundo. Na barra lateral esquerda, acesse a aba Pacotes de Recursos e ative o pacote do addon. Em seguida, acesse a aba Pacotes de Comportamento e faça o mesmo. Por garantia, vá até a aba Experimentos nas configurações do mundo e ative as opções de recursos de criador e modificações de receitas para garantir que tudo funcione sem falhas."
+  },
+  {
+   "h2": "Desempenho e compatibilidade",
+   "body": "Por ser um addon focado em lógica de receitas e alterações estruturais de criação, o Realistic to Craft é extremamente leve. Ele não adiciona milhares de entidades pesadas ou texturas em altíssima resolução que costumam travar celulares intermediários. Por conta disso, o impacto no desempenho (FPS) é praticamente nulo tanto em dispositivos móveis quanto no PC.\n\nEm relação à compatibilidade com outros complementos, ele roda muito bem ao lado de addons de geração de terreno, novos biomas ou pacotes de shaders. No entanto, é importante ter atenção ao combinar este mod com outros addons que também alterem drasticamente as receitas dos mesmos itens vanilla, pois pode haver conflito de sobreposição.\n\nNo modo multiplayer, o funcionamento é perfeito. Ao ativar o addon no seu mundo ou mapa local, os amigos que entrarem na sua partida baixarão o pacote automaticamente, desde que a opção de exigir download de recursos esteja marcada nas configurações do mundo."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais relatados por jogadores é o erro de falha ao importar o pacote. Isso geralmente acontece quando o arquivo baixado está corrompido ou quando a extensão do arquivo mudou para .zip sem querer. Se isso ocorrer, renomeie o arquivo apagando o .zip do final e deixando apenas .mcaddon ou .mcpack, e tente abrir novamente.\n\nOutra situação comum é as novas receitas não aparecerem na bancada de trabalho mesmo com o addon ativado. Na maioria dos casos, isso é resolvido ativando as chaves de Recursos de Criador de Ferramentas e Recursos de Jogabilidade Experimental nas opções do mundo antes de carregar o mapa.\n\nCaso você note que os itens criados estão com a textura invisível ou roxa em xadrez, significa que o Pacote de Comportamento foi ativado, mas o Pacote de Recursos não. Certifique-se de que ambos os pacotes estão ativos simultaneamente na lista de complementos do seu mundo."
+  },
+  {
+   "h2": "Dicas para mandar bem na sobrevivência",
+   "body": "Para se dar bem com este addon, esqueça a pressa. No primeiro dia, foque em coletar o máximo de recursos básicos variados em vez de tentar fabricar ferramentas imediatamente. Tenha sempre um estoque extra de gravetos, cordas e pedras refinadas em seus baús centrais.\n\nMonte uma base operacional organizada com espaço para várias bancadas e fornos. Como as criações exigem mais passos intermediários, ter baús separados para matérias-primas e componentes processados vai economizar muito tempo na sua rotina de fabricação.\n\nSe estiver jogando em equipe, divida as tarefas. Enquanto um jogador fica encarregado da coleta bruta de madeira e minérios, outro pode focar em processar os materiais e preparar os componentes lógicos na base para abastecer o grupo."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Realistic to Craft é totalmente gratuito?",
+   "a": "Sim, o addon criado pelo Bedrock Studio 1 é gratuito para baixar e jogar na comunidade Bedrock."
+  },
+  {
+   "q": "Ele desativa as conquistas do meu mapa?",
+   "a": "Sim. Como qualquer addon que altera o comportamento do jogo ou exige recursos experimentais, as conquistas da sua conta Xbox serão desativadas naquele mundo."
+  },
+  {
+   "q": "Funciona no Minecraft de celular fraco?",
+   "a": "Funciona perfeitamente. Por focar em mecânicas de criação e receitas, ele é muito leve e não exige aparelhos potentes."
+  },
+  {
+   "q": "Posso jogar em multiplayer com meus amigos?",
+   "a": "Sim, você pode jogar em mundos locais, mapas abertos para LAN ou servidores onde o dono ative o pacote de comportamento."
+  },
+  {
+   "q": "Consigo colocar o addon em um mundo antigo?",
+   "a": "Consegue sim. Basta editar as configurações do seu mundo antigo, aplicar os pacotes de recursos e comportamento e salvar antes de entrar."
+  },
+  {
+   "q": "O que fazer se der erro de importação ao abrir o arquivo?",
+   "a": "Verifique se a extensão do arquivo está como .mcaddon. Se estiver como .zip, renomeie o arquivo removendo a parte do zip antes de tentar importar."
+  },
+  {
+   "q": "Preciso ligar as opções experimentais para funcionar?",
+   "a": "Recomendamos ativar as opções de recursos de criador nas configurações do mundo para garantir que todas as receitas personalizadas carreguem corretamente."
+  }
+ ],
+ "verdict": "O Realistic to Craft vale muito a pena para jogadores que procuram dar um novo fôlego ao modo sobrevivência tradicional, trazendo mais lógica, desafio e imersão para a bancada de trabalho. Se o seu objetivo é criar um mapa de roleplay ou desacelerar o jogo para aproveitar cada etapa da evolução, a instalação é altamente recomendada. Porém, se você prefere uma jogabilidade extremamente rápida e sem complicações na hora de fazer seus itens, as novas exigências de receita podem não se encaixar no seu estilo de jogo."
+}

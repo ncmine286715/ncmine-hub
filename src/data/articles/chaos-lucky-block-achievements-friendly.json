@@ -1,0 +1,65 @@
+{
+ "id": "chaos-lucky-block-achievements-friendly",
+ "title": "Chaos Lucky Block [ Achievements Friendly]",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1254,
+ "intro": "O Chaos Lucky Block [ Achievements Friendly], desenvolvido pelo criador Block Craft Addon, é um complemento para o Minecraft Bedrock que traz a clássica mecânica de blocos da sorte de forma totalmente reformulada. O grande diferencial deste pacote é permitir que você enfrente o caos dos eventos aleatórios sem desativar as conquistas do Xbox Network no seu mundo de sobrevivência.\n\nSe você procura quebrar a rotina do jogo tradicional, este addon é uma escolha certeira. Ele atende tanto o jogador solo que quer testar a sorte em buscas por itens raros quanto grupos de amigos interessados em organizar minijogos e corridas caóticas. Cada bloco quebrado é um palpite imprevisível entre recompensas valiosas e desastres imediatos.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "Na prática, o Chaos Lucky Block altera completamente o ritmo e a segurança da sua jornada no Bedrock. Em vez de uma coleta de recursos previsível, quebrar um desses blocos coloca a sua vida e o seu entorno em risco instantâneo. Em um segundo você pode receber equipamentos poderosos e, no momento seguinte, se ver preso em uma armadilha de lava ou sob um ataque surpresa de criaturas hostis.\n\nEssa dinâmica força o jogador a mudar o planejamento espacial do seu mapa. Abrir um lucky block perto da sua casa ou de construções complexas passa a ser um erro grave, já que explosões e estruturas geradas aleatoriamente podem destruir horas de trabalho em questão de segundos. A exploração ganha um tom de cassino, onde cada bloco encontrado exige preparação prévia antes da coleta."
+  },
+  {
+   "h2": "Recursos principais e eventos aleatórios",
+   "body": "O addon traz cerca de 100 resultados e eventos personalizados programados para surpreender o jogador. Um dos eventos de maior impacto visual é a chuva de meteoros, onde blocos de magma despencam do céu e explodem ao tocar o solo, transformando qualquer bioma em uma zona de guerra devastada em chamas.\n\nAlém disso, o sistema conta com tabelas de saques (loot tables) exclusivas que entregam desde volumosas pilhas de itens úteis até armaduras e ferramentas encantadas. Para balancear as boas recompensas, existem surpresas perigosas como teleportes repentinos para locais indesejados, surgimento de ondas de mobs e armadilhas ambientais diretas.\n\nTudo isso é executado com o suporte de scripts nativos da Bedrock Script API. Esse motor interno garante que as mecânicas funcionem de forma fluida e integrada à receita de fabricação (crafting recipe) no modo sobrevivência."
+  },
+  {
+   "h2": "Como instalar no Minecraft Bedrock",
+   "body": "A instalação do Chaos Lucky Block no Bedrock Edition é simples e rápida para dispositivos Android, iOS e Windows 10/11. O primeiro passo é fazer o download do arquivo do addon no formato correto (.mcaddon ou .mcpack) para a memória do seu aparelho.\n\nEm dispositivos móveis (Android e iOS), abra o seu gerenciador de arquivos, localize o pacote baixado e toque sobre ele. Escolha a opção de abrir com o Minecraft. O jogo será executado automaticamente e iniciará o processo de importação para a sua biblioteca interna.\n\nNo Windows 10/11, basta dar dois cliques no arquivo baixado para que o Minecraft abra e conclua o processo. Por fim, vá até as configurações do mundo onde deseja jogar, acesse as abas de Pacotes de Recursos e Pacotes de Comportamento, ative o Chaos Lucky Block em ambas e entre no mapa."
+  },
+  {
+   "h2": "Desempenho e suporte a conquistas",
+   "body": "Por utilizar a linguagem de scripts própria do Bedrock, o addon apresenta boa otimização e estabilidade durante as partidas. Eventos complexos, como a geração de estruturas ou a aplicação de efeitos de status aleatórios, rodam sem causar grandes travamentos na maior parte dos celulares e computadores.\n\nEm celulares mais antigos, eventos com muitos efeitos visuais simultâneos — a exemplo da chuva de meteoros cheia de blocos de magma — podem causar quedas temporárias de quadros. Nesses casos, reduzir a distância de renderização nas opções de vídeo ajuda a manter o jogo estável.\n\nO ponto forte do projeto é o selo \"Achievements Friendly\". Como o pacote foi estruturado para funcionar sem a necessidade de comandos ou alterações que alterem o estado do jogo para modo de trapaça, você consegue evoluir no mundo e liberar suas conquistas normais da conta."
+  },
+  {
+   "h2": "Problemas comuns e soluções",
+   "body": "Caso você tente importar o arquivo e receba uma mensagem de erro no topo da tela, verifique o nome do arquivo. Muitas vezes o navegador adiciona a extensão \".zip\" ao final do nome. Renomeie o arquivo apagando o \".zip\" para que ele termine apenas em \".mcaddon\" e tente abrir novamente.\n\nSe você criar o bloco no jogo, mas nada acontecer ao quebrá-lo, o problema geralmente está na falta de ativação do pacote de comportamento (Behavior Pack) no menu do mundo. Garanta que tanto o pacote de recursos quanto o de comportamento estejam ativos na mesma sessão.\n\nOutra situação é o excesso de entidades geradas em eventos repetidos de mobs. Se o mapa ficar pesado após quebrar muitos blocos na mesma área, afaste-se do local ou elimine os monstros restantes para restaurar a taxa de quadros do seu jogo."
+  },
+  {
+   "h2": "Dicas de sobrevivência e uso estratégico",
+   "body": "A melhor estratégia para jogar com o Chaos Lucky Block é construir uma arena isolada longe de onde você guarda seus baús e criações. Um espaço plano no deserto ou sobre a água é o ambiente ideal para testar a sorte sem arriscar suas estruturas principais.\n\nTenha sempre em mãos um kit de emergência no seu inventário rápido. Um balde de água é indispensável para neutralizar poços de lava e apagar incêndios causados por meteoros. Leve também um escudo, poções de cura e blocos de construção para se proteger de ataques surpresa.\n\nPara quem joga em grupo, uma boa opção é criar uma pista de corrida de lucky blocks. Cada participante avança um bloco por vez no seu próprio caminho; o equilíbrio imprevisível entre boas recompensas e armadilhas letais garante partidas divertidas e muito competitivas."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Chaos Lucky Block desativa as conquistas do meu mundo?",
+   "a": "Não. Este addon foi desenvolvido especificamente para manter as conquistas ativas na sua conta Xbox enquanto você joga no modo sobrevivência."
+  },
+  {
+   "q": "Posso jogar este addon em celulares Android e iOS?",
+   "a": "Sim, o arquivo é totalmente compatível com a versão Bedrock presente em smartphones Android e iPhones."
+  },
+  {
+   "q": "É possível jogar em modo multiplayer com meus amigos?",
+   "a": "Sim. O dono do mapa só precisa ativar o pacote no mundo e os convidados baixarão os arquivos automaticamente ao entrar na sala."
+  },
+  {
+   "q": "O que fazer se der erro de importação no Minecraft?",
+   "a": "Verifique se o nome do arquivo baixado não terminou em .zip. Se sim, renomeie o arquivo removendo essa parte final e mantendo apenas a extensão .mcaddon antes de abrir."
+  },
+  {
+   "q": "O addon funciona em um mundo antigo que eu já criei?",
+   "a": "Funciona sim. Basta ir nas configurações desse mundo existente antes de entrar e ativar os pacotes de recurso e comportamento."
+  },
+  {
+   "q": "O Chaos Lucky Block é gratuito?",
+   "a": "Sim, o projeto criado por Block Craft Addon é distribuído gratuitamente para a comunidade Bedrock."
+  },
+  {
+   "q": "Preciso ativar recursos experimentais no meu mapa?",
+   "a": "Para garantir que os scripts de eventos funcionem 100%, é recomendável ativar as opções de recursos de criador e APIs de script nas configurações do mundo."
+  }
+ ],
+ "verdict": "O Chaos Lucky Block [ Achievements Friendly] é um addon excelente para quem busca adicionar imprevisibilidade e momentos divertidos ao Minecraft Bedrock sem abrir mão das conquistas. Ele cumpre o que promete ao entregar eventos variados e desafiadores, sendo ideal para partidas em grupo e corridas multiplayer. Não é recomendado apenas para jogadores que odeiam correr riscos ou perder itens em eventos explosivos, mas para todo o resto da comunidade, vale muito a pena baixar e testar."
+}
