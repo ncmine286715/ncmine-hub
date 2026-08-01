@@ -254,6 +254,7 @@ function AddonPage() {
 
         <section className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Requisitos</h2>
+          <p className="sr-only">Requisitos verificados no teste do addon.</p>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
             <li>• Minecraft Bedrock Edition {addon.version ? `— testado na versão ${addon.version} do addon` : ""} (Android, iOS, Windows, console com importação de mundo).</li>
             <li>• Espaço livre para o arquivo do pacote e para o backup do seu mundo.</li>
