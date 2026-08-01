@@ -8,7 +8,24 @@ const SITE_URL = "https://mineaddonsnews.online";
 await mkdir("public", { recursive: true });
 await copyFile("src/data/addons.json", "public/addons.json");
 
-const addons = JSON.parse(await readFile("src/data/addons.json", "utf8"));
+const raw = JSON.parse(await readFile("src/data/addons.json", "utf8"));
+
+const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
+const MIN_EDITORIAL_WORDS = 40;
+
+// Deduplica por id e mantém no sitemap só o que tem texto editorial próprio
+// (o resto vai com noindex na página, então não pode entrar aqui).
+const seen = new Set();
+const addons = raw.filter((a) => {
+  if (!a?.id || seen.has(a.id)) return false;
+  seen.add(a.id);
+  const description = norm(a.description);
+  return (
+    description &&
+    description !== norm(a.short) &&
+    description.split(" ").length >= MIN_EDITORIAL_WORDS
+  );
+});
 
 const staticRoutes = [
   { path: "/", changefreq: "daily", priority: "1.0" },
@@ -48,4 +65,6 @@ const xml = [
 ].join("\n");
 
 await writeFile("public/sitemap.xml", xml);
-console.log(`[sync-addons] public/addons.json e sitemap.xml atualizados (${urls.length} URLs)`);
+console.log(
+  `[sync-addons] public/addons.json e sitemap.xml atualizados (${urls.length} URLs indexáveis de ${raw.length} addons)`,
+);

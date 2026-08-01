@@ -89,7 +89,9 @@ export function AddonCard({ addon, onOpen, index = 0 }: Props) {
           {addon.title}
         </h3>
 
-        <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">{addon.short}</p>
+        {addon.short && addon.short.toLowerCase() !== addon.title.toLowerCase() && (
+          <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">{addon.short}</p>
+        )}
 
         <div className="mt-auto flex items-center justify-between pt-1 text-[11px]">
           {addon.rating > 0 ? (
@@ -102,10 +104,16 @@ export function AddonCard({ addon, onOpen, index = 0 }: Props) {
               ))}
             </span>
           ) : <span />}
-          <span className="inline-flex items-center gap-1 font-medium text-muted-foreground tabular-nums">
-            <Download className="h-3 w-3" />
-            {animatedDownloads.toLocaleString("pt-BR")}
-          </span>
+          {addon.downloads > 0 ? (
+            <span className="inline-flex items-center gap-1 font-medium text-muted-foreground tabular-nums">
+              <Download className="h-3 w-3" />
+              {animatedDownloads.toLocaleString("pt-BR")}
+            </span>
+          ) : (
+            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+              {addon.version ? `v${addon.version}` : ""}
+            </span>
+          )}
         </div>
 
         <button
