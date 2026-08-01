@@ -13,6 +13,7 @@ import { Route as TermosRouteImport } from './routes/termos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DmcaRouteImport } from './routes/dmca'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -37,6 +38,11 @@ const PrivacidadeRoute = PrivacidadeRouteImport.update({
 const LegalRoute = LegalRouteImport.update({
   id: '/legal',
   path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DmcaRoute = DmcaRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/cookies': typeof CookiesRoute
   '/dmca': typeof DmcaRoute
+  '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/cookies': typeof CookiesRoute
   '/dmca': typeof DmcaRoute
+  '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/cookies': typeof CookiesRoute
   '/dmca': typeof DmcaRoute
+  '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/cookies'
     | '/dmca'
+    | '/faq'
     | '/legal'
     | '/privacidade'
     | '/sobre'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/cookies'
     | '/dmca'
+    | '/faq'
     | '/legal'
     | '/privacidade'
     | '/sobre'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/cookies'
     | '/dmca'
+    | '/faq'
     | '/legal'
     | '/privacidade'
     | '/sobre'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   CookiesRoute: typeof CookiesRoute
   DmcaRoute: typeof DmcaRoute
+  FaqRoute: typeof FaqRoute
   LegalRoute: typeof LegalRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   SobreRoute: typeof SobreRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/legal'
       fullPath: '/legal'
       preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dmca': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   CookiesRoute: CookiesRoute,
   DmcaRoute: DmcaRoute,
+  FaqRoute: FaqRoute,
   LegalRoute: LegalRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   SobreRoute: SobreRoute,
