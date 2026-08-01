@@ -11,7 +11,7 @@ await copyFile("src/data/addons.json", "public/addons.json");
 const raw = JSON.parse(await readFile("src/data/addons.json", "utf8"));
 
 const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
-const MIN_EDITORIAL_WORDS = 40;
+const MIN_EDITORIAL_CHARS = 1000;
 
 // Deduplica por id e mantém no sitemap só o que tem texto editorial próprio
 // (o resto vai com noindex na página, então não pode entrar aqui).
@@ -23,7 +23,7 @@ const addons = raw.filter((a) => {
   return (
     description &&
     description !== norm(a.short) &&
-    description.split(" ").length >= MIN_EDITORIAL_WORDS
+    description.length >= MIN_EDITORIAL_CHARS
   );
 });
 
