@@ -1,0 +1,65 @@
+{
+ "id": "furnicraft-furniture",
+ "title": "FURNICRAFT ~ Furniture",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1455,
+ "intro": "Para quem gosta de construir e personalizar casas no Minecraft Bedrock, a limitação de móveis do jogo padrão sempre foi um obstáculo chato. Tentar improvisar poltronas usando escadas e alçapões ou criar mesas com placas de pressão até quebra o galho, mas o resultado final raramente entrega aquele visual de casa moderna e habitada de verdade. O addon FURNICRAFT ~ Furniture, criado pelo desenvolvedor ROBERTGAMER69, chega na versão 1.0.0 justamente para preencher essa lacuna de forma prática.\n\nCom uma coleção impressionante que ultrapassa 500 peças de mobília, este complemento transforma completamente a experiência de decoração no jogo. Seja para equipar uma cozinha detalhada, montar uma sala de estar com eletrônicos funcionais ou criar quartos temáticos aconchegantes, o pacote oferece soluções prontas e bem modeladas. Se você procura dar mais vida e realismo aos seus mundos sem complicações, vale a pena entender como esse mod funciona na prática.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "A principal mudança que você nota ao ativar o FURNICRAFT é a liberdade imediata para mobiliar qualquer espaço sem precisar recorrer a truques visuais ou gambiarras com blocos comuns. Em vez de estruturas improvisadas, você ganha acesso a objetos reais do cotidiano, com proporções adequadas e detalhes visuais que combinam com o estilo do Minecraft Bedrock.\n\nAlém do ganho estético, vários itens do pacote contam com elementos de interação. É possível sentar em cadeiras, poltronas e sofás, além de utilizar gavetas e armários para guardar itens do seu inventário. Isso traz um nível de imersão muito superior para mapas de interpretação de papéis (roleplay), vilas personalizadas ou partidas em equipe.\n\nOutro ponto relevante é o suporte completo ao modo multijogador. Quando o addon está configurado corretamente no seu mundo, outros jogadores que entrarem na partida conseguirão visualizar e interagir com todas as mobílias normalmente, tornando a construção coletiva de cidades e casas muito mais divertida."
+  },
+  {
+   "h2": "Mais de 500 móveis e recursos principais",
+   "body": "O grande destaque do trabalho do autor ROBERTGAMER69 no FURNICRAFT é a diversidade massiva de itens disponibilizados de uma só vez. O pacote cobre praticamente todos os ambientes de uma residência moderna, além de áreas externas e espaços comerciais.\n\nPara a área da cozinha, você encontra geladeiras, fogões, micro-ondas, armários suspensos, pias e utensílios variados. Na sala de estar, o destaque fica para as televisões, sistemas de som, estantes de livros, mesas de centro e conjuntos de sofás em diferentes cores. Já para os quartos, há opções de camas estilizadas, escrivaninhas, computadores, notebooks e luminárias.\n\nO addon também abrange itens para banheiros, como privadas, banheiras e pias, além de decorações para quintal e jardim, incluindo churrasqueiras, guarda-sóis e espreguiçadeiras. Todos os modelos mantêm a estética quadriculada característica do jogo, garantindo que as peças pareçam parte integrante do universo do Minecraft Bedrock."
+  },
+  {
+   "h2": "Como instalar o addon no Bedrock (Android, iOS e Windows)",
+   "body": "O processo de instalação do FURNICRAFT na edição Bedrock é bastante simples e direto, já que os arquivos costumam vir no formato .mcpack ou .mcaddon. No Android e no iOS, após baixar o arquivo, utilize o gerenciador de arquivos do dispositivo e toque sobre ele. O próprio sistema operacional abrirá o Minecraft automaticamente, iniciando a importação dos pacotes de recursos e de comportamento.\n\nNo Windows (PC), o procedimento é o mesmo: basta dar dois cliques no arquivo baixado para que o Minecraft Bedrock seja executado e adicione os arquivos à sua biblioteca interna. Caso o download esteja em formato .zip, basta renomear o final do arquivo trocando '.zip' por '.mcaddon' antes de executar.\n\nApós a importação ser concluída com sucesso, abra o jogo e crie um novo mundo ou acesse as configurações de um mundo existente. Nas abas laterais 'Pacotes de Recursos' e 'Pacotes de Comportamento', ative o FURNICRAFT. Em seguida, acesse a aba 'Jogo' nas configurações do mapa e certifique-se de ativar todas as opções de 'Recursos Experimentais' para garantir o funcionamento correto dos itens."
+  },
+  {
+   "h2": "Desempenho, estabilidade e compatibilidade",
+   "body": "Por carregar mais de 500 modelos tridimensionais e texturas exclusivas, é comum ter dúvidas sobre o impacto do FURNICRAFT no desempenho do jogo. Na versão 1.0.0, o complemento apresenta uma boa otimização geral, rodando de forma estável na grande maioria dos dispositivos atuais, como computadores, consoles e celulares intermediários.\n\nEm dispositivos móveis mais antigos ou com memória RAM limitada, o acúmulo excessivo de mobílias e entidades em um mesmo cômodo pode causar pequenas quedas na taxa de quadros (FPS). A recomendação para evitar travamentos em aparelhos mais fracos é espalhar a decoração pelos cenários e evitar concentrar centenas de itens na mesma região do mapa.\n\nQuanto à compatibilidade, o FURNICRAFT roda perfeitamente ao lado de pacotes de textura tradicionais e addons de iluminação. No entanto, evite usar outros mods pesados de móveis simultaneamente no mesmo mapa, pois a sobreposição de scripts de comportamento pode gerar conflitos de ID ou falhas no carregamento."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais recorrentes relatados por jogadores é a ausência dos móveis no inventário ou itens aparecendo com texturas invisíveis e blocos sem formato. Na quase totalidade dos casos, isso ocorre porque as opções de 'Recursos Experimentais' não foram ativadas nas configurações do mundo antes de iniciar a partida.\n\nSe você se deparar com a mensagem de 'Falha ao importar pacote' durante a instalação no celular ou PC, o arquivo baixado pode ter sido corrompido. Para resolver, feche o jogo, exclua o arquivo corrompido, faça o download novamente e tente abrir através do gerenciador de arquivos.\n\nCaso esteja jogando em modo multiplayer e os seus amigos não consigam enxergar as mobílias ou sejam desconectados ao entrar no mapa, certifique-se de marcar a opção 'Exigir que os jogadores baixem pacotes de recursos para entrar' nas configurações da partida do anfitrião."
+  },
+  {
+   "h2": "Dicas práticas de uso e decoração",
+   "body": "Para aproveitar todo o potencial do FURNICRAFT ~ Furniture em suas construções, planeje o tamanho dos cômodos considerando a escala das mobílias. Espaços muito pequenos, com apenas três blocos de largura, podem ficar poluídos rapidamente se você tentar colocar muitos itens juntos.\n\nUma excelente estratégia visual é combinar as peças do addon com os blocos nativos do Minecraft Bedrock, como madeira polida, quartzo, concreto e folhas. Essa mistura cria uma transição suave entre a estrutura da casa e a decoração interna, dando um acabamento muito mais refinado às suas criações.\n\nSe você estiver jogando no modo Survival, verifique se a versão disponibilizada inclui receitas de fabricação (crafting) na bancada de trabalho. Caso o foco do arquivo seja exclusivamente o modo Criativo, você pode utilizar o comando '/give' ou acessar o inventário criativo para obter os elementos necessários para compor seus ambientes."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O FURNICRAFT desativa as conquistas do meu mundo?",
+   "a": "Sim. Ao ativar qualquer pacote de comportamento ou recurso experimental no Minecraft Bedrock, o jogo desativa automaticamente a conquista de conquistas do Xbox naquele mapa salvo."
+  },
+  {
+   "q": "Posso usar esse addon em partidas multiplayer com amigos?",
+   "a": "Com certeza. O dono do mapa só precisa ativar o pacote de recursos e de comportamento e marcar a opção para exigir que os jogadores baixem os recursos ao entrarem no servidor ou mundo local."
+  },
+  {
+   "q": "O complemento funciona bem em celulares Android e iOS?",
+   "a": "Sim, funciona muito bem. O addon foi projetado para a edição Bedrock e roda em celulares, desde que o jogo esteja atualizado e com os recursos experimentais ativos nas configurações do mundo."
+  },
+  {
+   "q": "É possível adicionar o FURNICRAFT em um mundo antigo já existente?",
+   "a": "Sim, você pode ativar o addon em mundos antigos. Basta acessar o menu de configurações do mapa antes de carregá-lo, adicionar os pacotes de recursos/comportamento e ligar as opções experimentais."
+  },
+  {
+   "q": "O addon FURNICRAFT é totalmente gratuito?",
+   "a": "Sim, o pacote criado pelo autor ROBERTGAMER69 é um projeto gratuito distribuído abertamente para a comunidade de Minecraft Bedrock."
+  },
+  {
+   "q": "O que fazer se os móveis ficarem invisíveis no jogo?",
+   "a": "Isso acontece quando os Recursos Experimentais (como Recursos do Criador de Férias) não estão ativados. Acesse as opções do seu mundo no menu principal e ative todas as chaves experimentais."
+  },
+  {
+   "q": "Esse addon funciona na versão Minecraft Java Edition?",
+   "a": "Não. O FURNICRAFT ~ Furniture na versão 1.0.0 é desenvolvido especificamente para o formato de addons do Minecraft Bedrock (Android, iOS, Windows e consoles)."
+  }
+ ],
+ "verdict": "O FURNICRAFT ~ Furniture do autor ROBERTGAMER69 é uma adição indispensável para qualquer construtor do Minecraft Bedrock que queira fugir da limitação dos blocos padrão e criar ambientes detalhados com mais de 500 opções de mobília. Se o seu objetivo é decorar casas modernas, produzir mapas de roleplay ou apenas deixar sua base mais aconchegante, o mod entrega excelente variedade e ótima qualidade visual. No entanto, se você joga focado unicamente no modo Survival puro e não quer abrir mão de liberar as conquistas da sua conta, utilizar esse ou qualquer outro addon com recursos experimentais pode não ser a escolha ideal para o seu mapa principal."
+}
