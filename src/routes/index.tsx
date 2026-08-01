@@ -5,10 +5,9 @@ import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
 import { DownloadModal } from "@/components/DownloadModal";
 import type { Addon } from "@/components/AddonCard";
-import { DiscordIcon, InstagramIcon, YouTubeIcon, TikTokIcon, MinecraftBlockIcon } from "@/components/icons/BrandIcons";
-import { DISCORD_URL, INSTAGRAM_URL, YOUTUBE_URL, TIKTOK_URL, CREATOR_NAME, SITE_NAME } from "@/lib/links";
+import { CREATOR_NAME, SITE_NAME, TIKTOK_URL } from "@/lib/links";
+import { SITE_URL, canonical } from "@/lib/site";
 import { trackEvent, initScrollTracker } from "@/lib/analytics";
-import { AdsterraBanner } from "@/components/ads/AdsterraBanner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,7 +21,9 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Addons selecionados, sem cadastro. Curadoria semanal do @ncmine." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: canonical("/") },
     ],
+    links: [{ rel: "canonical", href: canonical("/") }],
   }),
   component: Index,
 });
@@ -69,7 +70,14 @@ function Index() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
-    url: "https://ncmine-hub.lovable.app",
+    url: SITE_URL,
+    inLanguage: "pt-BR",
+    publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
     description: `Hub de ${RAW_ADDONS.length} addons grátis para Minecraft Bedrock curado por ${CREATOR_NAME}`,
   };
 
