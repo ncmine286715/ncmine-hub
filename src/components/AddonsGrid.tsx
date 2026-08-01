@@ -25,9 +25,25 @@ const VIEW_KEY = "ncmine:view-mode";
 // Worker no Cloudflare. Renderiza em lotes; resto já está em memória
 // (client-side, sem round-trip de rede) pro "carregar mais".
 const PAGE_SIZE = 24;
-// Onde o banner nativo entra no feed — depois da 1a leva de cards, antes
-// de "carregar mais" existir, pra sempre aparecer numa posicao previsivel.
-const AD_SLOT_INDEX = 8;
+// Cada anuncio nativo roda isolado num iframe sandbox (AdSandbox), entao
+// da pra repetir a cada N cards sem colidir id/variavel global entre eles.
+const AD_INTERVAL = 16;
+
+function interleaveAds<T>(
+  items: T[],
+  renderItem: (item: T, i: number) => React.ReactNode,
+  renderAd: (adIndex: number) => React.ReactNode,
+): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  let adIndex = 0;
+  items.forEach((item, i) => {
+    nodes.push(renderItem(item, i));
+    if ((i + 1) % AD_INTERVAL === 0 && i + 1 < items.length) {
+      nodes.push(renderAd(adIndex++));
+    }
+  });
+  return nodes;
+}
 
 type Sort = "mix" | "recent" | "popular" | "rating" | "az";
 
@@ -457,27 +473,23 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         </div>
       ) : view === "grid" ? (
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {visible.slice(0, AD_SLOT_INDEX).map((a, i) => (
-            <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />
-          ))}
-          {visible.length > AD_SLOT_INDEX && (
-            <div className="col-span-full">
-              <AdsterraNativeBanner />
-            </div>
+          {interleaveAds(
+            visible,
+            (a, i) => <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i} />,
+            (adI) => (
+              <div key={`ad-${adI}`} className="col-span-full">
+                <AdsterraNativeBanner />
+              </div>
+            ),
           )}
-          {visible.slice(AD_SLOT_INDEX).map((a, i) => (
-            <AddonCard key={a.id} addon={a} onDownload={onDownload} onOpen={onOpen} index={i + AD_SLOT_INDEX} />
-          ))}
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          {visible.slice(0, AD_SLOT_INDEX).map((a, i) => (
-            <AddonListRow key={a.id} addon={a} index={i} onOpen={onOpen} onDownload={onDownload} />
-          ))}
-          {visible.length > AD_SLOT_INDEX && <AdsterraNativeBanner className="my-1" />}
-          {visible.slice(AD_SLOT_INDEX).map((a, i) => (
-            <AddonListRow key={a.id} addon={a} index={i + AD_SLOT_INDEX} onOpen={onOpen} onDownload={onDownload} />
-          ))}
+          {interleaveAds(
+            visible,
+            (a, i) => <AddonListRow key={a.id} addon={a} index={i} onOpen={onOpen} onDownload={onDownload} />,
+            (adI) => <AdsterraNativeBanner key={`ad-${adI}`} className="my-1" />,
+          )}
         </div>
       )}
 
