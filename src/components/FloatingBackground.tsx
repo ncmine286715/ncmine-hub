@@ -1,41 +1,30 @@
 import { useEffect, useState } from "react";
 
-type Addon = { id: string; image: string; title: string };
-type Item = Addon & {
-  top: number;
-  left: number;
-  size: number;
-  delay: number;
-  duration: number;
-  rotate: number;
-};
+type Addon = { id: string; image: string };
+type Row = { images: string[]; dur: number; reverse: boolean };
 
 /**
- * Floating addon thumbnails drifting behind the page.
- * Pure CSS animations — performant. The addon dataset is loaded lazily
- * (code-split) so this purely decorative layer never bloats the initial
- * bundle of every route just to grab a handful of thumbnails.
+ * Fundo decorativo: grade de linhas + faixas de thumbnails de addons
+ * passando lentamente. Dataset carregado lazy (code-split) pra não pesar
+ * o bundle inicial das rotas.
  */
 export function FloatingBackground() {
-  const [items, setItems] = useState<Item[]>([]);
+  const [rows, setRows] = useState<Row[]>([]);
 
   useEffect(() => {
     let cancelled = false;
     import("@/data/addons.json").then((mod) => {
       if (cancelled) return;
       const isMobile = window.innerWidth < 768;
-      const count = isMobile ? 3 : 6;
-      const pool = (mod.default as Addon[]).filter((a) => a.image).slice(0, count);
-      setItems(
-        pool.map((a, i) => ({
-          ...a,
-          // deterministic pseudo-random placement so it doesn't reflow each render
-          top: (i * 53) % 90,
-          left: (i * 37) % 92,
-          size: (isMobile ? 50 : 70) + ((i * 19) % (isMobile ? 50 : 90)),
-          delay: (i % 7) * 0.6,
-          duration: 8 + (i % 5) * 2,
-          rotate: ((i * 23) % 30) - 15,
+      const pool = (mod.default as Addon[]).filter((a) => a.image).map((a) => a.image);
+      if (!pool.length) return;
+      const perRow = isMobile ? 6 : 10;
+      const rowCount = isMobile ? 3 : 4;
+      setRows(
+        Array.from({ length: rowCount }, (_, r) => ({
+          images: Array.from({ length: perRow }, (_, i) => pool[(r * perRow + i * 3) % pool.length]),
+          dur: 70 + r * 18,
+          reverse: r % 2 === 1,
         })),
       );
     });
@@ -45,33 +34,36 @@ export function FloatingBackground() {
   }, []);
 
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-[0.18] sm:opacity-[0.26]"
-    >
-      {items.map((it) => (
-        <img
-          key={it.id}
-          src={it.image}
-          alt=""
-          loading="lazy"
-          referrerPolicy="no-referrer"
-          className="absolute border-2 border-foreground shadow-[4px_4px_0_0_var(--ink)] animate-mc-float pixelated"
-          style={{
-            top: `${it.top}%`,
-            left: `${it.left}%`,
-            width: `${it.size}px`,
-            height: `${it.size}px`,
-            objectFit: "cover",
-            animationDelay: `${it.delay}s`,
-            animationDuration: `${it.duration}s`,
-            ["--r" as never]: `${it.rotate}deg`,
-          }}
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = "none";
-          }}
-        />
-      ))}
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-grid-lines" />
+
+      <div className="absolute inset-0 flex flex-col justify-around opacity-[0.10] sm:opacity-[0.14]">
+        {rows.map((row, r) => (
+          <div key={r} className="overflow-hidden">
+            <div
+              className={`marquee-track ${row.reverse ? "reverse" : ""}`}
+              style={{ ["--dur" as never]: `${row.dur}s` }}
+            >
+              {[...row.images, ...row.images].map((src, i) => (
+                <img
+                  key={`${r}-${i}`}
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  className="mx-3 h-20 w-32 shrink-0 border border-foreground object-cover sm:h-28 sm:w-48"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
     </div>
   );
 }

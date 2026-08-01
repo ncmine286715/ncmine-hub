@@ -12,10 +12,14 @@ import { useEffect } from "react";
 import { Toaster } from "sonner";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { SocialDock } from "../components/SocialDock";
+import { FloatingBackground } from "../components/FloatingBackground";
 import { pageview } from "../lib/gtag";
 
 import appCssUrl from "../styles.css?url";
-const appCss = appCssUrl.includes("?") ? appCssUrl : `${appCssUrl}?url`;
+// Em dev o Vite serve CSS como módulo JS; `?direct` força CSS real no <link>.
+const appCss = import.meta.env.DEV
+  ? `${appCssUrl.split("?")[0]}?direct`
+  : appCssUrl;
 
 function NotFoundComponent() {
   return (
@@ -130,6 +134,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <FloatingBackground />
       <Outlet />
       <InAppBrowserGuard />
       <SocialDock />
