@@ -46,7 +46,7 @@ function getFreePort() {
 
 function loadRoutes() {
   const addons = JSON.parse(readFileSync(join(ROOT, "src", "data", "addons.json"), "utf8"));
-  const staticRoutes = ["/", "/legal", "/community", "/auth", "/favorites", "/profile", "/admin"];
+  const staticRoutes = ["/", "/sobre", "/faq", "/contato", "/privacidade", "/termos", "/cookies", "/dmca", "/legal"];
   const addonRoutes = addons.map((a) => `/addon/${a.id}`);
   return [...new Set([...staticRoutes, ...addonRoutes])];
 }

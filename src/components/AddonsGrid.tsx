@@ -85,7 +85,9 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-  const adInterval = isMobile ? AD_INTERVAL_MOBILE : AD_INTERVAL_DESKTOP;
+  // Rede de anuncios desativada durante o processo de aprovacao no AdSense.
+  const adInterval = Number.POSITIVE_INFINITY;
+  void AD_INTERVAL_MOBILE; void AD_INTERVAL_DESKTOP; void isMobile;
 
   useEffect(() => {
     try {

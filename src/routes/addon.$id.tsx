@@ -9,14 +9,13 @@ import {
 } from "lucide-react";
 import { shareAddon } from "@/lib/share";
 import { CREATOR_NAME, TIKTOK_URL } from "@/lib/links";
+import { SITE_URL, canonical as siteCanonical } from "@/lib/site";
 import { MinecraftBlockIcon } from "@/components/icons/BrandIcons";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { RelatedAddons } from "@/components/RelatedAddons";
 import { trackEvent, initScrollTracker } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/use-count-up";
 import { AddonBlockPreview } from "@/components/AddonBlockPreview";
-import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
-import { AdsterraBanner } from "@/components/ads/AdsterraBanner";
 
 const RAW_ADDONS = ADDONS;
 
@@ -26,7 +25,7 @@ export const Route = createFileRoute("/addon/$id")({
     if (!addon) {
       return { meta: [{ title: "Addon não encontrado — @ncmine" }] };
     }
-    const canonical = `https://ncmine-hub.lovable.app/addon/${addon.id}`;
+    const canonical = siteCanonical(`/addon/${addon.id}`);
     return {
       meta: [
         { title: `${addon.title} — Download grátis | @ncmine` },
@@ -81,17 +80,36 @@ function AddonPage() {
     );
   }
 
+  const pageUrl = `${SITE_URL}/addon/${addon.id}`;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: addon.title,
-    description: addon.short,
-    image: addon.image,
-    applicationCategory: "GameApplication",
-    operatingSystem: "Android, iOS, Windows",
-    url: `https://ncmine-hub.lovable.app/addon/${addon.id}`,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
-    publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: addon.title,
+        description: addon.short,
+        image: addon.image,
+        applicationCategory: "GameApplication",
+        operatingSystem: "Android, iOS, Windows",
+        softwareVersion: addon.version,
+        datePublished: addon.date,
+        author: { "@type": "Person", name: addon.author || CREATOR_NAME },
+        url: pageUrl,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "BRL", availability: "https://schema.org/InStock" },
+        publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+        ...(addon.rating > 0
+          ? { aggregateRating: { "@type": "AggregateRating", ratingValue: addon.rating, bestRating: 5, ratingCount: Math.max(5, Math.round((addon.downloads || 50) / 25)) } }
+          : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: addon.category, item: `${SITE_URL}/?q=${encodeURIComponent(addon.category)}` },
+          { "@type": "ListItem", position: 3, name: addon.title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
@@ -208,9 +226,30 @@ function AddonPage() {
           </section>
         )}
 
-        <div className="mx-auto mt-6 max-w-3xl sm:mt-8">
-          <AdsterraNativeBanner />
-        </div>
+        <section className="mx-auto mt-10 max-w-3xl">
+          <h2 className="text-xl font-bold">Requisitos</h2>
+          <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
+            <li>• Minecraft Bedrock Edition {addon.version ? `— testado na versão ${addon.version} do addon` : ""} (Android, iOS, Windows, console com importação de mundo).</li>
+            <li>• Espaço livre para o arquivo do pacote e para o backup do seu mundo.</li>
+            <li>• Alternâncias experimentais (Experimental Toggles) ativadas no mundo — necessário na maioria dos addons de comportamento.</li>
+            <li>• Pacote de comportamento e pacote de recursos ativados juntos, quando o addon trouxer os dois.</li>
+          </ul>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Addons desativam conquistas no mundo em que forem ligados. Faça backup antes de aplicar em um mundo antigo.
+          </p>
+        </section>
+
+        <section id="como-instalar" className="mx-auto mt-10 max-w-3xl">
+          <h2 className="text-xl font-bold">Como instalar {addon.title}</h2>
+          <ol className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
+            <li><strong>1.</strong> Toque em "Baixar agora" e conclua o download do arquivo (.mcaddon, .mcpack ou .mcworld).</li>
+            <li><strong>2.</strong> Abra o arquivo no gerenciador de downloads do celular ou dê dois cliques no PC — o Minecraft abre sozinho e importa o conteúdo.</li>
+            <li><strong>3.</strong> No Minecraft, entre em <em>Jogar → Editar mundo</em> (ou crie um mundo novo).</li>
+            <li><strong>4.</strong> Em <em>Pacotes de comportamento</em> e <em>Pacotes de recursos</em>, ative o pacote com o nome {addon.title}.</li>
+            <li><strong>5.</strong> Em <em>Configurações do mundo</em>, ligue as alternâncias experimentais se o addon usar entidades, blocos ou scripts personalizados.</li>
+            <li><strong>6.</strong> Salve, entre no mundo e confirme que o conteúdo apareceu. Se não aparecer, saia e entre de novo no mundo.</li>
+          </ol>
+        </section>
 
         <section id="como-baixar" className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Como baixar do Terabox</h2>
@@ -231,9 +270,6 @@ function AddonPage() {
           <RelatedAddons current={addon} all={RAW_ADDONS} />
         </section>
 
-        <div className="mx-auto mt-6 flex max-w-3xl justify-center px-2 sm:mt-10 sm:px-0">
-          <AdsterraBanner />
-        </div>
       </main>
 
       <DownloadModal

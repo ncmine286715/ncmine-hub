@@ -13,6 +13,8 @@ import { Toaster } from "sonner";
 import { InAppBrowserGuard } from "../components/InAppBrowserGuard";
 import { SocialDock } from "../components/SocialDock";
 import { FloatingBackground } from "../components/FloatingBackground";
+import { SiteFooter } from "../components/SiteFooter";
+import { CookieConsent } from "../components/CookieConsent";
 import { pageview } from "../lib/gtag";
 
 import appCssUrl from "../styles.css?url";
@@ -100,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { src: "https://www.googletagmanager.com/gtag/js?id=G-RYBSXRH3TF", async: true },
       {
         children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','G-RYBSXRH3TF',{send_page_view:false});",
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('js',new Date());gtag('config','G-RYBSXRH3TF',{send_page_view:false,anonymize_ip:true});",
       },
     ],
   }),
@@ -136,8 +138,10 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <FloatingBackground />
       <Outlet />
+      <SiteFooter />
       <InAppBrowserGuard />
       <SocialDock />
+      <CookieConsent />
       <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );
