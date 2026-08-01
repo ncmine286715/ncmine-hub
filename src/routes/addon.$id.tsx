@@ -108,6 +108,11 @@ function AddonPage() {
         datePublished: addon.date,
         author: { "@type": "Person", name: addon.author || CREATOR_NAME },
         url: pageUrl,
+        review: {
+          "@type": "Review",
+          author: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
+          reviewBody: `Instalado e testado no Minecraft Bedrock (versão ${addon.version}) antes da publicação: importação do pacote, ativação no mundo e sessão de jogo sem travamentos.`,
+        },
         offers: { "@type": "Offer", price: "0", priceCurrency: "BRL", availability: "https://schema.org/InStock" },
         publisher: { "@type": "Person", name: CREATOR_NAME, url: TIKTOK_URL },
         ...(addon.rating > 0
