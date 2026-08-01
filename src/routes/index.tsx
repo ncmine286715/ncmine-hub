@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
-import { ADDONS } from "@/lib/addons";
+import { useLiveAddons } from "@/hooks/use-live-addons";
 import { Hero } from "@/components/Hero";
 import { AddonsGrid } from "@/components/AddonsGrid";
 import { DownloadModal } from "@/components/DownloadModal";
@@ -27,8 +27,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const RAW_ADDONS = ADDONS;
-
 function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
   const out = [...arr];
   let s = seed;
@@ -42,6 +40,7 @@ function shuffleSeeded<T>(arr: T[], seed = 1337): T[] {
 
 function Index() {
   const navigate = useNavigate();
+  const { addons: RAW_ADDONS, loading } = useLiveAddons();
   const [downloadFor, setDownloadFor] = useState<Addon | null>(null);
   const [initialQuery, setInitialQuery] = useState("");
 
@@ -61,7 +60,7 @@ function Index() {
     const first = sorted[0];
     const others = RAW_ADDONS.filter((a) => a.id !== first?.id);
     return { featured: first, rest: shuffleSeeded(others) };
-  }, []);
+  }, [RAW_ADDONS]);
 
   const handleDownload = (a: Addon) => setDownloadFor(a);
   const handleOpen = (a: Addon) => navigate({ to: "/addon/$id", params: { id: a.id } });
@@ -86,6 +85,7 @@ function Index() {
         onDownload={handleDownload}
         onOpen={handleOpen}
         initialQuery={initialQuery}
+        loading={loading && rest.length === 0}
       />
 
       <div className="mx-auto w-full max-w-6xl px-2 py-4 sm:px-4 sm:py-6">
