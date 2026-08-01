@@ -1,0 +1,65 @@
+{
+ "id": "poppy-play-time-chapter-1",
+ "title": "Poppy Play Time:Chapter 1",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1535,
+ "intro": "O universo dos jogos de suspense ganhou um dos maiores fenômenos dos últimos tempos com a franquia Poppy Playtime. Agora, com o addon Poppy Play Time:Chapter 1, desenvolvido por Marcos_br21, você pode trazer toda essa atmosfera assustadora diretamente para o seu Minecraft Bedrock. Se você gosta de mapas temáticos de terror e quer encarar a figura do Huggy Wuggy reformatada em blocos, essa modificação entrega a estrutura exata para transformar a sua jogatina padrão em um verdadeiro jogo de sobrevivência em uma fábrica abandonada.\n\nLançado na versão 1.0.0, este complemento mistura elementos de aventura, minigames, sistemas de redstone e quebra-cabeças desafiadores. Ele foi feito sob medida para jogadores que buscam fugir do estilo de jogo tradicional de mineração e construção, oferecendo uma experiência focada em cumprir objetivos específicos, acionar mecanismos e escapar de criaturas hostis, seja jogando sozinho no seu celular ou no computador.",
+ "sections": [
+  {
+   "h2": "O que muda no seu Minecraft na prática",
+   "body": "Ao ativar o addon Poppy Play Time:Chapter 1 no seu jogo, a dinâmica tradicional do Minecraft de explorar cavernas e erguer estruturas dá lugar a uma jornada focada em mistério e fuga. O ambiente passa a exigir atenção constante aos detalhes visuais e sonoros, onde o objetivo principal deixa de ser a coleta passiva de recursos e se torna a navegação estratégica por corredores estreitos e salas trancadas.\n\nAs mecânicas habituais ganham uma roupagem totalmente diferente. O addon adapta os elementos marcantes da obra original para os blocos do Bedrock, fazendo com que você precise interagir com botões, circuitos de redstone e painéis elétricos para conseguir avançar pelas etapas. O ritmo de jogo abandona o combate direto com espadas contra mobs comuns e passa a focar na esquiva e no uso correto do cenário.\n\nAlém disso, a sensação de urgência é constante durante toda a navegação. Por se tratar de uma proposta voltada para aventura e puzzle, o jogador fica preso à lógica dos ambientes fechados e precisa raciocinar rapidamente para liberar novas áreas antes que seja alcançado pela ameaça principal do local."
+  },
+  {
+   "h2": "Principais recursos e novidades",
+   "body": "O addon desenvolvido por Marcos_br21 foca em recriar os elementos mais marcantes do primeiro capítulo da história. Entre as novidades adicionadas, o grande destaque é a presença do antagonista principal, modelado com comportamento próprio para perseguir o jogador assim que ele é detectado em determinadas zonas da fábrica.\n\nOutro recurso indispensável é o sistema de GrabPack, adaptado para funcionar dentro dos limites do motor do Bedrock Edition. Essa ferramenta de mãos mecânicas permite ao jogador acionar interruptores à distância, transportar energia elétrica entre painéis e liberar portas de segurança de maneira intuitiva durante a navegação pelos cenários.\n\nPara fechar a ambientação, o pacote conta com texturas e efeitos sonoros customizados. Os blocos e objetos decorativos ganham a aparência de máquinas industriais velhas, brinquedos quebrados e sinalizações de perigo, garantindo que o visual do mundo transmita a sensação constante de um lugar abandonado e perigoso."
+  },
+  {
+   "h2": "Como instalar passo a passo no Bedrock",
+   "body": "A instalação do addon no Minecraft Bedrock é simples e pode ser realizada em diferentes plataformas como Android, iOS e Windows. O primeiro passo é realizar o download do arquivo com a extensão .mcaddon ou .mcpack a partir da fonte oficial do criador.\n\nNo Android e iOS, abra o aplicativo gerenciador de arquivos do seu celular, navegue até a pasta de downloads e toque diretamente sobre o arquivo baixado. Selecione a opção de abrir com o Minecraft. O jogo será iniciado automaticamente e exibirá uma notificação no topo da tela informando que a importação do pacote de comportamento e de recursos foi concluída com sucesso.\n\nNo Windows, o procedimento é idêntico: basta dar dois cliques no arquivo baixado para que o aplicativo do Minecraft abra e faça a instalação. Em seguida, ao criar um novo mundo no jogo, vá até as guias de Pacotes de Recursos e Pacotes de Comportamento, ative o Poppy Play Time:Chapter 1 e lembre-se de marcar as opções de Recursos Experimentais nas configurações daquele mundo antes de iniciar a partida."
+  },
+  {
+   "h2": "Desempenho e compatibilidade",
+   "body": "Por ter sido desenvolvido para a versão 1.0.0 e focar em mecânicas pontuais, o addon apresenta uma taxa de desempenho bastante estável na maioria dos dispositivos modernos. A otimização dos modelos e das texturas permite que o jogo rode sem grandes travamentos em smartphones e computadores intermediários.\n\nEm celulares Android e iOS com pelo menos 3 GB de memória RAM, a experiência costuma ser fluida, desde que o jogador mantenha a distância de renderização em valores moderados. Já no Windows, o carregamento dos scripts e do visual do mapa ocorre de forma quase instantânea, garantindo que os acionamentos de redstone funcionem sem atrasos.\n\nEm relação à compatibilidade com outros mods, o mais recomendado é utilizar este addon de forma isolada em um mundo próprio. Como ele altera arquivos de comportamento de entidades e introduz mecânicas específicas como o GrabPack, misturá-lo com outros pacotes pesados de mutantes ou magia pode gerar bugs de renderização ou conflitos de scripts."
+  },
+  {
+   "h2": "Problemas conhecidos e soluções",
+   "body": "Um dos problemas mais comuns relatados por jogadores durante a instalação é o erro de importação do pacote. Se o Minecraft exibir uma mensagem de falha, verifique se o arquivo baixado não está compactado no formato .zip. Se estiver, utilize um gerenciador de arquivos para renomear o arquivo, removendo o final .zip e mantendo apenas a extensão .mcaddon antes de tentar abrir no jogo.\n\nOutra situação recorrente é a ausência de texturas ou o não aparecimento dos itens especiais dentro do mundo. Esse problema acontece quase sempre quando o jogador se esquece de ativar as opções de Recursos Experimentais na tela de edição do mundo. Certifique-se de ativar todas as chaves de testes de criadores nas configurações para corrigir a falha.\n\nPor fim, caso a entidade do mod fique paralisada ou pare de interagir com os circuitos do mapa, pode haver um acúmulo de processamento no dispositivo. A solução mais rápida é fechar o mundo, fechar o aplicativo do Minecraft, limpar o cache do jogo nas configurações do aparelho e carregar o mapa novamente."
+  },
+  {
+   "h2": "Dicas de sobrevivência e uso das ferramentas",
+   "body": "Para avançar sem grandes dificuldades no mapa, a primeira dica de ouro é dominar a precisão com o GrabPack. Observe com atenção as cores dos conectores nas paredes e ligue os cabos na sequência indicada pelos painéis para evitar perdas de tempo enquanto é perseguido.\n\nJogar utilizando fones de ouvido faz uma grande diferença na experiência. Os efeitos sonoros do addon indicam a proximidade da ameaça e a direção de onde os ruídos estão vindo. Ao escutar passos metálicos ou barulhos nos dutos de ventilação, procure imediatamente uma sala segura ou um botão de fechamento de emergência.\n\nPor último, lembre-se de que a proposta do addon é a solução de enigmas e não o combate direto. Não tente atacar a criatura sem os equipamentos certos ou fora dos momentos planejados pelo mapa. Utilize os botões de redstone para trancar portas atrás de você e mantenha o foco em encontrar as chaves coloridas necessárias para abrir o caminho de saída."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon Poppy Play Time:Chapter 1 roda em celulares fracos?",
+   "a": "O addon roda na maioria dos celulares, mas aparelhos com menos de 2 GB de RAM podem apresentar quedas de quadros. Para melhorar o desempenho, reduza a distância de renderização nas opções de vídeo do Minecraft."
+  },
+  {
+   "q": "Posso liberar conquistas da conta Xbox usando este addon?",
+   "a": "Não. Como o addon exige a ativação de pacotes de comportamento e de recursos experimentais, as conquistas do Xbox Live ficam automaticamente desativadas no mundo em que ele for aplicado."
+  },
+  {
+   "q": "É possível jogar em modo multiplayer com amigos?",
+   "a": "Sim. O criador do mundo deve ativar o addon e marcar a opção que exige que os jogadores baixem os pacotes de recursos ao entrar no mapa multiplayer."
+  },
+  {
+   "q": "O addon Poppy Play Time:Chapter 1 é pago?",
+   "a": "Não. Este complemento desenvolvido pelo autor Marcos_br21 é um projeto gratuito disponibilizado para a comunidade do Minecraft Bedrock."
+  },
+  {
+   "q": "Posso colocar este addon em um mundo antigo onde já construí coisas?",
+   "a": "Até é possível, mas não é recomendado. Para garantir que as estruturas de puzzle, circuitos e gatilhos funcionem perfeitamente sem corromper seus blocos, o ideal é criar um mundo novo para usar o addon."
+  },
+  {
+   "q": "O que fazer se der erro ao tentar importar o arquivo?",
+   "a": "Confira se a extensão do arquivo baixado é .mcaddon. Se o arquivo estiver terminado em .zip, renomeie-o apagando a extensão .zip e abra o arquivo novamente através do Minecraft."
+  },
+  {
+   "q": "O GrabPack do addon funciona da mesma forma que no jogo original?",
+   "a": "O GrabPack foi adaptado dentro das possibilidades do motor Bedrock. Ele permite interagir com botões, alavancas e painéis elétricos específicos espalhados pelo mapa do addon."
+  }
+ ],
+ "verdict": "Se você é fã de jogos de suspense e quer transformar o seu Minecraft Bedrock em uma sala de fuga cheia de enigmas e tensão, o addon Poppy Play Time:Chapter 1 feito por Marcos_br21 vale muito a pena. O projeto consegue recriar com sucesso os elementos marcantes da fábrica e entrega uma experiência divertida tanto para jogar sozinho quanto em grupo. No entanto, se o seu foco no jogo é a sobrevivência clássica, mineração e construções livres sem interrupções, o clima tenso e as limitações de exploração deste pacote provavelmente não vão combinar com o seu estilo."
+}

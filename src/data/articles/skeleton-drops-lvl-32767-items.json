@@ -1,0 +1,65 @@
+{
+ "id": "skeleton-drops-lvl-32767-items",
+ "title": "Skeleton Drops LVL 32767 Items!",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1207,
+ "intro": "Todo mundo que joga Minecraft Bedrock sabe o quanto os esqueletos conseguem ser irritantes durante a noite ou na exploração de cavernas. Eles atacam à distância, atrapalham combates contra outros mobs e, no final das contas, deixam apenas recompensas básicas ao serem derrotados, como ossos e algumas poucas flechas comuns. O addon Skeleton Drops LVL 32767 Items!, criado pelo desenvolvedor StarkerYTxd, surge exatamente para mudar essa dinâmica chata e transformar um dos inimigos mais comuns do jogo em uma fonte inesgotável de itens apelativos.\n\nA proposta deste complemento é simples e direta: transformar cada esqueleto em uma verdadeira roleta de prêmios insanos. Em vez dos saques tradicionais, eliminar qualquer esqueleto faz o mob soltar equipamentos com encantamentos no nível 32767, que é o limite máximo que o motor do jogo consegue processar. É uma modificação perfeita para quem gosta do estilo de jogo estilo Minecraft, mas... e busca uma experiência focada na zoeira, no caos e na diversão imediata com amigos.",
+ "sections": [
+  {
+   "h2": "O que muda na sua jogatina na prática",
+   "body": "Assim que você ativa o pacote de comportamento no seu mundo, a prioridade da sua sobrevivência muda completamente. Os esqueletos deixam de ser alvos incômodos que você tenta evitar e passam a ser os mobs mais procurados do mapa. Qualquer confronto no início da noite vira uma oportunidade única para conseguir um arsenal completo sem precisar passar horas minerando ou construindo bancadas de trabalho.\n\nNa prática, isso elimina toda a curva de progressão padrão do jogo. Você não precisa buscar diamantes, acumular níveis de experiência na mesa de encantamentos ou procurar livros em vilas. Basta derrotar um único esqueleto com uma espada de madeira inicial para conseguir equipamentos absurdamente fortes, alterando o foco do jogo para batalhas rápidas e exploração descompromissada."
+  },
+  {
+   "h2": "Encantamentos nível 32767 e recompensas",
+   "body": "O grande diferencial deste addon é a alteração direta na tabela de saques da família dos esqueletos. O número 32767 corresponde ao limite numérico de um valor inteiro de 16 bits na programação, representando o teto absoluto do que o Minecraft Bedrock suporta sem quebrar as propriedades dos itens.\n\nQuando um esqueleto é derrotado, ele pode soltar espadas, arcos, ferramentas e peças de armadura equipadas com encantamentos nesse nível máximo. Isso significa que uma espada dropada terá um nível de Afiação tão alto que vai derrotar qualquer entidade com um único toque. Da mesma forma, peças de armadura com Proteção 32767 tornam o jogador imune a praticamente qualquer tipo de dano físico dentro do jogo."
+  },
+  {
+   "h2": "Como instalar no Android, iOS e Windows",
+   "body": "O processo de instalação no Minecraft Bedrock é simples e padronizado nas plataformas compatíveis. No Android e no iOS, após realizar o download do arquivo com extensão .mcpack ou .mcaddon, abra o gerenciador de arquivos do seu celular e toque sobre ele. Escolha a opção de abrir com o Minecraft para que o próprio jogo inicie e faça a importação automática do arquivo.\n\nNo Windows 10 ou 11, o procedimento é idêntico e bastante rápido. Basta dar dois cliques sobre o arquivo baixado para que o Minecraft seja executado e mostre a mensagem de importação concluída com sucesso no topo da tela principal.\n\nPara ativar o conteúdo no jogo, crie um novo mundo ou acesse as configurações de um mundo já existente. Na aba Pacotes de Comportamento, localize o addon do StarkerYTxd e clique em Ativar. Antes de entrar no mapa, navegue até a seção de Experimentos e ative as opções de Recursos de Criador de Conteúdo e Recursos de Modding para garantir que os drops funcionem sem erros."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no Bedrock",
+   "body": "Por se tratar de um addon focado em alterar arquivos de dados e tabelas de loot (loot tables), o impacto no desempenho do jogo é extremamente baixo. O mod não adiciona modelos 3D complexos, texturas pesadas em alta resolução ou entidades personalizadas que costumam causar quedas de FPS em aparelhos celulares mais fracos.\n\nO único ponto de atenção em relação ao desempenho é o acúmulo de itens no chão. Como cada item gerado contém uma quantidade gigantesca de tags de encantamento, acumular dezenas de drops de esqueletos em uma farm automática pode causar travamentos momentâneos. É recomendável coletar o loot rapidamente ou usar um sistema para eliminar os itens em excesso."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Se você derrotar os esqueletos e eles continuarem dropando apenas ossos e flechas normais, o problema quase sempre é a falta da ativação dos experimentos no mundo. Volte ao menu do mapa, acesse as opções de jogo e garanta que as chaves de recursos experimentais estejam ligadas.\n\nCaso o seu dispositivo baixe o arquivo em formato .zip e não consiga importar para o jogo, abra o gerenciador de arquivos e renomeie o arquivo, apagando a parte .zip do final e mantendo apenas .mcpack. Se o Minecraft exibir uma mensagem de erro de pacote duplicado, acesse as Configurações do jogo, vá em Armazenamento, localize a versão antiga do pacote na lista e faça a exclusão antes de tentar importar o arquivo novamente."
+  },
+  {
+   "h2": "Dicas para aproveitar o addon ao máximo",
+   "body": "Como os esqueletos ainda atacam à distância com arcos convencionais antes de morrerem, a melhor estratégia para o primeiro dia é fabricar um escudo simples. Ele permite que você se aproxime do mob com segurança sem tomar dano até conseguir aplicar o golpe fatal.\n\nOutra ideia excelente é utilizar este complemento em partidas multiplayer com amigos. Criar arenas de combate onde todos começam sem nenhum equipamento e precisam caçar esqueletos à noite para se equipar cria uma dinâmica divertida e imprevisível para partidas competitivas no Bedrock."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon funciona em celulares fracos ou antigos?",
+   "a": "Sim, o pacote é leve e altera apenas tabelas de texto do jogo. Ele roda perfeitamente na maioria dos celulares Android e iOS sem comprometer a taxa de quadros."
+  },
+  {
+   "q": "Posso liberar conquistas do Minecraft jogando com este mod?",
+   "a": "Não, o uso de pacotes de comportamento e a ativação de recursos experimentais desativam permanentemente as conquistas do Xbox naquele mundo."
+  },
+  {
+   "q": "O addon funciona em mundos criados anteriormente?",
+   "a": "Funciona normalmente. Basta acessar o menu de edição do seu mundo antigo, ativar o pacote de comportamento na aba correspondente e ligar os recursos experimentais."
+  },
+  {
+   "q": "É possível jogar em modo multiplayer com outras pessoas?",
+   "a": "Sim, o criador do mundo só precisa ativar o pacote e marcar a opção para que os outros jogadores baixem o pacote ao entrarem na sessão."
+  },
+  {
+   "q": "O que fazer se o arquivo não for reconhecido pelo Minecraft?",
+   "a": "Confira se a extensão do arquivo é .mcpack. Caso ele tenha sido baixado como .zip, renomeie o arquivo removendo a parte .zip do final."
+  },
+  {
+   "q": "Este complemento é gratuito?",
+   "a": "Sim, o addon é totalmente gratuito e foi disponibilizado pelo autor StarkerYTxd para a comunidade de Minecraft Bedrock."
+  },
+  {
+   "q": "O addon é compatível com a versão 1.21 do Bedrock?",
+   "a": "Sim, o mod é compatível com as atualizações recentes da versão 1.21 e funciona corretamente nos sistemas suportados."
+  }
+ ],
+ "verdict": "O addon Skeleton Drops LVL 32767 Items! é uma excelente opção para quem deseja transformar a jogatina em um minigame caótico e divertido, sendo ideal para jogar com amigos ou gravar vídeos de desafios. No entanto, se o seu foco for um mundo survival tradicional, focado em progressão lenta e desafio equilibrado, o mod não é recomendado, pois elimina qualquer dificuldade do jogo logo nos primeiros minutos."
+}

@@ -1,0 +1,65 @@
+{
+ "id": "newbows",
+ "title": "NewBows",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1325,
+ "intro": "Para quem joga Minecraft Bedrock no modo sobrevivência, o combate à distância usando apenas o arco convencional ou a besta pode se tornar repetitivo com o passar do tempo. A mecânica nativa é funcional, mas falta aquela diversidade de equipamentos que permite adaptar sua estratégia para diferentes situações de combate, invasões de vilas ou exploração de cavernas escuras.\n\nPensando em resolver esse problema e trazer uma dinâmica nova ao jogo, o criador SystemTv desenvolveu o addon NewBows. O projeto adiciona 22 arcos completamente novos ao Minecraft Bedrock, cada um trazendo habilidades únicas, visuais personalizados e utilidades focadas tanto no combate quanto no suporte durante a sua jornada survival.",
+ "sections": [
+  {
+   "h2": "O que muda na jogabilidade prática",
+   "body": "Na prática, a instalação do NewBows transforma a maneira como você lida com os confrontos à distância no Minecraft. Em vez de ficar limitado ao dano básico de flechas reforçadas apenas por encantamentos, você passa a ter um verdadeiro arsenal tático no seu inventário para escolher qual arma encaixa melhor no momento.\n\nAlguns dos novos arcos foram desenhados para controle de multidões de mobs, enquanto outros focam em utilidades especiais que ajudam na navegação pelo mapa e na defesa da sua base. Essa variedade renova o interesse na exploração, pois você tem novos objetivos de craft e novos itens para testar na rotina de jogo.\n\nVale destacar que a mecânica fundamental do Minecraft é mantida: para utilizar qualquer um dos 22 novos arcos, você ainda precisa ter flechas convencionais no seu inventário. Isso preserva a necessidade de gerenciar seus recursos e manter o suprimento de munição em dia."
+  },
+  {
+   "h2": "Conteúdo e principais recursos do addon",
+   "body": "O grande ponto forte do NewBows é a sua diversidade. Com um total de 22 arcos inéditos, o addon oferece modelos que vão desde opções mais simples para o início do jogo até armas avançadas para o final da aventura. Cada arco possui sua própria textura e uma habilidade especial acionada durante o disparo.\n\nAs habilidades variam bastante, cobrindo desde efeitos elementais — como infligir fogo ou provocar grandes impactos nos alvos — até funções utilitárias que facilitam o combate contra grandes hordas de inimigos. Todos os itens foram balanceados para funcionar perfeitamente no ambiente de sobrevivência.\n\nOutro detalhe importante é o suporte aos encantamentos tradicionais da Bedrock Edition. Você pode levar seus novos arcos para a bigorna e aplicar encantamentos clássicos do jogo nativo, como Unbreaking e Mending, garantindo que suas armas favoritas durem por muito mais tempo sem quebrar."
+  },
+  {
+   "h2": "Como instalar passo a passo no Bedrock",
+   "body": "A instalação do NewBows no Minecraft Bedrock é simples e direta, podendo ser feita no Android, iOS ou Windows. O processo garante que os pacotes de recursos e de comportamento sejam carregados corretamente no seu dispositivo.\n\nCaso esteja no celular (Android ou iOS), faça o download do arquivo no formato .mcaddon ou .mcpack. Em seguida, utilize o gerenciador de arquivos do seu aparelho para localizar o arquivo e toque nele, escolhendo a opção de abrir com o Minecraft. O jogo será iniciado e fará a importação do pacote automaticamente.\n\nNo Windows, o procedimento é ainda mais prático: basta dar um duplo clique sobre o arquivo baixado para que o Minecraft abra e conclua a instalação. Com o arquivo importado, acesse as configurações do seu mundo (ou crie um mundo novo), vá nas abas Pacotes de Recursos e Pacotes de Comportamento e ative o NewBows em ambas.\n\nAntes de entrar no mapa, certifique-se de ativar as opções de experimentos nas configurações do mundo, como Recursos de Criador de Férias e Recursos Modificáveis, caso o jogo solicite. Salve as alterações e você estará pronto para jogar."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no multiplayer",
+   "body": "Em relação ao desempenho, o NewBows é um mod leve que foi projetado para rodar sem exigir demais do seu dispositivo. Como os modelos 3D e as texturas são bem otimizados para o sistema nativo da Bedrock Edition, você não deve enfrentar quedas bruscas de quadros por segundo (FPS), mesmo jogando em celulares com especificações mais simples.\n\nO addon também oferece suporte completo ao modo multiplayer. Se você criar um mundo e ativar o NewBows, seus amigos poderão entrar na partida sem dificuldades. O próprio jogo se encarrega de enviar o pacote de recursos para os convidados no momento da conexão, permitindo que todos fabriquem e usem os 22 arcos juntos.\n\nSobre a convivência com outros mods, o NewBows costuma rodar tranquilamente ao lado de addons de decoração, novos mobs ou biomas. O único ponto de atenção é evitar juntá-lo com outros mods que alterem drasticamente o código padrão das flechas do jogo, o que poderia gerar conflitos nos disparos."
+  },
+  {
+   "h2": "Problemas comuns e soluções práticas",
+   "body": "Um dos problemas mais relatados pelos jogadores é tentar atirar com o novo arco e nada acontecer. Na maioria absoluta dos casos, isso ocorre porque o jogador não possui flechas comuns no inventário. Lembre-se sempre de que todos os 22 arcos dependem do item de flecha nativo do Minecraft para disparar.\n\nOutra falha frequente é o addon não carregar os efeitos especiais dos arcos. Isso costuma acontecer quando o jogador ativa o pacote apenas na aba de Pacotes de Recursos e esquece de ativar a mesma opção na aba de Pacotes de Comportamento. Para que o mod funcione 100%, é obrigatório ativar ambos na edição do mundo.\n\nSe você encontrar uma mensagem de erro na importação do arquivo no Android, verifique se o seu gerenciador de arquivos possui permissão para instalar aplicativos e acessar a memória. Se o arquivo estiver compactado em formato .zip, renomeie a extensão para .mcaddon antes de tentar abrir pelo Minecraft."
+  },
+  {
+   "h2": "Dicas de uso e estratégias para o survival",
+   "body": "Para aproveitar ao máximo o arsenal oferecido pelo NewBows na sua jornada, a primeira recomendação é estruturar uma boa produção de flechas no seu mapa. Criar uma farm simples de galinhas para penas e conseguir pederneiras minerando cascalho garantirá que você nunca fique sem munição durante as batalhas.\n\nOutra estratégia inteligente é carregar mais de um tipo de arco no seu inventário rápido. Você pode manter um arco focado em afastar inimigos para momentos de sufoco em cavernas e deixar outro arco com foco em dano direto para encarar os mobs mais resistentes ou invasões na sua vila.\n\nPor fim, priorize aplicar o encantamento Mending (Remendo) nos seus arcos mais avançados assim que conseguir os livros com os aldeões bibliotecários. Dessa forma, toda a experiência coletada ao derrotar mobs recuperará a durabilidade das suas armas, evitando que você precise gastar materiais raros fabricando novos arcos."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon NewBows é totalmente gratuito?",
+   "a": "Sim, o addon é totalmente gratuito para baixar e jogar no seu Minecraft Bedrock Edition."
+  },
+  {
+   "q": "Posso usar o NewBows em um mundo antigo?",
+   "a": "Sim, basta acessar as configurações do seu mundo já existente e ativar os pacotes de recursos e comportamento do mod."
+  },
+  {
+   "q": "O mod funciona em celulares fracos?",
+   "a": "Funciona sim, pois o addon é leve e otimizado para não causar travamentos no Android ou iOS."
+  },
+  {
+   "q": "Como resolver erro na importação do arquivo?",
+   "a": "Verifique se o arquivo está na extensão .mcaddon ou .mcpack. Se estiver em .zip, renomeie o arquivo e abra direto pelo gerenciador."
+  },
+  {
+   "q": "Funciona em partidas multiplayer com amigos?",
+   "a": "Sim, funciona perfeitamente em multiplayer. Os jogadores que entrarem no seu mundo baixarão o pacote automaticamente."
+  },
+  {
+   "q": "As conquistas da conta Xbox continuam funcionando?",
+   "a": "Não, ao ativar pacotes de comportamento ou recursos experimentais, o jogo desativa as conquistas naquele mundo."
+  },
+  {
+   "q": "Preciso de flechas normais para os novos arcos funcionarem?",
+   "a": "Sim, é obrigatório ter flechas convencionais no inventário para que os 22 arcos consigam disparar."
+  }
+ ],
+ "verdict": "O NewBows é um addon excelente para quem quer diversificar o combate à distância no Minecraft Bedrock sem complicação, trazendo 22 opções divertidas e funcionais para o survival. Vale muito a pena para quem joga sozinho ou em grupo e busca novos objetivos de criação e estratégias de batalha. Só não vale a pena para quem faz questão absoluta de continuar conquistando troféus da conta Xbox no mundo, já que o uso do mod bloqueia esse sistema."
+}

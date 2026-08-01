@@ -1,0 +1,65 @@
+{
+ "id": "bleach",
+ "title": "BLEACH",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1154,
+ "intro": "Para quem é fã do anime e curte jogar Minecraft Bedrock, o Addon BLEACH (versão 1.0.0), desenvolvido pelo autor GameHunter9, chega como uma opção prática para transformar a dinâmica do seu mapa. A proposta deste complemento é trazer a essência das batalhas espirituais diretamente para o celular, PC ou console, sem complicar o funcionamento básico do jogo.\n\nSe você quer ver personagens conhecidos como Ichigo e Rukia caminhando pelo seu mundo, enfrentar Hollows perigosos ou simular confrontos épicos no modo Criativo, este mod entrega exatamente essa experiência. Ele foi planejado para ser leve e acessível, atendendo desde jogadores casuais até quem gosta de criar arenas temáticas.",
+ "sections": [
+  {
+   "h2": "O que muda na sua jogatina diária",
+   "body": "Ao ativar o addon no seu mapa, a rotina padrão de exploração ganha uma camada focada em anime. Em vez de se deparar apenas com os monstros tradicionais do jogo, você começará a notar a presença de criaturas e personagens da obra transitando pelos biomas.\n\nA dinâmica entre as próprias entidades se altera bastante. Personagens aliados e inimigos interagem entre si, o que significa que você presenciará batalhas espontâneas enquanto explora o terreno. Isso dá uma sensação de vida ao ambiente, tornando o ecossistema do Bedrock um verdadeiro campo de confronto espiritual.\n\nPara quem joga no modo Sobrevivência, o nível de atenção precisa ser redobrado. A presença dos Hollows traz um desafio extra para a rotina diária, exigindo estratégias mais rápidas para defender sua base e garantir recursos sem ser surpreendido durante a noite."
+  },
+  {
+   "h2": "Personagens, Hollows e mecânicas do addon",
+   "body": "O Addon BLEACH traz para o Minecraft Bedrock figuras fundamentais da série. Entre os destaques estão o protagonista Ichigo Kurosaki e Rukia Kuchiki, desenhados para encaixar no visual clássico em blocos do jogo. Além dos heróis, os Hollows aparecem como a principal ameaça hostil.\n\nNo modo Criativo, o complemento disponibiliza ovos de invocação diretamente no inventário. Com eles, você tem total controle para gerar qualquer quantidade de personagens no mapa, criando cenários de batalha customizados ou setups para gravar vídeos e demonstrar o mod.\n\nO foco principal desta versão 1.0.0 é garantir que os modelos funcionem de forma fluida. O trabalho de animação e visual foi pensado para trazer a essência do anime sem sobrecarregar o dispositivo, mantendo as lutas ágeis e divertidas."
+  },
+  {
+   "h2": "Como instalar o Addon no Bedrock passo a passo",
+   "body": "Instalar o addon no Minecraft Bedrock é um processo direto no Android, iOS ou Windows. Primeiro, certifique-se de ter baixado o arquivo no formato correto (.mcaddon ou .mcpack) compatível com a sua versão do jogo.\n\nNo celular, abra o gerenciador de arquivos, localize o pacote baixado e toque nele escolhendo a opção de abrir com o Minecraft. O jogo iniciará automaticamente e fará a importação do pacote de comportamento e de recursos na parte superior da tela.\n\nNo computador, basta dar dois cliques sobre o arquivo do addon para que o Minecraft abra e conclua a instalação. Depois disso, edite o mundo onde deseja jogar, vá nas abas de Pacotes de Recursos e Comportamento, ative o mod e confirme o início da partida."
+  },
+  {
+   "h2": "Desempenho em celulares e compatibilidade",
+   "body": "Um dos pontos fortes do addon criado por GameHunter9 é a sua otimização. Por ser um pacote leve, ele roda com facilidade em celulares com configurações intermediárias ou básicas, mantendo uma taxa de quadros estável sem causar travamentos.\n\nA compatibilidade também foi mantida. O complemento não altera arquivos críticos do jogo base, o que permite rodá-lo em conjunto com outros addons de textura ou modificações de interface sem gerar conflitos graves na maioria dos casos.\n\nSe você costuma montar pacotes de expansão no seu Minecraft PE, pode adicionar este mod com tranquilidade. Apenas lembre-se de respeitar os limites do seu dispositivo ao acumular muitos pacotes pesados em um mesmo mapa."
+  },
+  {
+   "h2": "Soluções para erros de importação e bugs",
+   "body": "Mesmo em addons leves, alguns problemas podem acontecer na hora de carregar os recursos. O erro mais frequente é a falha na importação. Se isso ocorrer, verifique se a extensão do arquivo não foi alterada para .zip sem querer; se sim, mude novamente para .mcaddon.\n\nOutra situação comum é os mobs não surgirem no mapa. Isso costuma ser resolvido ativando os Recursos Experimentais nas configurações do mundo, especificamente as opções de Recursos de Criador Festivo e Recursos Adicionais de Modificação.\n\nCaso o jogo feche ao invocar muitas criaturas de uma só vez, reduza a quantidade de entidades presentes na área. Dispositivos móveis possuem limitação de processamento para mobs simultâneos, por isso vale moderar o uso dos ovos de invocação."
+  },
+  {
+   "h2": "Dicas de gameplay para aproveitar ao máximo",
+   "body": "Para tirar o melhor proveito do addon, comece criando um mundo no modo Criativo dedicado a testes. Use os ovos de invocação para colocar Ichigo, Rukia e os Hollows em uma arena fechada para entender o comportamento de combate de cada um.\n\nSe a ideia for jogar no modo Sobrevivência, construa uma base bem iluminada e protegida logo no primeiro dia. Como os Hollows surgem no mundo aberto, ter muros altos e iluminação adequada ajudará a evitar confrontos indesejados à noite.\n\nOutra dica é combinar este addon com mapas personalizados de cidades orientais. Isso aumenta a imersão na hora de batalhar contra as criaturas e cria o ambiente perfeito para partidas multiplayer com seus amigos."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Addon BLEACH é gratuito?",
+   "a": "Sim, o pacote pode ser baixado e instalado sem nenhum custo para a sua versão do Minecraft Bedrock."
+  },
+  {
+   "q": "Ele funciona em celulares fracos?",
+   "a": "Sim, o addon é leve e foi otimizado para rodar de forma fluida em smartphones Android e iOS intermediários ou básicos."
+  },
+  {
+   "q": "Posso usar este addon em mundos antigos?",
+   "a": "Pode sim. Basta acessar as configurações do seu mundo existente, ativar os pacotes de recursos e comportamentos do Bleach e entrar no jogo."
+  },
+  {
+   "q": "É possível jogar em modo multiplayer com amigos?",
+   "a": "Com certeza. Se você hospedar o mundo com o addon ativado, seus amigos baixarão o pacote automaticamente ao entrar na partida."
+  },
+  {
+   "q": "As conquistas do Minecraft continuam ativas?",
+   "a": "Não. Como acontece com qualquer complemento que altera comportamentos no Bedrock, as conquistas do mundo são desativadas."
+  },
+  {
+   "q": "O que fazer se der erro de importação ao abrir o arquivo?",
+   "a": "Verifique se o arquivo está com a extensão correta (.mcaddon) e certifique-se de que o seu Minecraft Bedrock está atualizado."
+  },
+  {
+   "q": "O addon é compatível com o Windows PC?",
+   "a": "Sim, ele funciona perfeitamente na versão de Windows 10/11 do Minecraft Bedrock Edition."
+  }
+ ],
+ "verdict": "O Addon BLEACH do GameHunter9 é uma excelente opção para quem busca adicionar a atmosfera do anime ao Minecraft Bedrock de forma direta e sem complicações. Ele vale muito a pena para jogadores que gostam de batalhas entre mobs, criadores de conteúdo e fãs da série que desejam ver Ichigo e Rukia em formato de blocos sem comprometer o desempenho do celular. Por outro lado, se você procura uma modificação profunda com sistemas pesados de RPG e árvores de habilidades complexas, esta versão 1.0.0 pode parecer simples demais. Ainda assim, cumpre muito bem o que se propõe a entregar."
+}

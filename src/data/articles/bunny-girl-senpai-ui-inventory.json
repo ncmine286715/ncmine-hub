@@ -1,0 +1,65 @@
+{
+ "id": "bunny-girl-senpai-ui-inventory",
+ "title": "Bunny Girl Senpai UI Inventory",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1629,
+ "intro": "Se você gosta de personalizar a interface do seu Minecraft Bedrock e é fã de animes, o Bunny Girl Senpai UI Inventory chega como uma opção direta para alterar o visual dos seus menus. Desenvolvido pelo autor TaxFraudTeam, este pacote focado em UI reestiliza a tela de inventário clássica do jogo com temas inspirados na obra Rascal Does Not Dream of Bunny Girl Senpai, trazendo um ar renovado para o gerenciamento de itens.\n\nO objetivo principal do projeto é transformar telas estáticas em elementos visuais mais agradáveis para quem busca um estilo simplista e temático. Como se trata de uma modificação voltada estritamente para a interface do usuário (UI), o pacote não altera o comportamento das criaturas, nem o funcionamento dos blocos ou as mecânicas originais da jogabilidade, servindo como uma camada estética limpa para o seu cotidiano no Bedrock.",
+ "sections": [
+  {
+   "h2": "O que muda na prática dentro do jogo",
+   "body": "Ao aplicar o pacote no seu jogo, a mudança mais visível acontece assim que você abre o inventário no modo Sobrevivência ou Criativo. A janela cinza padrão do Bedrock é substituída por bordas personalizadas, arte temática nos cantos e um layout reestruturado que destaca a estética da personagem Mai Sakurajima, mantendo os espaços para itens perfeitamente alinhados e fáceis de ler.\n\nAlém da tela do inventário do jogador, os menus de recipientes como baús, bancadas de trabalho e fornalhas também acompanham a nova identidade visual. Isso garante que a transição entre organizar seus baús na base e fabricar novos equipamentos mantenha uma coerência estilística contínua, evitando discrepâncias visuais brutas entre os menus.\n\nO interessante é que, apesar de mudar totalmente as cores e o fundo das telas, a disposição dos slots de itens permanece no padrão do Minecraft. Isso significa que você não precisa reaprender a navegar pelos menus nem perderá tempo procurando onde ficam os botões de fabricação ou o espaço da armadura, tornando a adaptação instantânea."
+  },
+  {
+   "h2": "Edições Black e White e detalhes dos recursos",
+   "body": "Um dos pontos de destaque desta versão 1.0.0 é a possibilidade de escolher entre duas variantes visuais distintas: a Black Edition e a White Edition. Essa flexibilidade permite que o jogador ajuste o tema de acordo com o seu gosto pessoal ou com o modo de exibição preferido do seu dispositivo, adaptando o contraste para momentos de jogo noturnos ou diurnos.\n\nA versão White Edition apresenta tons mais claros e fundos iluminados, ideal para quem prefere uma interface vívida, limpa e com destaque suave nos ícones. Já a Black Edition adota um estilo em modo escuro, reduzindo o brilho da tela ao abrir recipientes à noite ou em ambientes com pouca luz, o que evita o cansaço visual em longas sessões de mineração.\n\nMantendo a tag x16, todas as artes e detalhes gráficos foram criados na resolução padrão do Minecraft. Isso evita aquele aspecto esticado ou pixelado desalinhado, fazendo com que as ilustrações temáticas se integrem de forma natural aos ícones dos itens do próprio jogo, sem causar poluição visual no centro da tela."
+  },
+  {
+   "h2": "Como instalar passo a passo no Android, iOS e Windows",
+   "body": "A instalação do Bunny Girl Senpai UI Inventory no Minecraft Bedrock é simples e utiliza o formato padrão de pacotes do jogo. O primeiro passo é obter o arquivo com extensão .mcpack adequado para o seu dispositivo e garantir que o aplicativo do Minecraft esteja devidamente atualizado.\n\nNo Android e no iOS, basta abrir o seu gerenciador de arquivos preferido, localizar o arquivo baixado e tocar sobre ele. Escolha a opção de abrir com o Minecraft. O jogo será iniciado automaticamente e exibirá uma mensagem no topo da tela informando que a importação do pacote de recursos foi iniciada e concluída com sucesso.\n\nNo Windows, o processo é ainda mais rápido: locate o arquivo .mcpack na sua pasta de Downloads e dê um duplo clique sobre ele. O Minecraft Bedrock abrirá sozinho e fará a instalação automática. Caso prefira, você também pode colar a pasta descompactada diretamente na diretório de pacotes de recursos dentro das pastas do jogo.\n\nApós importar, vá até as Configurações do jogo, selecione a aba Recursos Globais, localize o pacote na lista de disponíveis e clique em Ativar. Se o pacote oferecer a escolha entre a versão Black e White nas engrenagens de opção do menu de pacotes, escolha a sua preferida antes de fechar a tela para que o jogo recarregue a interface."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no Bedrock",
+   "body": "Por se tratar de um pacote de textura com resolução x16 focado apenas em elementos de UI, o impacto no desempenho do seu dispositivo é praticamente nulo. Diferente de pacotes HD de alta resolução que exigem mais memória e processamento gráfico, este complemento não causa quedas de quadros por segundo nem engasgos ao abrir baús cheios de itens.\n\nEm termos de suporte a plataformas, o pacote funciona perfeitamente em dispositivos móveis mais fracos, consoles e computadores. Como as alterações se restringem a arquivos de imagem leves de interface, a taxa de quadros permanece estável mesmo quando você transita rapidamente entre os menus do jogo.\n\nQuanto às versões do Bedrock, o pacote é compatível com a versão 1.0.0 em diante e acompanha as atualizações recentes da interface do jogo. Por ser uma modificação estética do tipo Resource Pack, ele não interfere nos scripts do jogo e tem baixíssima chance de apresentar falhas durante atualizações de rotina do Minecraft."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Se após ativar o pacote o seu inventário continuar com o visual antigo acinzentado, o problema mais comum é a ordem de prioridade na lista de Recursos Globais. Verifique se o Bunny Girl Senpai UI Inventory está posicionado no topo da lista de pacotes ativos, acima de qualquer outra textura que também altere a interface.\n\nOutra situação recorrente ocorre quando a interface fica desalinhada ou cortada nas bordas da tela do celular. Para resolver isso, acesse as configurações do Minecraft, vá em Vídeo e ajuste a opção de Área Segura da Tela ou altere a escala da UI entre Pocket e Classic, testando qual se adapta melhor à resolução do seu visor.\n\nCaso o arquivo .mcpack apresente erro de importação do tipo pacote duplicado ou manifesto inválido, apague a versão antiga instalada no menu de Armazenamento das configurações do jogo. Reinicie o aplicativo do Minecraft e refaça o processo de importação do arquivo limpo."
+  },
+  {
+   "h2": "Dicas de uso e combinações visuais",
+   "body": "Para uma experiência estética completa, você pode combinar este pacote de interface com outros complementos temáticos de anime. Usar o pacote de UI junto com itens personalizados, como totens alterados ou capas temáticas, deixa a identidade visual do seu mundo de Sobrevivência ainda mais alinhada.\n\nSe você costuma jogar durante a noite, a recomendação direta é utilizar a Black Edition nas opções do pacote. A redução de fundo claro evita que a tela pisque com um clarão branco no escuro toda vez que você abrir um baú durante uma maratona de jogo.\n\nLembre-se também de ativar o pacote no menu principal do jogo em Recursos Globais caso queira ver a interface modificada em todos os mundos e servidores em que entrar. Se você ativar o pacote apenas nas configurações de um mundo específico, ele só funcionará enquanto você estiver jogando naquele mapa."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O Bunny Girl Senpai UI Inventory desativa as conquistas do mundo?",
+   "a": "Não, o pacote não desativa as conquistas do seu mundo. Por ser um pacote de recursos focado apenas na interface visual do jogo e não alterar comportamentos ou scripts de jogabilidade, o jogo mantém o ganho de conquistas liberado normalmente."
+  },
+  {
+   "q": "Posso usar esta textura de inventário em servidores multiplayer ou Realms?",
+   "a": "Sim, você pode jogar em servidores e no Realms com a interface modificada. Quando você ativa o pacote nos Recursos Globais do menu principal, as alterações visuais do inventário ficam visíveis apenas para você na sua tela, sem afetar os outros jogadores."
+  },
+  {
+   "q": "O pacote funciona bem em celulares Android e iOS?",
+   "a": "Sim, o pacote funciona perfeitamente em dispositivos móveis Android e iOS. O layout se adapta tanto à interface no modo Pocket quanto no modo Classic do Bedrock, mantendo os botões fáceis de tocar e sem atrapalhar a navegação."
+  },
+  {
+   "q": "É necessário criar um novo mundo para usar este pacote?",
+   "a": "Não é necessário criar um mundo novo. Você pode aplicar o pacote de interface a qualquer momento nos seus mundos antigos ou ativá-lo globalmente no menu principal para que funcione imediatamente em todos os seus jogos salvos."
+  },
+  {
+   "q": "O que fazer se a importação do arquivo .mcpack falhar no jogo?",
+   "a": "Verifique se o arquivo baixado não está corrompido e se a extensão termina exatamente em .mcpack. Caso o erro persista, vá em Configurações, selecione Armazenamento, acesse Pacotes de Recursos dentro do Minecraft, exclua versões antigas do pacote e tente importar novamente."
+  },
+  {
+   "q": "O Bunny Girl Senpai UI Inventory é totalmente gratuito?",
+   "a": "Sim, o pacote criado pelo desenvolvedor TaxFraudTeam é totalmente gratuito. Você pode baixar o arquivo disponibilizado pelo autor e instalá-lo no seu jogo sem nenhum custo de compra."
+  },
+  {
+   "q": "Posso usar este pacote junto com outras texturas de blocos?",
+   "a": "Sim, você pode usar junto com outras texturas de blocos ou pacotes de objetos. Basta colocar o Bunny Girl Senpai UI Inventory no topo da lista de pacotes ativos nas configurações para garantir que a interface do inventário tenha prioridade sobre as outras."
+  }
+ ],
+ "verdict": "Se você é fã da série ou simplesmente quer renovar a interface do Minecraft Bedrock com um visual bonito e simplista, o Bunny Girl Senpai UI Inventory vale muito a pena. Ele entrega uma alteração estética bem acabada nas edições Black e White sem pesar no desempenho do jogo nem desativar as conquistas do seu mapa. Por outro lado, se você busca uma modificação profunda de jogabilidade com novos itens, blocos ou criaturas, este pacote não é para você, já que o seu foco é exclusivamente a customização gráfica dos menus do usuário."
+}

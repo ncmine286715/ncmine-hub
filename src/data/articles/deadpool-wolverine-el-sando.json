@@ -1,0 +1,65 @@
+{
+ "id": "deadpool-wolverine-el-sando",
+ "title": "Deadpool & Wolverine | EL SANDO",
+ "researched": false,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1548,
+ "intro": "Para quem é fã da Marvel e acompanha o universo dos quadrinhos e dos cinemas, o addon Deadpool & Wolverine, desenvolvido pelo criador ELSANDO, traz uma proposta totalmente focada em combate e ação para o Minecraft Bedrock. Na versão 1.0.0, este modificador permite que você traga o estilo caótico, irreverente e brutal de dois dos anti-heróis mais conhecidos da cultura pop diretamente para os seus mundos de blocos.\n\nO objetivo principal deste projeto é alterar a dinâmica padrão do jogo, oferecendo novos itens de combate, visuais característicos e um ritmo de jogatina muito mais acelerado. Se você gosta de enfrentar hordas de monstros com armas personalizadas e trajes lendários, este addon serve perfeitamente para transformar a rotina do seu Minecraft PE ou Bedrock em algo muito mais agitado e focado na pancadaria.",
+ "sections": [
+  {
+   "h2": "Como o addon muda a jogatina na prática",
+   "body": "Quando você instala este complemento e entra no mapa, o Minecraft deixa de ser apenas um jogo focado em coleta de recursos e construção para se tornar uma arena de combate temárica. A jogabilidade muda radicalmente porque o foco passa a ser o confronto direto e o uso de equipamentos específicos, alterando a forma como você explora cavernas, estruturas e enfrenta as noites no jogo.\n\nA movimentação e a postura durante os confrontos ganham uma dinâmica diferente da espada de diamante ou de netherite tradicional. Os combates ficam mais rápidos, os impactos das armas são mais visíveis e a sensação de poder do personagem aumenta consideravelmente. Isso modifica o ritmo do modo sobrevivência, tornando as batalhas contra hordas de zumbis ou outros mobs muito mais dinâmicas.\n\nAlém disso, a presença de itens temáticos incentiva o jogador a focar no combate corpo a corpo e no teste de novas combinações de ataque. Para quem costuma jogar em equipe com amigos, o jogo ganha um forte elemento de cooperação e duelo, permitindo recriar embates e parcerias icônicas dentro da estrutura de blocos do Bedrock."
+  },
+  {
+   "h2": "Conteúdo e recursos principais do mod",
+   "body": "O pacote criado por ELSANDO foca em trazer os elementos visuais e mecânicos mais marcantes de cada um dos personagens. O jogador tem acesso aos trajes detalhados do Deadpool e do Wolverine, cada um desenhado para se ajustar ao modelo dos avatares do Bedrock sem perder as características clássicas das roupas dos quadrinhos e dos filmes.\n\nNo arsenal de armas, o destaque fica por conta das katanas duplas do Mercenário Tagarela e das garras de adamantium do Wolverine. Cada equipamento possui textura própria e atributos ajustados para causar danos expressivos nos inimigos, diferenciando-se das ferramentas convencionais do jogo base em termos de alcance, dano por segundo e velocidade de ataque.\n\nO mod também busca integrar os conceitos dos personagens ao sistema do jogo, permitindo que o jogador sinta na prática o estilo de luta de cada um. Seja utilizando o conjunto visual completo ou partindo para a ofensiva com lâminas afiadas, o conjunto de recursos oferece uma experiência temática direta e sem complicações dentro do mapa."
+  },
+  {
+   "h2": "Guia de instalação no Android, iOS e Windows",
+   "body": "A instalação do addon no Minecraft Bedrock é simples, mas exige atenção aos detalhes para que os arquivos funcionem sem problemas. Primeiro, faça o download dos arquivos no formato .mcaddon ou .mcpack no seu dispositivo. Caso o arquivo venha compactado em formato .zip, renomeie o final do arquivo apagando a extensão .zip e deixando apenas .mcaddon antes de clicar.\n\nNo Android e no iOS, toque sobre o arquivo baixado e escolha a opção de abrir com o Minecraft. O jogo será executado automaticamente e iniciará o processo de importação no topo da tela, confirmando a adição do pacote de comportamento (Behavior) e do pacote de recursos (Resource). No Windows, o procedimento é idêntico: basta dar dois cliques no arquivo baixado para que o Minecraft abra e conclua a instalação do complemento.\n\nDepois de importar os arquivos, crie um novo mundo ou acesse as configurações de um mapa existente. Na aba de pacotes, ative tanto o Pacote de Recursos quanto o Pacote de Comportamento. Por fim, vá até a aba de configurações do jogo, role até a seção de Recursos Experimentais e ative todas as opções de teste. Esse passo é fundamental para que as armas, trajes e mecânicas personalizadas funcionem corretamente no mapa."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no Bedrock",
+   "body": "O addon Deadpool & Wolverine na versão 1.0.0 foi projetado para rodar em um amplo leque de versões do Minecraft Bedrock, incluindo atualizações como a 1.21.132 e outras variantes recentes da engine. Por utilizar arquivos otimizados de textura e modelos 3D leves, o impacto na taxa de quadros por segundo (FPS) costuma ser baixo na maioria dos dispositivos.\n\nEm celulares Android e iOS de entrada ou intermediários, o desempenho se mantém estável durante a exploração normal. O único momento em que pode ocorrer uma leve variação no desempenho é durante combates intensos com muitos mobs na tela simultaneamente ou ao utilizar habilidades que gerem muitos efeitos visuais ao mesmo tempo.\n\nPara quem joga no computador ou em consoles suportados, o complemento roda de forma fluida e sem travamentos. A compatibilidade com outros addons também é positiva, desde que os outros mods instalados não alterem os mesmos arquivos de animação de combate ou substituam os comportamentos base dos mesmos itens."
+  },
+  {
+   "h2": "Problemas frequentes e como resolver",
+   "body": "Um dos erros mais frequentes relatados pelos jogadores é o surgimento de itens invisíveis ou blocos com a textura roxa e preta de erro. Isso acontece quase sempre quando o jogador se esquece de ativar os Recursos Experimentais no menu de criação do mundo. Para corrigir, basta voltar às configurações do mapa e garantir que todas as chaves experimentais estejam ligadas.\n\nOutro problema comum ocorre na hora da importação, quando o jogo exibe uma mensagem de falha no arquivo. Se isso acontecer, verifique se o arquivo não foi baixado de forma incompleta. Verifique também se a extensão do arquivo está realmente formatada como .mcaddon ou .mcpack. Se estiver salva como .zip, o jogo não conseguirá reconhecer o pacote diretamente.\n\nCaso as animações das armas ou as roupas não apareçam no personagem, certifique-se de que a ordem dos pacotes aplicados está correta. O Pacote de Recursos deve estar ativo na aba correspondente e o Pacote de Comportamento também precisa estar ligado. Se o problema persistir, limpe o cache do Minecraft nas configurações do seu dispositivo."
+  },
+  {
+   "h2": "Dicas para aproveitar o combate no jogo",
+   "body": "Para tirar o melhor proveito do addon, combine os novos equipamentos com poções de agilidade e força do próprio jogo base. Essa combinação maximiza o impacto dos ataques corpo a corpo com as garras do Wolverine e torna as esquivas muito mais eficientes durante lutas contra chefes e grupos grandes de monstros.\n\nNo modo sobrevivência, é recomendável organizar seu inventário deixando as armas temáticas em slots de acesso rápido. Como o estilo de combate do Deadpool favorece a alternância rápida de ataques e movimentação constante, manter itens de regeneração ao lado das katanas garante uma taxa de sobrevivência maior no escuro das cavernas.\n\nSe você for utilizar o addon em sessões com amigos no modo multijogador, defina arenas de combate específicas no mapa para realizar duelos. O ritmo do mod encaixa muito bem em cenários de Player versus Player (PvP), transformando partidas casuais em confrontos diretos bem movimentados entre os participantes."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon funciona em celulares Android e iOS?",
+   "a": "Sim, o addon é totalmente compatível com a versão Bedrock/PE disponível para dispositivos móveis Android e iOS. Basta baixar e importar os arquivos diretamente no aplicativo do jogo."
+  },
+  {
+   "q": "O addon desativa as conquistas do mundo?",
+   "a": "Sim. Como acontece com qualquer modificação que utiliza pacotes de comportamento e recursos experimentais no Minecraft Bedrock, as conquistas do Xbox Network ficam desativadas no mundo em que for aplicado."
+  },
+  {
+   "q": "Posso jogar em multiplayer com meus amigos?",
+   "a": "Sim, é possível jogar com amigos. O dono do mundo precisa ativar o addon e marcar a opção para que os outros jogadores façam o download automático dos pacotes ao entrarem na sala."
+  },
+  {
+   "q": "É obrigatório ativar os Recursos Experimentais?",
+   "a": "Sim, a ativação das opções experimentais nas configurações do mapa é indispensável. Sem isso, os trajes, armas e animações personalizadas não vão carregar de forma correta."
+  },
+  {
+   "q": "Consigo colocar esse mod em um mundo antigo?",
+   "a": "Sim, você pode aplicar o pacote em um mundo que já possui. Acesse o menu de edição do mapa, ative os pacotes de recurso e comportamento e ligue os recursos experimentais."
+  },
+  {
+   "q": "O que fazer se a importação do arquivo falhar?",
+   "a": "Verifique se o arquivo baixado não está corrompido e se a extensão está como .mcaddon ou .mcpack. Se necessário, baixe o arquivo novamente e feche o Minecraft antes de abrir o pacote."
+  },
+  {
+   "q": "Este addon do Deadpool e Wolverine é gratuito?",
+   "a": "Sim, o mod desenvolvido pelo criador ELSANDO é disponibilizado de forma gratuita para a comunidade do Minecraft Bedrock."
+  }
+ ],
+ "verdict": "O addon Deadpool & Wolverine de ELSANDO é uma excelente escolha para quem quer adicionar ação rápida, novos equipamentos e um toque de quadrinhos ao Minecraft Bedrock. Ele vale muito a pena para jogadores que gostam de combate corpo a corpo, mapas de arena ou simplesmente querem se divertir jogando com trajes e armas temáticas no sobrevivência. Por outro lado, se você busca uma experiência focada estritamente no estilo tradicional de sobrevivência sem alterar o equilíbrio original do jogo, a mudança no ritmo de combate pode não ser do seu interesse."
+}

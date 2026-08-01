@@ -1,0 +1,65 @@
+{
+ "id": "system-shields",
+ "title": "System Shields",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1475,
+ "intro": "Se você joga Minecraft Bedrock no modo sobrevivência há algum tempo, provavelmente já percebeu como o escudo padrão do jogo é limitado. Ele serve apenas para bloquear dano básico e consome um espaço precioso na segunda mão sem oferecer nada além de defesa passiva. O addon System Shields, criado pelo desenvolvedor SystemTv, chega para resolver esse problema de forma direta e eficiente no seu mundo.\n\nEste projeto adiciona uma série de novos escudos fabricáveis utilizando materiais nativos do próprio jogo (vanilla). A grande diferença é que essas proteções não servem só para segurar golpes: cada modelo possui habilidades especiais ativas e passivas, como repelir inimigos e atear fogo em mobs agressivos. É o complemento ideal para quem busca renovar o combate do Bedrock sem quebrar a essência original do jogo.",
+ "sections": [
+  {
+   "h2": "O que muda na prática na sua sobrevivência",
+   "body": "Na prática, colocar o System Shields no seu mapa transforma a forma como você lida com hordas de monstros e explora cavernas escuras. No Minecraft padrão, defender-se significa ficar parado esperando o ataque passar. Com os escudos deste addon, defender vira uma ação de combate ativa. Quando um mob ataca, o próprio equipamento pode reagir empurrando o oponente para longe ou aplicando efeitos negativos nele.\n\nIsso altera diretamente a progressão da sua partida. Em vez de juntar ferro apenas para fazer o escudo tradicional e depois esquecer que existem outros materiais, você passa a ter motivos reais para coletar minérios e itens variados. A necessidade de criar defesas mais fortes para enfrentar chefes ou navegar pelo Nether fica muito mais interessante e recompensadora.\n\nAlém disso, a integração com os itens vanilla faz com que o addon não pareça algo forçado ou fora de contexto. Você continua minerando e caçando os mesmos recursos de sempre, mas ganha opções de receita (crafting) totalmente voltadas para o seu estilo de jogo, seja você um jogador focado em combate corpo a corpo ou na exploração defensiva."
+  },
+  {
+   "h2": "Recursos e habilidades dos novos escudos",
+   "body": "O grande destaque do trabalho do SystemTv é a diversidade de habilidades atreladas a cada equipamento. Diferente do escudo comum, as opções apresentadas no addon utilizam ligas e materiais que você já conhece no jogo base para entregar vantagens táticas reais durante as lutas.\n\nEntre as capacidades disponíveis, destacam-se os escudos com efeito de repulsão (knockback), capazes de empurrar grupos de zumbis e esqueletos para longe quando ativados no momento certo. Outros modelos contam com propriedades flamejantes, incendiando o agressor instantaneamente ao receber um golpe, o que facilita muito o controle de área em locais apertados como minas abandonadas.\n\nExistem também opções voltadas para maior durabilidade e absorção de dano pesado, ideais para suportar explosões de Creepers ou ataques diretos de mobs do End. Essa variedade permite que você troque de equipamento dependendo do ambiente que vai explorar, garantindo uma camada extra de estratégia ao seu inventário."
+  },
+  {
+   "h2": "Como instalar no Android, iOS e Windows",
+   "body": "A instalação do System Shields é simples, mas exige que você siga os passos corretos de acordo com a sua plataforma para garantir que os arquivos sejam reconhecidos pelo Minecraft Bedrock. O arquivo geralmente vem no formato .mcaddon ou .mcpack, o que facilita bastante o processo de importação direta para o jogo.\n\nNo Android e no iOS, faça o download do arquivo diretamente pelo navegador do seu celular. Em seguida, abra o gerenciador de arquivos do aparelho, localize o arquivo baixado e toque nele. Selecione a opção 'Abrir com Minecraft'. O jogo será iniciado automaticamente e exibirá a mensagem de importação concluída no topo da tela.\n\nNo Windows, o processo é ainda mais rápido. Após baixar o arquivo, basta dar um duplo clique sobre ele. O Minecraft Bedrock abrirá sozinho e importará tanto o pacote de comportamento (Behavior Pack) quanto o pacote de recursos (Resource Pack). Depois disso, basta ir até as configurações do seu mundo, ativar os dois pacotes na aba de complementos e certificar-se de ativar os recursos experimentais no menu de criação do mundo."
+  },
+  {
+   "h2": "Desempenho e compatibilidade com outros addons",
+   "body": "Por utilizar modelos baseados na estrutura nativa do Minecraft e não sobrecarregar o jogo com entidades pesadas ou texturas em altíssima resolução, o System Shields apresenta um excelente desempenho. Ele roda de forma fluida até mesmo em celulares intermediários ou de entrada, sem causar quedas bruscas de quadros por segundo (FPS).\n\nEm relação à compatibilidade, o addon funciona muito bem em conjunto com outros pacotes de textura e complementos que não alterem diretamente o código dos escudos originais. Como as receitas utilizam itens vanilla padrões, é raro haver conflito com addons de geração de mundo ou de novos blocos.\n\nO ponto mais importante para garantir a compatibilidade total é manter seu Minecraft Bedrock atualizado. O criador SystemTv costuma atualizar o projeto para rodar nas versões recentes do jogo, portanto, verifique se a versão do seu jogo corresponde às exigências do arquivo baixado."
+  },
+  {
+   "h2": "Problemas comuns e como resolver",
+   "body": "Um dos problemas mais relatados pelos jogadores é os novos escudos não aparecerem na bancada de trabalho (crafting table) mesmo com o addon ativado. Na grande maioria das vezes, isso acontece porque as opções de 'Recursos de Criador de Férias' ou 'Recursos de Modificadores' não foram ativadas nas configurações do mundo. Sempre ative os experimentos antes de carregar o mapa.\n\nOutra falha comum é o erro de importação ao tentar abrir o arquivo no celular. Se o jogo indicar que não foi possível importar, verifique se o arquivo não foi baixado corrompido ou compactado em formato .zip. Se estiver em .zip, renomeie a extensão para .mcaddon antes de tentar abrir novamente.\n\nCaso o escudo fique transparente ou sem textura visível na mão do personagem, certifique-se de que o Pacote de Recursos (Resource Pack) foi ativado corretamente na aba global ou do próprio mundo, e não apenas o Pacote de Comportamento (Behavior Pack). Ambas as partes precisam estar ativas simultaneamente."
+  },
+  {
+   "h2": "Dicas de combate para aproveitar ao máximo",
+   "body": "Para tirar o melhor proveito do System Shields no seu mapa de sobrevivência, não trate todos os escudos da mesma forma. Aprenda a ler os efeitos de cada um e monte combinações de equipamentos para diferentes situações da sua jornada.\n\nSe você planeja explorar o Nether, prefira escudos com imunidade ou repulsão a fogo, que ajudam a neutralizar o dano contínuo de Blazes e Ghasts. Já em cavernas profundas, escudos que repelem mobs são excelentes para evitar ser encurralado por hordas de zumbis ou aranhas de caverna em corredores estreitos.\n\nPor fim, lembre-se de reparar seus escudos especiais antes que eles quebrem completamente. Como utilizaram materiais valiosos na confecção, vale a pena manter uma bigorna por perto para restaurar a durabilidade com os minérios correspondentes, em vez de ter que fabricar um novo equipamento do zero."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon System Shields é totalmente gratuito?",
+   "a": "Sim, o complemento criado por SystemTv é distribuído gratuitamente para a comunidade Bedrock. Você não precisa pagar nada para baixar e jogar em suas partidas."
+  },
+  {
+   "q": "Posso usar o System Shields em mundos antigos já criados?",
+   "a": "Sim, é possível ativar o addon em mundos existentes. Basta acessar as configurações do seu mapa antes de carregá-lo, aplicar os pacotes de recursos e comportamento, e garantir que as opções experimentais estejam ligadas."
+  },
+  {
+   "q": "O addon bloqueia o ganho de conquistas no Xbox?",
+   "a": "Como qualquer addon do Bedrock que altera comportamentos ou ativa recursos experimentais, o uso do System Shields desativa o ganho de conquistas no mundo em que for ativado."
+  },
+  {
+   "q": "Funciona no multiplayer e em servidores locais?",
+   "a": "Funciona perfeitamente em sessões multiplayer locais. O dono do mundo precisa instalar o addon e marcar a opção para forçar os outros jogadores a baixarem o pacote de recursos ao entrarem na sala."
+  },
+  {
+   "q": "O addon pesa muito em celulares fracos?",
+   "a": "Não, o System Shields é extremamente leve e bem otimizado. Ele adiciona apenas itens e mecânicas simples de combate, não afetando o desempenho em aparelhos mais modestos."
+  },
+  {
+   "q": "Como resolver o erro de falha ao importar o arquivo no Minecraft?",
+   "a": "Verifique se o formato do arquivo é .mcaddon ou .mcpack. Se o arquivo estiver compactado como .zip, renomeie a extensão removendo o .zip do final e tente abrir novamente no jogo."
+  },
+  {
+   "q": "O addon é compatível com as versões recentes do Minecraft Bedrock?",
+   "a": "Sim, o criador SystemTv atualiza o suporte para as versões recentes da edição Bedrock. Certifique-se de baixar a versão do arquivo compatível com o seu jogo instalado."
+  }
+ ],
+ "verdict": "O System Shields é uma excelente adição para qualquer jogador de Minecraft Bedrock que sinta que o sistema de defesa original do jogo ficou ultrapassado. Ele entrega variedade tática, ótimas habilidades ativas e uma integração natural com os recursos vanilla do jogo, sem causar travamentos em celulares fracos. Se você procura renovar o combate do seu modo sobrevivência de forma equilibrada, o download vale totalmente a pena. No entanto, se o seu foco principal é jogar um mapa 100% focado no ganho de conquistas do Xbox, é melhor manter o jogo original sem complementos ativos."
+}

@@ -1,0 +1,65 @@
+{
+ "id": "new-armors-overhaul",
+ "title": "New Armors Overhaul",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1317,
+ "intro": "O addon New Armors Overhaul, criado pelo estúdio Iced_Fox_Studios, chega para modificar completamente o sistema de equipamentos do Minecraft Bedrock Edition. Em vez de entregar apenas pontos de defesa passivos como no jogo padrão, esta modificação transforma cada conjunto de armadura em uma verdadeira ferramenta de combate com habilidades ativas, bônus passivos e efeitos visuais cheios de partículas.\n\nSe você sente que o combate vanilla do Bedrock se tornou repetitivo ou previsível, esse complemento oferece uma dinâmica muito mais próxima de um RPG de ação. Ele foi desenvolvido tanto para quem quer explorar o modo sobrevivência com novas estratégias quanto para jogadores que buscam combates mais intensos e variados contra chefes e hordas de monstros.",
+ "sections": [
+  {
+   "h2": "O que muda no jogo na prática",
+   "body": "No Minecraft tradicional, a escolha da armadura resume-se ao nível de proteção e à durabilidade do material, variando do couro ao netherite. Com o New Armors Overhaul ativado, essa lógica muda radicalmente, pois a sua armadura passa a definir diretamente o seu estilo de luta e a sua capacidade de sobrevivência em campo aberto.\n\nDurante a jogatina, o uso do equipamento deixa de ser estático. Em vez de simplesmente receber dano e esperar a barra de vida baixar, você ganha acesso a poderes que podem ser acionados no momento certo da batalha. Essa mecânica exige que o jogador pense estrategicamente sobre quando ativar a habilidade especial e como posicionar seu personagem para tirar o máximo proveito dos efeitos.\n\nAlém disso, a resposta visual do jogo melhora de forma considerável. Cada acionamento de habilidade vem acompanhado por animações de partículas bem trabalhadas, dando um feedback imediato de que a magia ou o golpe especial foi executado com sucesso no mapa."
+  },
+  {
+   "h2": "Recursos principais e conjuntos de armadura",
+   "body": "O grande destaque desta modificação é a adição de 7 conjuntos de armaduras épicas, cada um projetado com propriedades únicas. O sistema funciona em camadas: vestir peças individuais já garante bônus passivos sutis, mas o verdadeiro potencial é liberado apenas ao equipar o conjunto completo no seu personagem.\n\nPara disparar as habilidades ativas devastadoras, o controle é simples e intuitivo. O jogador só precisa agachar e segurar o clique direito no computador ou segurar a tela no celular. Esse comando ativa o poder supremo da armadura equipada, gerando explosões de partículas, ondas de impacto ou auras de suporte ao seu redor.\n\nEsses bônus de conjunto completo variam entre aumentos significativos de velocidade, regeneração acelerada, resistência elemental e ataques em área. Isso permite criar construções de personagem focadas em dano bruto, mobilidade ou defesa extrema, dependendo do desafio que você pretende enfrentar."
+  },
+  {
+   "h2": "Como instalar no Bedrock em qualquer plataforma",
+   "body": "A instalação do New Armors Overhaul no Minecraft Bedrock é direta, seja no Android, iOS ou Windows. O primeiro passo é fazer o download do arquivo no formato `.mcaddon` ou `.mcpack`. No celular, utilize um gerenciador de arquivos para tocar sobre o arquivo baixado e selecionar a opção de abrir com o Minecraft. O jogo será executado automaticamente e iniciará o processo de importação.\n\nNo Windows, o processo é ainda mais simples: basta dar um duplo clique sobre o arquivo baixado para que o Minecraft abra e conclua a instalação dos pacotes de recursos e comportamentos no seu menu interno.\n\nApós a importação, entre nas configurações do mundo onde deseja jogar. Na aba de Pacotes de Recursos e Pacotes de Comportamento, ative o New Armors Overhaul. É fundamental acessar a seção de experimentos nas configurações do mundo e ativar os Recursos Experimentais para que todas as habilidades e partículas funcionem sem erros."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no celular e PC",
+   "body": "O trabalho de otimização feito pelo Iced_Fox_Studios garante que o addon rode bem na maioria dos dispositivos modernos. No entanto, por contar com um sistema pesado de partículas ao ativar as habilidades ativas, celulares mais antigos ou com pouca memória RAM podem apresentar pequenas quedas de taxa de quadros durante combates intensos.\n\nEm termos de compatibilidade, o addon funciona perfeitamente com a maioria dos complementos que adicionam novos blocos, criaturas ou estruturas. O único ponto de atenção é com outros addons que alterem profundamente o código padrão de armaduras vanilla ou o comportamento do jogador ao agachar.\n\nSe você pretende jogar em servidores locais ou mundos compartilhados, o addon se comporta muito bem no multiplayer. Certifique-se apenas de que a conexão do host seja estável para que a sincronização das partículas e das habilidades ativas aconteça sem atrasos para os outros jogadores."
+  },
+  {
+   "h2": "Problemas comuns e soluções rápidas",
+   "body": "Um dos problemas mais relatados é a habilidade ativa não disparar ao agachar e usar o comando. Na maioria das vezes, isso acontece porque o jogador esqueceu de ativar os Recursos Experimentais nas configurações do mundo antes de carregar o mapa. Para resolver, saia do mundo, edite as opções e ative todas as chaves experimentais.\n\nOutro erro frequente é a falha na importação do arquivo. Se o sistema indicar que o arquivo é inválido, verifique se a extensão não terminou como `.zip`. Se for o caso, renomeie o arquivo apagando o `.zip` e mantendo apenas `.mcaddon` no final do nome antes de tentar abrir novamente.\n\nCaso as texturas das armaduras apareçam invisíveis ou bugadas, confira a ordem dos pacotes na lista do seu mundo. O pacote de recursos do New Armors Overhaul deve estar topo da lista de pacotes ativos para garantir o carregamento correto das texturas."
+  },
+  {
+   "h2": "Dicas para tirar o melhor proveito do addon",
+   "body": "Para dominar o uso das novas armaduras, reserve um tempo para testar cada um dos 7 conjuntos em um ambiente seguro. Entender o tempo de recarga e o alcance da habilidade ativa de cada armadura é crucial para não ficar vulnerável no meio de uma horda de monstros.\n\nCombine as habilidades ativas com poções e encantamentos tradicionais. Uma armadura voltada para combate corporal fica ainda mais devastadora quando combinada com encantamentos de Afiação e poções de Força, permitindo derrotar chefes em poucos segundos.\n\nEm partidas multiplayer, divida os conjuntos entre os membros da sua equipe. Ter um jogador utilizando um conjunto focado em controle de grupo e outro focado em dano massivo cria uma sintonia perfeita para explorar cavernas perigosas e dimensões como o Nether."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon New Armors Overhaul desativa as conquistas do mundo?",
+   "a": "Sim. Como utilizar pacotes de comportamento e ativa mecânicas experimentais, o jogo desativa automaticamente o ganho de conquistas no mapa."
+  },
+  {
+   "q": "Posso instalar este complemento em um mundo antigo?",
+   "a": "Sim, é possível aplicar o addon em mundos já existentes. Basta acessar as configurações do mapa no menu principal, ativar os pacotes e ligar os recursos experimentais."
+  },
+  {
+   "q": "Funciona normalmente no modo multiplayer com amigos?",
+   "a": "Funciona perfeitamente. O dono do mundo deve aplicar o pacote e marcar a opção para que os visitantes baixem os recursos ao entrar na partida."
+  },
+  {
+   "q": "O addon roda sem travar em celulares fracos?",
+   "a": "Ele roda na maioria dos aparelhos, mas dispositivos muito antigos podem sofrer quedas de FPS quando muitas partículas de habilidades forem acionadas juntas."
+  },
+  {
+   "q": "Como resolver o erro de importação ao clicar no arquivo?",
+   "a": "Confira se o arquivo está com a extensão .mcaddon. Se estiver como .zip, renomeie o arquivo removendo o .zip do final e abra novamente com o Minecraft."
+  },
+  {
+   "q": "O New Armors Overhaul é gratuito?",
+   "a": "Sim, o complemento é um conteúdo gratuito desenvolvido pela Iced_Fox_Studios para a comunidade Bedrock."
+  },
+  {
+   "q": "Como ativar o poder da armadura na tela do celular?",
+   "a": "Com o conjunto completo vestido, coloque o personagem na posição de agachado e segure o toque em um espaço vazio da tela."
+  }
+ ],
+ "verdict": "O New Armors Overhaul é uma escolha fantástica para quem deseja transformar o sistema de combate do Minecraft Bedrock em algo mais dinâmico e estratégico. Se você gosta de mecânicas de RPG, poderes ativos e batalhas visivelmente impressionantes, o download vale muito a pena. Por outro lado, se você prefere manter a jogabilidade puramente vanilla sem adições exageradas de partículas, ou joga em um celular muito fraco que trava com facilidade, talvez seja melhor optar por modificações mais simples."
+}

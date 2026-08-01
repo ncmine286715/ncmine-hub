@@ -1,0 +1,65 @@
+{
+ "id": "more-end-dungeons-achievements-enabled",
+ "title": "More End Dungeons [Achievements Enabled]",
+ "researched": true,
+ "updatedAt": "2026-08-01",
+ "wordCount": 1478,
+ "intro": "O End no Minecraft Bedrock sempre enfrentou um problema crônico de falta de conteúdo. Após derrotar o Ender Dragon e encontrar as poucas cidades flutuantes com seus navios, a exploração dessa dimensão se torna extremamente monótona e previsível. O addon More End Dungeons, desenvolvido pelo criador ARTMS, surge exatamente para resolver essa escassez de interesse, espalhando diversas fortificações imponentes e misteriosas pelas ilhas distantes do fim.\n\nO grande trunfo deste complemento é carregar a marca registrada de manter as conquistas ativas no seu mundo (Achievements Enabled). Se você é do tipo de jogador que ama explorar estruturas gigantescas, encarar combates desafiadores e ainda quer continuar acumulando os troféus da sua conta Xbox sem precisar ativar trapaças, este pacote é uma adição indispensável para o seu jogo.",
+ "sections": [
+  {
+   "h2": "O que muda no seu jogo na prática",
+   "body": "Na prática, viajar pelas ilhas externas do The End deixa de ser uma caminhada deserta entre blocos amarelados e passa a ser uma jornada repleta de descobertas e perigos. Ao instalar o addon, o gerador de terreno passa a inserir construções massivas ao longo do mapa, transformando o horizonte da dimensão em um verdadeiro labirinto de exploração.\n\nA taxa de surgimento das estruturas foi configurada para manter o equilíbrio perfeito do jogo. Você não vai encontrar um castelo colado no outro, o que estragaria o clima de sobrevivência, mas também não precisará voar de elitros por milhares de blocos sem ver nada. As construções aparecem de forma orgânica e natural, integrando-se perfeitamente aos relevos originais do terreno.\n\nO ritmo de combate no End muda drasticamente. Em vez de lidar apenas com Endermans espalhados e Shulkers nas cidades padrão, você precisará invadir fortalezas barricadas, subir torres verticais e limpar salas infestadas de perigos. O loot contido nos baús das novas dungeons recompensa diretamente o risco assumido pelo jogador."
+  },
+  {
+   "h2": "Estruturas, materiais e suporte a conquistas",
+   "body": "O addon adiciona cerca de 14 novas estruturas desenvolvidas para respeitar a estética original do Minecraft. Entre as construções disponíveis, você encontrará fortificações defensivas, castelos sombrios e torres de vigia elevadas. O design arquitetônico aproveita ao máximo os blocos nativos do local, utilizando tijolos de pedra do End, blocos de purpur e variações de pedra pura.\n\nAs novas dungeons focam bastante na verticalidade e no combate em ambientes fechados. Algumas fortalezas possuem pátios abertos cercados por muretas, enquanto certas torres exigem que o jogador suba vários andares enfrentando ameaças em corredores estreitos. Essa variação de formatos evita que a exploração se torne repetitiva com o tempo.\n\nO principal destaque técnico do More End Dungeons é a preservação das conquistas. Como o desenvolvedor ARTMS projetou as estruturas utilizando métodos nativos de geração, sem alterar scripts de comportamento nem exigir a ativação de recursos experimentais que bloqueiam conquistas, seu mapa continua 100% válido para liberar troféus na sua conta."
+  },
+  {
+   "h2": "Como instalar o addon no Bedrock",
+   "body": "Instalar o More End Dungeons no Minecraft Bedrock é um procedimento simples em qualquer plataforma compatível. O primeiro passo é fazer o download do arquivo no formato .mcaddon ou .mcpack para o seu dispositivo, garantindo que o arquivo seja salvo em um pasta acessível como a de downloads.\n\nNo Android e no iOS, abra o seu gerenciador de arquivos de preferência, localize o pacote baixado e toque nele. Selecione a opção de abrir com o Minecraft. O jogo será iniciado automaticamente e exibirá uma notificação no topo do menu confirmando que a importação do pacote de comportamento e de recursos foi concluída com sucesso.\n\nNo Windows 10 ou 11, basta dar um duplo clique sobre o arquivo para que o jogo abra e execute a instalação automaticamente. Com a importação feita, vá até o menu de edição do seu mundo, acesse a aba de Pacotes de Comportamento (Behavior Packs), ative o More End Dungeons e confirme as alterações para começar a jogar."
+  },
+  {
+   "h2": "Desempenho e compatibilidade no multiplayer",
+   "body": "Em termos de desempenho, o addon é extremamente otimizado e leve. Por utilizar blocos nativos do próprio jogo e se focar exclusivamente no momento de geração de estruturas dos chunks, ele não consome memória RAM excessiva. Dispositivos móveis mais antigos e celulares de entrada conseguem rodar o pacote sem sofrer com quedas de quadros por segundo (FPS).\n\nA compatibilidade com o modo multijogador e servidores Realms é total. Se você deseja colocar o addon no servidor do seu grupo de amigos ou em um Realm privado, basta ativar o pacote de comportamento nas configurações do mapa antes de enviá-lo para a nuvem. Todos os jogadores que entrarem na sessão baixarão os arquivos necessários automaticamente.\n\nEm relação a outros mods, o More End Dungeons funciona perfeitamente ao lado de pacotes de textura, shaders e addons que adicionam itens ou ferramentas. A única atenção necessária é evitar combiná-lo com outros mods que alterem drasticamente a geração de terreno da mesma dimensão para evitar conflito de estruturas."
+  },
+  {
+   "h2": "Problemas comuns e soluções",
+   "body": "Um dos problemas mais relatados pelos jogadores é não encontrar as novas estruturas em mundos antigos. Se você ativou o addon em um mapa já existente, as novas dungeons só vão aparecer em áreas do End que nunca foram carregadas ou visitadas antes. A solução é viajar para chunks virgens bem distantes do portal principal ou criar um mundo novo.\n\nOutra falha comum acontece quando o arquivo é baixado com a extensão incorreta, como .zip em vez de .mcpack. Se o seu dispositivo não reconhecer o arquivo, abra o gerenciador de arquivos, renomeie o item apagando o sufixo .zip e mantendo apenas a extensão .mcpack no final antes de tentar abrir novamente.\n\nSe por algum motivo as construções aparecerem com blocos ausentes ou falhas visuais, acesse as configurações do seu mundo e verifique se o Pacote de Recursos correspondente foi ativado junto com o Pacote de Comportamento. Manter ambos ativados garante que as texturas das dungeons carreguem corretamente."
+  },
+  {
+   "h2": "Dicas essenciais de sobrevivência nas dungeons",
+   "body": "Explorar essas novas fortalezas exige preparo adequado, pois uma queda na imensidão do vazio do End significa perder todos os seus equipamentos. Antes de partir para as novas estruturas, prepare o seu inventário com comida suficiente, bastante bloco de apoio (como pedra ou terra) e uma armadura resistente encantada.\n\nTrazer Pérolas do End (Ender Pearls) e Poções de Queda Lenta é uma obrigação tática. Como várias dungeons possuem sacadas suspensas e torres altas, um ataque surpresa pode arremessar seu personagem para fora da estrutura. Ter a poção ativa concede o tempo necessário para usar uma pérola e se salvar do vácuo.\n\nPor fim, utilize arcos ou bestas com encantamentos de longa distância para limpar as áreas externas das construções antes de se aproximar. Eliminar as ameaças das sacadas e varandas à distância torna a fase de construção de pontes muito mais segura antes da invasão dos ambientes fechados."
+  }
+ ],
+ "faq": [
+  {
+   "q": "O addon realmente mantém as conquistas ativas?",
+   "a": "Sim, o More End Dungeons foi criado sem alterar scripts restritos do jogo, o que permite explorar todas as novas estruturas mantendo o sistema de conquistas do Xbox habilitado no seu mundo."
+  },
+  {
+   "q": "Posso jogar este addon em servidores Realms com meus amigos?",
+   "a": "Com certeza. Basta ativar o pacote de comportamento e de recursos no menu do seu mundo local e depois enviar o mapa para o seu Realm. Todos que entrarem no servidor baixarão o addon automaticamente."
+  },
+  {
+   "q": "O addon causa lag em celulares fracos?",
+   "a": "Não, o addon é muito leve. Como ele utiliza apenas os blocos nativos do próprio Minecraft e não adiciona entidades pesadas, ele roda sem travar mesmo em celulares Android e iOS com configurações modestas."
+  },
+  {
+   "q": "Preciso criar um mundo novo para as dungeons aparecerem?",
+   "a": "Não é estritamente necessário criar um novo mapa. No entanto, em mundos já antigos, você precisará explorar áreas e chunks virgens do End que nunca foram visitados antes para que o jogo gere as novas construções."
+  },
+  {
+   "q": "Este complemento para Minecraft Bedrock é gratuito?",
+   "a": "Sim, o addon criado pelo desenvolvedor ARTMS é um projeto gratuito disponibilizado para a comunidade de Minecraft Bedrock."
+  },
+  {
+   "q": "O que fazer se o jogo der erro ao importar o arquivo .mcpack?",
+   "a": "Certifique-se de que o arquivo não está comprimido em formato .zip. Se estiver, renomeie o arquivo removendo a extensão .zip e mantendo apenas .mcpack no final. Certifique-se também de estar com o jogo atualizado."
+  },
+  {
+   "q": "O More End Dungeons é compatível com outros addons?",
+   "a": "Sim, ele funciona sem problemas com addons de móveis, texturas, equipamentos e novos itens. Evite apenas usar junto com outros mods que alterem bruscamente a geração do terreno do End."
+  }
+ ],
+ "verdict": "O More End Dungeons [Achievements Enabled] é uma adição fantástica para quem deseja renovar a exploração da dimensão final do Minecraft Bedrock sem abrir mão do progresso de conquistas. Com suas 14 estruturas bem detalhadas e integradas ao visual vanilla, o mod entrega o desafio e o loot que o jogo base deveria ter. Vale muito a pena para jogadores focados em sobrevivência e donos de Realms, sendo dispensável apenas para quem prefere manter a dimensão do End totalmente vazia."
+}
