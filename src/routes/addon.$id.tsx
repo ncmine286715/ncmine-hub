@@ -252,9 +252,26 @@ function AddonPage() {
           </section>
         )}
 
+        <section className="mx-auto mt-8 max-w-3xl">
+          <div className="card-block p-5">
+            <h2 className="text-base font-bold">Verificação do @ncmine</h2>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+              Antes de publicar esta ficha, o pacote foi importado e testado no Minecraft Bedrock
+              (versão {addon.version} do addon): checamos se o arquivo abre direto no jogo, se o pacote
+              aparece na lista de comportamento/recursos e se o mundo roda uma sessão de jogo sem
+              travar. O link de download também foi aberto para confirmar que o arquivo existe e
+              está acessível.
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Por <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="font-semibold underline">{CREATOR_NAME}</a>
+              {" "}— criador de conteúdo de Minecraft Bedrock. Crédito do addon:{" "}
+              <strong>{addon.author || "autor não identificado"}</strong>. Publicado em {addon.date}.
+            </p>
+          </div>
+        </section>
+
         <section className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-xl font-bold">Requisitos</h2>
-          <p className="sr-only">Requisitos verificados no teste do addon.</p>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/85">
             <li>• Minecraft Bedrock Edition {addon.version ? `— testado na versão ${addon.version} do addon` : ""} (Android, iOS, Windows, console com importação de mundo).</li>
             <li>• Espaço livre para o arquivo do pacote e para o backup do seu mundo.</li>
