@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermosRouteImport } from './routes/termos'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as DmcaRouteImport } from './routes/dmca'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AddonIdRouteImport } from './routes/addon.$id'
 
@@ -30,6 +33,21 @@ const LegalRoute = LegalRouteImport.update({
   path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DmcaRoute = DmcaRouteImport.update({
+  id: '/dmca',
+  path: '/dmca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +61,9 @@ const AddonIdRoute = AddonIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
+  '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos': typeof TermosRoute
@@ -50,6 +71,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
+  '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos': typeof TermosRoute
@@ -58,6 +82,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
+  '/dmca': typeof DmcaRoute
   '/legal': typeof LegalRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos': typeof TermosRoute
@@ -65,14 +92,42 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/legal' | '/privacidade' | '/termos' | '/addon/$id'
+  fullPaths:
+    | '/'
+    | '/contato'
+    | '/cookies'
+    | '/dmca'
+    | '/legal'
+    | '/privacidade'
+    | '/termos'
+    | '/addon/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/legal' | '/privacidade' | '/termos' | '/addon/$id'
-  id: '__root__' | '/' | '/legal' | '/privacidade' | '/termos' | '/addon/$id'
+  to:
+    | '/'
+    | '/contato'
+    | '/cookies'
+    | '/dmca'
+    | '/legal'
+    | '/privacidade'
+    | '/termos'
+    | '/addon/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/contato'
+    | '/cookies'
+    | '/dmca'
+    | '/legal'
+    | '/privacidade'
+    | '/termos'
+    | '/addon/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
+  CookiesRoute: typeof CookiesRoute
+  DmcaRoute: typeof DmcaRoute
   LegalRoute: typeof LegalRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   TermosRoute: typeof TermosRoute
@@ -102,6 +157,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dmca': {
+      id: '/dmca'
+      path: '/dmca'
+      fullPath: '/dmca'
+      preLoaderRoute: typeof DmcaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -121,6 +197,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
+  CookiesRoute: CookiesRoute,
+  DmcaRoute: DmcaRoute,
   LegalRoute: LegalRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   TermosRoute: TermosRoute,
