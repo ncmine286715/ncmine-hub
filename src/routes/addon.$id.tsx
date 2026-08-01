@@ -16,8 +16,6 @@ import { RelatedAddons } from "@/components/RelatedAddons";
 import { trackEvent, initScrollTracker } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/use-count-up";
 import { AddonBlockPreview } from "@/components/AddonBlockPreview";
-import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
-import { AdsterraBanner } from "@/components/ads/AdsterraBanner";
 
 const RAW_ADDONS = ADDONS;
 
