@@ -1,5 +1,53 @@
 [
   {
+    "id": "tree-physics-bedrock-addon",
+    "title": "Tree Physics Add-On",
+    "category": "Addon",
+    "version": "0.1.1",
+    "rating": 4.8,
+    "downloads": 12000,
+    "date": "2026-08-05",
+    "image": "https://i.imgur.com/ZtBOjsz.jpeg",
+    "tags": [
+      "addon",
+      "physics",
+      "trees",
+      "realistic",
+      "vanilla+",
+      "utility",
+      "bedrock"
+    ],
+    "short": "Adiciona física realista ao derrubar árvores no Minecraft Bedrock, fazendo-as tombar e interagir com o cenário.",
+    "description": "O Tree Physics Add-On transforma a mecânica de corte de árvores no Minecraft Bedrock. Ao quebrar um tronco, a árvore inteira tomba com física interativa e realista: folhas e galhos podem se soltar na queda, entidades podem levar dano e ser empurradas, e as árvores caídas interagem com a água e o terreno antes de se levarem a itens. O addon conta também com um menu de configurações personalizável.",
+    "downloadUrl": "https://1024terabox.com/s/1_M6QJWDbY2GOLHDoK1cyvw",
+    "author": "MS_Frisk",
+    "youtubeId": ""
+  },
+  {
+    "id": "advanced-drills",
+    "title": "Advanced Drills",
+    "category": "Addon",
+    "version": "1.1",
+    "rating": 4.8,
+    "downloads": 7295,
+    "date": "2026-08-09",
+    "image": "https://i.imgur.com/ksOIt9b.png",
+    "tags": [
+      "addon",
+      "drills",
+      "tools",
+      "mining",
+      "survival",
+      "dynamic light",
+      "achievements friendly"
+    ],
+    "short": "Substitua as picaretas por furadeiras mecanizadas que escavam túneis 3x3 sem desativar as conquistas.",
+    "description": "O Advanced Drills traz a mineração mecanizada para o Minecraft Bedrock de forma totalmente amigável ao modo sobrevivência e às conquistas do jogo. O addon adiciona 5 níveis de furadeiras (Cobre 1x1, Ferro 3x3, Ouro 3x3, Diamante 3x3 e Netherita 3x3) que contam com mecânicas de aceleração de motor e gerenciamento de superaquecimento. Além das furadeiras, o mod inclui o Capacete de Mineração (Mining Helmet), um capacete de proteção com iluminação dinâmica integrada que clareia automaticamente as cavernas escuras enquanto você mantém as mãos livres para operar suas máquinas.",
+    "downloadUrl": "https://1024terabox.com/s/1_M6QJWDbY2GOLHDoK1cyvw",
+    "author": "bony162",
+    "youtubeId": ""
+  },
+  {
     "id": "hold-my-items-mod",
     "title": "Hold My Items Mod",
     "category": "Addon",
