@@ -58,7 +58,8 @@ function Index() {
 
   const { featured, rest } = useMemo(() => {
     const sorted = [...RAW_ADDONS].sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
-    const first = sorted[0];
+    // Destaque fixo: pack próprio do @ncmine sempre em primeiro lugar.
+    const first = RAW_ADDONS.find((a) => a.id === PINNED_ID) ?? sorted[0];
     const others = RAW_ADDONS.filter((a) => a.id !== first?.id);
     return { featured: first, rest: shuffleSeeded(others) };
   }, [RAW_ADDONS]);

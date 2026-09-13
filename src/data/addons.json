@@ -1,5 +1,27 @@
 [
   {
+    "id": "ncmine-realista",
+    "title": "Realista sem Shader — by @ncmine",
+    "category": "Texturas",
+    "version": "1.0.0",
+    "rating": 5,
+    "downloads": 0,
+    "date": "2026-09-13",
+    "image": "/addons/ncmine-realista.jpg",
+    "tags": [
+      "texturas",
+      "realista",
+      "sem shader",
+      "bedrock",
+      "ncmine"
+    ],
+    "short": "Pack do @ncmine que deixa o Minecraft realista sem usar shader — leve e roda no celular.",
+    "description": "O Realista sem Shader é um pacote de texturas feito pelo @ncmine para quem quer deixar o Minecraft Bedrock com cara de jogo moderno sem precisar instalar shader nenhum. A ideia nasceu de um problema simples: shader deixa tudo bonito, mas derruba o FPS do celular e faz o jogo esquentar em poucos minutos. Aqui o trabalho todo foi feito na textura, então o ganho visual vem de graça em termos de desempenho.\n\nAs pedras ganharam relevo e variação de cor, a madeira tem veios visíveis, a grama ficou mais densa e o minério aparece com muito mais destaque na parede da caverna, o que ajuda bastante na hora de minerar. A água, o vidro e as folhagens também foram retrabalhados para parecerem naturais sem perder a identidade quadrada do Minecraft — a proposta nunca foi transformar o jogo em outra coisa, e sim deixar o visual limpo e realista.\n\nA instalação é a mesma de qualquer pacote de recursos do Bedrock: baixe o arquivo, toque nele para o Minecraft importar sozinho e ative o pacote nas configurações do mundo, na aba Pacotes de Recursos. Funciona no Android, iOS, Windows e em mundos multiplayer, e como é só pacote de recursos, as conquistas do seu mundo continuam ativas.\n\nRodamos o pacote em celular intermediário com render distance médio e o jogo se manteve estável. Se o seu aparelho for mais fraco, reduza a distância de renderização antes de achar que o problema é o pacote. Para desinstalar, é só desativar o pacote na lista do mundo.",
+    "downloadUrl": "https://1024terabox.com/s/1NzGlynGPdc93__QHqBmILw",
+    "author": "@ncmine",
+    "youtubeId": ""
+  },
+  {
     "id": "hold-my-items-mod",
     "title": "Hold My Items Mod",
     "category": "Addon",
