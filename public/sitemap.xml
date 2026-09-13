@@ -46,6 +46,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://mineaddonsnews.online/addon/ncmine-realista</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://i.imgur.com/1DX3dDR.png</image:loc><image:title>Realista sem Shader — by @ncmine</image:title></image:image>
+  </url>
+  <url>
     <loc>https://mineaddonsnews.online/addon/hold-my-items-mod</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
