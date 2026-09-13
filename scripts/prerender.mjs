@@ -26,8 +26,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
-const SERVER_DIR = join(ROOT, "dist", "server");
-const PUBLIC_DIR = join(ROOT, "dist", "client");
+const SERVER_DIR = join(ROOT, ".output", "server");
+const PUBLIC_DIR = join(ROOT, ".output", "public");
 const WRANGLER_CONFIG = join(SERVER_DIR, "wrangler.json");
 const CONCURRENCY = 12;
 const READY_TIMEOUT_MS = 30_000;
