@@ -1,10 +1,10 @@
 {
  "id": "ncmine-realista",
- "title": "Realista sem Shader — by @ncmine",
+ "title": "Realismo Pack v2 — by @ncmine",
  "researched": true,
- "updatedAt": "2026-09-13",
+ "updatedAt": "2026-09-14",
  "wordCount": 1020,
- "intro": "Todo mundo que joga Minecraft Bedrock no celular já passou por isso: você instala um shader bonito, abre o mundo, tira dois prints e percebe que o jogo caiu para dez quadros por segundo e o aparelho está fervendo. O Realista sem Shader, pacote de texturas feito pelo @ncmine, nasceu exatamente desse incômodo. A proposta é entregar um Minecraft com cara moderna, com relevo, profundidade e materiais críveis, usando apenas textura — sem nenhuma camada de iluminação pesada rodando por cima do jogo.\n\nO resultado é um visual que impressiona nos prints e nos vídeos, mas que continua rodando liso em aparelhos intermediários. É um pacote pensado para quem grava conteúdo, para quem joga sobrevivência longa e para quem simplesmente cansou de escolher entre jogo bonito e jogo jogável.",
+ "intro": "Todo mundo que joga Minecraft Bedrock no celular já passou por isso: você instala um shader bonito, abre o mundo, tira dois prints e percebe que o jogo caiu para dez quadros por segundo e o aparelho está fervendo. O Realismo Pack v2, pacote de texturas feito pelo @ncmine, nasceu exatamente desse incômodo. A proposta é entregar um Minecraft com cara moderna, com relevo, profundidade e materiais críveis, usando apenas textura — sem nenhuma camada de iluminação pesada rodando por cima do jogo.\n\nO resultado é um visual que impressiona nos prints e nos vídeos, mas que continua rodando liso em aparelhos intermediários. É um pacote pensado para quem grava conteúdo, para quem joga sobrevivência longa e para quem simplesmente cansou de escolher entre jogo bonito e jogo jogável.",
  "sections": [
   {
    "h2": "O que muda no visual do jogo",
@@ -12,11 +12,11 @@
   },
   {
    "h2": "Por que não usar shader",
-   "body": "Shader trabalha na iluminação em tempo real: sombras dinâmicas, reflexo, raio de sol atravessando folhagem. Tudo isso custa processamento a cada quadro renderizado, e é por isso que o celular esquenta e a bateria some. Um pacote de texturas, por outro lado, é processado uma vez ao carregar e depois praticamente não pesa.\n\nO truque do Realista sem Shader é simular na própria textura aquilo que o shader faria com luz: sombras pintadas nas bordas, variação de brilho dentro do bloco, contraste maior entre partes altas e baixas do relevo. É uma técnica antiga de arte de jogo e funciona muito bem no Minecraft, porque a câmera costuma ficar perto dos blocos.\n\nNa prática, você ganha boa parte do impacto visual pagando quase nada de desempenho. Quem quiser somar shader depois pode fazer isso, mas o pacote foi desenhado para ser bonito sozinho."
+   "body": "Shader trabalha na iluminação em tempo real: sombras dinâmicas, reflexo, raio de sol atravessando folhagem. Tudo isso custa processamento a cada quadro renderizado, e é por isso que o celular esquenta e a bateria some. Um pacote de texturas, por outro lado, é processado uma vez ao carregar e depois praticamente não pesa.\n\nO truque do Realismo Pack v2 é simular na própria textura aquilo que o shader faria com luz: sombras pintadas nas bordas, variação de brilho dentro do bloco, contraste maior entre partes altas e baixas do relevo. É uma técnica antiga de arte de jogo e funciona muito bem no Minecraft, porque a câmera costuma ficar perto dos blocos.\n\nNa prática, você ganha boa parte do impacto visual pagando quase nada de desempenho. Quem quiser somar shader depois pode fazer isso, mas o pacote foi desenhado para ser bonito sozinho."
   },
   {
    "h2": "Como instalar no Minecraft Bedrock",
-   "body": "Baixe o arquivo pelo botão de download desta página. No Android ou iOS, abra o gerenciador de arquivos, toque no arquivo baixado e escolha abrir com o Minecraft: o jogo abre sozinho e faz a importação. No Windows, dois cliques no arquivo resolvem.\n\nCom o pacote importado, entre em Configurações do mundo, vá até a aba Pacotes de Recursos, localize o Realista sem Shader na lista de disponíveis e toque em Ativar. Salve e entre no mundo. Se preferir aplicar em todos os mundos de uma vez, ative o pacote em Configurações globais, na seção de Armazenamento e recursos.\n\nComo é apenas um pacote de recursos, não há pacote de comportamento para ativar e você não precisa ligar nenhuma opção experimental. Por isso mesmo, as conquistas do seu mundo continuam funcionando normalmente."
+   "body": "Baixe o arquivo pelo botão de download desta página. No Android ou iOS, abra o gerenciador de arquivos, toque no arquivo baixado e escolha abrir com o Minecraft: o jogo abre sozinho e faz a importação. No Windows, dois cliques no arquivo resolvem.\n\nCom o pacote importado, entre em Configurações do mundo, vá até a aba Pacotes de Recursos, localize o Realismo Pack v2 na lista de disponíveis e toque em Ativar. Salve e entre no mundo. Se preferir aplicar em todos os mundos de uma vez, ative o pacote em Configurações globais, na seção de Armazenamento e recursos.\n\nComo é apenas um pacote de recursos, não há pacote de comportamento para ativar e você não precisa ligar nenhuma opção experimental. Por isso mesmo, as conquistas do seu mundo continuam funcionando normalmente."
   },
   {
    "h2": "Desempenho em celular e PC",
@@ -24,7 +24,7 @@
   },
   {
    "h2": "Compatibilidade com outros addons",
-   "body": "Por mexer só em texturas de blocos e itens do jogo base, o pacote convive bem com addons de mecânica, mobs, mapas e estruturas. Você pode usar junto com pacotes de comportamento sem risco de conflito de receita ou de entidade.\n\nO cuidado necessário é com outros pacotes de recursos que alterem os mesmos blocos. Nesse caso o Minecraft aplica o que estiver no topo da lista de pacotes ativos, então arraste o Realista sem Shader para a primeira posição se quiser que ele tenha prioridade.\n\nEm multiplayer, se o mundo for seu, ative a opção que exige download de recursos e todos que entrarem verão o pacote. Em servidores públicos, cada jogador pode ativar o pacote localmente sem afetar os outros."
+   "body": "Por mexer só em texturas de blocos e itens do jogo base, o pacote convive bem com addons de mecânica, mobs, mapas e estruturas. Você pode usar junto com pacotes de comportamento sem risco de conflito de receita ou de entidade.\n\nO cuidado necessário é com outros pacotes de recursos que alterem os mesmos blocos. Nesse caso o Minecraft aplica o que estiver no topo da lista de pacotes ativos, então arraste o Realismo Pack v2 para a primeira posição se quiser que ele tenha prioridade.\n\nEm multiplayer, se o mundo for seu, ative a opção que exige download de recursos e todos que entrarem verão o pacote. Em servidores públicos, cada jogador pode ativar o pacote localmente sem afetar os outros."
   },
   {
    "h2": "Problemas comuns e soluções",
@@ -34,7 +34,7 @@
  "faq": [
   {
    "q": "O pacote é gratuito?",
-   "a": "Sim. O Realista sem Shader é distribuído gratuitamente pelo @ncmine."
+   "a": "Sim. O Realismo Pack v2 é distribuído gratuitamente pelo @ncmine."
   },
   {
    "q": "Preciso instalar shader junto?",
@@ -61,5 +61,5 @@
    "a": "Basta desativá-lo na lista de pacotes de recursos do mundo. Nada é alterado permanentemente."
   }
  ],
- "verdict": "O Realista sem Shader entrega o que promete: um Minecraft Bedrock visivelmente mais bonito, com relevo e materiais críveis, sem cobrar o preço de desempenho que um shader cobraria. É a escolha certa para quem joga no celular, grava conteúdo ou quer uma sobrevivência longa com visual agradável. Quem busca reflexo em água e sombra dinâmica em tempo real ainda vai precisar de shader, mas para todo o resto esse pacote resolve com folga."
+ "verdict": "O Realismo Pack v2 entrega o que promete: um Minecraft Bedrock visivelmente mais bonito, com relevo e materiais críveis, sem cobrar o preço de desempenho que um shader cobraria. É a escolha certa para quem joga no celular, grava conteúdo ou quer uma sobrevivência longa com visual agradável. Quem busca reflexo em água e sombra dinâmica em tempo real ainda vai precisar de shader, mas para todo o resto esse pacote resolve com folga."
 }
