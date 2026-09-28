@@ -149,6 +149,10 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
 
   const cat = externalCategory ?? internalCat;
   const setCat = onCategoryChange ?? setInternalCat;
+  const catalogAddons = useMemo(
+    () => featuredAddon ? [featuredAddon, ...addons] : addons,
+    [featuredAddon, addons],
+  );
 
   useEffect(() => {
     setSubcat("Todos");
@@ -156,7 +160,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
 
   const fuse = useMemo(
     () =>
-      new Fuse(addons, {
+      new Fuse(catalogAddons, {
         keys: [
           { name: "title", weight: 0.4 },
           { name: "tags", weight: 0.25 },
@@ -167,13 +171,13 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
         threshold: 0.3,
         ignoreLocation: true,
       }),
-    [addons],
+    [catalogAddons],
   );
 
   const categories = useMemo(() => {
-    const set = new Set(addons.map((a) => a.category));
+    const set = new Set(catalogAddons.map((a) => a.category));
     return ["Todos", ...Array.from(set)];
-  }, [addons]);
+  }, [catalogAddons]);
 
   // Map categories to our config, with fallback for dynamic categories
   const categoryButtons = useMemo(() => {
@@ -193,22 +197,23 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
   const subcategories = useMemo(() => {
     if (cat === "Todos") return [];
     const set = new Set(
-      addons
+      catalogAddons
         .filter((a) => a.category.toLowerCase() === cat.toLowerCase())
         .map((a) => a.subcategory)
         .filter((s): s is string => !!s),
     );
     return ["Todos", ...Array.from(set).sort()];
-  }, [addons, cat]);
+  }, [catalogAddons, cat]);
 
   const filtered = useMemo(() => {
     const ql = q.trim();
+    const showFeaturedSeparately = !ql && cat === "Todos" && sort === "mix";
     let list: Addon[];
     if (ql) {
       const matches = new Set(fuse.search(ql).map((r) => r.item.id));
-      list = addons.filter((a) => matches.has(a.id));
+      list = catalogAddons.filter((a) => matches.has(a.id));
     } else {
-      list = addons;
+      list = showFeaturedSeparately ? addons : catalogAddons;
     }
     list = list.filter((a) => {
       const matchesCat = cat === "Todos" || a.category.toLowerCase() === cat.toLowerCase();
@@ -233,7 +238,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
       }
     });
     return list;
-  }, [addons, q, cat, subcat, sort, achievementOnly, fuse]);
+  }, [addons, catalogAddons, q, cat, subcat, sort, achievementOnly, fuse]);
 
   // Nova busca/filtro/ordenação volta pro topo da paginação.
   useEffect(() => {
@@ -410,7 +415,7 @@ export function AddonsGrid({ addons, featuredAddon, onDownload, onOpen, external
       )}
 
       {/* Featured addon (always first) */}
-      {featuredAddon && cat === "Todos" && (
+      {featuredAddon && cat === "Todos" && !q.trim() && sort === "mix" && (
         <div data-onboarding="featured" className="mb-4 sm:mb-5">
           <div className="relative overflow-hidden border-2 border-foreground bg-background">
             <button

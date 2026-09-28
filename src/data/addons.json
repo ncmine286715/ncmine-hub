@@ -1,4 +1,25 @@
- [
+[
+ {
+  "id": "minecraft-bedrock-1-16-101",
+  "title": "Minecraft Bedrock 1.16.101",
+  "category": "Versões",
+  "version": "1.16.101",
+  "rating": 0,
+  "downloads": 10000,
+  "date": "2020-11-23",
+  "image": "/bedrock-1.16.101.webp",
+  "tags": [
+   "minecraft",
+   "bedrock",
+   "versão antiga",
+   "1.16.101",
+   "nether"
+  ],
+  "short": "Versão clássica do Minecraft Bedrock 1.16 com correções de conexão ao Realms e de Minecoins.",
+  "description": "Minecraft Bedrock 1.16.101 é uma atualização corretiva de 2020 da linha 1.16, conhecida pela atualização do Nether. Ela foi lançada para dispositivos móveis e Nintendo Switch e mantém a experiência clássica daquela época. Segundo as notas oficiais, esta versão corrigiu a falha que impedia jogadores em dados móveis de se conectarem ao Realms e o problema de Minecoins compradas que só apareciam após reiniciar o jogo. O multiplayer continuou compatível com dispositivos na versão 1.16.100. Esta ficha reúne a versão antiga para quem deseja revisitar esse período do Bedrock; confira o arquivo e a compatibilidade do seu dispositivo antes de instalar.",
+  "downloadUrl": "https://1024terabox.com/s/1Ek5WsjbnRjwzRcvAvIvEhg",
+  "author": "Mojang Studios"
+ },
  {
   "id": "ncmine-realista",
   "title": "Realismo Pack v2 — by @ncmine",
